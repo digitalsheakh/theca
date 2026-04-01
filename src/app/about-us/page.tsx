@@ -218,48 +218,42 @@ export default function AboutUsPage() {
                 </div>
               </motion.div>
 
-              {/* Directors - 2 Cards */}
+              {/* Directors - 1 Card */}
               <div className="mb-6">
-                <h3 className="text-2xl font-bold text-white mb-8 font-orbitron tracking-wider text-center">OUR <span className="text-orange-600">DIRECTORS</span></h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                  {[
-                    { name: "DIRECTOR 1", role: "CO-FOUNDER & DIRECTOR" },
-                    { name: "DIRECTOR 2", role: "CO-FOUNDER & DIRECTOR" }
-                  ].map((member, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.8, delay: index * 0.15 }}
-                      viewport={{ once: true }}
-                      className="bg-gray-900 border border-gray-700 rounded-lg overflow-hidden hover:border-orange-600 transition-all duration-300 group"
-                    >
-                      <div className="relative h-80">
-                        <Image
-                          src="/images/logos/about us image.jpg"
-                          alt={member.name}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-500"
-                        />
-                      </div>
-                      <div className="bg-black p-5 text-center">
-                        <h3 className="text-lg font-bold text-white mb-1 font-orbitron tracking-wider">{member.name}</h3>
-                        <p className="text-orange-400 font-orbitron font-semibold uppercase tracking-wide text-xs">{member.role}</p>
-                      </div>
-                    </motion.div>
-                  ))}
+                <h3 className="text-2xl font-bold text-white mb-8 font-orbitron tracking-wider text-center">OUR <span className="text-orange-600">DIRECTOR</span></h3>
+                <div className="grid grid-cols-1 md:grid-cols-1 gap-8 max-w-2xl mx-auto">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true }}
+                    className="bg-gray-900 border border-gray-700 rounded-lg overflow-hidden hover:border-orange-600 transition-all duration-300 group"
+                  >
+                    <div className="relative h-80">
+                      <Image
+                        src="/images/our team/Dom - Director.jpeg"
+                        alt="Dom - Director"
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                    <div className="bg-black p-5 text-center">
+                      <h3 className="text-lg font-bold text-white mb-1 font-orbitron tracking-wider">DOM</h3>
+                      <p className="text-orange-400 font-orbitron font-semibold uppercase tracking-wide text-xs">DIRECTOR</p>
+                    </div>
+                  </motion.div>
                 </div>
               </div>
 
               {/* Experts - 4 Cards */}
               <div className="mt-16">
                 <h3 className="text-2xl font-bold text-white mb-8 font-orbitron tracking-wider text-center">OUR <span className="text-orange-600">EXPERTS</span></h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
                   {[
-                    { name: "EXPERT 1", role: "SENIOR TECHNICIAN" },
-                    { name: "EXPERT 2", role: "DIAGNOSTIC SPECIALIST" },
-                    { name: "EXPERT 3", role: "ENGINE SPECIALIST" },
-                    { name: "EXPERT 4", role: "SERVICE TECHNICIAN" }
+                    { name: "OWEN", role: "WORKSHOP SUPERVISOR", image: "/images/our team/Owen - Workshop Superviser.jpeg" },
+                    { name: "AKOS", role: "MECHANIC", image: "/images/our team/Akos - Mechanic.jpeg" },
+                    { name: "GYTIS", role: "MECHANIC", image: "/images/our team/Gytis - Mechanic.jpeg" },
+                    { name: "DREW", role: "MECHANIC", image: "/images/our team/Drew - Mechanic.jpeg" }
                   ].map((member, index) => (
                     <motion.div
                       key={index}
@@ -271,7 +265,7 @@ export default function AboutUsPage() {
                     >
                       <div className="relative h-64">
                         <Image
-                          src="/images/logos/about us image.jpg"
+                          src={member.image}
                           alt={member.name}
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-500"

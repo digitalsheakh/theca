@@ -776,10 +776,28 @@ export default function Home() {
             <div className="relative overflow-hidden bg-gray-900/50 py-12 rounded-2xl border border-gray-800">
               {/* Continuous Marquee - No gaps, always filled */}
               <div className="flex animate-marquee hover:pause-marquee space-x-16">
-                {/* Repeat logos multiple times for continuous coverage */}
+                {/* First set of logos */}
                 <div className="w-40 h-24 relative flex-shrink-0 group">
                   <Image 
-                    src="/images/marquee/mercedes-benz-car-logo-brand-png-3.png" 
+                    src="/images/marquee/ford.png" 
+                    alt="Ford" 
+                    fill
+                    style={{ objectFit: 'contain' }}
+                    className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" 
+                  />
+                </div>
+                <div className="w-40 h-24 relative flex-shrink-0 group">
+                  <Image 
+                    src="/images/marquee/bmw.png" 
+                    alt="BMW" 
+                    fill
+                    style={{ objectFit: 'contain' }}
+                    className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" 
+                  />
+                </div>
+                <div className="w-40 h-24 relative flex-shrink-0 group">
+                  <Image 
+                    src="/images/marquee/mercedes.png" 
                     alt="Mercedes-Benz" 
                     fill
                     style={{ objectFit: 'contain' }}
@@ -788,18 +806,54 @@ export default function Home() {
                 </div>
                 <div className="w-40 h-24 relative flex-shrink-0 group">
                   <Image 
-                    src="/images/marquee/mercedes-benz-car-logo-brand-png-3.png" 
-                    alt="Mercedes-Benz" 
+                    src="/images/marquee/jaguar.png" 
+                    alt="Jaguar" 
+                    fill
+                    style={{ objectFit: 'contain' }}
+                    className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" 
+                  />
+                </div>
+                <div className="w-40 h-24 relative flex-shrink-0 group">
+                  <Image 
+                    src="/images/marquee/landrover.png" 
+                    alt="Land Rover" 
+                    fill
+                    style={{ objectFit: 'contain' }}
+                    className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" 
+                  />
+                </div>
+                <div className="w-40 h-24 relative flex-shrink-0 group">
+                  <Image 
+                    src="/images/marquee/audi.png" 
+                    alt="Audi" 
                     fill
                     style={{ objectFit: 'contain' }}
                     className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" 
                   />
                 </div>
                 
-                {/* Duplicate sets for seamless loop */}
+                {/* Duplicate set for seamless loop */}
                 <div className="w-40 h-24 relative flex-shrink-0 group">
                   <Image 
-                    src="/images/marquee/mercedes-benz-car-logo-brand-png-3.png" 
+                    src="/images/marquee/ford.png" 
+                    alt="Ford" 
+                    fill
+                    style={{ objectFit: 'contain' }}
+                    className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" 
+                  />
+                </div>
+                <div className="w-40 h-24 relative flex-shrink-0 group">
+                  <Image 
+                    src="/images/marquee/bmw.png" 
+                    alt="BMW" 
+                    fill
+                    style={{ objectFit: 'contain' }}
+                    className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" 
+                  />
+                </div>
+                <div className="w-40 h-24 relative flex-shrink-0 group">
+                  <Image 
+                    src="/images/marquee/mercedes.png" 
                     alt="Mercedes-Benz" 
                     fill
                     style={{ objectFit: 'contain' }}
@@ -808,19 +862,8 @@ export default function Home() {
                 </div>
                 <div className="w-40 h-24 relative flex-shrink-0 group">
                   <Image 
-                    src="/images/marquee/mercedes-benz-car-logo-brand-png-3.png" 
-                    alt="Mercedes-Benz" 
-                    fill
-                    style={{ objectFit: 'contain' }}
-                    className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" 
-                  />
-                </div>
-                
-                {/* Third set */}
-                <div className="w-40 h-24 relative flex-shrink-0 group">
-                  <Image 
-                    src="/images/marquee/mercedes-benz-car-logo-brand-png-3.png" 
-                    alt="Mercedes-Benz" 
+                    src="/images/marquee/jaguar.png" 
+                    alt="Jaguar" 
                     fill
                     style={{ objectFit: 'contain' }}
                     className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" 
@@ -828,8 +871,17 @@ export default function Home() {
                 </div>
                 <div className="w-40 h-24 relative flex-shrink-0 group">
                   <Image 
-                    src="/images/marquee/mercedes-benz-car-logo-brand-png-3.png" 
-                    alt="Mercedes-Benz" 
+                    src="/images/marquee/landrover.png" 
+                    alt="Land Rover" 
+                    fill
+                    style={{ objectFit: 'contain' }}
+                    className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" 
+                  />
+                </div>
+                <div className="w-40 h-24 relative flex-shrink-0 group">
+                  <Image 
+                    src="/images/marquee/audi.png" 
+                    alt="Audi" 
                     fill
                     style={{ objectFit: 'contain' }}
                     className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" 
