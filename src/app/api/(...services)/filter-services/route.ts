@@ -29,7 +29,7 @@ export async function GET(req: NextRequest) {
     // Text search
     if (searchTerm.trim()) {
       const indexes = await servicesCollection.indexes();
-      const hasTextIndex = indexes.some(index => 
+      const hasTextIndex = indexes.some((index: any) => 
         index.name === "name_text_description_text"
       );
 

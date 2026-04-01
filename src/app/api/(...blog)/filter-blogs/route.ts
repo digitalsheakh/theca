@@ -19,7 +19,7 @@ export async function GET(req: NextRequest) {
   if (searchTerm) {
       // Check if text index exists
       const indexes = await blogsCollection.indexes();
-      const hasTextIndex = indexes.some(index => index.name === "booking_search_text");
+      const hasTextIndex = indexes.some((index: any) => index.name === "booking_search_text");
       
       if (hasTextIndex) {
         query.$text = { $search: searchTerm };

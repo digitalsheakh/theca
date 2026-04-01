@@ -85,7 +85,7 @@ export async function GET(req: NextRequest) {
     }
     
     
-    const insitutes = await usersCollection.aggregate<users>([
+    const insitutes = await usersCollection.aggregate([
       { $match: query },
       { $sort: { date: 1 } },
       { $skip: skip },

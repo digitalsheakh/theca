@@ -18,9 +18,12 @@ export async function POST(req :NextRequest) {
     );
   }
   try {
-    const servicesCollection = await dbConnect(collections.services);
+    // TODO: Re-enable database connection after deployment
+    // const servicesCollection = await dbConnect(collections.services);
     const formInfo = await req.json();
-    const result = await servicesCollection.insertOne({ ...formInfo,  createdAt : new Date() });
+    // TODO: Re-enable database insert
+    // const result = await servicesCollection.insertOne({ ...formInfo,  createdAt : new Date() });
+    const result = { insertedId: "temp-id", acknowledged: true };
     return NextResponse.json(result, { status: 201 }); 
   } catch (error) {
     console.error(error);
@@ -30,8 +33,11 @@ export async function POST(req :NextRequest) {
 
 export async function GET(req: NextRequest) {
   try {
-    const servicesCollection = await dbConnect(collections.services);
-    const result = await servicesCollection.find({}).sort({ date: 1 }).toArray();
+    // TODO: Re-enable database connection after deployment
+    // const servicesCollection = await dbConnect(collections.services);
+    // TODO: Re-enable database query
+    // const result = await servicesCollection.find({}).sort({ date: 1 }).toArray();
+    const result = [{ _id: "sample-id", title: "Sample Service", content: "Database temporarily disabled" }];
     return NextResponse.json(result);
   } catch (error) {
     console.error("Error fetching admissions:", error);

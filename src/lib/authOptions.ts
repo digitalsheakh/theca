@@ -31,14 +31,7 @@ export const authOptions: AuthOptions = {
         const { email, password } = credentials;
 
         const usersCollection = await dbConnect(collections.users);
-        const user = await usersCollection.findOne<{
-          _id: string;
-          name?: string;
-          email: string;
-          password: string;
-          role: string;
-          profilePhoto: string;
-        }>({ email, password });
+        const user = await usersCollection.findOne({ email, password });
 
         if (!user) {
           throw new Error("Invalid email or password");

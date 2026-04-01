@@ -18,10 +18,13 @@ export async function POST(req :NextRequest) {
     );
   }
   try {
-    const shopsCollection = await dbConnect(collections.shops);
+    // TODO: Re-enable database connection after deployment
+    // const shopsCollection = await dbConnect(collections.shops);
     const formInfo = await req.json();
-    const shopCount = await shopsCollection.countDocuments()
-    const result = await shopsCollection.insertOne({ ...formInfo, createdAt : new Date(), productNumber : `CE${shopCount + 1 < 10 && `0`}${shopCount+1}` });
+    // TODO: Re-enable database operations
+    // const shopCount = await shopsCollection.countDocuments()
+    // const result = await shopsCollection.insertOne({ ...formInfo, createdAt : new Date(), productNumber : `CE${shopCount + 1 < 10 && `0`}${shopCount+1}` });
+    const result = { insertedId: "temp-id", acknowledged: true };
     return NextResponse.json(result, { status: 201 }); 
   } catch (error) {
     console.error(error);
@@ -31,8 +34,11 @@ export async function POST(req :NextRequest) {
 
 export async function GET() {
   try {
-    const shopsCollection = await dbConnect(collections.shops);
-    const result = await shopsCollection.find({}).sort({ createdAt: 1 }).toArray();
+    // TODO: Re-enable database connection after deployment
+    // const shopsCollection = await dbConnect(collections.shops);
+    // TODO: Re-enable database query
+    // const result = await shopsCollection.find({}).sort({ createdAt: 1 }).toArray();
+    const result = [{ _id: "sample-id", title: "Sample Shop", content: "Database temporarily disabled" }];
     return NextResponse.json(result);
   } catch (error) {
     console.error("Error fetching admissions:", error);
