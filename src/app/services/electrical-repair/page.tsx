@@ -8,7 +8,7 @@ export default function ElectricalRepairPage() {
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden bg-gray-900">
         <Image
-          src="/images/dropbox/10.jpg"
+          src="/images/dropbox/22.jpg"
           alt="Electrical Repair Service"
           fill
           className="object-cover"
@@ -213,9 +213,9 @@ export default function ElectricalRepairPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
                 href="/contact-us" 
-                className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 font-bold transition-colors duration-300 font-rajdhani uppercase tracking-wide"
+                className="inline-flex items-center bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-rajdhani font-bold transition-colors duration-300"
               >
-                Book Service
+                Learn More
               </Link>
               <Link 
                 href="tel:01480123456" 

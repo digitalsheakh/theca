@@ -1,149 +1,232 @@
-import Image from 'next/image'
-import React from 'react'
+import ServiceEstimatorComponent from '@/components/reuseableComponents/ServicesEstimator/ServiceEstimator';
+import Image from 'next/image';
+import Link from 'next/link';
 
-const TyresAndPunctureRepair = () => {
+export default function TyresAndPunctureRepair() {
   return (
-     <div className="w-full bg-black overflow-hidden">
-          {/* Container with 16:9 aspect ratio */}
-          <section className="max-w-screen mx-auto pt-20">
-            <Image
-              src="/images/tyres-and-puncture.jpeg"
-              alt="Tyres and Puncture"
-              width={1920}
-              height={1080}
-              quality={85}
-              className="object-cover w-full h-[80vh]"
-    
-            />
-          </section>
-          <section className='max-w-7xl mx-auto mt-20'>
-    <div>
-            <div className='grid grid-cols-1 lg:grid-cols-2 gap-20'>
-                <div className='p-4'>
-                  <Image
-              src="/images/tyres-and-puncture.jpeg"
-              alt="Tyres and Puncture"
-              width={1920}
-              height={1080}
-              quality={85}
-              className="object-cover w-full h-full"
-    
-            />
-            </div>
-            <div className='space-y-4 p-4'>
-              <h1 className='text-4xl font-bold text-white mb-4'>Tyres & Puncture Repair</h1>
-              <div>
-              <p className='text-gray-400 p-4'>
-                Our team is equipped to handle all types of tires, ensuring your vehicle is safe and ready for the road. Whether you need a quick tire change or a complete wheel replacement, we have you covered.
+    <div className="min-h-screen bg-black text-white pt-32">
+      {/* Hero Section */}
+      <section className="relative h-[70vh] overflow-hidden bg-gray-900">
+        <Image
+          src="/images/tyres-and-puncture.jpeg"
+          alt="Tyres and Puncture Repair Service"
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
+        
+        {/* Service Badge */}
+        <div className="absolute top-8 left-8 md:left-16 z-20">
+          <span className="bg-orange-600 text-white px-4 py-2 text-sm font-bold uppercase tracking-wider font-rajdhani">
+            TYRE SERVICES
+          </span>
+        </div>
+        
+        <div className="relative z-10 container mx-auto px-8 h-full flex items-center">
+          <div className="max-w-4xl">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-8 font-orbitron uppercase tracking-wider leading-tight bg-black/50 p-4 rounded">
+              TYRES & PUNCTURE REPAIR
+            </h1>
+            <div className="max-w-2xl">
+              <p className="text-lg md:text-xl text-gray-200 mb-8 font-rajdhani leading-relaxed">
+                Professional tyre fitting and puncture repair services to keep you safe on the road. Our expert technicians use <span className="text-white font-bold">premium quality tyres</span> and professional repair techniques for reliable results.
               </p>
-              <p className='text-gray-400 p-4'>
-                Our team is equipped to handle all types of tires, ensuring your vehicle is safe and ready for the road. Whether you need a quick tire change or a complete wheel replacement, we have you covered.
-              </p>
-              <p className='text-gray-400 p-4'>
-                Our team is equipped to handle all types of tires, ensuring your vehicle is safe and ready for the road. Whether you need a quick tire change or a complete wheel replacement, we have you covered.
-              </p>
-            </div>
-    <h1 className='text-4xl font-bold text-white mb-4'>Need your tyres repaired?</h1>
-
-      <section className="bg-black text-white py-12 -mt-60">
-          <div className="max-w-7xl mx-auto  gap-10 border border-gray-800 rounded-lg p-8">
-            {/* Left Side - Contact Info */}
-           
-    
-            {/* Right Side - Contact Form */}
-            <div>
-              <h2 className="text-2xl font-semibold mb-6">Send Us a Message</h2>
-              <form className="space-y-4">
-                <input type="text" placeholder="Your Name" className="w-full bg-gray-800 text-white p-3 rounded" />
-                <input type="email" placeholder="Email Address" className="w-full bg-gray-800 text-white p-3 rounded" />
-                <input type="text" placeholder="Phone Number" className="w-full bg-gray-800 text-white p-3 rounded" />
-                <textarea placeholder="Your Message" rows={5} className="w-full bg-gray-800 text-white p-3 rounded"></textarea>
-                <div className="flex items-center space-x-2">
-                  <input type="checkbox" id="privacy" className="accent-orange-600" />
-                  <label htmlFor="privacy" className="text-sm">I accept the privacy policy</label>
-                </div>
-                <button type="submit" className="bg-[#ff0000] hover:bg-[#cc0000] px-6 py-2 rounded text-white">Send Message</button>
-              </form>
             </div>
           </div>
-        </section>
-            </div>
-             </div>
-    
-           </div>
-          </section>
-    
-       <section className="px-4  py-10">
-            <div className="max-w-7xl mx-auto">
-              <h2 className="text-3xl font-bold italic mb-8">Why Should I Have My Car Serviced?</h2>
-              
-              <div className="grid gap-8">
-                <div className="space-y-6">
-                  <div>
-                    <p className="mt-2 text-gray-200">
-                    Pocket the Savings : Regular service helps identify potential issues early, saving you from hefty expenses down the road. Addressing minor problems promptly is more cost-effective than dealing with major breakdowns.
-                    </p>
-                  </div>
-                  
-                  <div>
-                   
-                    <p className="mt-2 text-gray-200">
-                    Fuel-Efficient :  A well-serviced car not only saves you money on major repairs but also contributes to better fuel economy. When all components work seamlessly, your vehicle consumes less fuel.
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="space-y-6">
-                  <div>
-                    
-                    <p className="mt-2 text-gray-200">
-                    Lasts Longer :  A regularly serviced car tends to have a longer lifespan. Timely replacements and attention to detail during service keep the original parts intact, prolonging your car's life.
-                    </p>
-                  </div>
-                  
-                  <div>
-                    
-                    <p className="mt-2 text-gray-200">
-                    Resale Value & Insurance :  A strong service history enhances your car's resale value. Insurers also consider service records to assess the pre-accident worth of your vehicle.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="mt-16 space-y-10">
-                <div>
-                  <h3 className="text-2xl font-bold italic mb-4 text-white">What Does a Full Car Service Include?</h3>
-                  <p className="text-gray-200">
-                    A full car service is a holistic examination involving 40 checks, encompassing engine, brakes, wheels, tires, steering, exhaust, and more. From oil and filter changes to in-depth inspections, it ensures your car is in optimal condition.
-                  </p>
-                </div>
-                
-                <div>
-                  <h3 className="text-2xl font-bold italic mb-4 text-white">When Should I Get a Full Car Service?</h3>
-                  <p className="text-gray-200">
-                    Ideally, a full car service is recommended every 12 months or 12,000 miles, whichever comes first. For those seeking more regular checks, an interim service every 6,000 miles or 6 months provides additional peace of mind.
-                  </p>
-                </div>
-                
-                <div>
-                  <h3 className="text-2xl font-bold italic mb-4 text-white">How Much Does a Full Service Cost and How Long Does It Take?</h3>
-                  <p className="text-gray-200">
-                    The cost of a full service varies, and at The Car Edition, it ranges from £160-£290. The process takes approximately 3 hours, ensuring a thorough examination without prolonged downtime for your vehicle.
-                  </p>
-                </div>
-                
-                <div>
-                  <h3 className="text-2xl font-bold italic mb-4 text-white">Difference Between Full Service and MOT?</h3>
-                  <p className="text-gray-200">
-                    While an MOT focuses on safety, a full car service delves into worn components and potential issues, making it a more comprehensive assessment. Both are essential for your vehicle's well-being, with a full service addressing a broader spectrum.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
-       
         </div>
-  )
-}
+      </section>
 
-export default TyresAndPunctureRepair
+      {/* Main Content Section */}
+      <section className="py-20 bg-black">
+        <div className="container mx-auto px-8">
+          {/* Section Header */}
+          <div className="mb-16">
+            <div className="border-l-4 border-orange-600 pl-6 mb-8">
+              <p className="text-orange-600 text-sm font-bold uppercase tracking-wider font-rajdhani mb-2">
+                PROFESSIONAL TYRE AND PUNCTURE SERVICES
+              </p>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 font-orbitron uppercase leading-tight">
+              Tyre Services in Huntingdon – Safety Starts with Your Tyres
+            </h2>
+            <div className="max-w-4xl">
+              <p className="text-base text-gray-300 mb-6 font-rajdhani leading-relaxed">
+                Your tyres are the only contact point between your vehicle and the road. Worn, damaged, or incorrectly fitted tyres can compromise your safety, fuel efficiency, and vehicle performance. Don't take risks with <span className="text-white font-semibold">substandard tyres</span> or poor repairs.
+              </p>
+              <p className="text-base text-gray-300 font-rajdhani leading-relaxed">
+                At <span className="text-white font-semibold">The Car Edition</span>, we provide comprehensive tyre services including new tyre fitting, puncture repairs, wheel balancing, and tyre pressure monitoring. We stock premium brands and offer competitive prices.
+              </p>
+            </div>
+          </div>
+
+          {/* Services Section */}
+          <div className="mb-20">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-12 font-orbitron uppercase">
+              What We Offer
+            </h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-orange-600 transition-colors duration-300">
+                <h4 className="text-lg font-bold text-white mb-3 font-rajdhani">New Tyre Fitting</h4>
+                <p className="text-gray-300 font-rajdhani text-sm leading-relaxed">Professional tyre fitting service with premium brands and competitive prices</p>
+              </div>
+              <div className="bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-orange-600 transition-colors duration-300">
+                <h4 className="text-lg font-bold text-white mb-3 font-rajdhani">Puncture Repairs</h4>
+                <p className="text-gray-300 font-rajdhani text-sm leading-relaxed">Fast and reliable puncture repairs to get you back on the road quickly</p>
+              </div>
+              <div className="bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-orange-600 transition-colors duration-300">
+                <h4 className="text-lg font-bold text-white mb-3 font-rajdhani">Wheel Balancing</h4>
+                <p className="text-gray-300 font-rajdhani text-sm leading-relaxed">Precision wheel balancing to eliminate vibrations and extend tyre life</p>
+              </div>
+              <div className="bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-orange-600 transition-colors duration-300">
+                <h4 className="text-lg font-bold text-white mb-3 font-rajdhani">Wheel Alignment</h4>
+                <p className="text-gray-300 font-rajdhani text-sm leading-relaxed">Professional wheel alignment to prevent uneven tyre wear</p>
+              </div>
+              <div className="bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-orange-600 transition-colors duration-300">
+                <h4 className="text-lg font-bold text-white mb-3 font-rajdhani">Tyre Pressure Monitoring</h4>
+                <p className="text-gray-300 font-rajdhani text-sm leading-relaxed">TPMS system service and sensor replacement for optimal safety</p>
+              </div>
+              <div className="bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-orange-600 transition-colors duration-300">
+                <h4 className="text-lg font-bold text-white mb-3 font-rajdhani">Emergency Callout</h4>
+                <p className="text-gray-300 font-rajdhani text-sm leading-relaxed">Mobile tyre fitting service for roadside emergencies</p>
+              </div>
+            </div>
+            <p className="text-gray-300 mt-8 font-rajdhani text-sm">
+              From budget tyres to premium brands, we have the right solution for your vehicle and driving needs.
+            </p>
+          </div>
+
+          {/* Why Choose Us Section */}
+          <div className="mb-20">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-10 font-orbitron uppercase">
+              Why Choose The Car Edition?
+            </h3>
+            <div className="space-y-4">
+              <div className="flex items-start">
+                <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+                <div>
+                  <span className="text-white font-semibold font-rajdhani text-sm">Premium Brands</span>
+                  <span className="text-gray-300 font-rajdhani text-sm"> - We stock leading tyre brands for all budgets and requirements</span>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+                <div>
+                  <span className="text-white font-semibold font-rajdhani text-sm">Expert Fitting</span>
+                  <span className="text-gray-300 font-rajdhani text-sm"> - Professional installation with proper balancing and alignment</span>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+                <div>
+                  <span className="text-white font-semibold font-rajdhani text-sm">Competitive Prices</span>
+                  <span className="text-gray-300 font-rajdhani text-sm"> - Great value tyres with price matching available</span>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+                <div>
+                  <span className="text-white font-semibold font-rajdhani text-sm">Fast Service</span>
+                  <span className="text-gray-300 font-rajdhani text-sm"> - Quick fitting and repair services to minimize disruption</span>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+                <div>
+                  <span className="text-white font-semibold font-rajdhani text-sm">Warranty Coverage</span>
+                  <span className="text-gray-300 font-rajdhani text-sm"> - Comprehensive warranty on all tyres and fitting services</span>
+                </div>
+              </div>
+            </div>
+            <p className="text-gray-300 mt-6 font-rajdhani text-sm leading-relaxed">
+              We understand that tyres are a significant investment. That's why we provide honest advice to help you choose the right tyres for your needs and budget.
+            </p>
+          </div>
+
+          {/* Warning Signs Section */}
+          <div className="mb-20">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-8 font-orbitron uppercase">
+              Signs You Need New Tyres
+            </h3>
+            <p className="text-gray-300 mb-6 font-rajdhani text-sm">Replace your tyres if you notice:</p>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-3">
+                <div className="flex items-start">
+                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <span className="text-gray-300 font-rajdhani text-sm">Tread depth below 1.6mm (legal minimum)</span>
+                </div>
+                <div className="flex items-start">
+                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <span className="text-gray-300 font-rajdhani text-sm">Uneven wear patterns across the tyre</span>
+                </div>
+                <div className="flex items-start">
+                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <span className="text-gray-300 font-rajdhani text-sm">Cracks, cuts, or bulges in the sidewall</span>
+                </div>
+                <div className="flex items-start">
+                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <span className="text-gray-300 font-rajdhani text-sm">Vibration while driving</span>
+                </div>
+              </div>
+              <div className="space-y-3">
+                <div className="flex items-start">
+                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <span className="text-gray-300 font-rajdhani text-sm">Frequent punctures or air loss</span>
+                </div>
+                <div className="flex items-start">
+                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <span className="text-gray-300 font-rajdhani text-sm">Age over 6 years (regardless of tread)</span>
+                </div>
+                <div className="flex items-start">
+                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <span className="text-gray-300 font-rajdhani text-sm">Poor grip in wet conditions</span>
+                </div>
+                <div className="flex items-start">
+                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <span className="text-gray-300 font-rajdhani text-sm">Increased road noise</span>
+                </div>
+              </div>
+            </div>
+            <p className="text-gray-300 mt-6 font-rajdhani text-sm">
+              Driving on worn or damaged tyres is dangerous and illegal. Book a tyre check today to ensure your safety on the road.
+            </p>
+          </div>
+
+          {/* Service Estimator */}
+          <div className="mb-20 bg-gray-900 p-8 rounded-lg border border-gray-800">
+            <h3 className="text-2xl font-bold text-white mb-6 text-center font-orbitron uppercase">
+              Get Your Tyre Service Quote
+            </h3>
+            <ServiceEstimatorComponent />
+          </div>
+
+          {/* CTA Section */}
+          <div className="text-center">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 font-orbitron uppercase">
+              Book Your Tyre Service Today
+            </h3>
+            <p className="text-base text-gray-300 mb-6 font-rajdhani max-w-2xl mx-auto">
+              Don't compromise on tyre safety. Whether you need new tyres, puncture repairs, or wheel alignment, we're here to help.
+            </p>
+            <p className="text-sm text-white mb-8 font-rajdhani font-semibold">
+              Same-day appointments available - call now!
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link 
+                href="/contact-us" 
+                className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 font-bold transition-colors duration-300 font-rajdhani uppercase tracking-wide"
+              >
+                Book Service
+              </Link>
+              <Link 
+                href="tel:01480123456" 
+                className="border-2 border-white text-white hover:bg-white hover:text-black px-8 py-3 font-bold transition-colors duration-300 font-rajdhani uppercase tracking-wide"
+              >
+                Call Now
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

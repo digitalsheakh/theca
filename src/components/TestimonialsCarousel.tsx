@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { FaArrowLeft, FaArrowRight, FaGoogle } from 'react-icons/fa';
 import { BsStarFill } from 'react-icons/bs';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
+import { motion } from 'framer-motion';
 
 interface Review {
   id: string;
@@ -166,11 +167,32 @@ export default function TestimonialsCarousel({
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 60 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
   return (
-    <div className="bg-white py-8 sm:py-12 md:py-16">
+    <motion.div 
+      className="bg-white py-8 sm:py-12 md:py-16"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={fadeInUp}
+    >
       <div className="w-full px-6">
         <div className="max-w-screen-xl mx-auto">
-          <div className="text-center mb-8">
+          <motion.div 
+            className="text-center mb-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={fadeInUp}
+          >
             <div className="border-l-4 border-orange-600 pl-6 mb-6 inline-block">
               <p className="text-orange-600 text-sm font-bold uppercase tracking-wider font-rajdhani mb-2">
                 CLIENT TESTIMONIALS
@@ -184,7 +206,7 @@ export default function TestimonialsCarousel({
             <p className="text-base text-gray-600 font-rajdhani max-w-2xl mx-auto leading-relaxed">
               Read genuine reviews from our satisfied customers who trust us with their vehicles.
             </p>
-          </div>
+          </motion.div>
         
         {loading ? (
           <div className="flex justify-center py-16">
@@ -312,6 +334,6 @@ export default function TestimonialsCarousel({
         </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

@@ -16,6 +16,45 @@ export default function Home() {
   const [expandedService, setExpandedService] = useState<number | null>(null);
   const [activeServiceTab, setActiveServiceTab] = useState(0);
 
+  // Animation variants for scroll animations
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 60 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
+  const fadeInLeft = {
+    hidden: { opacity: 0, x: -60 },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
+  const fadeInRight = {
+    hidden: { opacity: 0, x: 60 },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0
+      }
+    }
+  };
+
   const toggleService = (index: number, event?: React.MouseEvent) => {
     if (event) {
       event.preventDefault();
@@ -89,27 +128,24 @@ export default function Home() {
           <div className="w-full max-w-screen-2xl mx-auto">
             <div className="text-center md:text-left">
               <div className="mb-12">
-                <motion.h1 
-                  initial={{ opacity: 1, y: 0 }}
+                <h1 
                   className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 uppercase font-orbitron tracking-wider text-white"
                 >
                   Welcome to
-                </motion.h1>
-                <motion.h2 
-                  initial={{ opacity: 1, y: 0 }}
+                </h1>
+                <h2 
                   className="text-5xl sm:text-6xl md:text-7xl font-bold mb-8 uppercase font-orbitron tracking-wider" 
                   style={{ color: '#fb9929' }}
                 >
                   The Car Edition
-                </motion.h2>
-                <motion.div 
-                  initial={{ opacity: 1, scale: 1 }}
+                </h2>
+                <div 
                   className="mt-8"
                 >
-                  <Link href="/service-estimator" className="inline-block bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 text-base font-bold uppercase font-orbitron tracking-wider transition-all duration-200 hover:scale-105 hover:shadow-lg">
+                  <a href="tel:01480759004" className="inline-block bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 text-base font-bold uppercase font-orbitron tracking-wider transition-all duration-200 hover:scale-105 hover:shadow-lg">
                     CALL US FOR AN ESTIMATE
-                  </Link>
-                </motion.div>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -274,7 +310,13 @@ export default function Home() {
       </section>
 
       {/* 10% Off Banner with Mobile Marquee */}
-      <section className="bg-orange-600 py-3 md:py-4">
+      <motion.section 
+        className="bg-orange-600 py-3 md:py-4"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={fadeInUp}
+      >
         <div className="w-full">
           {/* Desktop - Static Text */}
           <div className="hidden md:block px-4">
@@ -303,10 +345,17 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Services Section */}
-      <section className="py-20 bg-black" style={{backgroundImage: 'url(/images/logos/background-1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative'}}>
+      <motion.section 
+        className="py-20 bg-black" 
+        style={{backgroundImage: 'url(/images/logos/background-1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative'}}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={fadeInUp}
+      >
         <div className="absolute inset-0 bg-black/80"></div>
         <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(255,255,255,0.1)]"></div>
         <div className="w-full px-6 relative z-10">
@@ -754,10 +803,16 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Trusted Brands Section */}
-      <section className="py-20 bg-black">
+      <motion.section 
+        className="py-20 bg-black"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={fadeInUp}
+      >
         <div className="w-full px-6">
           <div className="max-w-screen-2xl mx-auto">
             <div className="text-center mb-16">
@@ -773,13 +828,13 @@ export default function Home() {
             </div>
             
             {/* Marquee Container */}
-            <div className="relative overflow-hidden bg-gray-900/50 py-12 rounded-2xl border border-gray-800">
+            <div className="relative overflow-hidden bg-black py-12 rounded-2xl border border-gray-800">
               {/* Continuous Marquee - No gaps, always filled */}
               <div className="flex animate-marquee hover:pause-marquee space-x-16">
-                {/* First set of logos */}
+                {/* First set of logos - 9 brands (removed Rolls-Royce and Mini) */}
                 <div className="w-40 h-24 relative flex-shrink-0 group">
                   <Image 
-                    src="/images/marquee/ford.png" 
+                    src="/images/marquee/ford-logo-2017-download.png" 
                     alt="Ford" 
                     fill
                     style={{ objectFit: 'contain' }}
@@ -788,7 +843,7 @@ export default function Home() {
                 </div>
                 <div className="w-40 h-24 relative flex-shrink-0 group">
                   <Image 
-                    src="/images/marquee/bmw.png" 
+                    src="/images/marquee/bmw-logo-2020-gray-download.png" 
                     alt="BMW" 
                     fill
                     style={{ objectFit: 'contain' }}
@@ -797,7 +852,7 @@ export default function Home() {
                 </div>
                 <div className="w-40 h-24 relative flex-shrink-0 group">
                   <Image 
-                    src="/images/marquee/mercedes.png" 
+                    src="/images/marquee/Mercedes-Benz-logo-2011-1920x1080.png" 
                     alt="Mercedes-Benz" 
                     fill
                     style={{ objectFit: 'contain' }}
@@ -806,36 +861,63 @@ export default function Home() {
                 </div>
                 <div className="w-40 h-24 relative flex-shrink-0 group">
                   <Image 
-                    src="/images/marquee/jaguar.png" 
-                    alt="Jaguar" 
-                    fill
-                    style={{ objectFit: 'contain' }}
-                    className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" 
-                  />
-                </div>
-                <div className="w-40 h-24 relative flex-shrink-0 group">
-                  <Image 
-                    src="/images/marquee/landrover.png" 
-                    alt="Land Rover" 
-                    fill
-                    style={{ objectFit: 'contain' }}
-                    className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" 
-                  />
-                </div>
-                <div className="w-40 h-24 relative flex-shrink-0 group">
-                  <Image 
-                    src="/images/marquee/audi.png" 
+                    src="/images/marquee/audi-logo-2016-download.png" 
                     alt="Audi" 
+                    fill
+                    style={{ objectFit: 'contain' }}
+                    className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" 
+                  />
+                </div>
+                <div className="w-40 h-24 relative flex-shrink-0 group">
+                  <Image 
+                    src="/images/marquee/Volkswagen-logo-2019-1500x1500.png" 
+                    alt="Volkswagen" 
+                    fill
+                    style={{ objectFit: 'contain' }}
+                    className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" 
+                  />
+                </div>
+                <div className="w-40 h-24 relative flex-shrink-0 group">
+                  <Image 
+                    src="/images/marquee/porsche-logo-2014-full-download.png" 
+                    alt="Porsche" 
+                    fill
+                    style={{ objectFit: 'contain' }}
+                    className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" 
+                  />
+                </div>
+                <div className="w-40 h-24 relative flex-shrink-0 group">
+                  <Image 
+                    src="/images/marquee/bentley-logo-2002-download.png" 
+                    alt="Bentley" 
+                    fill
+                    style={{ objectFit: 'contain' }}
+                    className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" 
+                  />
+                </div>
+                <div className="w-40 h-24 relative flex-shrink-0 group">
+                  <Image 
+                    src="/images/marquee/toyota-logo-2020-europe-download.png" 
+                    alt="Toyota" 
+                    fill
+                    style={{ objectFit: 'contain' }}
+                    className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" 
+                  />
+                </div>
+                <div className="w-40 h-24 relative flex-shrink-0 group">
+                  <Image 
+                    src="/images/marquee/honda-logo-2000-full-download.png" 
+                    alt="Honda" 
                     fill
                     style={{ objectFit: 'contain' }}
                     className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" 
                   />
                 </div>
                 
-                {/* Duplicate set for seamless loop */}
+                {/* Duplicate set for seamless loop - 9 brands */}
                 <div className="w-40 h-24 relative flex-shrink-0 group">
                   <Image 
-                    src="/images/marquee/ford.png" 
+                    src="/images/marquee/ford-logo-2017-download.png" 
                     alt="Ford" 
                     fill
                     style={{ objectFit: 'contain' }}
@@ -844,7 +926,7 @@ export default function Home() {
                 </div>
                 <div className="w-40 h-24 relative flex-shrink-0 group">
                   <Image 
-                    src="/images/marquee/bmw.png" 
+                    src="/images/marquee/bmw-logo-2020-gray-download.png" 
                     alt="BMW" 
                     fill
                     style={{ objectFit: 'contain' }}
@@ -853,7 +935,7 @@ export default function Home() {
                 </div>
                 <div className="w-40 h-24 relative flex-shrink-0 group">
                   <Image 
-                    src="/images/marquee/mercedes.png" 
+                    src="/images/marquee/Mercedes-Benz-logo-2011-1920x1080.png" 
                     alt="Mercedes-Benz" 
                     fill
                     style={{ objectFit: 'contain' }}
@@ -862,26 +944,53 @@ export default function Home() {
                 </div>
                 <div className="w-40 h-24 relative flex-shrink-0 group">
                   <Image 
-                    src="/images/marquee/jaguar.png" 
-                    alt="Jaguar" 
-                    fill
-                    style={{ objectFit: 'contain' }}
-                    className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" 
-                  />
-                </div>
-                <div className="w-40 h-24 relative flex-shrink-0 group">
-                  <Image 
-                    src="/images/marquee/landrover.png" 
-                    alt="Land Rover" 
-                    fill
-                    style={{ objectFit: 'contain' }}
-                    className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" 
-                  />
-                </div>
-                <div className="w-40 h-24 relative flex-shrink-0 group">
-                  <Image 
-                    src="/images/marquee/audi.png" 
+                    src="/images/marquee/audi-logo-2016-download.png" 
                     alt="Audi" 
+                    fill
+                    style={{ objectFit: 'contain' }}
+                    className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" 
+                  />
+                </div>
+                <div className="w-40 h-24 relative flex-shrink-0 group">
+                  <Image 
+                    src="/images/marquee/Volkswagen-logo-2019-1500x1500.png" 
+                    alt="Volkswagen" 
+                    fill
+                    style={{ objectFit: 'contain' }}
+                    className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" 
+                  />
+                </div>
+                <div className="w-40 h-24 relative flex-shrink-0 group">
+                  <Image 
+                    src="/images/marquee/porsche-logo-2014-full-download.png" 
+                    alt="Porsche" 
+                    fill
+                    style={{ objectFit: 'contain' }}
+                    className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" 
+                  />
+                </div>
+                <div className="w-40 h-24 relative flex-shrink-0 group">
+                  <Image 
+                    src="/images/marquee/bentley-logo-2002-download.png" 
+                    alt="Bentley" 
+                    fill
+                    style={{ objectFit: 'contain' }}
+                    className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" 
+                  />
+                </div>
+                <div className="w-40 h-24 relative flex-shrink-0 group">
+                  <Image 
+                    src="/images/marquee/toyota-logo-2020-europe-download.png" 
+                    alt="Toyota" 
+                    fill
+                    style={{ objectFit: 'contain' }}
+                    className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" 
+                  />
+                </div>
+                <div className="w-40 h-24 relative flex-shrink-0 group">
+                  <Image 
+                    src="/images/marquee/honda-logo-2000-full-download.png" 
+                    alt="Honda" 
                     fill
                     style={{ objectFit: 'contain' }}
                     className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" 
@@ -890,16 +999,22 @@ export default function Home() {
               </div>
               
               {/* Fade overlays for smooth effect */}
-              <div className="absolute top-0 left-0 h-full w-32 bg-black/20 z-10 pointer-events-none"></div>
-              <div className="absolute top-0 right-0 h-full w-32 bg-black/20 z-10 pointer-events-none"></div>
+              <div className="absolute top-0 left-0 h-full w-32 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
+              <div className="absolute top-0 right-0 h-full w-32 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none"></div>
             </div>
             
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Welcome to The Car Edition Section */}
-      <section className="py-20 bg-black">
+      <motion.section 
+        className="py-20 bg-black"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={fadeInUp}
+      >
         <div className="w-full px-6">
           <div className="max-w-screen-2xl mx-auto">
             <div className="flex flex-col lg:flex-row items-center gap-16">
@@ -946,11 +1061,18 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
 
       {/* Why Service Your Car Section */}
-      <section className="py-20 bg-black" style={{backgroundImage: 'url(/images/logos/background-1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative'}}>
+      <motion.section 
+        className="py-20 bg-black" 
+        style={{backgroundImage: 'url(/images/logos/background-1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative'}}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={fadeInUp}
+      >
         <div className="absolute inset-0 bg-black/80"></div>
         <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(255,255,255,0.1)]"></div>
         <div className="w-full px-6 relative z-10">
@@ -970,27 +1092,33 @@ export default function Home() {
               </div>
               
               {/* Right side - Compact Content */}
-              <div className="lg:w-1/2">
-                <div className="border-l-4 border-orange-600 pl-4 mb-6">
+              <motion.div 
+                className="lg:w-1/2"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={staggerContainer}
+              >
+                <motion.div variants={fadeInUp} className="border-l-4 border-orange-600 pl-4 mb-6">
                   <p className="text-orange-500 text-xs font-bold uppercase tracking-wider font-rajdhani">
                     PROFESSIONAL SERVICES
                   </p>
-                </div>
+                </motion.div>
                 {/* Orange Badge */}
-                <div className="inline-block bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-rajdhani font-bold uppercase tracking-wider mb-6">
+                <motion.div variants={fadeInUp} className="inline-block bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-rajdhani font-bold uppercase tracking-wider mb-6">
                   Trusted by enthusiasts
-                </div>
+                </motion.div>
                 
-                <h2 className="text-3xl md:text-4xl font-bold text-white uppercase font-orbitron tracking-wider leading-tight mb-6">
+                <motion.h2 variants={fadeInUp} className="text-3xl md:text-4xl font-bold text-white uppercase font-orbitron tracking-wider leading-tight mb-6">
                   Why Choose <span className="text-orange-500">The Car Edition</span>
-                </h2>
+                </motion.h2>
                 
-                <p className="text-lg text-gray-300 font-rajdhani leading-relaxed mb-8">
+                <motion.p variants={fadeInUp} className="text-lg text-gray-300 font-rajdhani leading-relaxed mb-8">
                   We treat every car as if it were our own. Whether it is a daily runabout, a work van, or a performance build you will always get dealership-level care without the dealership prices.
-                </p>
+                </motion.p>
                 
                 {/* Service Features with Orange Badges */}
-                <div className="space-y-6 mb-8">
+                <motion.div variants={fadeInUp} className="space-y-6 mb-8">
                   <div className="flex items-start">
                     <div className="flex items-center justify-center w-8 h-8 bg-orange-600 rounded-lg mr-4 flex-shrink-0">
                       <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -1039,25 +1167,31 @@ export default function Home() {
                       <p className="text-gray-300 font-rajdhani text-base leading-relaxed">Whether it is a daily driver or a performance build, we treat every car as if it were our own.</p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
                 
                 {/* Call to Action Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4">
+                <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4">
                   <Link href="/services" className="inline-flex items-center justify-center bg-orange-600 hover:bg-orange-600 text-white px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-colors duration-300 rounded-lg">
                     VIEW SERVICES
                   </Link>
                   <Link href="/contact-us" className="inline-flex items-center justify-center border-2 border-white text-white hover:bg-white hover:text-black px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 rounded-lg">
                     CONTACT US
                   </Link>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Our Services Section */}
-      <section className="py-24 bg-black relative overflow-hidden">
+      <motion.section 
+        className="py-24 bg-black relative overflow-hidden"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={fadeInUp}
+      >
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{backgroundImage: 'radial-gradient(circle at 2px 2px, orange 1px, transparent 0)', backgroundSize: '40px 40px'}}></div>
@@ -1415,10 +1549,17 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Schedule Appointment Section */}
-      <section className="py-20 bg-black" style={{backgroundImage: 'url(/images/logos/background-1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative'}}>
+      <motion.section 
+        className="py-20 bg-black" 
+        style={{backgroundImage: 'url(/images/logos/background-1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative'}}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={fadeInUp}
+      >
         <div className="absolute inset-0 bg-black/80"></div>
         <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(255,255,255,0.1)]"></div>
         <div className="w-full px-6 relative z-10">
@@ -1486,12 +1627,12 @@ export default function Home() {
                   viewport={{ once: true }}
                   className="flex flex-col sm:flex-row gap-4"
                 >
-                  <Link href="/service-estimator" className="inline-flex items-center bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 rounded-lg hover:scale-105 hover:shadow-lg">
+                  <a href="tel:01480759004" className="inline-flex items-center bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 rounded-lg hover:scale-105 hover:shadow-lg">
                     BOOK APPOINTMENT
-                  </Link>
-                  <Link href="/contact" className="inline-flex items-center border-2 border-white text-white hover:bg-white hover:text-black px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 rounded-lg hover:scale-105">
+                  </a>
+                  <a href="tel:01480759004" className="inline-flex items-center border-2 border-white text-white hover:bg-white hover:text-black px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 rounded-lg hover:scale-105">
                     CALL US NOW
-                  </Link>
+                  </a>
                 </motion.div>
               </motion.div>
               
@@ -1521,7 +1662,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
 
       {/* Testimonials Section */}

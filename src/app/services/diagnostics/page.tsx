@@ -1,8 +1,6 @@
 import ServiceEstimatorComponent from '@/components/reuseableComponents/ServicesEstimator/ServiceEstimator';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ChevronRight } from 'lucide-react';
-import { FaArrowRight } from 'react-icons/fa';
 
 export default function DiagnosticsPage() {
   return (
@@ -10,7 +8,7 @@ export default function DiagnosticsPage() {
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden bg-black">
         <Image
-          src="/images/dropbox/8.jpg"
+          src="/images/dropbox/19.jpg"
           alt="Diagnostics Service"
           fill
           className="object-cover"
@@ -62,10 +60,9 @@ export default function DiagnosticsPage() {
                 href="https://www.youtube.com/watch?v=q8yZL8IEK5o" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-rajdhani font-bold transition-colors duration-300"
+                className="inline-flex items-center bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-rajdhani font-bold transition-colors duration-300"
               >
-                Watch Video
-                <FaArrowRight className="text-white group-hover:translate-x-1 transition-transform" />
+                Learn More
               </a>
             </div>
           </div>

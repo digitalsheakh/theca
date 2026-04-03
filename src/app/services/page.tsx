@@ -42,13 +42,13 @@ export default function ServicesPage() {
       image: '/images/dropbox/19.jpg',
       category: 'DIAGNOSTICS'
     },
-    // {
-    //   id: 'tyres-and-puncture',
-    //   title: 'WHEEL ALIGNMENT',
-    //   description: 'Professional wheel alignment services to ensure optimal handling and tire longevity.',
-    //   image: '/images/dropbox/1.jpg',
-    //   category: 'TYRES & WHEELS'
-    // },
+    {
+      id: 'wheel-alignment',
+      title: 'WHEEL ALIGNMENT',
+      description: 'Professional wheel alignment services to ensure optimal handling and tire longevity.',
+      image: '/images/tyres-and-puncture.jpeg',
+      category: 'TYRES & WHEELS'
+    },
     {
       id: 'transmission',
       title: 'TRANSMISSION REPAIR',
@@ -151,7 +151,7 @@ export default function ServicesPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: index * 0.1 }}
                     viewport={{ once: true }}
-                    className="bg-gray-900/50 border border-gray-700 rounded-xl overflow-hidden hover:border-orange-600 transition-all duration-300 group cursor-pointer"
+                    className="bg-black border border-gray-800 rounded-xl overflow-hidden hover:border-orange-600 transition-all duration-300 group cursor-pointer"
                   >
                     <Link href={`/services/${service.id}`} className="block">
                       {/* Service Image */}
@@ -191,7 +191,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Call to Action Section */}
-      <section className="w-full py-16 bg-gray-900">
+      <section className="w-full py-16 bg-black">
         <div className="w-full px-6">
           <div className="max-w-screen-2xl mx-auto">
             <motion.div 

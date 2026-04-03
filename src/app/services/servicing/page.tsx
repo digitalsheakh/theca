@@ -9,7 +9,7 @@ export default function ServicingPage() {
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden bg-gray-900">
         <Image
-          src="/images/dropbox/12.jpg"
+          src="/images/dropbox/24.jpg"
           alt="Car Servicing"
           fill
           className="object-cover"
@@ -203,7 +203,7 @@ export default function ServicingPage() {
           {/* Video Section */}
           <ServiceVideoPlayer 
             videoId="C-B_lxS6XkQ" 
-            title="Watch: Car Servicing Process"
+            title="Learn More"
           />
 
           {/* Service Estimator */}
@@ -228,9 +228,9 @@ export default function ServicingPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
                 href="/contact-us" 
-                className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 font-bold transition-colors duration-300 font-rajdhani uppercase tracking-wide"
+                className="inline-flex items-center bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-rajdhani font-bold transition-colors duration-300"
               >
-                Book Service
+                Learn More
               </Link>
               <Link 
                 href="tel:01480123456" 

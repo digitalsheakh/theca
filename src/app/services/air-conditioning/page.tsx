@@ -8,7 +8,7 @@ export default function AirConditioningPage() {
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden bg-black">
         <Image
-          src="/images/dropbox/14.jpg"
+          src="/images/dropbox/26.jpg"
           alt="Air Conditioning Service"
           fill
           className="object-cover"
@@ -213,9 +213,9 @@ export default function AirConditioningPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
                 href="/contact-us" 
-                className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 font-bold transition-colors duration-300 font-rajdhani uppercase tracking-wide"
+                className="inline-flex items-center bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-rajdhani font-bold transition-colors duration-300"
               >
-                Book Service
+                Learn More
               </Link>
               <Link 
                 href="tel:01480123456" 

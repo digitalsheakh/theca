@@ -1,8 +1,6 @@
 import ServiceEstimatorComponent from '@/components/reuseableComponents/ServicesEstimator/ServiceEstimator';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ChevronRight } from 'lucide-react';
-import { FaArrowRight } from 'react-icons/fa';
 
 export default function TurbosPage() {
   return (
@@ -10,7 +8,7 @@ export default function TurbosPage() {
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden bg-black">
         <Image
-          src="/images/dropbox/5.jpg"
+          src="/images/dropbox/17.jpg"
           alt="Turbocharger Service"
           fill
           className="object-cover"
@@ -62,10 +60,9 @@ export default function TurbosPage() {
                 href="https://www.youtube.com/watch?v=-Jz8jyMPt2U" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-rajdhani font-bold transition-colors duration-300"
+                className="inline-flex items-center bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-rajdhani font-bold transition-colors duration-300"
               >
-                Watch Video
-                <FaArrowRight className="text-white group-hover:translate-x-1 transition-transform" />
+                Learn More
               </a>
             </div>
           </div>

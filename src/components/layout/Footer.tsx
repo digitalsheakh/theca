@@ -1,7 +1,8 @@
 "use client"
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaYoutube } from 'react-icons/fa';
+import { FaTiktok } from 'react-icons/fa';
 
 export default function Footer() {
   const pathname = usePathname();
@@ -19,16 +20,16 @@ export default function Footer() {
               <span className="text-white font-bold text-2xl sm:text-3xl lg:text-4xl font-orbitron uppercase tracking-wider ml-2">EDITION</span>
             </div>
             <div className="flex space-x-6">
-              <a href="#" className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center text-white hover:bg-orange-600 hover:text-white transition-all duration-300 group">
+              <a href="https://www.facebook.com/people/The-Car-Edition-Ltd/100084497851944/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center text-white hover:bg-orange-600 hover:text-white transition-all duration-300 group">
                 <FaFacebookF className="h-5 w-5 group-hover:scale-110 transition-transform" />
               </a>
-              <a href="#" className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center text-white hover:bg-orange-600 hover:text-white transition-all duration-300 group">
+              <a href="https://www.instagram.com/thecareditionltd/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center text-white hover:bg-orange-600 hover:text-white transition-all duration-300 group">
                 <FaInstagram className="h-5 w-5 group-hover:scale-110 transition-transform" />
               </a>
-              <a href="#" className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center text-white hover:bg-orange-600 hover:text-white transition-all duration-300 group">
-                <FaTwitter className="h-5 w-5 group-hover:scale-110 transition-transform" />
+              <a href="https://www.tiktok.com/@thecareditionltd" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center text-white hover:bg-orange-600 hover:text-white transition-all duration-300 group">
+                <FaTiktok className="h-5 w-5 group-hover:scale-110 transition-transform" />
               </a>
-              <a href="#" className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center text-white hover:bg-orange-600 hover:text-white transition-all duration-300 group">
+              <a href="https://www.youtube.com/channel/UCj8QxUrDgfMmmwafBdc28Bg" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center text-white hover:bg-orange-600 hover:text-white transition-all duration-300 group">
                 <FaYoutube className="h-5 w-5 group-hover:scale-110 transition-transform" />
               </a>
             </div>
@@ -77,9 +78,9 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/services/tyres-and-puncture" className="text-gray-300 hover:text-orange-400 transition-colors font-rajdhani flex items-center">
+                  <Link href="/services/wheel-alignment" className="text-gray-300 hover:text-orange-400 transition-colors font-rajdhani flex items-center">
                     <span className="w-2 h-2 bg-orange-600 rounded-full mr-3"></span>
-                    Tyres & Puncture Repair
+                    Wheel Alignment
                   </Link>
                 </li>
               </ul>
@@ -95,7 +96,7 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about" className="text-gray-300 hover:text-orange-400 transition-colors font-rajdhani flex items-center">
+                  <Link href="/about-us" className="text-gray-300 hover:text-orange-400 transition-colors font-rajdhani flex items-center">
                     <span className="w-2 h-2 bg-orange-600 rounded-full mr-3"></span>
                     About Us
                   </Link>
@@ -107,7 +108,7 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="text-gray-300 hover:text-orange-400 transition-colors font-rajdhani flex items-center">
+                  <Link href="/contact-us" className="text-gray-300 hover:text-orange-400 transition-colors font-rajdhani flex items-center">
                     <span className="w-2 h-2 bg-orange-600 rounded-full mr-3"></span>
                     Contact Us
                   </Link>
@@ -144,11 +145,11 @@ export default function Footer() {
                 &copy; {new Date().getFullYear()} The Car Edition. All rights reserved.
               </p>
               <div className="flex space-x-6">
-                <Link href="/privacy" className="text-gray-400 hover:text-orange-400 transition-colors font-rajdhani text-sm">
-                  Privacy Policy
-                </Link>
                 <Link href="/terms" className="text-gray-400 hover:text-orange-400 transition-colors font-rajdhani text-sm">
-                  Terms of Service
+                  Terms & Conditions
+                </Link>
+                <Link href="/faqs" className="text-gray-400 hover:text-orange-400 transition-colors font-rajdhani text-sm">
+                  FAQs
                 </Link>
               </div>
             </div>

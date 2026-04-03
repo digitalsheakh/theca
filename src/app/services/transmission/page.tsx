@@ -9,7 +9,7 @@ export default function TransmissionPage() {
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden bg-gray-900">
         <Image
-          src="/images/services/serviceimage1.jpg"
+          src="/images/dropbox/20.jpg"
           alt="Transmission Service"
           fill
           className="object-cover"
@@ -195,7 +195,7 @@ export default function TransmissionPage() {
           {/* Video Section */}
           <ServiceVideoPlayer 
             videoId="p_R_85SaLtI" 
-            title="Watch: Dual Mass Flywheel Replacement"
+            title="Learn More"
           />
 
           {/* Service Estimator */}
@@ -220,9 +220,9 @@ export default function TransmissionPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
                 href="/contact-us" 
-                className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 font-bold transition-colors duration-300 font-rajdhani uppercase tracking-wide"
+                className="inline-flex items-center bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-rajdhani font-bold transition-colors duration-300"
               >
-                Book Service
+                Learn More
               </Link>
               <Link 
                 href="tel:01480123456" 

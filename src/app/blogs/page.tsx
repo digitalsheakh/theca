@@ -21,21 +21,122 @@ export default function BlogPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
-  useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        const response = await axios.get<BlogPost[]>("/api/blogs");
-        setBlogs(response.data);
-        setError(null);
-      } catch (err) {
-        console.error('Error fetching blogs:', err);
-        setError('Failed to load blogs. Please try again later.');
-      } finally {
-        setLoading(false);
-      }
-    };
+  // Commented out API call - using dummy data for now
+  // useEffect(() => {
+  //   const fetchBlogs = async () => {
+  //     try {
+  //       const response = await axios.get<BlogPost[]>("/api/blogs");
+  //       setBlogs(response.data);
+  //       setError(null);
+  //     } catch (err) {
+  //       console.error('Error fetching blogs:', err);
+  //       setError('Failed to load blogs. Please try again later.');
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    fetchBlogs();
+  //   fetchBlogs();
+  // }, []);
+
+  // Dummy blog data for services
+  useEffect(() => {
+    const dummyBlogs: BlogPost[] = [
+      {
+        _id: '1',
+        title: 'Timing Chain Replacement: Essential Maintenance for Engine Longevity',
+        createdAt: new Date().toISOString(),
+        content: 'Learn why timing chain replacement is crucial for your engine\'s health and performance. Our expert technicians explain the signs of wear and the importance of regular maintenance.',
+        imageUrl: '/images/dropbox/15.jpg'
+      },
+      {
+        _id: '2',
+        title: 'Complete Guide to Engine Rebuilds: Restoring Your Vehicle\'s Power',
+        createdAt: new Date().toISOString(),
+        content: 'Discover the comprehensive process of engine rebuilding and how it can breathe new life into your vehicle. From diagnostics to final testing, we cover it all.',
+        imageUrl: '/images/dropbox/16.jpg'
+      },
+      {
+        _id: '3',
+        title: 'Turbo Repair and Replacement: Maximizing Performance',
+        createdAt: new Date().toISOString(),
+        content: 'Everything you need to know about turbocharger maintenance, repair, and replacement. Keep your turbocharged engine running at peak performance.',
+        imageUrl: '/images/dropbox/17.jpg'
+      },
+      {
+        _id: '4',
+        title: 'Brake Safety: When to Replace Your Brakes and Pads',
+        createdAt: new Date().toISOString(),
+        content: 'Your safety depends on properly functioning brakes. Learn the warning signs and understand when it\'s time for brake and pad replacement.',
+        imageUrl: '/images/dropbox/18.jpg'
+      },
+      {
+        _id: '5',
+        title: 'Advanced Diagnostics: Identifying Vehicle Issues with Precision',
+        createdAt: new Date().toISOString(),
+        content: 'Modern vehicles require advanced diagnostic tools. Discover how our state-of-the-art equipment helps identify and resolve issues quickly.',
+        imageUrl: '/images/dropbox/19.jpg'
+      },
+      {
+        _id: '6',
+        title: 'Wheel Alignment: The Key to Better Handling and Tire Life',
+        createdAt: new Date().toISOString(),
+        content: 'Proper wheel alignment improves handling, extends tire life, and enhances fuel efficiency. Learn the signs that your vehicle needs alignment.',
+        imageUrl: '/images/tyres-and-puncture.jpeg'
+      },
+      {
+        _id: '7',
+        title: 'Transmission Repair: Expert Care for Your Gearbox',
+        createdAt: new Date().toISOString(),
+        content: 'Understanding transmission issues and repair options. Our experts explain common problems and how to maintain your automatic or manual gearbox.',
+        imageUrl: '/images/dropbox/20.jpg'
+      },
+      {
+        _id: '8',
+        title: 'Carbon Cleaning: Restore Engine Performance and Efficiency',
+        createdAt: new Date().toISOString(),
+        content: 'Carbon buildup can significantly impact engine performance. Learn how professional carbon cleaning can restore power and improve fuel economy.',
+        imageUrl: '/images/dropbox/21.jpg'
+      },
+      {
+        _id: '9',
+        title: 'Electrical Repair: Solving Complex Automotive Electrical Issues',
+        createdAt: new Date().toISOString(),
+        content: 'Modern vehicles rely heavily on electrical systems. Discover how our expert technicians diagnose and repair complex electrical problems.',
+        imageUrl: '/images/dropbox/22.jpg'
+      },
+      {
+        _id: '10',
+        title: 'Interior Repair: Professional Restoration for Your Vehicle',
+        createdAt: new Date().toISOString(),
+        content: 'From leather repair to upholstery restoration, learn how professional interior repair can transform your vehicle\'s cabin.',
+        imageUrl: '/images/dropbox/23.jpg'
+      },
+      {
+        _id: '11',
+        title: 'Car Servicing: Comprehensive Maintenance for Peak Performance',
+        createdAt: new Date().toISOString(),
+        content: 'Regular servicing is essential for vehicle longevity. Understand what\'s included in our comprehensive service packages.',
+        imageUrl: '/images/dropbox/24.jpg'
+      },
+      {
+        _id: '12',
+        title: 'Vehicle Customisation: Transform Your Car with Modern Tech',
+        createdAt: new Date().toISOString(),
+        content: 'Explore the latest in vehicle customisation, from star lights to advanced entertainment systems. Make your car uniquely yours.',
+        imageUrl: '/images/dropbox/25.jpg'
+      },
+      {
+        _id: '13',
+        title: 'Air Conditioning Service: Stay Cool and Comfortable',
+        createdAt: new Date().toISOString(),
+        content: 'Professional air conditioning service and repair keeps you comfortable year-round. Learn about maintenance and common AC issues.',
+        imageUrl: '/images/dropbox/26.jpg'
+      }
+    ];
+    
+    setBlogs(dummyBlogs);
+    setLoading(false);
   }, []);
 
   const openBlogDialog = (blog: BlogPost) => {
@@ -76,7 +177,7 @@ export default function BlogPage() {
   return (
     <div className="min-h-screen bg-black text-white pt-32">
       {/* Hero Section */}
-      <section className="relative py-20 bg-black" style={{backgroundImage: 'url(/images/logos/background-1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center'}}>
+      <section className="relative py-4 bg-black" style={{backgroundImage: 'url(/images/logos/background-1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center'}}>
         <div className="absolute inset-0 bg-black/80"></div>
         
         <div className="w-full px-6 relative z-10">
@@ -87,17 +188,6 @@ export default function BlogPage() {
               transition={{ duration: 0.8 }}
               className="text-center"
             >
-              <div className="border-l-4 border-orange-600 pl-6 mb-8 inline-block">
-                <p className="text-orange-600 text-sm font-bold uppercase tracking-wider font-rajdhani mb-2">
-                  AUTOMOTIVE INSIGHTS
-                </p>
-              </div>
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 uppercase font-orbitron tracking-wider leading-tight">
-                EXPLORING THE ROAD TO <span className="text-orange-600">AUTOMOTIVE EXCELLENCE</span>
-              </h1>
-              <p className="text-lg text-gray-300 font-rajdhani max-w-3xl mx-auto leading-relaxed">
-                Uncover the Latest Tips, Trends, and Tales in the World of Cars
-              </p>
             </motion.div>
           </div>
         </div>
@@ -118,6 +208,9 @@ export default function BlogPage() {
               <h2 className="text-3xl md:text-4xl font-bold mb-6 uppercase font-orbitron tracking-wider leading-tight">
                 FEATURED <span className="text-orange-600">ARTICLES</span>
               </h2>
+              <p className="text-sm text-gray-400 font-rajdhani max-w-2xl mx-auto">
+                Full articles coming soon. Browse our service topics below.
+              </p>
             </motion.div>
         
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -128,8 +221,7 @@ export default function BlogPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-black/40 border border-gray-600 rounded-xl overflow-hidden backdrop-blur-sm hover:border-orange-600 transition-all duration-300 group cursor-pointer"
-                  onClick={() => openBlogDialog(blog)}
+                  className="bg-black/40 border border-gray-600 rounded-xl overflow-hidden backdrop-blur-sm hover:border-orange-600 transition-all duration-300 group"
                 >
                   <div className="relative h-48 overflow-hidden">
                     <Image
@@ -159,9 +251,8 @@ export default function BlogPage() {
                       dangerouslySetInnerHTML={{ __html: blog.content.substring(0, 100) + '...' }} 
                     />
                     
-                    <div className="inline-flex items-center gap-2 text-orange-600 hover:text-orange-400 text-sm font-orbitron font-semibold uppercase tracking-wide transition-colors duration-300">
-                      READ MORE
-                      <FaArrowRight className="text-xs transition-transform duration-300 group-hover:translate-x-1" />
+                    <div className="inline-flex items-center gap-2 text-gray-500 text-sm font-orbitron font-semibold uppercase tracking-wide">
+                      COMING SOON
                     </div>
                   </div>
                 </motion.article>
