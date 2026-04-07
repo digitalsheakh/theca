@@ -2,6 +2,7 @@ import ServiceEstimatorComponent from '@/components/reuseableComponents/Services
 import ServiceVideoPlayer from '@/components/ServiceVideoPlayer';
 import Image from 'next/image';
 import Link from 'next/link';
+import { FaPlayCircle } from 'react-icons/fa';
 
 export default function ServicingPage() {
   return (
@@ -55,8 +56,17 @@ export default function ServicingPage() {
                 Regular servicing is essential to maintain your vehicle's performance, safety, and reliability. It helps prevent breakdowns, extends engine life, and maintains <span className="text-white font-semibold">optimal fuel efficiency</span>.
               </p>
               <p className="text-base text-gray-300 font-rajdhani leading-relaxed">
-                At <span className="text-white font-semibold">The Car Edition</span>, we provide full and interim services for all makes and models. Our services follow manufacturer specifications and use quality parts to keep your vehicle running smoothly.
+                At <span className="text-white font-semibold">The Car Edition</span>, we follow manufacturer service schedules and use quality parts to keep your vehicle running smoothly. Regular servicing prevents breakdowns and maintains your car's value.
               </p>
+              <a 
+                href="https://www.youtube.com/watch?v=C-B_lxS6XkQ" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-rajdhani font-bold transition-colors duration-300"
+              >
+                Watch Video
+                <FaPlayCircle className="w-5 h-5" />
+              </a>
             </div>
           </div>
 

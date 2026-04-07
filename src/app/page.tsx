@@ -127,34 +127,72 @@ export default function Home() {
         <div className="relative z-10 flex-1 flex items-center justify-center px-6">
           <div className="w-full max-w-screen-2xl mx-auto">
             <div className="text-center md:text-left">
-              <div className="mb-12">
-                <h1 
+              <motion.div 
+                className="mb-12"
+                initial={{ opacity: 1 }}
+                animate={{ opacity: 1 }}
+              >
+                <motion.h1 
                   className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 uppercase font-orbitron tracking-wider text-white"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
                 >
                   Welcome to
-                </h1>
-                <h2 
+                </motion.h1>
+                <motion.h2 
                   className="text-5xl sm:text-6xl md:text-7xl font-bold mb-8 uppercase font-orbitron tracking-wider" 
                   style={{ color: '#fb9929' }}
+                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.1, ease: [0.6, -0.05, 0.01, 0.99] }}
                 >
                   The Car Edition
-                </h2>
-                <div 
+                </motion.h2>
+                <motion.div 
                   className="mt-8"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: 0.2 }}
                 >
-                  <a href="tel:01480759004" className="inline-block bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 text-base font-bold uppercase font-orbitron tracking-wider transition-all duration-200 hover:scale-105 hover:shadow-lg">
+                  <motion.a 
+                    href="tel:01480759004" 
+                    className="inline-block bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 text-base font-bold uppercase font-orbitron tracking-wider transition-all duration-200"
+                    whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(251, 153, 41, 0.4)" }}
+                    whileTap={{ scale: 0.95 }}
+                  >
                     CALL US FOR AN ESTIMATE
-                  </a>
-                </div>
-              </div>
+                  </motion.a>
+                </motion.div>
+              </motion.div>
             </div>
           </div>
         </div>
         <div className="absolute bottom-0 left-0 right-0 z-10 pb-8 md:pb-16">
           <div className="w-full px-6">
             <div className="max-w-screen-2xl mx-auto">
-              <div className="hidden md:grid md:grid-cols-3 gap-8">
-                <div className="flex items-start">
+              <motion.div 
+                className="hidden md:grid md:grid-cols-3 gap-8"
+                initial="hidden"
+                animate="visible"
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: {
+                      staggerChildren: 0.08,
+                      delayChildren: 0.3
+                    }
+                  }
+                }}
+              >
+                <motion.div 
+                  className="flex items-start"
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } }
+                  }}
+                >
                   <div className="mr-4">
                     <Image
                       src="/images/icons/SERVICE ICON white.png"
@@ -172,8 +210,14 @@ export default function Home() {
                       American and Japanese brands.
                     </p>
                   </div>
-                </div>
-                <div className="flex items-start">
+                </motion.div>
+                <motion.div 
+                  className="flex items-start"
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } }
+                  }}
+                >
                   <div className="mr-4">
                     <Image
                       src="/images/icons/SERVICE ICON white.png"
@@ -191,8 +235,14 @@ export default function Home() {
                       The Car Edition got you covered.
                     </p>
                   </div>
-                </div>
-                <div className="flex items-start">
+                </motion.div>
+                <motion.div 
+                  className="flex items-start"
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } }
+                  }}
+                >
                   <div className="mr-4">
                     <Image
                       src="/images/icons/CAR_3.png"
@@ -210,8 +260,8 @@ export default function Home() {
                       Look no further - we can do both!
                     </p>
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
               <div className="md:hidden overflow-hidden">
                 <div className="flex whitespace-nowrap animate-marquee">
                   <style jsx>{`
@@ -405,6 +455,21 @@ export default function Home() {
                 onClick={(e) => toggleService(0, e)}
               >
                 <div className="p-4 flex flex-col h-full">
+                  {/* Expand/collapse indicator at top */}
+                  <div className="flex items-center justify-end pb-3 border-b border-gray-800 mb-3">
+                    <div className="text-orange-500">
+                      {expandedService === 0 ? (
+                        <svg className="w-3 h-3 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      ) : (
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      )}
+                    </div>
+                  </div>
+
                   <div className="mb-3">
                     <h3 className="text-sm font-bold text-white font-orbitron uppercase tracking-wide mb-1">Ford Wet Belt Replacement</h3>
                     <p className="text-xs text-orange-400 font-rajdhani uppercase tracking-wider">SPECIALIST SERVICE</p>
@@ -443,21 +508,6 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-
-                  {/* Footer with expand/collapse indicator */}
-                  <div className="flex items-center justify-end pt-3 border-t border-gray-800 mt-auto">
-                    <div className="text-orange-500">
-                      {expandedService === 0 ? (
-                        <svg className="w-3 h-3 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      ) : (
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      )}
-                    </div>
-                  </div>
                 </div>
               </div>
             
@@ -469,6 +519,21 @@ export default function Home() {
                 onClick={(e) => toggleService(1, e)}
               >
                 <div className="p-4 flex flex-col h-full">
+                  {/* Expand/collapse indicator at top */}
+                  <div className="flex items-center justify-end pb-3 border-b border-gray-800 mb-3">
+                    <div className="text-orange-500">
+                      {expandedService === 1 ? (
+                        <svg className="w-3 h-3 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      ) : (
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      )}
+                    </div>
+                  </div>
+
                   <div className="mb-3">
                     <h3 className="text-sm font-bold text-white font-orbitron uppercase tracking-wide mb-1">Timing Chain Replacement</h3>
                     <p className="text-xs text-orange-400 font-rajdhani uppercase tracking-wider">CRITICAL SERVICE</p>
@@ -531,20 +596,6 @@ export default function Home() {
                     </div>
                   </div>
 
-                  {/* Footer with expand/collapse indicator */}
-                  <div className="flex items-center justify-end pt-3 border-t border-gray-800 mt-auto">
-                    <div className="text-orange-500">
-                      {expandedService === 1 ? (
-                        <svg className="w-3 h-3 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      ) : (
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      )}
-                    </div>
-                  </div>
                 </div>
               </div>
             
@@ -556,6 +607,21 @@ export default function Home() {
                 onClick={(e) => toggleService(2, e)}
               >
                 <div className="p-4 flex flex-col h-full">
+                  {/* Expand/collapse indicator at top */}
+                  <div className="flex items-center justify-end pb-3 border-b border-gray-800 mb-3">
+                    <div className="text-orange-500">
+                      {expandedService === 2 ? (
+                        <svg className="w-3 h-3 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      ) : (
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      )}
+                    </div>
+                  </div>
+
                   <div className="mb-3">
                     <h3 className="text-sm font-bold text-white font-orbitron uppercase tracking-wide mb-1">Performance & ECU Tuning</h3>
                     <p className="text-xs text-orange-400 font-rajdhani uppercase tracking-wider">PERFORMANCE UPGRADE</p>
@@ -593,20 +659,6 @@ export default function Home() {
                     </div>
                   </div>
 
-                  {/* Footer with expand/collapse indicator */}
-                  <div className="flex items-center justify-end pt-3 border-t border-gray-800 mt-auto">
-                    <div className="text-orange-500">
-                      {expandedService === 2 ? (
-                        <svg className="w-3 h-3 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      ) : (
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      )}
-                    </div>
-                  </div>
                 </div>
               </div>
             
@@ -618,6 +670,21 @@ export default function Home() {
                 onClick={(e) => toggleService(3, e)}
               >
                 <div className="p-4 flex flex-col h-full">
+                  {/* Expand/collapse indicator at top */}
+                  <div className="flex items-center justify-end pb-3 border-b border-gray-800 mb-3">
+                    <div className="text-orange-500">
+                      {expandedService === 3 ? (
+                        <svg className="w-3 h-3 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      ) : (
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      )}
+                    </div>
+                  </div>
+
                   <div className="mb-3">
                     <h3 className="text-sm font-bold text-white font-orbitron uppercase tracking-wide mb-1">Car Key & Immobiliser</h3>
                     <p className="text-xs text-orange-400 font-rajdhani uppercase tracking-wider">SECURITY SERVICE</p>
@@ -647,20 +714,6 @@ export default function Home() {
                     </div>
                   </div>
 
-                  {/* Footer with expand/collapse indicator */}
-                  <div className="flex items-center justify-end pt-3 border-t border-gray-800 mt-auto">
-                    <div className="text-orange-500">
-                      {expandedService === 3 ? (
-                        <svg className="w-3 h-3 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      ) : (
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      )}
-                    </div>
-                  </div>
                 </div>
               </div>
             
@@ -672,6 +725,21 @@ export default function Home() {
                 onClick={(e) => toggleService(4, e)}
               >
                 <div className="p-4 flex flex-col h-full">
+                  {/* Expand/collapse indicator at top */}
+                  <div className="flex items-center justify-end pb-3 border-b border-gray-800 mb-3">
+                    <div className="text-orange-500">
+                      {expandedService === 4 ? (
+                        <svg className="w-3 h-3 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      ) : (
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      )}
+                    </div>
+                  </div>
+
                   <div className="mb-3">
                     <h3 className="text-sm font-bold text-white font-orbitron uppercase tracking-wide mb-1">Full Service</h3>
                     <p className="text-xs text-orange-400 font-rajdhani uppercase tracking-wider">PREMIUM PACKAGE</p>
@@ -705,20 +773,6 @@ export default function Home() {
                     </div>
                   </div>
 
-                  {/* Footer with expand/collapse indicator */}
-                  <div className="flex items-center justify-end pt-3 border-t border-gray-800 mt-auto">
-                    <div className="text-orange-500">
-                      {expandedService === 4 ? (
-                        <svg className="w-3 h-3 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      ) : (
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      )}
-                    </div>
-                  </div>
                 </div>
               </div>
 
@@ -730,6 +784,21 @@ export default function Home() {
                 onClick={(e) => toggleService(5, e)}
               >
                 <div className="p-4 flex flex-col h-full">
+                  {/* Expand/collapse indicator at top */}
+                  <div className="flex items-center justify-end pb-3 border-b border-gray-800 mb-3">
+                    <div className="text-orange-500">
+                      {expandedService === 5 ? (
+                        <svg className="w-3 h-3 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      ) : (
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      )}
+                    </div>
+                  </div>
+
                   <div className="mb-3">
                     <h3 className="text-sm font-bold text-white font-orbitron uppercase tracking-wide mb-1">Gearbox Servicing</h3>
                     <p className="text-xs text-orange-400 font-rajdhani uppercase tracking-wider">SPECIALIST SERVICE</p>
@@ -763,20 +832,6 @@ export default function Home() {
                     </div>
                   </div>
 
-                  {/* Footer with expand/collapse indicator */}
-                  <div className="flex items-center justify-end pt-3 border-t border-gray-800 mt-auto">
-                    <div className="text-orange-500">
-                      {expandedService === 5 ? (
-                        <svg className="w-3 h-3 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      ) : (
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      )}
-                    </div>
-                  </div>
                 </div>
               </div>
 

@@ -1,6 +1,7 @@
 import ServiceEstimatorComponent from '@/components/reuseableComponents/ServicesEstimator/ServiceEstimator';
 import Image from 'next/image';
 import Link from 'next/link';
+import { FaPlayCircle } from 'react-icons/fa';
 
 export default function TurbosPage() {
   return (
@@ -60,9 +61,10 @@ export default function TurbosPage() {
                 href="https://www.youtube.com/watch?v=-Jz8jyMPt2U" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-rajdhani font-bold transition-colors duration-300"
+                className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-rajdhani font-bold transition-colors duration-300"
               >
-                Learn More
+                Watch Video
+                <FaPlayCircle className="w-5 h-5" />
               </a>
             </div>
           </div>

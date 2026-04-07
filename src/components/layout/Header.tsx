@@ -8,6 +8,7 @@ import { IoMdClose } from 'react-icons/io';
 import { HiMenu } from 'react-icons/hi';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -168,18 +169,28 @@ export default function Header() {
       <div className="w-full px-6">
         <div className="flex items-center justify-between h-16 max-w-screen-2xl mx-auto">
           {/* Logo */}
-          <Link href="/" className="flex items-center group mr-6 transition-transform duration-300 hover:scale-105">
-            <div className="relative flex items-center">
-              <Image 
-                src="/images/logos/the_car_edition_logo.png" 
-                alt="The Car Edition Logo" 
-                width={110} 
-                height={37} 
-                className="w-24 h-auto object-contain"
-                priority
-              />
-            </div>
-          </Link>
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            <Link href="/" className="flex items-center group mr-6">
+              <motion.div 
+                className="relative flex items-center"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Image 
+                  src="/images/logos/the_car_edition_logo.png" 
+                  alt="The Car Edition Logo" 
+                  width={110} 
+                  height={37} 
+                  className="w-24 h-auto object-contain"
+                  priority
+                />
+              </motion.div>
+            </Link>
+          </motion.div>
 
           {/* Desktop Navigation */}
           <nav 
@@ -188,8 +199,14 @@ export default function Header() {
           >
             {/* Primary Navigation Group */}
             <div className="flex items-center gap-1">
-              {primaryNavItems.map((item) => (
-                <div key={item.href} className="relative group">
+              {primaryNavItems.map((item, index) => (
+                <motion.div 
+                  key={item.href} 
+                  className="relative group"
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.1 + index * 0.1, ease: "easeOut" }}
+                >
                   {item.external ? (
                     <a 
                       href={item.href}
@@ -249,71 +266,96 @@ export default function Header() {
                       </div>
                     </div>
                   )}
-                </div>
+                </motion.div>
               ))}
             </div>
             
             {/* Secondary Navigation Group */}
             <div className="flex items-center gap-1">
-              {secondaryNavItems.map((item) => (
-                <Link 
+              {secondaryNavItems.map((item, index) => (
+                <motion.div
                   key={item.href}
-                  href={item.href}
-                  className="relative font-bold text-white px-3 py-4 font-orbitron text-sm tracking-wide uppercase hover:text-orange-500 whitespace-nowrap"
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.3 + index * 0.1, ease: "easeOut" }}
                 >
-                  {item.text}
-                </Link>
+                  <Link 
+                    href={item.href}
+                    className="relative font-bold text-white px-3 py-4 font-orbitron text-sm tracking-wide uppercase hover:text-orange-500 whitespace-nowrap"
+                  >
+                    {item.text}
+                  </Link>
+                </motion.div>
               ))}
             </div>
             
             {/* Action Navigation Group */}
             <div className="flex items-center gap-1">
-              {actionNavItems.map((item) => (
-                <Link 
+              {actionNavItems.map((item, index) => (
+                <motion.div
                   key={item.href}
-                  href={item.href}
-                  className="relative font-bold text-white px-3 py-4 font-orbitron text-sm tracking-wide uppercase hover:text-orange-500 whitespace-nowrap"
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.5 + index * 0.1, ease: "easeOut" }}
                 >
-                  {item.text}
-                </Link>
+                  <Link 
+                    href={item.href}
+                    className="relative font-bold text-white px-3 py-4 font-orbitron text-sm tracking-wide uppercase hover:text-orange-500 whitespace-nowrap"
+                  >
+                    {item.text}
+                  </Link>
+                </motion.div>
               ))}
             </div>
             
           </nav>
 
           {/* Get Quote Button and Phone Number */}
-          <div className="hidden lg:flex items-center gap-3">
-            <Link 
-              href="/service-estimator" 
-              className="flex items-center bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg font-orbitron text-sm font-bold transition-colors duration-300"
-            >
-              GET QUOTE
-            </Link>
-            <a 
+          <motion.div 
+            className="hidden lg:flex items-center gap-3"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.7, ease: "easeOut" }}
+          >
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link 
+                href="/service-estimator" 
+                className="flex items-center bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg font-orbitron text-sm font-bold transition-colors duration-300"
+              >
+                GET QUOTE
+              </Link>
+            </motion.div>
+            <motion.a 
               href="tel:01480759004" 
               className="flex items-center bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg font-orbitron text-sm font-bold transition-colors duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
               </svg>
               01480 759004
-            </a>
-          </div>
+            </motion.a>
+          </motion.div>
 
           {/* Mobile Menu Button */}
-          <button
+          <motion.button
             ref={menuButtonRef}
             className="lg:hidden p-2 focus:outline-none rounded-md z-[101] relative"
             onClick={toggleMobileMenu}
             aria-label="Toggle mobile menu"
             aria-expanded={isMobileMenuOpen}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
+            whileTap={{ scale: 0.9 }}
           >
             {isMobileMenuOpen ? (
               <IoMdClose className="w-7 h-7 text-white" />
             ) : (
               <HiMenu className="w-7 h-7 text-white hover:text-orange-500" />
             )}
-          </button>
+          </motion.button>
         </div>
       </div>
       {/* Banner under header */}

@@ -1,6 +1,7 @@
 import ServiceEstimatorComponent from '@/components/reuseableComponents/ServicesEstimator/ServiceEstimator';
 import Image from 'next/image';
 import Link from 'next/link';
+import { FaPlayCircle } from 'react-icons/fa';
 
 export default function MechanicalRepairPage() {
   return (
@@ -53,9 +54,18 @@ export default function MechanicalRepairPage() {
               <p className="text-base text-gray-300 mb-6 font-rajdhani leading-relaxed">
                 When your vehicle develops mechanical problems, you need expert diagnosis and reliable repairs. From engine issues to transmission problems, our experienced team handles all types of <span className="text-white font-semibold">mechanical repairs</span> with precision and care.
               </p>
-              <p className="text-base text-gray-300 font-rajdhani leading-relaxed">
+              <p className="text-base text-gray-300 mb-6 font-rajdhani leading-relaxed">
                 At <span className="text-white font-semibold">The Car Edition</span>, we use the latest diagnostic tools and high-quality parts to ensure your vehicle is repaired to the highest standards. Trust us to get you back on the road safely and reliably.
               </p>
+              <a 
+                href="https://www.youtube.com/watch?v=q8yZL8IEK5o" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-rajdhani font-bold transition-colors duration-300"
+              >
+                Watch Video
+                <FaPlayCircle className="w-5 h-5" />
+              </a>
             </div>
           </div>
 

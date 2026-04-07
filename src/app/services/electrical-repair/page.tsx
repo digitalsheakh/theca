@@ -1,6 +1,7 @@
 import ServiceEstimatorComponent from '@/components/reuseableComponents/ServicesEstimator/ServiceEstimator';
 import Image from 'next/image';
 import Link from 'next/link';
+import { FaPlayCircle } from 'react-icons/fa';
 
 export default function ElectricalRepairPage() {
   return (
@@ -53,9 +54,18 @@ export default function ElectricalRepairPage() {
               <p className="text-base text-gray-300 mb-6 font-rajdhani leading-relaxed">
                 Modern vehicles rely on complex electrical systems to control everything from engine management to entertainment systems. When electrical problems occur, they can be <span className="text-white font-semibold">difficult to diagnose and frustrating</span> to deal with.
               </p>
-              <p className="text-base text-gray-300 font-rajdhani leading-relaxed">
-                At <span className="text-white font-semibold">The Car Edition</span>, our experienced technicians specialize in automotive electrical diagnostics and repairs. From battery issues to complex wiring faults, we have the expertise and equipment to get your vehicle's electrical system working perfectly.
+              <p className="text-base text-gray-300 mb-6 font-rajdhani leading-relaxed">
+                At <span className="text-white font-semibold">The Car Edition</span>, we use advanced diagnostic equipment to identify electrical faults quickly and accurately. From simple fixes to complex wiring repairs, we handle all electrical issues with expertise.
               </p>
+              <a 
+                href="https://www.youtube.com/watch?v=q8yZL8IEK5o" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-rajdhani font-bold transition-colors duration-300"
+              >
+                Watch Video
+                <FaPlayCircle className="w-5 h-5" />
+              </a>
             </div>
           </div>
 

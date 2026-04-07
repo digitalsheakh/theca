@@ -1,6 +1,7 @@
 import ServiceEstimatorComponent from '@/components/reuseableComponents/ServicesEstimator/ServiceEstimator';
 import Image from 'next/image';
 import Link from 'next/link';
+import { FaPlayCircle } from 'react-icons/fa';
 
 export default function WheelAlignment() {
   return (
@@ -53,9 +54,18 @@ export default function WheelAlignment() {
               <p className="text-base text-gray-300 mb-6 font-rajdhani leading-relaxed">
                 Proper wheel alignment is essential for optimal vehicle handling, tire longevity, and fuel efficiency. Misaligned wheels can cause uneven tire wear, poor handling, and reduced fuel economy. Don't compromise on <span className="text-white font-semibold">precision alignment</span> services.
               </p>
-              <p className="text-base text-gray-300 font-rajdhani leading-relaxed">
-                At <span className="text-white font-semibold">The Car Edition</span>, we provide comprehensive wheel alignment services using advanced computerized equipment to ensure your wheels are perfectly aligned to manufacturer specifications.
+              <p className="text-base text-gray-300 mb-6 font-rajdhani leading-relaxed">
+                At <span className="text-white font-semibold">The Car Edition</span>, we use state-of-the-art computerized wheel alignment equipment to ensure your wheels are perfectly aligned. Proper alignment improves handling, extends tyre life, and ensures your safety on the road.
               </p>
+              <a 
+                href="https://www.youtube.com/watch?v=q8yZL8IEK5o" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-rajdhani font-bold transition-colors duration-300"
+              >
+                Watch Video
+                <FaPlayCircle className="w-5 h-5" />
+              </a>
             </div>
           </div>
 

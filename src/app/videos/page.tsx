@@ -100,6 +100,24 @@ export default function VideosPage() {
         videoThumbnail: 'https://i.ytimg.com/vi/mFQdz0B5j0w/maxresdefault.jpg',
         videoEmbedLink: 'https://www.youtube.com/embed/mFQdz0B5j0w',
         description: 'Professional turbo repair techniques'
+      },
+      {
+        _id: '7',
+        title: 'Carbon Cleaning Process',
+        createdAt: new Date().toISOString(),
+        videoYoutubeLink: 'https://youtu.be/ADSbukAjsGA',
+        videoThumbnail: 'https://i.ytimg.com/vi/ADSbukAjsGA/maxresdefault.jpg',
+        videoEmbedLink: 'https://www.youtube.com/embed/ADSbukAjsGA',
+        description: 'Complete carbon cleaning walkthrough'
+      },
+      {
+        _id: '8',
+        title: 'Transmission Service Guide',
+        createdAt: new Date().toISOString(),
+        videoYoutubeLink: 'https://youtu.be/0NFvgXU9R0k',
+        videoThumbnail: 'https://i.ytimg.com/vi/0NFvgXU9R0k/maxresdefault.jpg',
+        videoEmbedLink: 'https://www.youtube.com/embed/0NFvgXU9R0k',
+        description: 'Professional transmission servicing'
       }
     ];
     
@@ -148,16 +166,41 @@ export default function VideosPage() {
             {/* Section Header */}
             <ScrollAnimation animation="fade-up">
               <div className="text-center mb-12">
+                <div className="border-l-4 border-orange-600 pl-6 mb-8 inline-block">
+                  <p className="text-orange-600 text-sm font-bold uppercase tracking-wider font-rajdhani mb-2">
+                    BEHIND THE SPANNERS
+                  </p>
+                </div>
                 <h2 className="text-4xl md:text-6xl font-bold text-white uppercase font-orbitron tracking-wider leading-tight mb-6">
                   THE CAR EDITION
                   <br />
                   <span className="text-orange-600">PODCAST</span>
                 </h2>
+                <p className="text-lg text-gray-300 font-rajdhani max-w-3xl mx-auto leading-relaxed">
+                  Real mechanics, real problems, real solutions. Tune in to our unfiltered automotive podcast.
+                </p>
               </div>
             </ScrollAnimation>
 
-            {/* Social Links */}
-            <div className="flex flex-wrap justify-center gap-3 mb-12">
+            {/* Podcast Info Section */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+              {/* Left Side - Text Content */}
+              <div className="space-y-6">
+                <div className="inline-block bg-orange-600/10 border border-orange-600 rounded-lg px-4 py-2">
+                  <span className="text-orange-600 font-rajdhani font-bold text-sm uppercase">Behind the Spanners</span>
+                </div>
+                <h3 className="text-3xl md:text-4xl font-bold text-white font-orbitron leading-tight">
+                  The Car Edition <span className="text-orange-600">Unfiltered</span> Podcast
+                </h3>
+                <p className="text-gray-300 font-rajdhani text-lg leading-relaxed">
+                  We do not hide behind closed doors. Our workshop and podcast show the real side of automotive repair the wins, the failures, the stories behind the spanners.
+                </p>
+                <p className="text-gray-300 font-rajdhani text-lg leading-relaxed">
+                  Watch our latest episodes to see what really happens in the world of diagnostics and engine rebuilds. Real mechanics, real problems, real solutions.
+                </p>
+                
+                {/* Social Links */}
+                <div className="flex flex-wrap gap-3 pt-4">
               <a 
                 href="https://www.youtube.com/@thecareditionltd" 
                 target="_blank" 
@@ -196,9 +239,27 @@ export default function VideosPage() {
                 <FaInstagram className="text-lg" />
                 Instagram
               </a>
+                </div>
+              </div>
+
+              {/* Right Side - Spotify Embed */}
+              <div className="bg-black/50 rounded-2xl p-6 border border-gray-800 flex items-center justify-center">
+                <div className="w-full">
+                  <iframe 
+                    style={{borderRadius: '12px'}} 
+                    src="https://open.spotify.com/embed/episode/4rOoJ6Egrf8K2IrywzwOMk?utm_source=generator&theme=0" 
+                    width="100%" 
+                    height="352" 
+                    frameBorder="0" 
+                    allowFullScreen 
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                    loading="lazy"
+                  ></iframe>
+                </div>
+              </div>
             </div>
 
-            {/* Podcast Episodes Grid - 4x2 Layout */}
+            {/* Podcast Episodes Grid */}
             <div className="space-y-6 mb-12">
               {/* First row - 4 episodes */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -225,11 +286,11 @@ export default function VideosPage() {
                   <div className="p-4">
                     <h4 className="text-white font-rajdhani font-bold text-base mb-2 group-hover:text-orange-600 transition-colors line-clamp-2">EP 1: Workshop Stories & Automotive Insights</h4>
                     <div className="flex items-center justify-between mt-3">
-                      <span className="text-orange-500 font-rajdhani text-xs font-bold uppercase flex items-center">
+                      <span className="text-[#FF0000] font-rajdhani text-xs font-bold uppercase flex items-center">
                         <FaYoutube className="mr-1" />
                         Listen Now
                       </span>
-                      <FaArrowRight className="text-white group-hover:translate-x-1 transition-transform" />
+                      <FaArrowRight className="text-orange-600 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
                 </a>
@@ -257,11 +318,11 @@ export default function VideosPage() {
                   <div className="p-4">
                     <h4 className="text-white font-rajdhani font-bold text-base mb-2 group-hover:text-orange-600 transition-colors line-clamp-2">EP 2: Behind The Scenes at The Car Edition</h4>
                     <div className="flex items-center justify-between mt-3">
-                      <span className="text-orange-500 font-rajdhani text-xs font-bold uppercase flex items-center">
+                      <span className="text-[#FF0000] font-rajdhani text-xs font-bold uppercase flex items-center">
                         <FaYoutube className="mr-1" />
                         Listen Now
                       </span>
-                      <FaArrowRight className="text-white group-hover:translate-x-1 transition-transform" />
+                      <FaArrowRight className="text-orange-600 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
                 </a>
@@ -289,11 +350,11 @@ export default function VideosPage() {
                   <div className="p-4">
                     <h4 className="text-white font-rajdhani font-bold text-base mb-2 group-hover:text-orange-600 transition-colors line-clamp-2">EP 3: Diagnostic Deep Dive & Tech Talk</h4>
                     <div className="flex items-center justify-between mt-3">
-                      <span className="text-orange-500 font-rajdhani text-xs font-bold uppercase flex items-center">
+                      <span className="text-[#FF0000] font-rajdhani text-xs font-bold uppercase flex items-center">
                         <FaYoutube className="mr-1" />
                         Listen Now
                       </span>
-                      <FaArrowRight className="text-white group-hover:translate-x-1 transition-transform" />
+                      <FaArrowRight className="text-orange-600 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
                 </a>
@@ -321,18 +382,18 @@ export default function VideosPage() {
                   <div className="p-4">
                     <h4 className="text-white font-rajdhani font-bold text-base mb-2 group-hover:text-orange-600 transition-colors line-clamp-2">EP 4: Expert Tips & Common Car Issues</h4>
                     <div className="flex items-center justify-between mt-3">
-                      <span className="text-orange-500 font-rajdhani text-xs font-bold uppercase flex items-center">
+                      <span className="text-[#FF0000] font-rajdhani text-xs font-bold uppercase flex items-center">
                         <FaYoutube className="mr-1" />
                         Listen Now
                       </span>
-                      <FaArrowRight className="text-white group-hover:translate-x-1 transition-transform" />
+                      <FaArrowRight className="text-orange-600 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
                 </a>
               </div>
 
-              {/* Second row - 2 episodes centered */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+              {/* Second row - 4 more episodes */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {/* Episode 5 */}
                 <a 
                   href="https://youtu.be/usdmECNdYMM" 
@@ -356,11 +417,11 @@ export default function VideosPage() {
                   <div className="p-4">
                     <h4 className="text-white font-rajdhani font-bold text-base mb-2 group-hover:text-orange-600 transition-colors line-clamp-2">EP 5: Advanced Diagnostics & Solutions</h4>
                     <div className="flex items-center justify-between mt-3">
-                      <span className="text-orange-500 font-rajdhani text-xs font-bold uppercase flex items-center">
+                      <span className="text-[#FF0000] font-rajdhani text-xs font-bold uppercase flex items-center">
                         <FaYoutube className="mr-1" />
                         Listen Now
                       </span>
-                      <FaArrowRight className="text-white group-hover:translate-x-1 transition-transform" />
+                      <FaArrowRight className="text-orange-600 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
                 </a>
@@ -388,11 +449,75 @@ export default function VideosPage() {
                   <div className="p-4">
                     <h4 className="text-white font-rajdhani font-bold text-base mb-2 group-hover:text-orange-600 transition-colors line-clamp-2">EP 6: Performance Tuning Insights</h4>
                     <div className="flex items-center justify-between mt-3">
-                      <span className="text-orange-500 font-rajdhani text-xs font-bold uppercase flex items-center">
+                      <span className="text-[#FF0000] font-rajdhani text-xs font-bold uppercase flex items-center">
                         <FaYoutube className="mr-1" />
                         Listen Now
                       </span>
-                      <FaArrowRight className="text-white group-hover:translate-x-1 transition-transform" />
+                      <FaArrowRight className="text-orange-600 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                </a>
+
+                {/* Episode 7 */}
+                <a 
+                  href="https://youtu.be/ADSbukAjsGA" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group bg-black rounded-lg overflow-hidden border border-gray-800 hover:border-orange-600 transition-all duration-300"
+                >
+                  <div className="relative aspect-video overflow-hidden">
+                    <Image
+                      src="https://i.ytimg.com/vi/ADSbukAjsGA/maxresdefault.jpg"
+                      alt="Podcast Episode 7"
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                      <div className="w-16 h-16 bg-orange-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <FaPlay className="text-white text-2xl ml-1" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-4">
+                    <h4 className="text-white font-rajdhani font-bold text-base mb-2 group-hover:text-orange-600 transition-colors line-clamp-2">EP 7: Engine Rebuild Masterclass</h4>
+                    <div className="flex items-center justify-between mt-3">
+                      <span className="text-[#FF0000] font-rajdhani text-xs font-bold uppercase flex items-center">
+                        <FaYoutube className="mr-1" />
+                        Listen Now
+                      </span>
+                      <FaArrowRight className="text-orange-600 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                </a>
+
+                {/* Episode 8 */}
+                <a 
+                  href="https://youtu.be/0NFvgXU9R0k" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group bg-black rounded-lg overflow-hidden border border-gray-800 hover:border-orange-600 transition-all duration-300"
+                >
+                  <div className="relative aspect-video overflow-hidden">
+                    <Image
+                      src="https://i.ytimg.com/vi/0NFvgXU9R0k/maxresdefault.jpg"
+                      alt="Podcast Episode 8"
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                      <div className="w-16 h-16 bg-orange-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <FaPlay className="text-white text-2xl ml-1" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-4">
+                    <h4 className="text-white font-rajdhani font-bold text-base mb-2 group-hover:text-orange-600 transition-colors line-clamp-2">EP 8: Customer Stories & Repairs</h4>
+                    <div className="flex items-center justify-between mt-3">
+                      <span className="text-[#FF0000] font-rajdhani text-xs font-bold uppercase flex items-center">
+                        <FaYoutube className="mr-1" />
+                        Listen Now
+                      </span>
+                      <FaArrowRight className="text-orange-600 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
                 </a>
@@ -482,9 +607,9 @@ export default function VideosPage() {
                   ))}
                 </div>
                 
-                {/* Second row - 2 videos centered */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-                {videos.slice(4, 6).map((video, index) => (
+                {/* Second row - 4 videos */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {videos.slice(4, 8).map((video, index) => (
                   <a 
                     key={video._id}
                     href={video.videoYoutubeLink}

@@ -2,6 +2,7 @@ import ServiceEstimatorComponent from '@/components/reuseableComponents/Services
 import ServiceVideoPlayer from '@/components/ServiceVideoPlayer';
 import Image from 'next/image';
 import Link from 'next/link';
+import { FaPlayCircle } from 'react-icons/fa';
 
 export default function InteriorRepairPage() {
   return (
@@ -54,9 +55,18 @@ export default function InteriorRepairPage() {
               <p className="text-base text-gray-300 mb-6 font-rajdhani leading-relaxed">
                 Your car's interior takes a beating from daily use, sun exposure, and wear and tear. Damaged seats, worn trim, and faded materials can make your vehicle feel <span className="text-white font-semibold">old and uncomfortable</span>.
               </p>
-              <p className="text-base text-gray-300 font-rajdhani leading-relaxed">
-                At <span className="text-white font-semibold">The Car Edition</span>, we offer comprehensive interior repair and restoration services. From leather seat repairs to dashboard restoration, we can bring your car's interior back to showroom condition.
+              <p className="text-base text-gray-300 mb-6 font-rajdhani leading-relaxed">
+                At <span className="text-white font-semibold">The Car Edition</span>, we specialize in interior repairs and restoration. From minor scuffs to major damage, our skilled technicians can restore your car's interior to showroom condition.
               </p>
+              <a 
+                href="https://www.youtube.com/watch?v=fsBUugNX1a8" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-rajdhani font-bold transition-colors duration-300"
+              >
+                Watch Video
+                <FaPlayCircle className="w-5 h-5" />
+              </a>
             </div>
           </div>
 
