@@ -1,11 +1,13 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaArrowRight } from 'react-icons/fa';
+import TitleBadge from '@/components/TitleBadge';
 
 export default function ServicesPage() {
+
   const services = [
     {
       id: 'timing-chains',
@@ -105,22 +107,18 @@ export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-black text-white pt-32">
       {/* Hero Section */}
-      <section className="relative py-20 bg-black" style={{backgroundImage: 'url(/images/logos/background-1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center'}}>
+      <section className="relative py-20 bg-black" style={{ backgroundImage: 'url(/images/logos/background-1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="absolute inset-0 bg-black/80"></div>
-        
+
         <div className="w-full px-6 relative z-10">
           <div className="max-w-screen-2xl mx-auto">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               className="text-center"
             >
-              <div className="border-l-4 border-orange-600 pl-6 mb-8 inline-block">
-                <p className="text-orange-600 text-sm font-bold uppercase tracking-wider font-rajdhani mb-2">
-                  WHAT WE OFFER
-                </p>
-              </div>
+              <TitleBadge title="WHAT WE OFFER" className="mb-8 inline-block pl-6" />
               <h1 className="text-4xl md:text-6xl font-bold mb-6 uppercase font-orbitron tracking-wider leading-tight">
                 OUR <span className="text-orange-600">SERVICES</span>
               </h1>
@@ -133,7 +131,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Grid Section */}
-      <section className="relative w-full py-16 bg-black" style={{backgroundImage: 'url(/images/logos/background-1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center'}}>
+      <section className="relative w-full py-16 bg-black" style={{ backgroundImage: 'url(/images/logos/background-1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="absolute inset-0 bg-black/80"></div>
         <div className="w-full px-6 relative z-10">
           <div className="max-w-screen-2xl mx-auto">
@@ -151,7 +149,7 @@ export default function ServicesPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: index * 0.1 }}
                     viewport={{ once: true }}
-                    className="bg-black border border-gray-800 rounded-xl overflow-hidden hover:border-orange-600 transition-all duration-300 group cursor-pointer"
+                    className="bg-black border border-orange-600/30 overflow-hidden hover:border-orange-600 transition-all duration-300 group cursor-pointer"
                   >
                     <Link href={`/services/${service.id}`} className="block">
                       {/* Service Image */}
@@ -162,11 +160,11 @@ export default function ServicesPage() {
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-300"
                         />
-                        <div className="absolute top-4 left-4 bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase">
+                        <div className="absolute top-4 left-4 bg-orange-600 text-white px-3 py-1 text-xs font-bold font-orbitron uppercase">
                           {service.category}
                         </div>
                       </div>
-                      
+
                       {/* Service Content */}
                       <div className="p-6">
                         <h3 className="text-xl font-bold text-orange-400 mb-3 font-orbitron tracking-wider uppercase">
@@ -175,7 +173,7 @@ export default function ServicesPage() {
                         <p className="text-gray-300 font-rajdhani leading-relaxed mb-4">
                           {service.description}
                         </p>
-                        
+
                         <div className="inline-flex items-center text-orange-400 hover:text-orange-300 font-orbitron font-semibold uppercase tracking-wide text-sm transition-colors duration-300">
                           LEARN MORE
                           <FaArrowRight className="text-white group-hover:translate-x-1 transition-transform" />
@@ -194,30 +192,26 @@ export default function ServicesPage() {
       <section className="w-full py-16 bg-black">
         <div className="w-full px-6">
           <div className="max-w-screen-2xl mx-auto">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
               className="text-center"
             >
-              <div className="border-l-4 border-orange-600 pl-6 mb-8 inline-block">
-                <p className="text-orange-600 text-sm font-bold uppercase tracking-wider font-rajdhani mb-2">
-                  GET STARTED TODAY
-                </p>
-              </div>
+              <TitleBadge title="GET STARTED TODAY" className="mb-8 inline-block pl-6" />
               <h2 className="text-4xl md:text-5xl font-bold mb-6 uppercase font-orbitron tracking-wider leading-tight">
                 READY TO <span className="text-orange-600">GET STARTED?</span>
               </h2>
               <p className="text-lg text-gray-300 font-rajdhani max-w-3xl mx-auto leading-relaxed mb-8">
                 Contact us today to book your service or get a free quote for your vehicle.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/contact-us" className="inline-flex items-center bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-colors duration-300 rounded-lg shadow-lg">
+                <Link href="/contact-us" className="inline-flex items-center bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg">
                   BOOK SERVICE
                 </Link>
-                <Link href="/service-estimator" className="inline-flex items-center border-2 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 rounded-lg">
+                <Link href="/service-estimator" className="inline-flex items-center border-2 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95">
                   GET QUOTE
                 </Link>
               </div>

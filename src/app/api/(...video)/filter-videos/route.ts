@@ -1,80 +1,80 @@
-import { NextRequest, NextResponse } from "next/server";
-import { collections, dbConnect } from "@/lib/dbConnect";
-import { authorizationCheck } from "@/lib/authorization";
+﻿import { NextRequest, NextResponse } from"next/server";
+import { collections, dbConnect } from"@/lib/dbConnect";
+import { authorizationCheck } from"@/lib/authorization";
 
 
 export async function GET(req: NextRequest) {
-  const referer = req.headers.get('referer') || '';
-  const refererPath = new URL(referer).pathname;
-  
-  // Pass referer path to authorization check
-  const authResult = await authorizationCheck(refererPath);
-  
-  if (!authResult.success) {
-    return NextResponse.json(
-      { error: authResult.error },
-      { status: authResult.status }
-    );
-  }
+ const referer = req.headers.get('referer') ||'';
+ const refererPath = new URL(referer).pathname;
+ 
+ // Pass referer path to authorization check
+ const authResult = await authorizationCheck(refererPath);
+ 
+ if (!authResult.success) {
+ return NextResponse.json(
+ { error: authResult.error },
+ { status: authResult.status }
+ );
+ }
 
-  try {
-    const { searchParams } = new URL(req.url);
-    const searchTerm = searchParams.get("search") || "";
-    const page = parseInt(searchParams.get("page") || "1");
-    const limit = parseInt(searchParams.get("limit") || "10");
-
-
-    const videosCollection = await dbConnect(collections.videos);
+ try {
+ const { searchParams } = new URL(req.url);
+ const searchTerm = searchParams.get("search") ||"";
+ const page = parseInt(searchParams.get("page") ||"1");
+ const limit = parseInt(searchParams.get("limit") ||"10");
 
 
-    // Build query
-    const query: any = {};
-  
-  if (searchTerm) {
-      // Check if text index exists
-      const indexes = await videosCollection.indexes();
-      const hasTextIndex = indexes.some((index: any) => index.name === "booking_search_text");
-      
-      if (hasTextIndex) {
-        query.$text = { $search: searchTerm };
-      } else {
-        // Fallback to regex if text index doesn't exist
-        query.$or = [
-          { title: { $regex: searchTerm, $options: "i" } },
-          { createdAt: { $regex: searchTerm, $options: "i" } },
-        ];
-      }
-    }
+ const videosCollection = await dbConnect(collections.videos);
 
-    // Get total count (optimized)
-    const totalPromise = videosCollection.countDocuments(query);
 
-    // Get paginated results with services lookup
-    const bookingsPromise = videosCollection.aggregate([
-      { $match: query },
-      { $sort: { createdAt: -1 } },
-      { $skip: (page - 1) * limit },
-      { $limit: limit }
-    ]).toArray();
+ // Build query
+ const query: any = {};
+ 
+ if (searchTerm) {
+ // Check if text index exists
+ const indexes = await videosCollection.indexes();
+ const hasTextIndex = indexes.some((index: any) => index.name ==="booking_search_text");
+ 
+ if (hasTextIndex) {
+ query.$text = { $search: searchTerm };
+ } else {
+ // Fallback to regex if text index doesn't exist
+ query.$or = [
+ { title: { $regex: searchTerm, $options:"i" } },
+ { createdAt: { $regex: searchTerm, $options:"i" } },
+ ];
+ }
+ }
 
-    const [total, bookings] = await Promise.all([totalPromise, bookingsPromise]);
+ // Get total count (optimized)
+ const totalPromise = videosCollection.countDocuments(query);
 
-    return NextResponse.json({
-      data: bookings,
-      pagination: {
-        page,
-        limit,
-        total : totalPromise,
-        totalPages: Math.ceil(total / limit)
-      }
-    });
+ // Get paginated results with services lookup
+ const bookingsPromise = videosCollection.aggregate([
+ { $match: query },
+ { $sort: { createdAt: -1 } },
+ { $skip: (page - 1) * limit },
+ { $limit: limit }
+ ]).toArray();
 
-  } catch (error) {
-    console.error("Error fetching bookings:", error);
-    return NextResponse.json(
-      { error: "Failed to fetch bookings data" },
-      { status: 500 }
-    );
-  }
+ const [total, bookings] = await Promise.all([totalPromise, bookingsPromise]);
+
+ return NextResponse.json({
+ data: bookings,
+ pagination: {
+ page,
+ limit,
+ total : totalPromise,
+ totalPages: Math.ceil(total / limit)
+ }
+ });
+
+ } catch (error) {
+ console.error("Error fetching bookings:", error);
+ return NextResponse.json(
+ { error:"Failed to fetch bookings data" },
+ { status: 500 }
+ );
+ }
 }
 

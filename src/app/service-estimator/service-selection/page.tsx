@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
@@ -8,6 +8,7 @@ import { VehicleDetails } from '@/services/vehicleApi';
 import { FaCar, FaWrench, FaArrowRight, FaCalendarAlt, FaClock, FaUser, FaPhone, FaEnvelope, FaCheckCircle, FaHome } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
 import { toast } from 'react-hot-toast';
+import GlobalLoading from '@/components/GlobalLoading';
 export default function ServiceSelection() {
   const [vehicle, setVehicle] = useState<VehicleDetails | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -42,7 +43,7 @@ export default function ServiceSelection() {
     }
   }, []);
 
- const sendEmail = async (formData: any) => {
+  const sendEmail = async (formData: any) => {
     try {
       const templateParams = {
         to_email: 'digitalsheakh@gmail.com', // Your email address
@@ -81,7 +82,7 @@ export default function ServiceSelection() {
   const handleSubmit = async () => {
     if (serviceDescription.trim() && urgency && preferredDate && customerName.trim() && phoneNumber.trim() && email.trim()) {
       setIsSubmitting(true);
-      
+
       try {
         // Prepare form data
         const formData = {
@@ -100,7 +101,7 @@ export default function ServiceSelection() {
 
         // Store in localStorage
         localStorage.setItem('serviceDetails', JSON.stringify(formData));
-        
+
         // Show success state
         setIsSubmitted(true);
         // toast.success('Service request submitted successfully!');
@@ -116,11 +117,7 @@ export default function ServiceSelection() {
   };
 
   if (isLoading) {
-    return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-orange-600"></div>
-      </div>
-    );
+    return <GlobalLoading />;
   }
 
   if (!vehicle) {
@@ -130,7 +127,7 @@ export default function ServiceSelection() {
           <h2 className="text-2xl font-bold text-orange-600 mb-4 font-orbitron">No Vehicle Selected</h2>
           <button
             onClick={() => window.location.href = '/service-estimator'}
-            className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 font-bold font-orbitron uppercase tracking-wider transition-colors duration-300 rounded-lg"
+            className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95"
           >
             Go Back
           </button>
@@ -155,7 +152,7 @@ export default function ServiceSelection() {
               </p>
             </div>
 
-            <div className="bg-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-xl p-6 mb-8">
+            <div className="bg-gray-900/50 backdrop-blur-sm border border-orange-600/30 p-6 mb-8">
               <h3 className="text-lg font-bold text-white font-orbitron mb-4">What happens next?</h3>
               <div className="text-left space-y-3 font-rajdhani text-gray-300">
                 <div className="flex items-start">
@@ -178,9 +175,9 @@ export default function ServiceSelection() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
+              <Link
                 href="/"
-                className="group relative inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 text-white font-bold font-orbitron uppercase tracking-wider transition-all duration-300 rounded-lg overflow-hidden shadow-lg hover:shadow-xl"
+                className="group relative inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 text-white font-bold font-orbitron uppercase tracking-wider transition-all duration-300 overflow-hidden shadow-lg hover:shadow-xl"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                 <span className="relative flex items-center">
@@ -188,9 +185,9 @@ export default function ServiceSelection() {
                   GO TO HOME
                 </span>
               </Link>
-              <Link 
+              <Link
                 href="/services"
-                className="group relative inline-flex items-center justify-center px-8 py-4 border-2 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white font-bold font-orbitron uppercase tracking-wider transition-all duration-300 rounded-lg overflow-hidden"
+                className="group relative inline-flex items-center justify-center px-8 py-4 border-2 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white font-bold font-orbitron uppercase tracking-wider transition-all duration-300 overflow-hidden hover:scale-105 active:scale-95"
               >
                 <div className="absolute inset-0 bg-orange-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
                 <span className="relative flex items-center">
@@ -223,43 +220,43 @@ export default function ServiceSelection() {
       <section className="w-full py-8 bg-black">
         <div className="w-full px-6 max-w-4xl mx-auto">
 
-            {/* Vehicle Summary */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="mb-12"
-            >
-              <div className="border-l-4 border-orange-600 pl-6 mb-6 inline-block">
-                <p className="text-orange-600 text-sm font-bold uppercase tracking-wider font-rajdhani mb-2">
-                  YOUR VEHICLE
-                </p>
-              </div>
-              <div className="bg-black/40 border border-gray-600 rounded-xl p-6 backdrop-blur-sm">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                  <div className="flex items-center">
-                    <FaCar className="text-orange-600 mr-3" />
-                    <div>
-                      <p className="text-gray-400 text-sm font-rajdhani">Registration</p>
-                      <p className="font-bold font-orbitron">{vehicle.registrationNumber}</p>
-                    </div>
-                  </div>
+          {/* Vehicle Summary */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="mb-12"
+          >
+            <div className="border-l-4 border-orange-600 pl-6 mb-6 inline-block">
+              <p className="text-orange-600 text-sm font-bold uppercase tracking-wider font-rajdhani mb-2">
+                YOUR VEHICLE
+              </p>
+            </div>
+            <div className="bg-black/40 border border-gray-600 p-6 backdrop-blur-sm">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div className="flex items-center">
+                  <FaCar className="text-orange-600 mr-3" />
                   <div>
-                    <p className="text-gray-400 text-sm font-rajdhani">Make</p>
-                    <p className="font-bold font-orbitron">{vehicle.make}</p>
-                  </div>
-                  <div>
-                    <p className="text-gray-400 text-sm font-rajdhani">Year</p>
-                    <p className="font-bold font-orbitron">{vehicle.yearOfManufacture}</p>
-                  </div>
-                  <div>
-                    <p className="text-gray-400 text-sm font-rajdhani">Engine</p>
-                    <p className="font-bold font-orbitron">{vehicle.engineCapacity ? `${vehicle.engineCapacity}cc` : 'N/A'}</p>
+                    <p className="text-gray-400 text-sm font-rajdhani">Registration</p>
+                    <p className="font-bold font-orbitron">{vehicle.registrationNumber}</p>
                   </div>
                 </div>
+                <div>
+                  <p className="text-gray-400 text-sm font-rajdhani">Make</p>
+                  <p className="font-bold font-orbitron">{vehicle.make}</p>
+                </div>
+                <div>
+                  <p className="text-gray-400 text-sm font-rajdhani">Year</p>
+                  <p className="font-bold font-orbitron">{vehicle.yearOfManufacture}</p>
+                </div>
+                <div>
+                  <p className="text-gray-400 text-sm font-rajdhani">Engine</p>
+                  <p className="font-bold font-orbitron">{vehicle.engineCapacity ? `${vehicle.engineCapacity}cc` : 'N/A'}</p>
+                </div>
               </div>
-            </motion.div>
+            </div>
+          </motion.div>
 
           {/* Service Request Form */}
           <div className="space-y-6">
@@ -278,7 +275,7 @@ export default function ServiceSelection() {
                 onChange={(e) => setServiceDescription(e.target.value)}
                 placeholder="Tell us what work needs to be done on your vehicle..."
                 rows={4}
-                className="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-3 text-white font-rajdhani focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-orange-600 placeholder-gray-400"
+                className="w-full bg-white border border-orange-600/30 px-4 py-3 text-black font-rajdhani focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-orange-600 placeholder-gray-400"
                 required
               />
             </div>
@@ -293,7 +290,7 @@ export default function ServiceSelection() {
                 <select
                   value={urgency}
                   onChange={(e) => setUrgency(e.target.value)}
-                  className="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-3 text-white font-rajdhani focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-orange-600"
+                  className="w-full bg-white border border-orange-600/30 px-4 py-3 text-black font-rajdhani focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-orange-600"
                   required
                 >
                   <option value="">Select urgency</option>
@@ -312,7 +309,7 @@ export default function ServiceSelection() {
                   type="date"
                   value={preferredDate}
                   onChange={(e) => setPreferredDate(e.target.value)}
-                  className="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-3 text-white font-rajdhani focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-orange-600"
+                  className="w-full bg-white border border-orange-600/30 px-4 py-3 text-black font-rajdhani focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-orange-600"
                   required
                 />
               </div>
@@ -328,7 +325,7 @@ export default function ServiceSelection() {
                 onChange={(e) => setAdditionalNotes(e.target.value)}
                 placeholder="Any other information we should know..."
                 rows={3}
-                className="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-3 text-white font-rajdhani focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-orange-600 placeholder-gray-400"
+                className="w-full bg-white border border-orange-600/30 px-4 py-3 text-black font-rajdhani focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-orange-600 placeholder-gray-400"
               />
             </div>
 
@@ -344,7 +341,7 @@ export default function ServiceSelection() {
                   value={customerName}
                   onChange={(e) => setCustomerName(e.target.value)}
                   placeholder="John Smith"
-                  className="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-3 text-white font-rajdhani focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-orange-600 placeholder-gray-400"
+                  className="w-full bg-white border border-orange-600/30 px-4 py-3 text-black font-rajdhani focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-orange-600 placeholder-gray-400"
                   required
                 />
               </div>
@@ -358,7 +355,7 @@ export default function ServiceSelection() {
                   value={phoneNumber}
                   onChange={(e) => setPhoneNumber(e.target.value)}
                   placeholder="07123 456789"
-                  className="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-3 text-white font-rajdhani focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-orange-600 placeholder-gray-400"
+                  className="w-full bg-white border border-orange-600/30 px-4 py-3 text-black font-rajdhani focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-orange-600 placeholder-gray-400"
                   required
                 />
               </div>
@@ -372,21 +369,20 @@ export default function ServiceSelection() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="john@example.com"
-                  className="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-3 text-white font-rajdhani focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-orange-600 placeholder-gray-400"
+                  className="w-full bg-white border border-orange-600/30 px-4 py-3 text-black font-rajdhani focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-orange-600 placeholder-gray-400"
                   required
                 />
               </div>
-              
+
             </div>
 
             <button
               onClick={handleSubmit}
               disabled={isSubmitting || !serviceDescription.trim() || !urgency || !preferredDate || !customerName.trim() || !phoneNumber.trim() || !email.trim()}
-              className={`group relative inline-flex items-center justify-center px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 rounded-lg overflow-hidden ${
-                isSubmitting || !serviceDescription.trim() || !urgency || !preferredDate || !customerName.trim() || !phoneNumber.trim() || !email.trim()
-                  ? 'bg-gray-700 text-gray-400 cursor-not-allowed'
-                  : 'bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 text-white shadow-lg hover:shadow-xl'
-              }`}
+              className={`group relative inline-flex items-center justify-center px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 overflow-hidden ${isSubmitting || !serviceDescription.trim() || !urgency || !preferredDate || !customerName.trim() || !phoneNumber.trim() || !email.trim()
+                ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                : 'bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 text-white shadow-lg hover:shadow-xl'
+                }`}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
               <span className="relative flex items-center">

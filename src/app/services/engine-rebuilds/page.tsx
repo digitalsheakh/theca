@@ -1,7 +1,8 @@
-import ServiceEstimatorComponent from '@/components/reuseableComponents/ServicesEstimator/ServiceEstimator';
+﻿import ServiceEstimatorComponent from '@/components/reuseableComponents/ServicesEstimator/ServiceEstimator';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaPlayCircle } from 'react-icons/fa';
+import TitleBadge from '@/components/TitleBadge';
 
 export default function EngineRebuildsPage() {
   return (
@@ -15,17 +16,11 @@ export default function EngineRebuildsPage() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
-        
-        {/* Service Badge */}
-        <div className="absolute top-8 left-8 md:left-16 z-20">
-          <span className="bg-orange-600 text-white px-4 py-2 text-sm font-bold uppercase tracking-wider font-rajdhani">
-            ENGINE SERVICES
-          </span>
-        </div>
-        
+
         <div className="relative z-10 container mx-auto px-8 h-full flex items-center">
           <div className="max-w-4xl">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-8 font-orbitron uppercase tracking-wider leading-tight bg-black/50 p-4 rounded">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-8 font-orbitron uppercase tracking-wider leading-tight bg-black/50 p-4">
+              <TitleBadge title="ENGINE SERVICES" className='mb-2' />
               ENGINE REBUILDS
             </h1>
             <div className="max-w-2xl">
@@ -42,11 +37,7 @@ export default function EngineRebuildsPage() {
         <div className="container mx-auto px-8">
           {/* Section Header */}
           <div className="mb-16">
-            <div className="border-l-4 border-orange-600 pl-6 mb-8">
-              <p className="text-orange-600 text-sm font-bold uppercase tracking-wider font-rajdhani mb-2">
-                COMPREHENSIVE ENGINE REBUILD SERVICES
-              </p>
-            </div>
+            <TitleBadge title="COMPREHENSIVE ENGINE REBUILD SERVICES" className="mb-8 pl-6" />
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 font-orbitron uppercase leading-tight">
               Navigating the Road of Engine Rebuilds – A Cost-Effective Alternative
             </h2>
@@ -60,11 +51,11 @@ export default function EngineRebuildsPage() {
               <p className="text-base text-gray-300 mb-6 font-rajdhani leading-relaxed">
                 At <span className="text-white font-semibold">The Car Edition</span>, we specialize in comprehensive engine rebuilds for all vehicle makes and models. Our meticulous process ensures your engine meets Original Equipment Manufacturer (OEM) standards, giving you many more miles of reliable performance.
               </p>
-              <a 
-                href="https://www.youtube.com/watch?v=GmuX2if7Kng" 
-                target="_blank" 
+              <a
+                href="https://www.youtube.com/watch?v=GmuX2if7Kng"
+                target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-rajdhani font-bold transition-colors duration-300"
+                className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 font-rajdhani font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95 hover:scale-105 active:scale-95"
               >
                 Watch Video
                 <FaPlayCircle className="w-5 h-5" />
@@ -83,27 +74,27 @@ export default function EngineRebuildsPage() {
               </p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-black p-6 rounded-lg border border-gray-800 hover:border-orange-600 transition-colors duration-300">
+              <div className="bg-black p-6 border border-orange-600/30 hover:border-orange-600 transition-colors duration-300">
                 <h4 className="text-lg font-bold text-white mb-3 font-rajdhani">Engine Disassembly</h4>
                 <p className="text-gray-300 font-rajdhani text-sm leading-relaxed">Complete removal and disassembly of the engine block for thorough inspection</p>
               </div>
-              <div className="bg-black p-6 rounded-lg border border-gray-800 hover:border-orange-600 transition-colors duration-300">
+              <div className="bg-black p-6 border border-orange-600/30 hover:border-orange-600 transition-colors duration-300">
                 <h4 className="text-lg font-bold text-white mb-3 font-rajdhani">Component Inspection</h4>
                 <p className="text-gray-300 font-rajdhani text-sm leading-relaxed">Detailed assessment of all engine components to identify wear and damage</p>
               </div>
-              <div className="bg-black p-6 rounded-lg border border-gray-800 hover:border-orange-600 transition-colors duration-300">
+              <div className="bg-black p-6 border border-orange-600/30 hover:border-orange-600 transition-colors duration-300">
                 <h4 className="text-lg font-bold text-white mb-3 font-rajdhani">Parts Replacement</h4>
                 <p className="text-gray-300 font-rajdhani text-sm leading-relaxed">Installation of new gaskets, seals, and replacement of worn components</p>
               </div>
-              <div className="bg-black p-6 rounded-lg border border-gray-800 hover:border-orange-600 transition-colors duration-300">
+              <div className="bg-black p-6 border border-orange-600/30 hover:border-orange-600 transition-colors duration-300">
                 <h4 className="text-lg font-bold text-white mb-3 font-rajdhani">Precision Machining</h4>
                 <p className="text-gray-300 font-rajdhani text-sm leading-relaxed">Professional machining services to restore engine block to OEM specifications</p>
               </div>
-              <div className="bg-black p-6 rounded-lg border border-gray-800 hover:border-orange-600 transition-colors duration-300">
+              <div className="bg-black p-6 border border-orange-600/30 hover:border-orange-600 transition-colors duration-300">
                 <h4 className="text-lg font-bold text-white mb-3 font-rajdhani">Engine Reassembly</h4>
                 <p className="text-gray-300 font-rajdhani text-sm leading-relaxed">Expert reassembly with proper torque specifications and lubrication</p>
               </div>
-              <div className="bg-black p-6 rounded-lg border border-gray-800 hover:border-orange-600 transition-colors duration-300">
+              <div className="bg-black p-6 border border-orange-600/30 hover:border-orange-600 transition-colors duration-300">
                 <h4 className="text-lg font-bold text-white mb-3 font-rajdhani">Testing & Quality Check</h4>
                 <p className="text-gray-300 font-rajdhani text-sm leading-relaxed">Comprehensive testing to ensure optimal performance and reliability</p>
               </div>
@@ -122,37 +113,37 @@ export default function EngineRebuildsPage() {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-3">
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-red-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-red-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Excessive smoke from exhaust</span>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-red-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-red-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Knocking or unusual engine noises</span>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-red-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-red-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Rapid oil consumption</span>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-red-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-red-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Frequent overheating</span>
                 </div>
               </div>
               <div className="space-y-3">
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-red-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-red-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Loss of compression</span>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-red-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-red-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Metal particles in oil</span>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-red-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-red-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Poor performance and power loss</span>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-red-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-red-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Odd smells or strange noises</span>
                 </div>
               </div>
@@ -169,35 +160,35 @@ export default function EngineRebuildsPage() {
             </h3>
             <div className="space-y-4">
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-red-600 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-red-600 mt-2 mr-4 flex-shrink-0"></div>
                 <div>
                   <span className="text-white font-semibold font-rajdhani text-sm">Do Thorough Research</span>
                   <span className="text-gray-300 font-rajdhani text-sm"> - Ensure you get the right parts for your specific engine</span>
                 </div>
               </div>
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-red-600 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-red-600 mt-2 mr-4 flex-shrink-0"></div>
                 <div>
                   <span className="text-white font-semibold font-rajdhani text-sm">Replace Only What's Necessary</span>
                   <span className="text-gray-300 font-rajdhani text-sm"> - Avoid unnecessary expenses by replacing only worn components</span>
                 </div>
               </div>
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-red-600 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-red-600 mt-2 mr-4 flex-shrink-0"></div>
                 <div>
                   <span className="text-white font-semibold font-rajdhani text-sm">Quality Parts Matter</span>
                   <span className="text-gray-300 font-rajdhani text-sm"> - Use OEM or high-quality aftermarket parts for longevity</span>
                 </div>
               </div>
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-red-600 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-red-600 mt-2 mr-4 flex-shrink-0"></div>
                 <div>
                   <span className="text-white font-semibold font-rajdhani text-sm">Check Warranties</span>
                   <span className="text-gray-300 font-rajdhani text-sm"> - Always verify warranty coverage before making final decisions</span>
                 </div>
               </div>
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-red-600 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-red-600 mt-2 mr-4 flex-shrink-0"></div>
                 <div>
                   <span className="text-white font-semibold font-rajdhani text-sm">Professional Service</span>
                   <span className="text-gray-300 font-rajdhani text-sm"> - Trust experienced technicians to do the job right the first time</span>
@@ -210,7 +201,7 @@ export default function EngineRebuildsPage() {
           </div>
 
           {/* Service Estimator */}
-          <div className="mb-20 bg-black p-8 rounded-lg border border-gray-800">
+          <div className="mb-20 bg-black p-8 border border-orange-600/30">
             <h3 className="text-2xl font-bold text-white mb-6 text-center font-orbitron uppercase">
               Get Your Engine Rebuild Quote
             </h3>
@@ -229,15 +220,15 @@ export default function EngineRebuildsPage() {
               Same-day diagnostics available - call now!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                href="/contact-us" 
-                className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 font-bold transition-colors duration-300 font-rajdhani uppercase tracking-wide"
+              <Link
+                href="/contact-us"
+                className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 font-bold transition-all duration-300 hover:scale-105 active:scale-95 font-rajdhani uppercase tracking-wide"
               >
                 Book Service
               </Link>
-              <Link 
-                href="tel:01480759004" 
-                className="border-2 border-white text-white hover:bg-white hover:text-black px-8 py-3 font-bold transition-colors duration-300 font-rajdhani uppercase tracking-wide"
+              <Link
+                href="tel:01480759004"
+                className="border-2 border-white text-white hover:bg-[#f97316] hover:text-white px-8 py-3 font-bold transition-all duration-300 hover:scale-105 active:scale-95 font-rajdhani uppercase tracking-wide"
               >
                 Call Now
               </Link>

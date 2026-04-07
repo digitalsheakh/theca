@@ -1,7 +1,8 @@
-import ServiceEstimatorComponent from '@/components/reuseableComponents/ServicesEstimator/ServiceEstimator';
+﻿import ServiceEstimatorComponent from '@/components/reuseableComponents/ServicesEstimator/ServiceEstimator';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaPlayCircle } from 'react-icons/fa';
+import TitleBadge from '@/components/TitleBadge';
 
 export default function CarKeyImmobiliserPage() {
   return (
@@ -15,17 +16,11 @@ export default function CarKeyImmobiliserPage() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
-        
-        {/* Service Badge */}
-        <div className="absolute top-8 left-8 md:left-16 z-20">
-          <span className="bg-orange-600 text-white px-4 py-2 text-sm font-bold uppercase tracking-wider font-rajdhani">
-            TRENDING SERVICE
-          </span>
-        </div>
-        
+
         <div className="relative z-10 container mx-auto px-8 h-full flex items-center">
           <div className="max-w-4xl">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-8 font-orbitron uppercase tracking-wider leading-tight bg-black/50 p-4 rounded">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-8 font-orbitron uppercase tracking-wider leading-tight bg-black/50 p-4">
+              <TitleBadge title="TRENDING SERVICE" className='mb-2' />
               CAR KEY & IMMOBILISER
             </h1>
             <div className="max-w-2xl">
@@ -42,11 +37,7 @@ export default function CarKeyImmobiliserPage() {
         <div className="container mx-auto px-8">
           {/* Section Header */}
           <div className="mb-16">
-            <div className="border-l-4 border-orange-600 pl-6 mb-8">
-              <p className="text-orange-600 text-sm font-bold uppercase tracking-wider font-rajdhani mb-2">
-                KEY & IMMOBILISER SPECIALISTS
-              </p>
-            </div>
+            <TitleBadge title="KEY & IMMOBILISER SPECIALISTS" className="mb-8 pl-6" />
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 font-orbitron uppercase leading-tight">
               Car Key & Immobiliser Services in Huntingdon – Fast & Reliable Solutions
             </h2>
@@ -57,11 +48,11 @@ export default function CarKeyImmobiliserPage() {
               <p className="text-base text-gray-300 mb-6 font-rajdhani leading-relaxed">
                 At <span className="text-white font-semibold">The Car Edition</span>, we use advanced diagnostic equipment to program new keys, repair immobiliser faults, and get you back on the road quickly.
               </p>
-              <a 
-                href="https://www.youtube.com/watch?v=-Jz8jyMPt2U" 
-                target="_blank" 
+              <a
+                href="https://www.youtube.com/watch?v=-Jz8jyMPt2U"
+                target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-rajdhani font-bold transition-colors duration-300"
+                className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 font-rajdhani font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95 hover:scale-105 active:scale-95"
               >
                 Watch Video
                 <FaPlayCircle className="w-5 h-5" />
@@ -75,27 +66,27 @@ export default function CarKeyImmobiliserPage() {
               What We Offer
             </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-black p-6 rounded-lg border border-gray-800 hover:border-orange-600 transition-colors duration-300">
+              <div className="bg-black p-6 border border-orange-600/30 hover:border-orange-600 transition-colors duration-300">
                 <h4 className="text-lg font-bold text-white mb-3 font-rajdhani">Key Programming</h4>
                 <p className="text-gray-300 font-rajdhani text-sm leading-relaxed">Program new keys and remotes for all makes and models</p>
               </div>
-              <div className="bg-black p-6 rounded-lg border border-gray-800 hover:border-orange-600 transition-colors duration-300">
+              <div className="bg-black p-6 border border-orange-600/30 hover:border-orange-600 transition-colors duration-300">
                 <h4 className="text-lg font-bold text-white mb-3 font-rajdhani">Lost Key Replacement</h4>
                 <p className="text-gray-300 font-rajdhani text-sm leading-relaxed">Replace lost keys without needing the original</p>
               </div>
-              <div className="bg-black p-6 rounded-lg border border-gray-800 hover:border-orange-600 transition-colors duration-300">
+              <div className="bg-black p-6 border border-orange-600/30 hover:border-orange-600 transition-colors duration-300">
                 <h4 className="text-lg font-bold text-white mb-3 font-rajdhani">Spare Key Creation</h4>
                 <p className="text-gray-300 font-rajdhani text-sm leading-relaxed">Cut and program additional spare keys</p>
               </div>
-              <div className="bg-black p-6 rounded-lg border border-gray-800 hover:border-orange-600 transition-colors duration-300">
+              <div className="bg-black p-6 border border-orange-600/30 hover:border-orange-600 transition-colors duration-300">
                 <h4 className="text-lg font-bold text-white mb-3 font-rajdhani">Immobiliser Repair</h4>
                 <p className="text-gray-300 font-rajdhani text-sm leading-relaxed">Diagnose and repair immobiliser faults</p>
               </div>
-              <div className="bg-black p-6 rounded-lg border border-gray-800 hover:border-orange-600 transition-colors duration-300">
+              <div className="bg-black p-6 border border-orange-600/30 hover:border-orange-600 transition-colors duration-300">
                 <h4 className="text-lg font-bold text-white mb-3 font-rajdhani">Remote Fob Repair</h4>
                 <p className="text-gray-300 font-rajdhani text-sm leading-relaxed">Fix or replace damaged key fobs and remotes</p>
               </div>
-              <div className="bg-black p-6 rounded-lg border border-gray-800 hover:border-orange-600 transition-colors duration-300">
+              <div className="bg-black p-6 border border-orange-600/30 hover:border-orange-600 transition-colors duration-300">
                 <h4 className="text-lg font-bold text-white mb-3 font-rajdhani">Emergency Lockout</h4>
                 <p className="text-gray-300 font-rajdhani text-sm leading-relaxed">Fast response for lockout situations</p>
               </div>
@@ -112,35 +103,35 @@ export default function CarKeyImmobiliserPage() {
             </h3>
             <div className="space-y-4">
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-orange-600 mt-2 mr-4 flex-shrink-0"></div>
                 <div>
                   <span className="text-white font-semibold font-rajdhani text-sm">Expert Technicians</span>
                   <span className="text-gray-300 font-rajdhani text-sm"> - Trained specialists in key programming and immobiliser systems</span>
                 </div>
               </div>
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-orange-600 mt-2 mr-4 flex-shrink-0"></div>
                 <div>
                   <span className="text-white font-semibold font-rajdhani text-sm">Fast Service</span>
                   <span className="text-gray-300 font-rajdhani text-sm"> - Most keys programmed same day</span>
                 </div>
               </div>
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-orange-600 mt-2 mr-4 flex-shrink-0"></div>
                 <div>
                   <span className="text-white font-semibold font-rajdhani text-sm">Competitive Pricing</span>
                   <span className="text-gray-300 font-rajdhani text-sm"> - From £99 + VAT, much cheaper than main dealers</span>
                 </div>
               </div>
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-orange-600 mt-2 mr-4 flex-shrink-0"></div>
                 <div>
                   <span className="text-white font-semibold font-rajdhani text-sm">All Makes & Models</span>
                   <span className="text-gray-300 font-rajdhani text-sm"> - We work on all vehicle brands and types</span>
                 </div>
               </div>
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-orange-600 mt-2 mr-4 flex-shrink-0"></div>
                 <div>
                   <span className="text-white font-semibold font-rajdhani text-sm">Warranty Included</span>
                   <span className="text-gray-300 font-rajdhani text-sm"> - All work covered by our warranty</span>
@@ -161,37 +152,37 @@ export default function CarKeyImmobiliserPage() {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-3">
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Lost or stolen car keys</span>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Broken or damaged key fobs</span>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Immobiliser light staying on</span>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Key not recognized by vehicle</span>
                 </div>
               </div>
               <div className="space-y-3">
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Remote central locking not working</span>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Need additional spare keys</span>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Battery replacement in key fob</span>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Transponder chip programming</span>
                 </div>
               </div>
@@ -202,7 +193,7 @@ export default function CarKeyImmobiliserPage() {
           </div>
 
           {/* Service Estimator */}
-          <div className="mb-20 bg-black p-8 rounded-lg border border-gray-800">
+          <div className="mb-20 bg-black p-8 border border-orange-600/30">
             <h3 className="text-2xl font-bold text-white mb-6 text-center font-orbitron uppercase">
               Get Your Key & Immobiliser Quote
             </h3>
@@ -221,15 +212,15 @@ export default function CarKeyImmobiliserPage() {
               Same-day service available – call us now!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                href="/contact-us" 
-                className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 font-bold transition-colors duration-300 font-rajdhani uppercase tracking-wide"
+              <Link
+                href="/contact-us"
+                className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 font-bold transition-all duration-300 hover:scale-105 active:scale-95 font-rajdhani uppercase tracking-wide"
               >
                 Book Service
               </Link>
-              <Link 
-                href="tel:01480123456" 
-                className="border-2 border-white text-white hover:bg-white hover:text-black px-8 py-3 font-bold transition-colors duration-300 font-rajdhani uppercase tracking-wide"
+              <Link
+                href="tel:01480123456"
+                className="border-2 border-white hover:border-[#f97316] text-black bg-white hover:bg-[#f97316] hover:text-white px-8 py-3 font-bold transition-all duration-300 hover:scale-105 active:scale-95 font-rajdhani uppercase tracking-wide"
               >
                 Call Now
               </Link>

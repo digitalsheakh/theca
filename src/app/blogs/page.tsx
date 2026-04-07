@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
@@ -7,6 +7,8 @@ import { FaCalendarAlt, FaEye, FaArrowRight, FaClock } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import TitleBadge from '@/components/TitleBadge';
+import GlobalLoading from '@/components/GlobalLoading';
 
 interface BlogPost {
   _id: string;
@@ -21,6 +23,7 @@ export default function BlogPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
+
   // Commented out API call - using dummy data for now
   // useEffect(() => {
   //   const fetchBlogs = async () => {
@@ -134,38 +137,35 @@ export default function BlogPage() {
         imageUrl: '/images/dropbox/26.jpg'
       }
     ];
-    
+
     setBlogs(dummyBlogs);
     setLoading(false);
   }, []);
+
+  if (loading) {
+    return <GlobalLoading />;
+  }
 
   const openBlogDialog = (blog: BlogPost) => {
     router.push(`/blogs/${blog._id}`);
   };
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', { 
-      year: 'numeric', 
-      month: 'short', 
-      day: 'numeric' 
+    return new Date(dateString).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
     });
   };
 
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-[#0A0A0A] text-white pt-24 pb-16 flex justify-center items-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-orange-500"></div>
-      </div>
-    );
-  }
 
   if (error) {
     return (
       <div className="min-h-screen bg-[#0A0A0A] text-white pt-24 pb-16 flex flex-col justify-center items-center">
         <p className="text-xl text-gray-400 mb-6">{error}</p>
-        <button 
+        <button
           onClick={() => window.location.reload()}
-          className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 inline-flex items-center gap-2"
+          className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95 inline-flex items-center gap-2"
         >
           Try Again
           <FaArrowRight className="text-sm" />
@@ -177,12 +177,12 @@ export default function BlogPage() {
   return (
     <div className="min-h-screen bg-black text-white pt-32">
       {/* Hero Section */}
-      <section className="relative py-4 bg-black" style={{backgroundImage: 'url(/images/logos/background-1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center'}}>
+      <section className="relative py-4 bg-black" style={{ backgroundImage: 'url(/images/logos/background-1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="absolute inset-0 bg-black/80"></div>
-        
+
         <div className="w-full px-6 relative z-10">
           <div className="max-w-screen-2xl mx-auto">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -192,13 +192,14 @@ export default function BlogPage() {
           </div>
         </div>
       </section>
-      
+
       {/* Blog Grid Section */}
-      <section className="relative w-full py-16 bg-black" style={{backgroundImage: 'url(/images/logos/background-1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center'}}>
+      <section className="relative w-full py-16 bg-black" style={{ backgroundImage: 'url(/images/logos/background-1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="absolute inset-0 bg-black/80"></div>
         <div className="w-full px-6 relative z-10">
-          <div className="max-w-screen-2xl mx-auto">
-            <motion.div 
+          <div className="max-w-screen-2xl mx-auto flex flex-col items-center justify-center">
+            <TitleBadge title="Blog & Articles" />
+            <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -212,16 +213,16 @@ export default function BlogPage() {
                 Full articles coming soon. Browse our service topics below.
               </p>
             </motion.div>
-        
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {blogs.map((blog, index) => (
-                <motion.article 
+                <motion.article
                   key={blog._id}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-black/40 border border-gray-600 rounded-xl overflow-hidden backdrop-blur-sm hover:border-orange-600 transition-all duration-300 group"
+                  className="bg-black/40 border border-gray-600 overflow-hidden backdrop-blur-sm hover:border-orange-600 transition-all duration-300 group"
                 >
                   <div className="relative h-48 overflow-hidden">
                     <Image
@@ -232,7 +233,7 @@ export default function BlogPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   </div>
-                  
+
                   <div className="p-4">
                     <div className="flex items-center text-xs text-orange-400 mb-3 font-rajdhani">
                       <FaCalendarAlt className="mr-2" />
@@ -241,16 +242,16 @@ export default function BlogPage() {
                       <FaClock className="mr-2" />
                       <span>5 min read</span>
                     </div>
-                    
+
                     <h3 className="text-lg font-bold mb-2 text-white group-hover:text-orange-400 transition-colors duration-300 font-orbitron uppercase tracking-wide line-clamp-2">
                       {blog.title}
                     </h3>
-                    
-                    <div 
-                      className="text-gray-300 text-sm mb-3 font-rajdhani line-clamp-2" 
-                      dangerouslySetInnerHTML={{ __html: blog.content.substring(0, 100) + '...' }} 
+
+                    <div
+                      className="text-gray-300 text-sm mb-3 font-rajdhani line-clamp-2"
+                      dangerouslySetInnerHTML={{ __html: blog.content.substring(0, 100) + '...' }}
                     />
-                    
+
                     <div className="inline-flex items-center gap-2 text-gray-500 text-sm font-orbitron font-semibold uppercase tracking-wide">
                       COMING SOON
                     </div>

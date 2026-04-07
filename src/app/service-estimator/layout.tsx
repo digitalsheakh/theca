@@ -1,11 +1,11 @@
-export default function ServiceEstimatorLayout({
-  children,
+﻿export default function ServiceEstimatorLayout({
+ children,
 }: {
-  children: React.ReactNode;
+ children: React.ReactNode;
 }) {
-  return (
-    <section>
-      {children}
-    </section>
-  );
+ return (
+ <section>
+ {children}
+ </section>
+ );
 }

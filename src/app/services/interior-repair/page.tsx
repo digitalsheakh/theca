@@ -1,8 +1,9 @@
-import ServiceEstimatorComponent from '@/components/reuseableComponents/ServicesEstimator/ServiceEstimator';
+﻿import ServiceEstimatorComponent from '@/components/reuseableComponents/ServicesEstimator/ServiceEstimator';
 import ServiceVideoPlayer from '@/components/ServiceVideoPlayer';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaPlayCircle } from 'react-icons/fa';
+import TitleBadge from '@/components/TitleBadge';
 
 export default function InteriorRepairPage() {
   return (
@@ -16,17 +17,11 @@ export default function InteriorRepairPage() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
-        
-        {/* Service Badge */}
-        <div className="absolute top-8 left-8 md:left-16 z-20">
-          <span className="bg-orange-600 text-white px-4 py-2 text-sm font-bold uppercase tracking-wider font-rajdhani">
-            INTERIOR REPAIR SERVICES
-          </span>
-        </div>
-        
+
         <div className="relative z-10 container mx-auto px-8 h-full flex items-center">
           <div className="max-w-4xl">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-8 font-orbitron uppercase tracking-wider leading-tight bg-black/50 p-4 rounded">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-8 font-orbitron uppercase tracking-wider leading-tight bg-black/50 p-4">
+              <TitleBadge title="INTERIOR REPAIR SERVICES" className='mb-2' />
               INTERIOR REPAIR
             </h1>
             <div className="max-w-2xl">
@@ -43,11 +38,7 @@ export default function InteriorRepairPage() {
         <div className="container mx-auto px-8">
           {/* Section Header */}
           <div className="mb-16">
-            <div className="border-l-4 border-orange-600 pl-6 mb-8">
-              <p className="text-orange-600 text-sm font-bold uppercase tracking-wider font-rajdhani mb-2">
-                PROFESSIONAL INTERIOR RESTORATION SERVICES
-              </p>
-            </div>
+            <TitleBadge title="PROFESSIONAL INTERIOR RESTORATION SERVICES" className="mb-8 pl-6" />
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 font-orbitron uppercase leading-tight">
               Interior Repair in Huntingdon – Restore Your Car's Cabin
             </h2>
@@ -58,11 +49,11 @@ export default function InteriorRepairPage() {
               <p className="text-base text-gray-300 mb-6 font-rajdhani leading-relaxed">
                 At <span className="text-white font-semibold">The Car Edition</span>, we specialize in interior repairs and restoration. From minor scuffs to major damage, our skilled technicians can restore your car's interior to showroom condition.
               </p>
-              <a 
-                href="https://www.youtube.com/watch?v=fsBUugNX1a8" 
-                target="_blank" 
+              <a
+                href="https://www.youtube.com/watch?v=fsBUugNX1a8"
+                target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-rajdhani font-bold transition-colors duration-300"
+                className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 font-rajdhani font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95 hover:scale-105 active:scale-95"
               >
                 Watch Video
                 <FaPlayCircle className="w-5 h-5" />
@@ -76,27 +67,27 @@ export default function InteriorRepairPage() {
               What We Offer
             </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-orange-600 transition-colors duration-300">
+              <div className="bg-gray-900 p-6 border border-orange-600/30 hover:border-orange-600 transition-colors duration-300">
                 <h4 className="text-lg font-bold text-white mb-3 font-rajdhani">Leather Seat Repair</h4>
                 <p className="text-gray-300 font-rajdhani text-sm leading-relaxed">Expert repair of tears, scratches, and worn leather seats with color matching</p>
               </div>
-              <div className="bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-orange-600 transition-colors duration-300">
+              <div className="bg-gray-900 p-6 border border-orange-600/30 hover:border-orange-600 transition-colors duration-300">
                 <h4 className="text-lg font-bold text-white mb-3 font-rajdhani">Upholstery Restoration</h4>
                 <p className="text-gray-300 font-rajdhani text-sm leading-relaxed">Complete fabric and leather upholstery repair and re-trimming</p>
               </div>
-              <div className="bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-orange-600 transition-colors duration-300">
+              <div className="bg-gray-900 p-6 border border-orange-600/30 hover:border-orange-600 transition-colors duration-300">
                 <h4 className="text-lg font-bold text-white mb-3 font-rajdhani">Dashboard Restoration</h4>
                 <p className="text-gray-300 font-rajdhani text-sm leading-relaxed">Repair of cracked, faded, or damaged dashboard and trim pieces</p>
               </div>
-              <div className="bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-orange-600 transition-colors duration-300">
+              <div className="bg-gray-900 p-6 border border-orange-600/30 hover:border-orange-600 transition-colors duration-300">
                 <h4 className="text-lg font-bold text-white mb-3 font-rajdhani">Carpet Replacement</h4>
                 <p className="text-gray-300 font-rajdhani text-sm leading-relaxed">Custom carpet fitting and replacement for a fresh interior look</p>
               </div>
-              <div className="bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-orange-600 transition-colors duration-300">
+              <div className="bg-gray-900 p-6 border border-orange-600/30 hover:border-orange-600 transition-colors duration-300">
                 <h4 className="text-lg font-bold text-white mb-3 font-rajdhani">Headliner Repair</h4>
                 <p className="text-gray-300 font-rajdhani text-sm leading-relaxed">Sagging or stained headliner repair and replacement</p>
               </div>
-              <div className="bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-orange-600 transition-colors duration-300">
+              <div className="bg-gray-900 p-6 border border-orange-600/30 hover:border-orange-600 transition-colors duration-300">
                 <h4 className="text-lg font-bold text-white mb-3 font-rajdhani">Trim Refurbishment</h4>
                 <p className="text-gray-300 font-rajdhani text-sm leading-relaxed">Restoration of plastic, wood, and metal interior trim pieces</p>
               </div>
@@ -113,35 +104,35 @@ export default function InteriorRepairPage() {
             </h3>
             <div className="space-y-4">
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-orange-600 mt-2 mr-4 flex-shrink-0"></div>
                 <div>
                   <span className="text-white font-semibold font-rajdhani text-sm">Expert Craftsmanship</span>
                   <span className="text-gray-300 font-rajdhani text-sm"> - Skilled technicians with years of interior repair experience</span>
                 </div>
               </div>
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-orange-600 mt-2 mr-4 flex-shrink-0"></div>
                 <div>
                   <span className="text-white font-semibold font-rajdhani text-sm">Color Matching</span>
                   <span className="text-gray-300 font-rajdhani text-sm"> - Perfect color matching for seamless repairs</span>
                 </div>
               </div>
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-orange-600 mt-2 mr-4 flex-shrink-0"></div>
                 <div>
                   <span className="text-white font-semibold font-rajdhani text-sm">Quality Materials</span>
                   <span className="text-gray-300 font-rajdhani text-sm"> - Premium leather, fabric, and trim materials for lasting results</span>
                 </div>
               </div>
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-orange-600 mt-2 mr-4 flex-shrink-0"></div>
                 <div>
                   <span className="text-white font-semibold font-rajdhani text-sm">Attention to Detail</span>
                   <span className="text-gray-300 font-rajdhani text-sm"> - Meticulous work to ensure factory-quality finish</span>
                 </div>
               </div>
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-orange-600 mt-2 mr-4 flex-shrink-0"></div>
                 <div>
                   <span className="text-white font-semibold font-rajdhani text-sm">Value Enhancement</span>
                   <span className="text-gray-300 font-rajdhani text-sm"> - Interior restoration significantly increases vehicle value</span>
@@ -162,37 +153,37 @@ export default function InteriorRepairPage() {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-3">
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Torn or cracked leather seats</span>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Worn or faded upholstery</span>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Cracked or damaged dashboard</span>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Sagging or stained headliner</span>
                 </div>
               </div>
               <div className="space-y-3">
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Worn or damaged carpets</span>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Broken or faded trim pieces</span>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Cigarette burns or stains</span>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Sun-damaged interior materials</span>
                 </div>
               </div>
@@ -203,13 +194,13 @@ export default function InteriorRepairPage() {
           </div>
 
           {/* Video Section */}
-          <ServiceVideoPlayer 
-            videoId="fsBUugNX1a8" 
+          <ServiceVideoPlayer
+            videoId="fsBUugNX1a8"
             title="Learn More"
           />
 
           {/* Service Estimator */}
-          <div className="mb-20 bg-gray-900 p-8 rounded-lg border border-gray-800">
+          <div className="mb-20 bg-gray-900 p-8 border border-orange-600/30">
             <h3 className="text-2xl font-bold text-white mb-6 text-center font-orbitron uppercase">
               Get Your Interior Repair Quote
             </h3>
@@ -228,15 +219,15 @@ export default function InteriorRepairPage() {
               Same-day appointments available - call now!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                href="/contact-us" 
-                className="inline-flex items-center bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-rajdhani font-bold transition-colors duration-300"
+              <Link
+                href="/contact-us"
+                className="inline-flex items-center bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 font-rajdhani font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95"
               >
                 Learn More
               </Link>
-              <Link 
-                href="tel:01480123456" 
-                className="border-2 border-white text-white hover:bg-white hover:text-black px-8 py-3 font-bold transition-colors duration-300 font-rajdhani uppercase tracking-wide"
+              <Link
+                href="tel:01480123456"
+                className="border-2 border-white text-white hover:bg-[#f97316] hover:text-white px-8 py-3 font-bold transition-all duration-300 hover:scale-105 active:scale-95 font-rajdhani uppercase tracking-wide"
               >
                 Call Now
               </Link>
