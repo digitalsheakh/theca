@@ -403,13 +403,13 @@ export default function Header() {
               SERVICES
               <span className={`text-sm transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`}>▼</span>
             </button>
-            <div className={`bg-gray-900 overflow-hidden transition-all duration-300 ${isServicesOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'
+            <div className={`bg-gray-300 overflow-hidden transition-all duration-300 ${isServicesOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'
               }`}>
               {/* Trending Service Nested Dropdown - Moved to Top */}
               <div className="border-b border-orange-600/30">
                 <button
                   onClick={toggleTrendingServices}
-                  className="w-full px-8 py-3 text-gray-300 text-sm font-rajdhani hover:text-white hover:bg-[#f97316] transition-colors flex items-center justify-between"
+                  className="w-full px-8 py-3 text-gray-900 text-sm font-rajdhani hover:text-white hover:bg-[#f97316] transition-colors flex items-center justify-between"
                 >
                   <span>Trending Service</span>
                   <span className={`text-xs transition-transform duration-200 ${isTrendingServicesOpen ? 'rotate-180' : ''}`}>▼</span>
@@ -433,7 +433,7 @@ export default function Header() {
                 <Link
                   key={service.href}
                   href={service.href}
-                  className="block px-8 py-3 text-gray-300 text-sm font-rajdhani hover:text-white hover:bg-[#f97316] transition-colors border-b border-orange-600/20"
+                  className="block px-8 py-3 text-gray-900 text-sm font-rajdhani hover:text-white hover:bg-[#f97316] transition-colors border-b border-orange-600/20"
                   onClick={closeMobileMenu}
                 >
                   {service.text}

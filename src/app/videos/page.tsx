@@ -27,9 +27,6 @@ export default function VideosPage() {
   const [error, setError] = useState<string | null>(null);
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
 
-  if (loading) {
-    return <GlobalLoading />;
-  }
 
   // Commented out API call - using dummy data for now
   // useEffect(() => {
@@ -162,6 +159,10 @@ export default function VideosPage() {
     const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'short', day: 'numeric' };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
+
+  if (loading) {
+    return <GlobalLoading />;
+  }
 
   return (
     <div className="min-h-screen bg-black text-white pt-32">

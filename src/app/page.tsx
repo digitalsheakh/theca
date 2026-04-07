@@ -948,11 +948,17 @@ export default function Home() {
                   100% { transform: translateX(-100%); }
                 }
                 .marquee-mobile {
-                  animation: marquee-fast 5s linear infinite;
+                  animation: marquee-fast 8s linear infinite;
                   animation-delay: 1s;
+                }
+                .marquee-mobile:hover {
+                  animation-play-state: paused;
                 }
                 .marquee-desktop {
                   animation: marquee-slow 20s linear infinite;
+                }
+                .marquee-desktop:hover {
+                  animation-play-state: paused;
                 }
                 @media (min-width: 768px) {
                   .marquee-mobile {
@@ -961,7 +967,7 @@ export default function Home() {
                 }
               `}</style>
               {/* Continuous Marquee - No gaps, always filled */}
-              <div className="flex space-x-8 md:space-x-16 marquee-mobile hover:pause-marquee">
+              <div className="flex space-x-8 md:space-x-16 marquee-mobile">
                 {/* First set of logos - 9 brands (removed Rolls-Royce and Mini) */}
                 <div className="w-28 h-20 md:w-40 md:h-24 relative flex-shrink-0 group">
                   <Image
@@ -1777,10 +1783,10 @@ export default function Home() {
                 initial={{ opacity: 0, x: 40 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-                viewport={{ once: true, margin: "-50px" }}
-                className="lg:w-1/2 order-1 lg:order-2"
+                viewport={{ once: true, margin: "0px" }}
+                className="order-1 lg:order-2 w-full lg:w-1/2"
               >
-                <div className="relative w-full max-w-2xl mx-auto">
+                <div className="relative w-full  mx-auto">
                   <div className=" shadow-2xl border border-orange-600/30 overflow-hidden bg-gray-900">
                     <iframe
                       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2435.8!2d-0.1857!3d52.3284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4877e9a1a1a1a1a1%3A0x1234567890abcdef!2sUnit%204-5%20Cinch%20Storage%2C%20St%20Margarets%20Way%2C%20Huntingdon%20PE29%206EB!5e0!3m2!1sen!2suk!4v1700000000000!5m2!1sen!2suk"

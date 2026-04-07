@@ -143,8 +143,8 @@ export default function ServiceEstimatorComponent() {
               type="submit"
               disabled={isLoading || !registrationNumber.trim()}
               className={`group relative inline-flex items-center justify-center px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 overflow-hidden ${isLoading || !registrationNumber.trim()
-                  ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
-                  : 'bg-orange-600 hover:bg-orange-700 text-white shadow-lg hover:shadow-xl'
+                ? 'bg-gray-300 text-gray-400 cursor-not-allowed'
+                : 'bg-orange-600 hover:bg-orange-700 text-white shadow-lg hover:shadow-xl'
                 }`}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>

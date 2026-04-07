@@ -109,9 +109,9 @@ export default function ContactUs() {
       </section>
 
       {/* Contact Form and Info */}
-      <section className="w-full py-20 bg-black">
+      <section className="w-full py-10 md:py-20 bg-black">
         <div className="w-full px-6">
-          <div className="max-w-6xl mx-auto bg-black border border-orange-600/30 p-8 md:p-12">
+          <div className="max-w-6xl mx-auto bg-black border border-orange-600/30 p-2 py-4 md:p-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
 
               {/* Contact Information */}
@@ -169,7 +169,7 @@ export default function ContactUs() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className="bg-black/60 border border-gray-600 p-8 backdrop-blur-sm"
+                className="bg-black/60 md:border border-gray-600  md:p-8 backdrop-blur-sm"
               >
                 <h2 className="text-3xl font-bold mb-8 font-orbitron uppercase tracking-wider">Send Us a <span className="text-orange-600">Message</span></h2>
 
@@ -306,9 +306,9 @@ export default function ContactUs() {
       </section>
 
       {/* FAQ Section */}
-      <section className="w-full py-20 bg-black">
+      <section className="w-full py-10 md:py-20 bg-black">
         <div className="w-full px-6">
-          <div className="max-w-6xl mx-auto bg-black border border-orange-600/30 p-8 md:p-12">
+          <div className="max-w-6xl mx-auto bg-black border border-orange-600/30 p-2 py-4 md:p-12">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -357,9 +357,9 @@ export default function ContactUs() {
       </section>
 
       {/* Map Section */}
-      <section className="w-full py-20 bg-black">
+      <section className="w-full py-10 md:py-20 bg-black">
         <div className="w-full px-6">
-          <div className="max-w-6xl mx-auto bg-black border border-orange-600/30 p-8 md:p-12">
+          <div className="max-w-6xl mx-auto bg-black border border-orange-600/30 p-2 py-4 md:p-12">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
