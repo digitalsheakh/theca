@@ -18,10 +18,9 @@ export default function TransmissionPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
 
-        <ServiceHeroBadge title="TRANSMISSION SERVICES" />
-
         <div className="relative z-10 container mx-auto px-8 h-full flex items-center">
           <div className="max-w-4xl">
+            <TitleBadge title="TRANSMISSION SERVICES" />
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-8 font-orbitron uppercase tracking-wider leading-tight bg-black/50 p-4">
               DUAL MASS FLYWHEEL & FLYWHEEL REPLACEMENT
             </h1>
