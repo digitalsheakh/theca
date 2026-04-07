@@ -13,25 +13,11 @@ export default function Footer() {
       <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(255,255,255,0.05)]"></div>
       <div className="w-full px-6 relative z-10">
         <div className="max-w-screen-2xl mx-auto">
-          {/* Logo and social media */}
-          <div className="flex flex-col lg:flex-row justify-between items-center mb-16">
-            <div className="flex items-center mb-8 lg:mb-0">
+          {/* Logo */}
+          <div className="flex flex-col lg:flex-row justify-between items-center mb-14">
+            <div className="flex items-center lg:mb-0">
               <span className="text-orange-600 font-bold text-2xl sm:text-3xl lg:text-4xl font-orbitron uppercase tracking-wider">THE CAR</span>
               <span className="text-white font-bold text-2xl sm:text-3xl lg:text-4xl font-orbitron uppercase tracking-wider ml-2">EDITION</span>
-            </div>
-            <div className="flex space-x-6">
-              <a href="https://www.facebook.com/people/The-Car-Edition-Ltd/100084497851944/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center text-white hover:bg-orange-600 hover:text-white transition-all duration-300 group">
-                <FaFacebookF className="h-5 w-5 group-hover:scale-110 transition-transform" />
-              </a>
-              <a href="https://www.instagram.com/thecareditionltd/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center text-white hover:bg-orange-600 hover:text-white transition-all duration-300 group">
-                <FaInstagram className="h-5 w-5 group-hover:scale-110 transition-transform" />
-              </a>
-              <a href="https://www.tiktok.com/@thecareditionltd" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center text-white hover:bg-orange-600 hover:text-white transition-all duration-300 group">
-                <FaTiktok className="h-5 w-5 group-hover:scale-110 transition-transform" />
-              </a>
-              <a href="https://www.youtube.com/channel/UCj8QxUrDgfMmmwafBdc28Bg" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center text-white hover:bg-orange-600 hover:text-white transition-all duration-300 group">
-                <FaYoutube className="h-5 w-5 group-hover:scale-110 transition-transform" />
-              </a>
             </div>
           </div>
         
@@ -135,6 +121,20 @@ export default function Footer() {
                   <p>info@thecaredition.co.uk</p>
                 </div>
               </address>
+              <div className="flex gap-2 mt-4">
+                <a href="https://www.facebook.com/people/The-Car-Edition-Ltd/100084497851944/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-gray-800 flex items-center justify-center text-white hover:bg-orange-600 hover:text-white transition-all duration-300 group">
+                  <FaFacebookF className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.instagram.com/thecareditionltd/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-gray-800  flex items-center justify-center text-white hover:bg-orange-600 hover:text-white transition-all duration-300 group">
+                  <FaInstagram className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.tiktok.com/@thecareditionltd" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-gray-800  flex items-center justify-center text-white hover:bg-orange-600 hover:text-white transition-all duration-300 group">
+                  <FaTiktok className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="https://www.youtube.com/channel/UCj8QxUrDgfMmmwafBdc28Bg" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-gray-800 flex items-center justify-center text-white hover:bg-orange-600 hover:text-white transition-all duration-300 group">
+                  <FaYoutube className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                </a>
+              </div>
             </div>
           </div>
           

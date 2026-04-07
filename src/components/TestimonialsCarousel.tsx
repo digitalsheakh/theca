@@ -6,6 +6,7 @@ import { FaArrowLeft, FaArrowRight, FaGoogle } from 'react-icons/fa';
 import { BsStarFill } from 'react-icons/bs';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 import { motion } from 'framer-motion';
+import TitleBadge from './TitleBadge';
 
 interface Review {
   id: string;
@@ -193,10 +194,8 @@ export default function TestimonialsCarousel({
             viewport={{ once: true, amount: 0.3 }}
             variants={fadeInUp}
           >
-            <div className="border-l-4 border-orange-600 pl-6 mb-6 inline-block">
-              <p className="text-orange-600 text-sm font-bold uppercase tracking-wider font-rajdhani mb-2">
-                CLIENT TESTIMONIALS
-              </p>
+            <div className="flex items-center justify-center">
+              <TitleBadge title="CLIENT TESTIMONIALS" />
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-black uppercase font-orbitron tracking-wider leading-tight mb-4">
               WHAT OUR CLIENTS
@@ -225,7 +224,7 @@ export default function TestimonialsCarousel({
                   {reviews.slice(0, 3).map((review) => (
                     <div 
                       key={review.id} 
-                      className="bg-white border border-gray-200 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full"
+                      className="bg-white border border-gray-200 p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full"
                     >
                       {/* Google Logo and Stars */}
                       <div className="flex items-center justify-between mb-4">
@@ -263,7 +262,7 @@ export default function TestimonialsCarousel({
                     {reviews.slice(3, 6).map((review) => (
                       <div 
                         key={review.id} 
-                        className="bg-white border border-gray-200 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full"
+                        className="bg-white border border-gray-200 p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full"
                       >
                         {/* Google Logo and Stars */}
                         <div className="flex items-center justify-between mb-4">
@@ -326,7 +325,7 @@ export default function TestimonialsCarousel({
             href="https://g.co/kgs/pGmWczy" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-flex items-center bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-colors duration-300 rounded-lg shadow-lg"
+            className="inline-flex items-center bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-colors duration-300 shadow-lg"
           >
             <FaGoogle className="mr-3 w-5 h-5" />
             <span>VIEW ALL GOOGLE REVIEWS</span>

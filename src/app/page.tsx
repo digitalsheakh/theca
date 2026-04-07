@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import VideoPlayer from '@/components/VideoPlayer';
 import TestimonialsCarousel from '@/components/TestimonialsCarousel';
 import ScrollAnimation from '@/components/ScrollAnimation';
+import TitleBadge from '@/components/TitleBadge';
 import { useSession } from 'next-auth/react';
 
 export default function Home() {
@@ -417,15 +418,9 @@ export default function Home() {
               viewport={{ once: true, margin: "-80px" }}
               className="text-center mb-16"
             >
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
-                viewport={{ once: true }}
-                className="inline-block bg-orange-600 text-white px-4 py-2 rounded-full text-sm font-rajdhani font-bold uppercase tracking-wider mb-6"
-              >
-                Most Requested
-              </motion.div>
+              <div className="flex items-center justify-center">
+                <TitleBadge title="Most Requested" />
+              </div>
               <motion.h2 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -848,7 +843,7 @@ export default function Home() {
             <div className="text-center">
               <Link
                 href="/service-estimator"
-                className="inline-flex items-center bg-orange-600 hover:bg-orange-600 text-white px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-colors duration-300 rounded-lg"
+                className="inline-flex items-center bg-orange-600 hover:bg-orange-600 text-white px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-colors duration-300"
               >
                 Book Your Service Today
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -871,10 +866,8 @@ export default function Home() {
         <div className="w-full px-6">
           <div className="max-w-screen-2xl mx-auto">
             <div className="text-center mb-16">
-              <div className="border-l-4 border-orange-600 pl-6 mb-8 inline-block">
-                <p className="text-orange-500 text-sm font-bold uppercase tracking-wider font-rajdhani mb-2">
-                  AUTOMOTIVE EXCELLENCE
-                </p>
+              <div className="flex items-center justify-center">
+                <TitleBadge title="AUTOMOTIVE EXCELLENCE" />
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-white uppercase font-orbitron tracking-wider leading-tight mb-6">TRUSTED BY LEADING BRANDS</h2>
               <p className="text-lg text-gray-300 font-rajdhani max-w-3xl mx-auto leading-relaxed">
@@ -883,7 +876,7 @@ export default function Home() {
             </div>
             
             {/* Marquee Container */}
-            <div className="relative overflow-hidden bg-black py-12 rounded-2xl border border-gray-800">
+            <div className="relative overflow-hidden bg-black py-12 border border-gray-800">
               {/* Continuous Marquee - No gaps, always filled */}
               <div className="flex animate-marquee hover:pause-marquee space-x-16">
                 {/* First set of logos - 9 brands (removed Rolls-Royce and Mini) */}
@@ -1074,7 +1067,7 @@ export default function Home() {
           <div className="max-w-screen-2xl mx-auto">
             <div className="flex flex-col lg:flex-row items-center gap-16">
               <div className="lg:w-1/2">
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-800">
+                <div className="relative overflow-hidden shadow-2xl border border-gray-800">
                   <video 
                     src="/video/the_car_editon.mp4" 
                     autoPlay
@@ -1090,10 +1083,8 @@ export default function Home() {
                 </div>
               </div>
               <div className="lg:w-1/2">
-                <div className="border-l-4 border-orange-600 pl-6 mb-8">
-                  <p className="text-orange-500 text-sm font-bold uppercase tracking-wider font-rajdhani mb-2">
-                    15 YEARS OF AUTOMOTIVE EXCELLENCE
-                  </p>
+                <div className="flex items-center justify-left">
+                  <TitleBadge title="15 YEARS OF AUTOMOTIVE EXCELLENCE" />
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-white uppercase font-orbitron tracking-wider leading-tight mb-4">
                   WELCOME TO
@@ -1105,10 +1096,10 @@ export default function Home() {
                   With 15 years of experience, The Car Edition is a trusted provider of high-quality used cars and comprehensive automotive services. Our qualified team of mechanics delivers professional solutions for all your vehicle needs, from routine maintenance to complex engine rebuilds and advanced diagnostics.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Link href="/services" className="inline-flex items-center bg-white text-black hover:bg-gray-200 px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-colors duration-300 rounded-lg">
+                  <Link href="/services" className="inline-flex items-center bg-white text-black hover:bg-gray-200 px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-colors duration-300">
                     <span className="mr-3 text-orange-500 text-lg">+</span> EXPLORE SERVICES
                   </Link>
-                  <Link href="/about-us" className="inline-flex items-center bg-orange-600 hover:bg-orange-600 text-white px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-colors duration-300 rounded-lg">
+                  <Link href="/about-us" className="inline-flex items-center bg-orange-600 hover:bg-orange-600 text-white px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-colors duration-300">
                     <span className="mr-3 text-lg">→</span> LEARN MORE
                   </Link>
                 </div>
@@ -1154,15 +1145,9 @@ export default function Home() {
                 viewport={{ once: true, amount: 0.3 }}
                 variants={staggerContainer}
               >
-                <motion.div variants={fadeInUp} className="border-l-4 border-orange-600 pl-4 mb-6">
-                  <p className="text-orange-500 text-xs font-bold uppercase tracking-wider font-rajdhani">
-                    PROFESSIONAL SERVICES
-                  </p>
-                </motion.div>
-                {/* Orange Badge */}
-                <motion.div variants={fadeInUp} className="inline-block bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-rajdhani font-bold uppercase tracking-wider mb-6">
-                  Trusted by enthusiasts
-                </motion.div>
+                <div className="flex items-center justify-left">
+                  <TitleBadge title="Trusted by enthusiasts" />
+                </div>
                 
                 <motion.h2 variants={fadeInUp} className="text-3xl md:text-4xl font-bold text-white uppercase font-orbitron tracking-wider leading-tight mb-6">
                   Why Choose <span className="text-orange-500">The Car Edition</span>
@@ -1226,10 +1211,10 @@ export default function Home() {
                 
                 {/* Call to Action Buttons */}
                 <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4">
-                  <Link href="/services" className="inline-flex items-center justify-center bg-orange-600 hover:bg-orange-600 text-white px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-colors duration-300 rounded-lg">
+                  <Link href="/services" className="inline-flex items-center justify-center bg-orange-600 hover:bg-orange-600 text-white px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-colors duration-300">
                     VIEW SERVICES
                   </Link>
-                  <Link href="/contact-us" className="inline-flex items-center justify-center border-2 border-white text-white hover:bg-white hover:text-black px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 rounded-lg">
+                  <Link href="/contact-us" className="inline-flex items-center justify-center border-2 border-white text-white hover:bg-white hover:text-black px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-300">
                     CONTACT US
                   </Link>
                 </motion.div>
@@ -1261,18 +1246,9 @@ export default function Home() {
               viewport={{ once: true, margin: "-80px" }}
               className="text-center mb-20"
             >
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
-                viewport={{ once: true }}
-                className="inline-flex items-center gap-2 bg-orange-600/10 border border-orange-600/30 rounded-full px-6 py-2 mb-6"
-              >
-                <div className="w-2 h-2 bg-orange-600 rounded-full animate-pulse"></div>
-                <p className="text-orange-500 text-sm font-bold uppercase tracking-wider font-rajdhani">
-                  PROFESSIONAL EXPERTISE
-                </p>
-              </motion.div>
+              <div className="flex items-center justify-center">
+                <TitleBadge title="PROFESSIONAL EXPERTISE" />
+              </div>
               <motion.h2 
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1294,7 +1270,30 @@ export default function Home() {
             </motion.div>
           
             {/* Service Tabs */}
-            <div className="flex flex-wrap justify-center gap-3 mb-12">
+            {/* Mobile — Selection bar */}
+            <div className="sm:hidden mb-8 w-full min-w-0">
+              <div className="relative border-2 border-orange-600 bg-gray-900 w-full min-w-0 box-border">
+                <select
+                  value={activeServiceTab}
+                  onChange={(e) => setActiveServiceTab(Number(e.target.value))}
+                  className="w-full min-w-0 h-fit block bg-transparent text-white font-bold text-xs uppercase pl-4 pr-8 py-4 appearance-none cursor-pointer focus:outline-none"
+                >
+                  {['Diagnostics & Electrical', 'Keys & Security', 'Performance & Tuning', 'Servicing & Maintenance', 'Tyres & Alignment', 'Mechanical Repairs'].map((name, index) => (
+                    <option key={index} value={index} className="bg-gray-900 text-white font-rajdhani text-sm uppercase my-2">
+                      {name}
+                    </option>
+                  ))}
+                </select>
+                <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none text-orange-500">
+                  <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
+              <div className="h-0.5 bg-orange-600 w-full" />
+            </div>
+            {/* Desktop — Button grid */}
+            <div className="hidden sm:flex flex-wrap justify-center gap-3 mb-12">
               {[
                 { 
                   name: 'Diagnostics & Electrical', 
@@ -1349,7 +1348,7 @@ export default function Home() {
                 <button
                   key={index}
                   onClick={() => setActiveServiceTab(index)}
-                  className={`group relative flex flex-col items-center justify-center px-6 py-4 rounded-xl transition-all duration-300 border-2 ${
+                  className={`group relative flex flex-col items-center justify-center px-6 py-4 transition-all duration-300 border-2 flex-stretch ${
                     activeServiceTab === index
                       ? 'bg-orange-600 border-orange-500 text-white shadow-lg scale-105'
                       : 'bg-gray-900/50 border-gray-800 text-white hover:bg-gray-800/80 hover:border-orange-600/50 hover:scale-105'
@@ -1360,14 +1359,14 @@ export default function Home() {
                   </div>
                   <span className="text-xs font-rajdhani font-bold uppercase tracking-wide">{service.name}</span>
                   {activeServiceTab === index && (
-                    <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-8 h-1 bg-orange-500 rounded-full"></div>
+                    <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-8 h-1 bg-orange-500"></div>
                   )}
                 </button>
               ))}
             </div>
 
             {/* Service Content */}
-            <div className="bg-gray-900/30 backdrop-blur-sm rounded-2xl p-8 border-2 border-gray-800/50 shadow-2xl">
+            <div className="bg-gray-900/30 backdrop-blur-sm p-4 sm:p-6 md:p-8 border-2 border-gray-800/50 shadow-2xl">
               {/* Diagnostics & Electrical */}
               {activeServiceTab === 0 && (
                 <div className="animate-fadeIn">
@@ -1682,10 +1681,10 @@ export default function Home() {
                   viewport={{ once: true }}
                   className="flex flex-col sm:flex-row gap-4"
                 >
-                  <a href="tel:01480759004" className="inline-flex items-center bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 rounded-lg hover:scale-105 hover:shadow-lg">
+                  <a href="tel:01480759004" className="inline-flex items-center justify-center bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-200 hover:scale-105">
                     BOOK APPOINTMENT
                   </a>
-                  <a href="tel:01480759004" className="inline-flex items-center border-2 border-white text-white hover:bg-white hover:text-black px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 rounded-lg hover:scale-105">
+                  <a href="tel:01480759004" className="inline-flex items-center justify-center border-2 border-white text-white hover:bg-white hover:text-black px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-200 hover:scale-105">
                     CALL US NOW
                   </a>
                 </motion.div>
