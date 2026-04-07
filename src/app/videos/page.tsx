@@ -201,7 +201,7 @@ export default function VideosPage() {
                 </p>
 
                 {/* Social Links */}
-                <div className="flex flex-wrap gap-3 pt-4">
+                <div className="grid grid-cols-2 md:grid-cols-4  gap-3 pt-4">
                   <a
                     href="https://www.youtube.com/@thecareditionltd"
                     target="_blank"
