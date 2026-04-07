@@ -9,13 +9,20 @@ import TestimonialsCarousel from '@/components/TestimonialsCarousel';
 import ScrollAnimation from '@/components/ScrollAnimation';
 import TitleBadge from '@/components/TitleBadge';
 import { useSession } from 'next-auth/react';
+import GlobalLoading from '@/components/GlobalLoading';
 
 export default function Home() {
+  const [isMounted, setIsMounted] = useState(false);
   const session = useSession();
   const sliderRef = useRef<HTMLDivElement>(null);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [expandedService, setExpandedService] = useState<number | null>(null);
   const [activeServiceTab, setActiveServiceTab] = useState(0);
+
+  // Set mounted flag on first render
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Animation variants for scroll animations
   const fadeInUp = {
@@ -108,6 +115,10 @@ export default function Home() {
 
     return () => clearInterval(servicesInterval);
   }, [autoScrollEnabled]);
+
+  if (!isMounted) {
+    return <GlobalLoading />;
+  }
 
   return (
     <main className=" text-white font-heading bg-black">
@@ -440,14 +451,14 @@ export default function Home() {
               </motion.p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 items-start">
+            <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
               {/* Service Card 1 - Ford Wet Belt Replacement */}
               <div
-                className={` overflow-hidden shadow-2xl border transition-all duration-300 cursor-pointer h-full flex flex-col ${expandedService === 0 ? 'border-orange-500 bg-black' : 'border-orange-600/30 hover:border-orange-500 bg-[#0a0a0a]'
+                className={`relative overflow-visible shadow-2xl border transition-all duration-300 cursor-pointer flex flex-col ${expandedService === 0 ? 'border-orange-500 bg-black z-50' : 'border-orange-600/30 hover:border-orange-500 bg-[#0a0a0a] z-0'
                   }`}
                 onClick={(e) => toggleService(0, e)}
               >
-                <div className="p-4 flex flex-col h-full">
+                <div className="p-4 flex flex-col">
                   {/* Expand/collapse indicator at top */}
                   <div className="flex items-center justify-end pb-3 border-b border-white/10 mb-3">
                     <div className="text-orange-500">
@@ -473,30 +484,42 @@ export default function Home() {
                   </div>
 
                   {/* Expandable Details */}
-                  <div className={`transition-all duration-150 ${expandedService === 0 ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0 overflow-hidden'
+                  <div className={`transition-all duration-150 ${expandedService === 0 ? 'max-h-96 opacity-100 mb-4 md:absolute md:left-0 md:right-0 md:top-full md:mt-0 md:bg-black md:border md:border-orange-500 md:z-50 md:shadow-2xl md:p-4 md:max-h-none md:mb-0' : 'max-h-0 opacity-0 overflow-hidden md:hidden md:opacity-0'
                     }`}>
-                    <div className="space-y-2">
+                    <div className="space-y-3">
                       <div className="border-b border-orange-600/30 pb-2 mb-2">
-                        <div className="flex justify-between items-center">
+                        <div className="grid grid-cols-[1fr_auto] gap-2">
                           <span className="text-gray-300 font-rajdhani text-xs">Ford Focus & Transit 2.0L</span>
-                          <span className="text-orange-500 font-orbitron text-xs font-bold">from £1,450 + VAT</span>
+                          <div className="text-orange-500 font-orbitron text-xs font-bold flex flex-col text-right">
+                            <span>from</span>
+                            <span>£1,450 + VAT</span>
+                          </div>
                         </div>
                       </div>
                       <div className="border-b border-orange-600/30 pb-2 mb-2">
-                        <div className="flex justify-between items-center">
+                        <div className="grid grid-cols-[1fr_auto] gap-2">
                           <span className="text-gray-300 font-rajdhani text-xs">Transit (RWD) 2.0L</span>
-                          <span className="text-orange-500 font-orbitron text-xs font-bold">from £1,550 + VAT</span>
+                          <div className="text-orange-500 font-orbitron text-xs font-bold flex flex-col text-right">
+                            <span>from</span>
+                            <span>£1,550 + VAT</span>
+                          </div>
                         </div>
                       </div>
                       <div className="border-b border-orange-600/30 pb-2 mb-2">
-                        <div className="flex justify-between items-center">
+                        <div className="grid grid-cols-[1fr_auto] gap-2">
                           <span className="text-gray-300 font-rajdhani text-xs">Ford Ranger 2.0L</span>
-                          <span className="text-orange-500 font-orbitron text-xs font-bold">from £1,750 + VAT</span>
+                          <div className="text-orange-500 font-orbitron text-xs font-bold flex flex-col text-right">
+                            <span>from</span>
+                            <span>£1,750 + VAT</span>
+                          </div>
                         </div>
                       </div>
-                      <div className="flex justify-between items-center">
+                      <div className="grid grid-cols-[1fr_auto] gap-2">
                         <span className="text-gray-300 font-rajdhani text-xs">Ford Fiesta 1.0L EcoBoost</span>
-                        <span className="text-orange-500 font-orbitron text-xs font-bold">from £1,500 + VAT</span>
+                        <div className="text-orange-500 font-orbitron text-xs font-bold flex flex-col text-right">
+                          <span>from</span>
+                          <span>£1,500 + VAT</span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -505,11 +528,11 @@ export default function Home() {
 
               {/* Service Card 2 - Timing Chain Replacement */}
               <div
-                className={` overflow-hidden shadow-2xl border transition-all duration-300 cursor-pointer h-full flex flex-col ${expandedService === 1 ? 'border-orange-500 bg-black' : 'border-orange-600/30 hover:border-orange-500 bg-[#0a0a0a]'
+                className={`relative overflow-visible shadow-2xl border transition-all duration-300 cursor-pointer flex flex-col ${expandedService === 1 ? 'border-orange-500 bg-black z-50' : 'border-orange-600/30 hover:border-orange-500 bg-[#0a0a0a] z-0'
                   }`}
                 onClick={(e) => toggleService(1, e)}
               >
-                <div className="p-4 flex flex-col h-full">
+                <div className="p-4 flex flex-col">
                   {/* Expand/collapse indicator at top */}
                   <div className="flex items-center justify-end pb-3 border-b border-white/10 mb-3">
                     <div className="text-orange-500">
@@ -535,52 +558,73 @@ export default function Home() {
                   </div>
 
                   {/* Expandable Details */}
-                  <div className={`transition-all duration-150 ${expandedService === 1 ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0 overflow-hidden'
+                  <div className={`transition-all duration-150 ${expandedService === 1 ? 'max-h-96 opacity-100 mb-4 md:absolute md:left-0 md:right-0 md:top-full md:mt-0 md:bg-black md:border md:border-orange-500 md:z-50 md:shadow-2xl md:p-4 md:max-h-none md:mb-0' : 'max-h-0 opacity-0 overflow-hidden md:hidden md:opacity-0'
                     }`}>
-                    <div className="space-y-2">
+                    <div className="space-y-3">
                       <div className="border-b border-orange-600/30 pb-2 mb-3">
                         <div className="text-orange-500 font-orbitron text-xs font-bold mb-2">Ford</div>
                         <div className="space-y-1">
-                          <div className="flex justify-between items-center">
+                          <div className="grid grid-cols-[1fr_auto] gap-2">
                             <span className="text-gray-300 font-rajdhani text-xs">Ranger 3.2L TDCi</span>
-                            <span className="text-orange-500 font-orbitron text-xs font-bold">from £1,800 + VAT</span>
+                            <div className="text-orange-500 font-orbitron text-xs font-bold flex flex-col text-right">
+                              <span>from</span>
+                              <span>£1,800 + VAT</span>
+                            </div>
                           </div>
-                          <div className="flex justify-between items-center">
+                          <div className="grid grid-cols-[1fr_auto] gap-2">
                             <span className="text-gray-300 font-rajdhani text-xs">Transit 2.2L TDCi</span>
-                            <span className="text-orange-500 font-orbitron text-xs font-bold">from £1,500 + VAT</span>
+                            <div className="text-orange-500 font-orbitron text-xs font-bold flex flex-col text-right">
+                              <span>from</span>
+                              <span>£1,500 + VAT</span>
+                            </div>
                           </div>
                         </div>
                       </div>
                       <div className="border-b border-orange-600/30 pb-2 mb-3">
                         <div className="text-orange-500 font-orbitron text-xs font-bold mb-2">BMW</div>
                         <div className="space-y-1">
-                          <div className="flex justify-between items-center">
+                          <div className="grid grid-cols-[1fr_auto] gap-2">
                             <span className="text-gray-300 font-rajdhani text-xs">N47 (118d / 320d / 520d / X1 / X3)(+£400 if xDrive)</span>
-                            <span className="text-orange-500 font-orbitron text-xs font-bold">from £1,750 + VAT</span>
+                            <div className="text-orange-500 font-orbitron text-xs font-bold flex flex-col text-right">
+                              <span>from</span>
+                              <span>£1,750 + VAT</span>
+                            </div>
                           </div>
-                          <div className="flex justify-between items-center">
+                          <div className="grid grid-cols-[1fr_auto] gap-2">
                             <span className="text-gray-300 font-rajdhani text-xs">N57 (330d / 530d / 730d / X5 / X6)(+£500 if xDrive)</span>
-                            <span className="text-orange-500 font-orbitron text-xs font-bold">from £1,850 + VAT</span>
+                            <div className="text-orange-500 font-orbitron text-xs font-bold flex flex-col text-right">
+                              <span>from</span>
+                              <span>£1,850 + VAT</span>
+                            </div>
                           </div>
-                          <div className="flex justify-between items-center">
+                          <div className="grid grid-cols-[1fr_auto] gap-2">
                             <span className="text-gray-300 font-rajdhani text-xs">N52 (125i / 325i / 525i / Z4 / X3)</span>
-                            <span className="text-orange-500 font-orbitron text-xs font-bold">from £2,050 + VAT</span>
+                            <div className="text-orange-500 font-orbitron text-xs font-bold flex flex-col text-right">
+                              <span>from</span>
+                              <span>£2,050 + VAT</span>
+                            </div>
                           </div>
-                          <div className="flex justify-between items-center">
+                          <div className="grid grid-cols-[1fr_auto] gap-2">
                             <span className="text-gray-300 font-rajdhani text-xs">B47 (320d / 520d / X3 / X4 / Mini)</span>
-                            <span className="text-orange-500 font-orbitron text-xs font-bold">from £1,950 + VAT</span>
+                            <div className="text-orange-500 font-orbitron text-xs font-bold flex flex-col text-right">
+                              <span>from</span>
+                              <span>£1,950 + VAT</span>
+                            </div>
                           </div>
-                          <div className="flex justify-between items-center">
+                          <div className="grid grid-cols-[1fr_auto] gap-2">
                             <span className="text-gray-300 font-rajdhani text-xs">B37 (116d / 118d / Mini)</span>
-                            <span className="text-orange-500 font-orbitron text-xs font-bold">from £1,950 + VAT</span>
+                            <div className="text-orange-500 font-orbitron text-xs font-bold flex flex-col text-right">
+                              <span>from</span>
+                              <span>£1,950 + VAT</span>
+                            </div>
                           </div>
                         </div>
                       </div>
                       <div>
                         <div className="text-orange-500 font-orbitron text-xs font-bold mb-2">Mercedes-Benz OM651 2.1L</div>
-                        <div className="flex justify-between items-center">
+                        <div className="grid grid-cols-[1fr_auto] gap-2">
                           <span className="text-gray-300 font-rajdhani text-xs">C-Class / E-Class / Vito / Sprinter</span>
-                          <span className="text-orange-500 font-orbitron text-xs font-bold">from £1,850 + VAT</span>
+                          <span className="text-orange-500 font-orbitron text-xs font-bold whitespace-nowrap">from £1,850 + VAT</span>
                         </div>
                       </div>
                     </div>
@@ -591,11 +635,11 @@ export default function Home() {
 
               {/* Service Card 3 - Performance and ECU Tuning */}
               <div
-                className={` overflow-hidden shadow-2xl border transition-all duration-300 cursor-pointer h-full flex flex-col ${expandedService === 2 ? 'border-orange-500 bg-black' : 'border-orange-600/30 hover:border-orange-500 bg-[#0a0a0a]'
+                className={`relative overflow-visible shadow-2xl border transition-all duration-300 cursor-pointer flex flex-col ${expandedService === 2 ? 'border-orange-500 bg-black z-50' : 'border-orange-600/30 hover:border-orange-500 bg-[#0a0a0a] z-0'
                   }`}
                 onClick={(e) => toggleService(2, e)}
               >
-                <div className="p-4 flex flex-col h-full">
+                <div className="p-4 flex flex-col">
                   {/* Expand/collapse indicator at top */}
                   <div className="flex items-center justify-end pb-3 border-b border-white/10 mb-3">
                     <div className="text-orange-500">
@@ -621,28 +665,43 @@ export default function Home() {
                   </div>
 
                   {/* Expandable Details */}
-                  <div className={`transition-all duration-150 ${expandedService === 2 ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0 overflow-hidden'
+                  <div className={`transition-all duration-150 ${expandedService === 2 ? 'max-h-96 opacity-100 mb-4 md:absolute md:left-0 md:right-0 md:top-full md:mt-0 md:bg-black md:border md:border-orange-500 md:z-50 md:shadow-2xl md:p-4 md:max-h-none md:mb-0' : 'max-h-0 opacity-0 overflow-hidden md:hidden md:opacity-0'
                     }`}>
-                    <div className="space-y-2">
-                      <div className="flex justify-between items-center">
+                    <div className="space-y-3">
+                      <div className="grid grid-cols-[1fr_auto] gap-2">
                         <span className="text-gray-300 font-rajdhani text-xs">Stage 1 Remap</span>
-                        <span className="text-orange-500 font-orbitron text-xs font-bold">from £199 + VAT</span>
+                        <div className="text-orange-500 font-orbitron text-xs font-bold flex flex-col text-right">
+                          <span>from</span>
+                          <span>£199 + VAT</span>
+                        </div>
                       </div>
-                      <div className="flex justify-between items-center">
+                      <div className="grid grid-cols-[1fr_auto] gap-2">
                         <span className="text-gray-300 font-rajdhani text-xs">AdBlue Delete</span>
-                        <span className="text-orange-500 font-orbitron text-xs font-bold">from £249 + VAT</span>
+                        <div className="text-orange-500 font-orbitron text-xs font-bold flex flex-col text-right">
+                          <span>from</span>
+                          <span>£249 + VAT</span>
+                        </div>
                       </div>
-                      <div className="flex justify-between items-center">
+                      <div className="grid grid-cols-[1fr_auto] gap-2">
                         <span className="text-gray-300 font-rajdhani text-xs">ECU Cloning (OBD)</span>
-                        <span className="text-orange-500 font-orbitron text-xs font-bold">from £49 + VAT</span>
+                        <div className="text-orange-500 font-orbitron text-xs font-bold flex flex-col text-right">
+                          <span>from</span>
+                          <span>£49 + VAT</span>
+                        </div>
                       </div>
-                      <div className="flex justify-between items-center">
+                      <div className="grid grid-cols-[1fr_auto] gap-2">
                         <span className="text-gray-300 font-rajdhani text-xs">ECU Cloning (Bench)</span>
-                        <span className="text-orange-500 font-orbitron text-xs font-bold">from £119 + VAT</span>
+                        <div className="text-orange-500 font-orbitron text-xs font-bold flex flex-col text-right">
+                          <span>from</span>
+                          <span>£119 + VAT</span>
+                        </div>
                       </div>
-                      <div className="flex justify-between items-center">
+                      <div className="grid grid-cols-[1fr_auto] gap-2">
                         <span className="text-gray-300 font-rajdhani text-xs">ECU Recovery</span>
-                        <span className="text-orange-500 font-orbitron text-xs font-bold">from £99 + VAT</span>
+                        <div className="text-orange-500 font-orbitron text-xs font-bold flex flex-col text-right">
+                          <span>from</span>
+                          <span>£99 + VAT</span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -652,11 +711,11 @@ export default function Home() {
 
               {/* Service Card 4 - Car Key & Immobiliser */}
               <div
-                className={` overflow-hidden shadow-2xl border transition-all duration-300 cursor-pointer h-full flex flex-col ${expandedService === 3 ? 'border-orange-500 bg-black' : 'border-orange-600/30 hover:border-orange-500 bg-[#0a0a0a]'
+                className={`relative overflow-visible shadow-2xl border transition-all duration-300 cursor-pointer flex flex-col ${expandedService === 3 ? 'border-orange-500 bg-black z-50' : 'border-orange-600/30 hover:border-orange-500 bg-[#0a0a0a] z-0'
                   }`}
                 onClick={(e) => toggleService(3, e)}
               >
-                <div className="p-4 flex flex-col h-full">
+                <div className="p-4 flex flex-col">
                   {/* Expand/collapse indicator at top */}
                   <div className="flex items-center justify-end pb-3 border-b border-white/10 mb-3">
                     <div className="text-orange-500">
@@ -682,20 +741,29 @@ export default function Home() {
                   </div>
 
                   {/* Expandable Details */}
-                  <div className={`transition-all duration-150 ${expandedService === 3 ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0 overflow-hidden'
+                  <div className={`transition-all duration-150 ${expandedService === 3 ? 'max-h-96 opacity-100 mb-4 md:absolute md:left-0 md:right-0 md:top-full md:mt-0 md:bg-black md:border md:border-orange-500 md:z-50 md:shadow-2xl md:p-4 md:max-h-none md:mb-0' : 'max-h-0 opacity-0 overflow-hidden md:hidden md:opacity-0'
                     }`}>
-                    <div className="space-y-2">
-                      <div className="flex justify-between items-center">
+                    <div className="space-y-3">
+                      <div className="grid grid-cols-[1fr_auto] gap-2">
                         <span className="text-gray-300 font-rajdhani text-xs">Emergency Vehicle Opening</span>
-                        <span className="text-orange-500 font-orbitron text-xs font-bold">from £99 + VAT</span>
+                        <div className="text-orange-500 font-orbitron text-xs font-bold flex flex-col text-right">
+                          <span>from</span>
+                          <span>£99 + VAT</span>
+                        </div>
                       </div>
-                      <div className="flex justify-between items-center">
+                      <div className="grid grid-cols-[1fr_auto] gap-2">
                         <span className="text-gray-300 font-rajdhani text-xs">Additional Key</span>
-                        <span className="text-orange-500 font-orbitron text-xs font-bold">from £199 + VAT</span>
+                        <div className="text-orange-500 font-orbitron text-xs font-bold flex flex-col text-right">
+                          <span>from</span>
+                          <span>£199 + VAT</span>
+                        </div>
                       </div>
-                      <div className="flex justify-between items-center">
+                      <div className="grid grid-cols-[1fr_auto] gap-2">
                         <span className="text-gray-300 font-rajdhani text-xs">All Keys Lost (inc. 2 keys)</span>
-                        <span className="text-orange-500 font-orbitron text-xs font-bold">from £399 + VAT</span>
+                        <div className="text-orange-500 font-orbitron text-xs font-bold flex flex-col text-right">
+                          <span>from</span>
+                          <span>£399 + VAT</span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -705,11 +773,11 @@ export default function Home() {
 
               {/* Service Card 5 - Full Service */}
               <div
-                className={` overflow-hidden shadow-2xl border transition-all duration-300 cursor-pointer h-full flex flex-col ${expandedService === 4 ? 'border-orange-500 bg-black' : 'border-orange-600/30 hover:border-orange-500 bg-[#0a0a0a]'
+                className={`relative overflow-visible shadow-2xl border transition-all duration-300 cursor-pointer flex flex-col ${expandedService === 4 ? 'border-orange-500 bg-black z-50' : 'border-orange-600/30 hover:border-orange-500 bg-[#0a0a0a] z-0'
                   }`}
                 onClick={(e) => toggleService(4, e)}
               >
-                <div className="p-4 flex flex-col h-full">
+                <div className="p-4 flex flex-col">
                   {/* Expand/collapse indicator at top */}
                   <div className="flex items-center justify-end pb-3 border-b border-white/10 mb-3">
                     <div className="text-orange-500">
@@ -735,22 +803,25 @@ export default function Home() {
                   </div>
 
                   {/* Expandable Details */}
-                  <div className={`transition-all duration-150 ${expandedService === 4 ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0 overflow-hidden'
+                  <div className={`transition-all duration-150 ${expandedService === 4 ? 'max-h-96 opacity-100 mb-4 md:absolute md:left-0 md:right-0 md:top-full md:mt-0 md:bg-black md:border md:border-orange-500 md:z-50 md:shadow-2xl md:p-4 md:max-h-none md:mb-0' : 'max-h-0 opacity-0 overflow-hidden md:hidden md:opacity-0'
                     }`}>
-                    <div className="space-y-2">
-                      <div className="flex justify-between items-center">
+                    <div className="space-y-3">
+                      <div className="grid grid-cols-[1fr_auto] gap-2">
                         <span className="text-gray-300 font-rajdhani text-xs">Oil & Filter Change</span>
-                        <span className="text-orange-500 font-orbitron text-xs font-bold">from £150 + VAT</span>
+                        <div className="text-orange-500 font-orbitron text-xs font-bold flex flex-col text-right">
+                          <span>from</span>
+                          <span>£150 + VAT</span>
+                        </div>
                       </div>
-                      <div className="flex justify-between items-center">
+                      <div className="grid grid-cols-[1fr_auto] gap-2">
                         <span className="text-gray-300 font-rajdhani text-xs">Brake System Check</span>
                         <span className="text-gray-400 font-rajdhani text-xs">Included</span>
                       </div>
-                      <div className="flex justify-between items-center">
+                      <div className="grid grid-cols-[1fr_auto] gap-2">
                         <span className="text-gray-300 font-rajdhani text-xs">Engine Diagnostics</span>
                         <span className="text-gray-400 font-rajdhani text-xs">Included</span>
                       </div>
-                      <div className="flex justify-between items-center">
+                      <div className="grid grid-cols-[1fr_auto] gap-2">
                         <span className="text-gray-300 font-rajdhani text-xs">Safety Inspection</span>
                         <span className="text-gray-400 font-rajdhani text-xs">Included</span>
                       </div>
@@ -762,11 +833,11 @@ export default function Home() {
 
               {/* Service Card 6 - Gearbox Servicing */}
               <div
-                className={` overflow-hidden shadow-2xl border transition-all duration-300 cursor-pointer h-full flex flex-col ${expandedService === 5 ? 'border-orange-500 bg-black' : 'border-orange-600/30 hover:border-orange-500 bg-[#0a0a0a]'
+                className={`relative overflow-visible shadow-2xl border transition-all duration-300 cursor-pointer flex flex-col ${expandedService === 5 ? 'border-orange-500 bg-black z-50' : 'border-orange-600/30 hover:border-orange-500 bg-[#0a0a0a] z-0'
                   }`}
                 onClick={(e) => toggleService(5, e)}
               >
-                <div className="p-4 flex flex-col h-full">
+                <div className="p-4 flex flex-col">
                   {/* Expand/collapse indicator at top */}
                   <div className="flex items-center justify-end pb-3 border-b border-white/10 mb-3">
                     <div className="text-orange-500">
@@ -792,22 +863,25 @@ export default function Home() {
                   </div>
 
                   {/* Expandable Details */}
-                  <div className={`transition-all duration-150 ${expandedService === 5 ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0 overflow-hidden'
+                  <div className={`transition-all duration-150 ${expandedService === 5 ? 'max-h-96 opacity-100 mb-4 md:absolute md:left-0 md:right-0 md:top-full md:mt-0 md:bg-black md:border md:border-orange-500 md:z-50 md:shadow-2xl md:p-4 md:max-h-none md:mb-0' : 'max-h-0 opacity-0 overflow-hidden md:hidden md:opacity-0'
                     }`}>
-                    <div className="space-y-2">
-                      <div className="flex justify-between items-center">
+                    <div className="space-y-3">
+                      <div className="grid grid-cols-[1fr_auto] gap-2">
                         <span className="text-gray-300 font-rajdhani text-xs">Gearbox Oil Change</span>
-                        <span className="text-orange-500 font-orbitron text-xs font-bold">from £250 + VAT</span>
+                        <div className="text-orange-500 font-orbitron text-xs font-bold flex flex-col text-right">
+                          <span>from</span>
+                          <span>£250 + VAT</span>
+                        </div>
                       </div>
-                      <div className="flex justify-between items-center">
+                      <div className="grid grid-cols-[1fr_auto] gap-2">
                         <span className="text-gray-300 font-rajdhani text-xs">Filter Replacement</span>
                         <span className="text-gray-400 font-rajdhani text-xs">Included</span>
                       </div>
-                      <div className="flex justify-between items-center">
+                      <div className="grid grid-cols-[1fr_auto] gap-2">
                         <span className="text-gray-300 font-rajdhani text-xs">System Diagnostics</span>
                         <span className="text-gray-400 font-rajdhani text-xs">Included</span>
                       </div>
-                      <div className="flex justify-between items-center">
+                      <div className="grid grid-cols-[1fr_auto] gap-2">
                         <span className="text-gray-300 font-rajdhani text-xs">Performance Test</span>
                         <span className="text-gray-400 font-rajdhani text-xs">Included</span>
                       </div>
@@ -850,7 +924,7 @@ export default function Home() {
         viewport={{ once: true, amount: 0.2 }}
         variants={fadeInUp}
       >
-        <div className="w-full px-6">
+        <div className="w-full px-4 md:px-6">
           <div className="max-w-screen-2xl mx-auto">
             <div className="text-center mb-16">
               <div className="flex items-center justify-center">
@@ -864,10 +938,32 @@ export default function Home() {
 
             {/* Marquee Container */}
             <div className="relative overflow-hidden bg-black py-12 border border-orange-600/30">
+              <style jsx>{`
+                @keyframes marquee-fast {
+                  0% { transform: translateX(0%); }
+                  100% { transform: translateX(-100%); }
+                }
+                @keyframes marquee-slow {
+                  0% { transform: translateX(0%); }
+                  100% { transform: translateX(-100%); }
+                }
+                .marquee-mobile {
+                  animation: marquee-fast 5s linear infinite;
+                  animation-delay: 1s;
+                }
+                .marquee-desktop {
+                  animation: marquee-slow 20s linear infinite;
+                }
+                @media (min-width: 768px) {
+                  .marquee-mobile {
+                    animation: marquee-slow 20s linear infinite;
+                  }
+                }
+              `}</style>
               {/* Continuous Marquee - No gaps, always filled */}
-              <div className="flex animate-marquee hover:pause-marquee space-x-16">
+              <div className="flex space-x-8 md:space-x-16 marquee-mobile hover:pause-marquee">
                 {/* First set of logos - 9 brands (removed Rolls-Royce and Mini) */}
-                <div className="w-40 h-24 relative flex-shrink-0 group">
+                <div className="w-28 h-20 md:w-40 md:h-24 relative flex-shrink-0 group">
                   <Image
                     src="/images/marquee/ford-logo-2017-download.png"
                     alt="Ford"
@@ -876,7 +972,7 @@ export default function Home() {
                     className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110"
                   />
                 </div>
-                <div className="w-40 h-24 relative flex-shrink-0 group">
+                <div className="w-28 h-20  md:w-40 md:h-24 relative flex-shrink-0 group">
                   <Image
                     src="/images/marquee/bmw-logo-2020-gray-download.png"
                     alt="BMW"
@@ -885,7 +981,7 @@ export default function Home() {
                     className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110"
                   />
                 </div>
-                <div className="w-40 h-24 relative flex-shrink-0 group">
+                <div className="w-28 h-20  md:w-40 md:h-24 relative flex-shrink-0 group">
                   <Image
                     src="/images/marquee/Mercedes-Benz-logo-2011-1920x1080.png"
                     alt="Mercedes-Benz"
@@ -894,7 +990,7 @@ export default function Home() {
                     className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110"
                   />
                 </div>
-                <div className="w-40 h-24 relative flex-shrink-0 group">
+                <div className="w-28 h-20  md:w-40 md:h-24 relative flex-shrink-0 group">
                   <Image
                     src="/images/marquee/audi-logo-2016-download.png"
                     alt="Audi"
@@ -903,7 +999,7 @@ export default function Home() {
                     className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110"
                   />
                 </div>
-                <div className="w-40 h-24 relative flex-shrink-0 group">
+                <div className="w-28 h-20  md:w-40 md:h-24 relative flex-shrink-0 group">
                   <Image
                     src="/images/marquee/Volkswagen-logo-2019-1500x1500.png"
                     alt="Volkswagen"
@@ -912,7 +1008,7 @@ export default function Home() {
                     className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110"
                   />
                 </div>
-                <div className="w-40 h-24 relative flex-shrink-0 group">
+                <div className="w-28 h-20  md:w-40 md:h-24 relative flex-shrink-0 group">
                   <Image
                     src="/images/marquee/porsche-logo-2014-full-download.png"
                     alt="Porsche"
@@ -921,7 +1017,7 @@ export default function Home() {
                     className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110"
                   />
                 </div>
-                <div className="w-40 h-24 relative flex-shrink-0 group">
+                <div className="w-28 h-20  md:w-40 md:h-24 relative flex-shrink-0 group">
                   <Image
                     src="/images/marquee/bentley-logo-2002-download.png"
                     alt="Bentley"
@@ -930,7 +1026,7 @@ export default function Home() {
                     className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110"
                   />
                 </div>
-                <div className="w-40 h-24 relative flex-shrink-0 group">
+                <div className="w-28 h-20  md:w-40 md:h-24 relative flex-shrink-0 group">
                   <Image
                     src="/images/marquee/toyota-logo-2020-europe-download.png"
                     alt="Toyota"
@@ -939,7 +1035,7 @@ export default function Home() {
                     className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110"
                   />
                 </div>
-                <div className="w-40 h-24 relative flex-shrink-0 group">
+                <div className="w-28 h-20  md:w-40 md:h-24 relative flex-shrink-0 group">
                   <Image
                     src="/images/marquee/honda-logo-2000-full-download.png"
                     alt="Honda"
@@ -950,7 +1046,7 @@ export default function Home() {
                 </div>
 
                 {/* Duplicate set for seamless loop - 9 brands */}
-                <div className="w-40 h-24 relative flex-shrink-0 group">
+                <div className="w-28 h-20  md:w-40 md:h-24 relative flex-shrink-0 group">
                   <Image
                     src="/images/marquee/ford-logo-2017-download.png"
                     alt="Ford"
@@ -959,7 +1055,7 @@ export default function Home() {
                     className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110"
                   />
                 </div>
-                <div className="w-40 h-24 relative flex-shrink-0 group">
+                <div className="w-28 h-20  md:w-40 md:h-24 relative flex-shrink-0 group">
                   <Image
                     src="/images/marquee/bmw-logo-2020-gray-download.png"
                     alt="BMW"
@@ -968,7 +1064,7 @@ export default function Home() {
                     className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110"
                   />
                 </div>
-                <div className="w-40 h-24 relative flex-shrink-0 group">
+                <div className="w-28 h-20  md:w-40 md:h-24 relative flex-shrink-0 group">
                   <Image
                     src="/images/marquee/Mercedes-Benz-logo-2011-1920x1080.png"
                     alt="Mercedes-Benz"
@@ -977,7 +1073,7 @@ export default function Home() {
                     className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110"
                   />
                 </div>
-                <div className="w-40 h-24 relative flex-shrink-0 group">
+                <div className="w-28 h-20  md:w-40 md:h-24 relative flex-shrink-0 group">
                   <Image
                     src="/images/marquee/audi-logo-2016-download.png"
                     alt="Audi"
@@ -986,7 +1082,7 @@ export default function Home() {
                     className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110"
                   />
                 </div>
-                <div className="w-40 h-24 relative flex-shrink-0 group">
+                <div className="w-28 h-20  md:w-40 md:h-24 relative flex-shrink-0 group">
                   <Image
                     src="/images/marquee/Volkswagen-logo-2019-1500x1500.png"
                     alt="Volkswagen"
@@ -995,7 +1091,7 @@ export default function Home() {
                     className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110"
                   />
                 </div>
-                <div className="w-40 h-24 relative flex-shrink-0 group">
+                <div className="w-28 h-20  md:w-40 md:h-24 relative flex-shrink-0 group">
                   <Image
                     src="/images/marquee/porsche-logo-2014-full-download.png"
                     alt="Porsche"
@@ -1004,7 +1100,7 @@ export default function Home() {
                     className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110"
                   />
                 </div>
-                <div className="w-40 h-24 relative flex-shrink-0 group">
+                <div className="w-28 h-20  md:w-40 md:h-24 relative flex-shrink-0 group">
                   <Image
                     src="/images/marquee/bentley-logo-2002-download.png"
                     alt="Bentley"
@@ -1013,7 +1109,7 @@ export default function Home() {
                     className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110"
                   />
                 </div>
-                <div className="w-40 h-24 relative flex-shrink-0 group">
+                <div className="w-28 h-20  md:w-40 md:h-24 relative flex-shrink-0 group">
                   <Image
                     src="/images/marquee/toyota-logo-2020-europe-download.png"
                     alt="Toyota"
@@ -1022,7 +1118,7 @@ export default function Home() {
                     className="brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110"
                   />
                 </div>
-                <div className="w-40 h-24 relative flex-shrink-0 group">
+                <div className="w-28 h-20  md:w-40 md:h-24 relative flex-shrink-0 group">
                   <Image
                     src="/images/marquee/honda-logo-2000-full-download.png"
                     alt="Honda"

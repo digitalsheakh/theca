@@ -9,6 +9,7 @@ import ScrollAnimation from '@/components/ScrollAnimation';
 import axios from 'axios';
 import { HeroVideoDialog } from '@/components/magicui/hero-video-dialog';
 import TitleBadge from '@/components/TitleBadge';
+import GlobalLoading from '@/components/GlobalLoading';
 
 interface YouTubeVideo {
   _id: string;
@@ -25,6 +26,10 @@ export default function VideosPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+
+  if (loading) {
+    return <GlobalLoading />;
+  }
 
   // Commented out API call - using dummy data for now
   // useEffect(() => {

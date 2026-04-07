@@ -7,6 +7,7 @@ import { FaArrowRight } from 'react-icons/fa';
 import TitleBadge from '@/components/TitleBadge';
 
 export default function ServicesPage() {
+
   const services = [
     {
       id: 'timing-chains',

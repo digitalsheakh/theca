@@ -10,15 +10,6 @@ export default function AboutUsPage() {
   const [yearsCount, setYearsCount] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    if (isVisible && yearsCount < 10) {
-      const timer = setTimeout(() => {
-        setYearsCount(yearsCount + 1);
-      }, 100);
-      return () => clearTimeout(timer);
-    }
-  }, [yearsCount, isVisible]);
-
   return (
     <div className="min-h-screen bg-black text-white pt-32">
       {/* Hero Section */}

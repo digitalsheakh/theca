@@ -8,6 +8,7 @@ import { VehicleDetails } from '@/services/vehicleApi';
 import { FaCar, FaWrench, FaArrowRight, FaCalendarAlt, FaClock, FaUser, FaPhone, FaEnvelope, FaCheckCircle, FaHome } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
 import { toast } from 'react-hot-toast';
+import GlobalLoading from '@/components/GlobalLoading';
 export default function ServiceSelection() {
   const [vehicle, setVehicle] = useState<VehicleDetails | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -116,11 +117,7 @@ export default function ServiceSelection() {
   };
 
   if (isLoading) {
-    return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
-        <div className="animate-spin h-12 w-12 border-t-2 border-b-2 border-orange-600"></div>
-      </div>
-    );
+    return <GlobalLoading />;
   }
 
   if (!vehicle) {
@@ -383,8 +380,8 @@ export default function ServiceSelection() {
               onClick={handleSubmit}
               disabled={isSubmitting || !serviceDescription.trim() || !urgency || !preferredDate || !customerName.trim() || !phoneNumber.trim() || !email.trim()}
               className={`group relative inline-flex items-center justify-center px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 overflow-hidden ${isSubmitting || !serviceDescription.trim() || !urgency || !preferredDate || !customerName.trim() || !phoneNumber.trim() || !email.trim()
-                  ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                  : 'bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 text-white shadow-lg hover:shadow-xl'
+                ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                : 'bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 text-white shadow-lg hover:shadow-xl'
                 }`}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>

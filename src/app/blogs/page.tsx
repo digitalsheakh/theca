@@ -8,6 +8,7 @@ import { motion } from 'framer-motion';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import TitleBadge from '@/components/TitleBadge';
+import GlobalLoading from '@/components/GlobalLoading';
 
 interface BlogPost {
   _id: string;
@@ -22,22 +23,23 @@ export default function BlogPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
+
   // Commented out API call - using dummy data for now
   // useEffect(() => {
-  // const fetchBlogs = async () => {
-  // try {
-  // const response = await axios.get<BlogPost[]>("/api/blogs");
-  // setBlogs(response.data);
-  // setError(null);
-  // } catch (err) {
-  // console.error('Error fetching blogs:', err);
-  // setError('Failed to load blogs. Please try again later.');
-  // } finally {
-  // setLoading(false);
-  // }
-  // };
+  //   const fetchBlogs = async () => {
+  //     try {
+  //       const response = await axios.get<BlogPost[]>("/api/blogs");
+  //       setBlogs(response.data);
+  //       setError(null);
+  //     } catch (err) {
+  //       console.error('Error fetching blogs:', err);
+  //       setError('Failed to load blogs. Please try again later.');
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-  // fetchBlogs();
+  //   fetchBlogs();
   // }, []);
 
   // Dummy blog data for services
@@ -140,6 +142,10 @@ export default function BlogPage() {
     setLoading(false);
   }, []);
 
+  if (loading) {
+    return <GlobalLoading />;
+  }
+
   const openBlogDialog = (blog: BlogPost) => {
     router.push(`/blogs/${blog._id}`);
   };
@@ -152,13 +158,6 @@ export default function BlogPage() {
     });
   };
 
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-[#0A0A0A] text-white pt-24 pb-16 flex justify-center items-center">
-        <div className="animate-spin h-12 w-12 border-t-2 border-b-2 border-orange-500"></div>
-      </div>
-    );
-  }
 
   if (error) {
     return (
