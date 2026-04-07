@@ -1,5 +1,6 @@
 ﻿'use client';
 
+import TitleBadge from '@/components/TitleBadge';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -43,9 +44,7 @@ export default function AboutUsPage() {
               transition={{ duration: 0.5 }}
               className="text-center"
             >
-              <div className="mb-8">
-
-              </div>
+              <TitleBadge title="Who We Are" className="inline-block" />
               <h1 className="text-4xl md:text-6xl font-bold mb-6 uppercase font-orbitron tracking-wider leading-tight">
                 ABOUT <span className="text-orange-600">US</span>
               </h1>
@@ -67,13 +66,7 @@ export default function AboutUsPage() {
               transition={{ duration: 0.5 }}
               viewport={{ once: true, amount: 0.2 }}
             >
-              <div className="text-center mb-12">
-                <h2 className="text-4xl md:text-5xl font-bold mb-6 uppercase font-orbitron tracking-wider leading-tight">
-                  ABOUT <span className="text-orange-600">US</span>
-                </h2>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -81,8 +74,14 @@ export default function AboutUsPage() {
                   viewport={{ once: true, amount: 0.2 }}
                   className="space-y-6"
                 >
+                  <TitleBadge title="WELCOME to " />
+                  <div className="text-left">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6 uppercase font-orbitron tracking-wider leading-tight text-orange-600">
+                      The Car Edition Ltd
+                    </h2>
+                  </div>
                   <p className="text-lg text-gray-300 font-rajdhani leading-relaxed">
-                    Welcome to The Car Edition Ltd, your trusted source for high-quality used cars in Huntingdon. We are committed to maintaining quality and integrity in everything we do. Each of our vehicles undergoes a rigorous inspection in our garage, meeting our strict standards for performance, safety, and reliability. We understand the significance of trust when buying a used car, which is why we provide a warranty guarantee on all our cars, ensuring you can shop with confidence.
+                    Your trusted source for high-quality used cars in Huntingdon. We are committed to maintaining quality and integrity in everything we do. Each of our vehicles undergoes a rigorous inspection in our garage, meeting our strict standards for performance, safety, and reliability. We understand the significance of trust when buying a used car, which is why we provide a warranty guarantee on all our cars, ensuring you can shop with confidence.
                   </p>
 
                   {/* Call to Action */}
@@ -90,7 +89,7 @@ export default function AboutUsPage() {
                     <Link href="/services" className="inline-flex items-center bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg">
                       SEE WHAT WE OFFER
                     </Link>
-                    <Link href="/contact-us" className="inline-flex items-center border-2 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95">
+                    <Link href="/contact-us" className="inline-flex items-center border-2 border-white hover:border-orange-600 bg-white text-black hover:text-white hover:bg-orange-600 hover:text-orange-600 px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95">
                       CONTACT US
                     </Link>
                   </div>
@@ -125,13 +124,7 @@ export default function AboutUsPage() {
               transition={{ duration: 0.5 }}
               viewport={{ once: true, amount: 0.2 }}
             >
-              <div className="text-center mb-12">
-                <h2 className="text-4xl md:text-5xl font-bold mb-6 uppercase font-orbitron tracking-wider leading-tight">
-                  OUR <span className="text-orange-600">MISSION</span>
-                </h2>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -151,8 +144,14 @@ export default function AboutUsPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.1 }}
                   viewport={{ once: true, amount: 0.2 }}
-                  className="space-y-6 order-1 md:order-2"
+                  className="space-y-6 order-1 md:order-2 "
                 >
+                  <div className="text-left">
+                    <TitleBadge title="What Drives Us" />
+                    <h2 className="text-4xl md:text-5xl font-bold uppercase font-orbitron tracking-wider leading-tight">
+                      OUR <span className="text-orange-600">MISSION</span>
+                    </h2>
+                  </div>
                   <p className="text-lg text-gray-300 font-rajdhani leading-relaxed mb-4">
                     We are here to help you discover the perfect car that fits your needs and budget while providing exceptional customer service and a seamless buying experience. As a reputable garage in Huntingdon, we pride ourselves on being a go-to destination for car service, repair and a variety of automotive solutions.
                   </p>
@@ -177,11 +176,7 @@ export default function AboutUsPage() {
               viewport={{ once: true, amount: 0.2 }}
             >
               <div className="text-center mb-16">
-                <div className="mb-8">
-                  <p className="text-orange-600 text-sm font-bold uppercase tracking-wider font-rajdhani mb-2">
-                    MEET OUR TEAM
-                  </p>
-                </div>
+                <TitleBadge title="MEET OUR TEAM" className="mb-8 inline-block pl-6" />
                 <h2 className="text-4xl md:text-5xl font-bold mb-6 uppercase font-orbitron tracking-wider leading-tight">
                   OUR EXPERT <span className="text-orange-600">PROFESSIONALS</span>
                 </h2>

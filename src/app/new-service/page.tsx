@@ -1,5 +1,6 @@
 ﻿'use client';
 
+import TitleBadge from '@/components/TitleBadge';
 import { motion } from'framer-motion';
 import Image from'next/image';
 import Link from'next/link';
@@ -116,9 +117,7 @@ export default function ServicesPage() {
  className="text-center"
  >
  <div className="border-l-4 border-orange-600 pl-6 mb-8 inline-block">
- <p className="text-orange-600 text-sm font-bold uppercase tracking-wider font-rajdhani mb-2">
- WHAT WE OFFER
- </p>
+ <TitleBadge title='WHAT WE OFFER'/>
  </div>
  <h1 className="text-4xl md:text-6xl font-bold mb-6 uppercase font-orbitron tracking-wider leading-tight">
  OUR <span className="text-orange-600">SERVICES</span>

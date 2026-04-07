@@ -8,6 +8,7 @@ import { motion } from 'framer-motion';
 import ScrollAnimation from '@/components/ScrollAnimation';
 import axios from 'axios';
 import { HeroVideoDialog } from '@/components/magicui/hero-video-dialog';
+import TitleBadge from '@/components/TitleBadge';
 
 interface YouTubeVideo {
   _id: string;
@@ -165,12 +166,8 @@ export default function VideosPage() {
           <div className="max-w-screen-2xl mx-auto">
             {/* Section Header */}
             <ScrollAnimation animation="fade-up">
-              <div className="text-center mb-12">
-                <div className="border-l-4 border-orange-600 pl-6 mb-8 inline-block">
-                  <p className="text-orange-600 text-sm font-bold uppercase tracking-wider font-rajdhani mb-2">
-                    BEHIND THE SPANNERS
-                  </p>
-                </div>
+              <div className="flex flex-col text-center mb-12 items-center justify-center">
+                <TitleBadge title="Behind the Spanners" />
                 <h2 className="text-4xl md:text-6xl font-bold text-white uppercase font-orbitron tracking-wider leading-tight mb-6">
                   THE CAR EDITION
                   <br />
@@ -186,9 +183,7 @@ export default function VideosPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
               {/* Left Side - Text Content */}
               <div className="space-y-6">
-                <div className="inline-block bg-orange-600/10 border border-orange-600 px-4 py-2">
-                  <span className="text-orange-600 font-rajdhani font-bold text-sm uppercase">Behind the Spanners</span>
-                </div>
+                <TitleBadge title="Behind the Spanners" />
                 <h3 className="text-3xl md:text-4xl font-bold text-white font-orbitron leading-tight">
                   The Car Edition <span className="text-orange-600">Unfiltered</span> Podcast
                 </h3>

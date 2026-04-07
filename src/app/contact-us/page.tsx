@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import TitleBadge from '@/components/TitleBadge';
 
 export default function ContactUs() {
   const [formData, setFormData] = useState({
@@ -95,11 +96,7 @@ export default function ContactUs() {
               transition={{ duration: 0.8 }}
               className="text-center"
             >
-              <div className="border-l-4 border-orange-600 pl-6 mb-8 inline-block">
-                <p className="text-orange-600 text-sm font-bold uppercase tracking-wider font-rajdhani mb-2">
-                  GET IN TOUCH
-                </p>
-              </div>
+              <TitleBadge title="GET IN TOUCH" className="inline-block" />
               <h1 className="text-4xl md:text-6xl font-bold mb-6 uppercase font-orbitron tracking-wider leading-tight">
                 CONTACT <span className="text-orange-600">US</span>
               </h1>
