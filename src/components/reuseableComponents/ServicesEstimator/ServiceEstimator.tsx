@@ -132,7 +132,7 @@ export default function ServiceEstimatorComponent() {
                     className="w-full h-full text-2xl font-bold tracking-widest text-center uppercase border-0 focus:ring-0 focus:outline-none bg-transparent text-black py-4 px-3 font-orbitron"
                     maxLength={10}
                     disabled={isLoading}
-                    autoFocus
+                    autoFocus={false}
                   />
                 </div>
               </div>
@@ -170,7 +170,7 @@ export default function ServiceEstimatorComponent() {
             CONFIRM YOUR <span className="text-orange-600">VEHICLE</span>
           </h2>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 max-w-2xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-6 max-w-2xl mx-auto">
             <div className="text-center">
               <FaCar className="text-orange-600 text-2xl mx-auto mb-2" />
               <p className="text-gray-400 text-xs font-rajdhani uppercase mb-1">Registration</p>
