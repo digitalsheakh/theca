@@ -10,6 +10,7 @@ import ScrollAnimation from '@/components/ScrollAnimation';
 import TitleBadge from '@/components/TitleBadge';
 import { useSession } from 'next-auth/react';
 import GlobalLoading from '@/components/GlobalLoading';
+import { Select } from '@radix-ui/react-select';
 
 export default function Home() {
   const [isMounted, setIsMounted] = useState(false);
@@ -1361,14 +1362,14 @@ export default function Home() {
             {/* Service Tabs */}
             {/* Mobile — Selection bar */}
             <div className="sm:hidden mb-8 w-full min-w-0">
-              <div className="relative border-2 border-orange-600 bg-gray-900 w-full min-w-0 box-border">
+              <div className="relative border-2 border-orange-600 bg-gray-100 w-full min-w-0 box-border">
                 <select
                   value={activeServiceTab}
                   onChange={(e) => setActiveServiceTab(Number(e.target.value))}
-                  className="w-full min-w-0 h-fit block bg-transparent text-white font-bold text-xs uppercase pl-4 pr-8 py-4 appearance-none cursor-pointer focus:outline-none"
+                  className="w-full min-w-0 h-fit block bg-transparent text-gray-900 font-bold text-xs uppercase pl-4 pr-8 py-4 appearance-none cursor-pointer focus:outline-none"
                 >
                   {['Diagnostics & Electrical', 'Keys & Security', 'Performance & Tuning', 'Servicing & Maintenance', 'Tyres & Alignment', 'Mechanical Repairs'].map((name, index) => (
-                    <option key={index} value={index} className="bg-gray-900 text-white font-rajdhani text-sm uppercase my-2">
+                    <option key={index} value={index} className="bg-gray-100 hover:bg-orange-600 text-gray-900 font-rajdhani text-sm uppercase my-2">
                       {name}
                     </option>
                   ))}

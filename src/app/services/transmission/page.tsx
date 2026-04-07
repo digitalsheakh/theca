@@ -34,7 +34,7 @@ export default function TransmissionPage() {
       </section>
 
       {/* Main Content Section */}
-      <section className="py-20 bg-black">
+      <section className="md:py-20 bg-black">
         <div className="container mx-auto px-8">
           {/* Section Header */}
           <div className="mb-16">
@@ -200,7 +200,7 @@ export default function TransmissionPage() {
           />
 
           {/* Service Estimator */}
-          <div className="mb-20 bg-gray-900 p-8 border border-orange-600/30">
+          <div className="mb-20 bg-black p-0 md:p-8 md:border border-orange-600/30">
             <h3 className="text-2xl font-bold text-white mb-6 text-center font-orbitron uppercase">
               Get Your Transmission Service Quote
             </h3>

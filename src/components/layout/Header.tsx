@@ -365,8 +365,6 @@ export default function Header() {
       >
         <motion.p
           className='text-black text-xs md:text-sm font-semibold font-orbitron tracking-wide uppercase px-4 text-center'
-          animate={{ scale: [1, 1.02, 1] }}
-          transition={{ duration: 2, repeat: Infinity, repeatType: "loop" }}
         >
           FLEET SERVICE DISCOUNT AVAILABLE
         </motion.p>

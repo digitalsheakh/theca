@@ -77,10 +77,10 @@ export default function AboutUsPage() {
 
                   {/* Call to Action */}
                   <div className="flex flex-col sm:flex-row gap-4 mt-8">
-                    <Link href="/services" className="inline-flex items-center bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg">
+                    <Link href="/services" className="inline-flex items-center justify-center bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg">
                       SEE WHAT WE OFFER
                     </Link>
-                    <Link href="/contact-us" className="inline-flex items-center border-2 border-white hover:border-orange-600 bg-white text-black hover:text-white hover:bg-orange-600 hover:text-orange-600 px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95">
+                    <Link href="/contact-us" className="inline-flex items-center justify-center border-2 border-white hover:border-orange-600 bg-white text-black hover:text-white hover:bg-orange-600 hover:text-orange-600 px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95">
                       CONTACT US
                     </Link>
                   </div>
