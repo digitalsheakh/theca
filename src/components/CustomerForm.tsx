@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import { ServiceType } from '@/services/pricingConfig';
@@ -60,15 +60,15 @@ export default function CustomerForm({ selectedServices, vehicleDetails, totalPr
 
   if (submitSuccess) {
     return (
-      <div className="bg-green-900 bg-opacity-20 border border-green-500 rounded-lg p-8 text-center">
+      <div className="bg-green-900 bg-opacity-20 border border-green-500 p-8 text-center">
         <svg className="w-16 h-16 text-green-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
         </svg>
         <h3 className="text-2xl font-bold mb-2 text-white">Request Submitted Successfully!</h3>
         <p className="text-gray-300 mb-6">Thank you for your service request. We'll contact you shortly to confirm your booking.</p>
-        <button 
+        <button
           onClick={() => window.location.reload()}
-          className="bg-orange hover:bg-orange-dark text-white px-6 py-3 rounded-md font-medium transition-colors duration-200"
+          className="bg-orange hover:bg-orange-dark text-white px-6 py-3 font-medium transition-colors duration-300"
         >
           Start New Estimate
         </button>
@@ -77,15 +77,15 @@ export default function CustomerForm({ selectedServices, vehicleDetails, totalPr
   }
 
   return (
-    <div className="bg-gray-900 bg-opacity-80 border border-gray-700 rounded-lg p-8">
+    <div className="bg-gray-900 bg-opacity-80 border border-orange-600/30 p-8">
       <h3 className="text-2xl font-bold mb-6 text-white">Complete Your Service Request</h3>
-      
+
       {submitError && (
-        <div className="bg-orange-900 bg-opacity-20 border border-orange-500 rounded-lg p-4 mb-6 text-orange-200">
+        <div className="bg-orange-900 bg-opacity-20 border border-orange-500 p-4 mb-6 text-orange-200">
           {submitError}
         </div>
       )}
-      
+
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div>
@@ -97,11 +97,11 @@ export default function CustomerForm({ selectedServices, vehicleDetails, totalPr
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full bg-gray-800 border border-gray-700 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-orange"
+              className="w-full bg-white border border-orange-600/30 px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-orange"
               placeholder="Enter your full name"
             />
           </div>
-          
+
           <div>
             <label htmlFor="email" className="block text-gray-300 mb-2">Email Address *</label>
             <input
@@ -111,11 +111,11 @@ export default function CustomerForm({ selectedServices, vehicleDetails, totalPr
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full bg-gray-800 border border-gray-700 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-orange"
+              className="w-full bg-white border border-orange-600/30 px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-orange"
               placeholder="Enter your email address"
             />
           </div>
-          
+
           <div>
             <label htmlFor="phone" className="block text-gray-300 mb-2">Phone Number *</label>
             <input
@@ -125,11 +125,11 @@ export default function CustomerForm({ selectedServices, vehicleDetails, totalPr
               value={formData.phone}
               onChange={handleChange}
               required
-              className="w-full bg-gray-800 border border-gray-700 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-orange"
+              className="w-full bg-white border border-orange-600/30 px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-orange"
               placeholder="Enter your phone number"
             />
           </div>
-          
+
           <div>
             <label htmlFor="carRegistration" className="block text-gray-300 mb-2">Car Registration</label>
             <input
@@ -139,11 +139,11 @@ export default function CustomerForm({ selectedServices, vehicleDetails, totalPr
               value={formData.carRegistration}
               onChange={handleChange}
               readOnly
-              className="w-full bg-gray-800 border border-gray-700 rounded-md px-4 py-3 text-gray-400 focus:outline-none"
+              className="w-full bg-white border border-orange-600/30 px-4 py-3 text-gray-400 focus:outline-none"
             />
           </div>
         </div>
-        
+
         <div className="mb-6">
           <label htmlFor="notes" className="block text-gray-300 mb-2">Additional Notes</label>
           <textarea
@@ -152,12 +152,12 @@ export default function CustomerForm({ selectedServices, vehicleDetails, totalPr
             value={formData.notes}
             onChange={handleChange}
             rows={4}
-            className="w-full bg-gray-800 border border-gray-700 rounded-md px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-orange"
+            className="w-full bg-white border border-orange-600/30 px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-orange"
             placeholder="Any specific requirements or questions?"
           ></textarea>
         </div>
-        
-        <div className="bg-gray-800 rounded-md p-4 mb-6">
+
+        <div className="bg-white p-4 mb-6">
           <h4 className="text-lg font-semibold mb-2 text-white">Selected Services</h4>
           <ul className="text-gray-300 mb-4">
             {selectedServices.map(service => (
@@ -173,16 +173,16 @@ export default function CustomerForm({ selectedServices, vehicleDetails, totalPr
             Total Estimated Price: <span className="text-orange">£{totalPrice}</span>
           </div>
         </div>
-        
+
         <div className="text-sm text-gray-400 mb-6">
           By submitting this form, you agree to be contacted regarding your service request.
           We'll never share your information with third parties.
         </div>
-        
+
         <button
           type="submit"
           disabled={isSubmitting}
-          className={`w-full bg-orange hover:bg-orange-dark text-white px-6 py-4 rounded-md font-medium transition-colors duration-200 flex items-center justify-center ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+          className={`w-full bg-orange hover:bg-orange-dark text-white px-6 py-4 font-medium transition-colors duration-300 flex items-center justify-center ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
         >
           {isSubmitting ? (
             <>

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
@@ -29,7 +29,7 @@ export default function ServiceEstimator() {
 
     try {
       // Simulate form submission - replace with actual API call
-      
+
       await new Promise(resolve => setTimeout(resolve, 1000));
       setSubmitStatus('success');
       setFormData({ name: '', email: '', phone: '', message: '' });
@@ -47,8 +47,8 @@ export default function ServiceEstimator() {
           GET YOUR MECHANICAL REPAIR <span className="text-orange-600">QUOTE</span>
         </h1>
       </div>
-      <ServiceEstimatorComponent/>
-      
+      <ServiceEstimatorComponent />
+
       {/* Contact Form Section */}
       <section className="py-16 bg-black">
         <div className="w-full px-6">
@@ -73,18 +73,18 @@ export default function ServiceEstimator() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="bg-black/60 border border-gray-600 p-8 rounded-xl backdrop-blur-sm"
+              className="bg-black/60 border border-gray-600 p-8 backdrop-blur-sm"
             >
               {submitStatus === 'success' ? (
-                <div className="bg-green-500/20 border border-green-500 rounded-lg p-6 text-center">
+                <div className="bg-green-500/20 border border-green-500 p-6 text-center">
                   <svg className="w-12 h-12 text-green-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                   </svg>
                   <h3 className="text-xl font-bold text-green-500 mb-2">Message Sent Successfully!</h3>
                   <p className="text-gray-300">Thank you for contacting us. We'll get back to you as soon as possible.</p>
-                  <button 
+                  <button
                     onClick={() => setSubmitStatus('idle')}
-                    className="mt-4 bg-orange-600 hover:bg-orange-700 text-white px-6 py-2 rounded-md font-medium transition-colors duration-200"
+                    className="mt-4 bg-orange-600 hover:bg-orange-700 text-white px-6 py-2 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95"
                   >
                     Send Another Message
                   </button>
@@ -101,10 +101,10 @@ export default function ServiceEstimator() {
                       onChange={handleInputChange}
                       placeholder="John Smith"
                       required
-                      className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-md text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-transparent"
+                      className="w-full px-4 py-3 bg-white border border-orange-600/30 text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-transparent"
                     />
                   </div>
-                  
+
                   <div>
                     <label htmlFor="phone" className="block text-sm font-medium text-white mb-1">Phone Number <span className="text-orange-600">*</span></label>
                     <input
@@ -115,10 +115,10 @@ export default function ServiceEstimator() {
                       onChange={handleInputChange}
                       placeholder="07123 456789"
                       required
-                      className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-md text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-transparent"
+                      className="w-full px-4 py-3 bg-white border border-orange-600/30 text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-transparent"
                     />
                   </div>
-                  
+
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-white mb-1">Email</label>
                     <input
@@ -128,10 +128,10 @@ export default function ServiceEstimator() {
                       value={formData.email}
                       onChange={handleInputChange}
                       placeholder="john@example.com"
-                      className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-md text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-transparent"
+                      className="w-full px-4 py-3 bg-white border border-orange-600/30 text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-transparent"
                     />
                   </div>
-                  
+
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-white mb-1">Message</label>
                     <textarea
@@ -141,20 +141,20 @@ export default function ServiceEstimator() {
                       onChange={handleInputChange}
                       placeholder="Tell us about your vehicle and the issue..."
                       rows={5}
-                      className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-md text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-transparent"
+                      className="w-full px-4 py-3 bg-white border border-orange-600/30 text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-transparent"
                     ></textarea>
                   </div>
-                  
+
                   {submitStatus === 'error' && (
-                    <div className="bg-orange-500/10 border border-orange-500 rounded-md p-3 text-orange-500 text-sm">
+                    <div className="bg-orange-500/10 border border-orange-500 p-3 text-orange-500 text-sm">
                       Sorry, there was an error sending your message. Please try again or call us directly.
                     </div>
                   )}
-                  
+
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`w-full bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-md font-medium transition-colors duration-200 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+                    className={`w-full bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
                   >
                     {isSubmitting ? (
                       <div className="flex items-center justify-center">

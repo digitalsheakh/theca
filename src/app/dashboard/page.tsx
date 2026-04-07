@@ -1,11 +1,11 @@
-// app/dashboard/page.tsx
+﻿// app/dashboard/page.tsx
 'use client';
 
 import { useEffect, useState } from 'react';
 import AdminLayout from '@/components/AdminLayout';
 import { toast } from 'react-toastify';
-import { 
-  UserGroupIcon, 
+import {
+  UserGroupIcon,
   CheckCircleIcon,
   ClockIcon,
   InboxIcon,
@@ -84,14 +84,14 @@ export default function DashboardPage() {
     try {
       const bookingsRes = await axios.get('/api/filter-dashboard');
       const bookingsData = bookingsRes.data;
-      
+
       const recentBookings = bookingsData.data.map((booking: any) => ({
         id: booking._id.toString(),
         ...booking
       }));
 
       const newRequests = bookingsData.data
-        .filter((b: any) => 
+        .filter((b: any) =>
           (b.status?.toLowerCase() === 'new request') &&
           new Date(b.createdAt) > new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
         )
@@ -189,11 +189,11 @@ export default function DashboardPage() {
     const date = new Date(dateString);
     const now = new Date();
     const diffInHours = Math.abs(now.getTime() - date.getTime()) / 36e5;
-    
+
     if (diffInHours < 24) {
       return `${Math.round(diffInHours)}h ago`;
     } else {
-      return date.toLocaleDateString('en-GB', { 
+      return date.toLocaleDateString('en-GB', {
         day: 'numeric',
         month: 'short'
       });
@@ -201,7 +201,7 @@ export default function DashboardPage() {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-200">
+    <div className="bg-white shadow-sm border border-gray-200">
       {/* Header Section */}
       <div className="px-6 py-6 flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-gray-200 gap-4 bg-gradient-to-r from-orange-50 to-orange-100/50">
         <div>
@@ -214,8 +214,8 @@ export default function DashboardPage() {
               <BellIcon className="h-5 w-5 sm:h-6 sm:w-6" />
               {unreadCount > 0 && (
                 <span className="absolute -top-1 -right-1 flex h-4 w-4 sm:h-5 sm:w-5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-4 w-4 sm:h-5 sm:w-5 bg-orange-500 text-white text-xs items-center justify-center">
+                  <span className="animate-ping absolute inline-flex h-full w-full bg-orange-400 opacity-75"></span>
+                  <span className="relative inline-flex h-4 w-4 sm:h-5 sm:w-5 bg-orange-500 text-white text-xs items-center justify-center">
                     {unreadCount}
                   </span>
                 </span>
@@ -256,7 +256,7 @@ export default function DashboardPage() {
               </div>
               {notifications.length > 0 && (
                 <div className="px-4 py-3 border-t border-gray-100">
-                  <Link 
+                  <Link
                     href="/dashboard/bookings/new"
                     className="text-sm text-orange-500 hover:text-orange-600 font-medium flex items-center justify-center w-full"
                   >
@@ -269,27 +269,27 @@ export default function DashboardPage() {
               )}
             </DropdownMenuContent>
           </DropdownMenu>
-          
+
           <button
             onClick={loadDashboardData}
-            className="group relative inline-flex items-center px-4 py-2 text-sm font-bold font-rajdhani uppercase tracking-wider rounded-lg text-white bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 shadow-lg transition-all duration-300 overflow-hidden"
+            className="group relative inline-flex items-center px-4 py-2 text-sm font-bold font-rajdhani uppercase tracking-wider text-white bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 shadow-lg transition-all duration-300 overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
             <ArrowPathIcon className="h-4 w-4 mr-2 relative z-10" />
             <span className="relative z-10">Refresh Data</span>
           </button>
-          
+
           <Link
             href="/dashboard/bookings/service-estimator"
-            className="group relative inline-flex items-center px-4 py-2 text-sm font-bold font-rajdhani uppercase tracking-wider rounded-lg border-2 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white transition-all duration-300 overflow-hidden"
+            className="group relative inline-flex items-center px-4 py-2 text-sm font-bold font-rajdhani uppercase tracking-wider border-2 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white transition-all duration-300 overflow-hidden hover:scale-105 active:scale-95"
           >
             <div className="absolute inset-0 bg-orange-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
             <span className="relative z-10">New Booking</span>
           </Link>
-          
+
           <Link
             href="/dashboard/chat-leads"
-            className="group relative inline-flex items-center px-4 py-2 text-sm font-bold font-rajdhani uppercase tracking-wider rounded-lg bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 shadow-lg transition-all duration-300 overflow-hidden"
+            className="group relative inline-flex items-center px-4 py-2 text-sm font-bold font-rajdhani uppercase tracking-wider bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 shadow-lg transition-all duration-300 overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2 relative z-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -302,7 +302,7 @@ export default function DashboardPage() {
 
       {loading ? (
         <div className="flex flex-col justify-center items-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-4 border-orange-600 border-t-transparent mb-4"></div>
+          <div className="animate-spin h-12 w-12 border-4 border-orange-600 border-t-transparent mb-4"></div>
           <p className="text-gray-600 font-rajdhani">Loading business data...</p>
         </div>
       ) : (
@@ -315,14 +315,14 @@ export default function DashboardPage() {
           {/* Business Metrics Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             {statCards.map((card, index) => (
-              <Link 
+              <Link
                 key={index}
                 href={card.link}
-                className="group bg-white rounded-xl border border-gray-200 hover:border-orange-300 hover:shadow-lg transition-all duration-300 overflow-hidden"
+                className="group bg-white border border-gray-200 hover:border-orange-300 hover:shadow-lg transition-all duration-300 overflow-hidden"
               >
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <div className={`${card.color} rounded-xl p-3 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                    <div className={`${card.color} p-3 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                       <card.icon className="h-6 w-6 text-white" />
                     </div>
                     <div className="text-right">
@@ -344,14 +344,14 @@ export default function DashboardPage() {
           </div>
 
           {/* Recent Service Requests */}
-          <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+          <div className="bg-white border border-gray-200 shadow-sm overflow-hidden">
             <div className="px-6 py-4 flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-gray-200 gap-4 bg-gray-50">
               <div>
                 <h2 className="text-lg font-bold text-gray-900 font-orbitron">Recent Service Requests</h2>
                 <p className="text-sm text-gray-600 font-rajdhani">Latest customer bookings and service requests</p>
               </div>
-              <Link 
-                href="/dashboard/bookings/new" 
+              <Link
+                href="/dashboard/bookings/new"
                 className="inline-flex items-center text-sm text-orange-600 hover:text-orange-700 font-rajdhani font-bold uppercase tracking-wider group"
               >
                 View All Bookings
@@ -360,7 +360,7 @@ export default function DashboardPage() {
                 </svg>
               </Link>
             </div>
-            
+
             <div className="overflow-x-auto">
               <table className="w-full table-fixed">
                 <colgroup>
@@ -387,9 +387,9 @@ export default function DashboardPage() {
                           <InboxIcon className="h-12 w-12 text-gray-300 mb-4" />
                           <h3 className="text-lg font-semibold text-gray-900 font-orbitron mb-2">No Recent Service Requests</h3>
                           <p className="text-gray-500 font-rajdhani mb-4">You haven't received any service requests yet.</p>
-                          <Link 
+                          <Link
                             href="/dashboard/bookings/new"
-                            className="inline-flex items-center px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white font-rajdhani font-bold text-sm rounded-lg transition-colors duration-300"
+                            className="inline-flex items-center px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white font-rajdhani font-bold text-sm uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95"
                           >
                             View All Requests
                           </Link>
@@ -437,17 +437,17 @@ export default function DashboardPage() {
                             {/* Main Services - Clear Multi-line */}
                             <div className="space-y-1">
                               {booking?.services?.map((service, i) => (
-                                <div key={i} className="bg-white border border-gray-200 px-3 py-2 rounded-md">
+                                <div key={i} className="bg-white border border-gray-200 px-3 py-2">
                                   <span className="text-sm font-semibold text-gray-900 font-rajdhani leading-tight block">
                                     {service.name}
                                   </span>
                                 </div>
                               ))}
                             </div>
-                            
+
                             {/* Additional Services */}
                             {booking?.otherService && (
-                              <div className="bg-blue-50 border border-blue-200 px-3 py-2 rounded-md">
+                              <div className="bg-blue-50 border border-blue-200 px-3 py-2">
                                 <div className="text-xs font-bold text-blue-700 font-rajdhani uppercase mb-1">
                                   Additional Request:
                                 </div>
@@ -459,7 +459,7 @@ export default function DashboardPage() {
                           </div>
                         </td>
                         <td className="px-3 py-3 text-center">
-                          <span className={`inline-flex px-4 py-2 text-sm font-bold rounded-lg font-rajdhani uppercase tracking-wide shadow-sm ${getStatusColor(booking?.status)}`}>
+                          <span className={`inline-flex px-4 py-2 text-sm font-bold font-rajdhani uppercase tracking-wide shadow-sm ${getStatusColor(booking?.status)}`}>
                             {booking.status}
                           </span>
                         </td>
