@@ -222,7 +222,7 @@ export default function BlogPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-black/40 border border-gray-600 overflow-hidden backdrop-blur-sm hover:border-orange-600 transition-all duration-300 group"
+                  className="bg-black/40 border border-orange-600/30 overflow-hidden backdrop-blur-sm hover:border-orange-600 transition-all duration-300 group"
                 >
                   <div className="relative h-48 overflow-hidden">
                     <Image

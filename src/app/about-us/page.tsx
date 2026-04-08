@@ -48,7 +48,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* Welcome Section */}
-      <section className="w-full py-16 bg-black border-t border-white/20">
+      <section className="w-full py-16 bg-black border-t border-transparent">
         <div className="w-full px-6">
           <div className="max-w-screen-2xl mx-auto">
             <motion.div
@@ -106,7 +106,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* Mission Section */}
-      <section className="w-full py-16 bg-black border-t border-white/20">
+      <section className="w-full py-16 bg-black border-t border-transparent">
         <div className="w-full px-6">
           <div className="max-w-screen-2xl mx-auto">
             <motion.div
@@ -157,7 +157,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* Meet Our Team Section */}
-      <section className="w-full py-16 bg-black border-t border-white/20">
+      <section className="w-full py-16 bg-black border-t border-transparent">
         <div className="w-full px-6">
           <div className="max-w-screen-2xl mx-auto">
             <motion.div
@@ -286,7 +286,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="w-full py-16 bg-black border-t border-white/20">
+      {/* <section className="w-full py-16 bg-black border-t border-transparent">
         <div className="w-full px-6">
           <div className="max-w-screen-2xl mx-auto">
             <motion.div
@@ -302,7 +302,6 @@ export default function AboutUsPage() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-                {/* Years in Business with count animation */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -315,7 +314,6 @@ export default function AboutUsPage() {
                   <div className="text-sm text-gray-400 font-rajdhani uppercase tracking-wider">Years in<br />Business</div>
                 </motion.div>
 
-                {/* Specialists */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -327,7 +325,6 @@ export default function AboutUsPage() {
                   <div className="text-sm text-gray-400 font-rajdhani uppercase tracking-wider">Specialists</div>
                 </motion.div>
 
-                {/* Cars sold */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -339,7 +336,6 @@ export default function AboutUsPage() {
                   <div className="text-sm text-gray-400 font-rajdhani uppercase tracking-wider">Cars sold</div>
                 </motion.div>
 
-                {/* Localizations */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -354,10 +350,10 @@ export default function AboutUsPage() {
             </motion.div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Visit Us Section */}
-      <section className="w-full py-16 bg-black border-t border-white/20">
+      <section className="w-full py-16 bg-black border-t border-transparent">
         <div className="w-full px-6">
           <div className="max-w-screen-2xl mx-auto">
             <motion.div

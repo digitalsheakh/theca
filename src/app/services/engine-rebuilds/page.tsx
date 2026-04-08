@@ -113,37 +113,37 @@ export default function EngineRebuildsPage() {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-3">
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-red-600 mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Excessive smoke from exhaust</span>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-red-600 mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Knocking or unusual engine noises</span>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-red-600 mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Rapid oil consumption</span>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-red-600 mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Frequent overheating</span>
                 </div>
               </div>
               <div className="space-y-3">
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-red-600 mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Loss of compression</span>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-red-600 mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Metal particles in oil</span>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-red-600 mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Poor performance and power loss</span>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-red-600 mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Odd smells or strange noises</span>
                 </div>
               </div>
@@ -160,35 +160,35 @@ export default function EngineRebuildsPage() {
             </h3>
             <div className="space-y-4">
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-red-600 mt-2 mr-4 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-orange-600 mt-2 mr-4 flex-shrink-0"></div>
                 <div>
                   <span className="text-white font-semibold font-rajdhani text-sm">Do Thorough Research</span>
                   <span className="text-gray-300 font-rajdhani text-sm"> - Ensure you get the right parts for your specific engine</span>
                 </div>
               </div>
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-red-600 mt-2 mr-4 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-orange-600 mt-2 mr-4 flex-shrink-0"></div>
                 <div>
                   <span className="text-white font-semibold font-rajdhani text-sm">Replace Only What's Necessary</span>
                   <span className="text-gray-300 font-rajdhani text-sm"> - Avoid unnecessary expenses by replacing only worn components</span>
                 </div>
               </div>
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-red-600 mt-2 mr-4 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-orange-600 mt-2 mr-4 flex-shrink-0"></div>
                 <div>
                   <span className="text-white font-semibold font-rajdhani text-sm">Quality Parts Matter</span>
                   <span className="text-gray-300 font-rajdhani text-sm"> - Use OEM or high-quality aftermarket parts for longevity</span>
                 </div>
               </div>
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-red-600 mt-2 mr-4 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-orange-600 mt-2 mr-4 flex-shrink-0"></div>
                 <div>
                   <span className="text-white font-semibold font-rajdhani text-sm">Check Warranties</span>
                   <span className="text-gray-300 font-rajdhani text-sm"> - Always verify warranty coverage before making final decisions</span>
                 </div>
               </div>
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-red-600 mt-2 mr-4 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-orange-600 mt-2 mr-4 flex-shrink-0"></div>
                 <div>
                   <span className="text-white font-semibold font-rajdhani text-sm">Professional Service</span>
                   <span className="text-gray-300 font-rajdhani text-sm"> - Trust experienced technicians to do the job right the first time</span>

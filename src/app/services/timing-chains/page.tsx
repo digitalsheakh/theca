@@ -104,35 +104,35 @@ export default function TimingChainsPage() {
             </h3>
             <div className="space-y-4">
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-red-600 mt-2 mr-4 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-orange-600 mt-2 mr-4 flex-shrink-0"></div>
                 <div>
                   <span className="text-white font-semibold font-rajdhani text-sm">Qualified Mechanics</span>
                   <span className="text-gray-300 font-rajdhani text-sm"> - Certified technicians with years of engine experience</span>
                 </div>
               </div>
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-red-600 mt-2 mr-4 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-orange-600 mt-2 mr-4 flex-shrink-0"></div>
                 <div>
                   <span className="text-white font-semibold font-rajdhani text-sm">All Vehicle Types</span>
                   <span className="text-gray-300 font-rajdhani text-sm"> - We service cars, vans, and commercial vehicles</span>
                 </div>
               </div>
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-red-600 mt-2 mr-4 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-orange-600 mt-2 mr-4 flex-shrink-0"></div>
                 <div>
                   <span className="text-white font-semibold font-rajdhani text-sm">Quality Parts</span>
                   <span className="text-gray-300 font-rajdhani text-sm"> - OEM and premium aftermarket components with warranty</span>
                 </div>
               </div>
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-red-600 mt-2 mr-4 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-orange-600 mt-2 mr-4 flex-shrink-0"></div>
                 <div>
                   <span className="text-white font-semibold font-rajdhani text-sm">Fair Pricing</span>
                   <span className="text-gray-300 font-rajdhani text-sm"> - Competitive rates with no hidden charges</span>
                 </div>
               </div>
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-red-600 mt-2 mr-4 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-orange-600 mt-2 mr-4 flex-shrink-0"></div>
                 <div>
                   <span className="text-white font-semibold font-rajdhani text-sm">Quick Service</span>
                   <span className="text-gray-300 font-rajdhani text-sm"> - Efficient repairs to minimize your downtime</span>
@@ -153,37 +153,37 @@ export default function TimingChainsPage() {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-3">
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-red-600 mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Rattling noise on startup</span>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-red-600 mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Engine misfiring or rough idle</span>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-red-600 mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Loss of power during acceleration</span>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-red-600 mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Check engine warning light</span>
                 </div>
               </div>
               <div className="space-y-3">
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-red-600 mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Metal particles in oil</span>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-red-600 mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Difficulty starting the engine</span>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-red-600 mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">Unusual engine vibrations</span>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-2 h-2 bg-red-600 mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-orange-600 mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300 font-rajdhani text-sm">High mileage (80k+ miles)</span>
                 </div>
               </div>
