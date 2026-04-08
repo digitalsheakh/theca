@@ -4,13 +4,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import VideoPlayer from '@/components/VideoPlayer';
 import TestimonialsCarousel from '@/components/TestimonialsCarousel';
-import ScrollAnimation from '@/components/ScrollAnimation';
 import TitleBadge from '@/components/TitleBadge';
 import { useSession } from 'next-auth/react';
 import GlobalLoading from '@/components/GlobalLoading';
-import { Select } from '@radix-ui/react-select';
+import { FaCog, FaTools } from 'react-icons/fa';
+import { PiHandshakeFill } from "react-icons/pi";
 
 export default function Home() {
   const [isMounted, setIsMounted] = useState(false);
@@ -206,13 +205,7 @@ export default function Home() {
                   }}
                 >
                   <div className="mr-4">
-                    <Image
-                      src="/images/icons/SERVICE ICON white.png"
-                      alt="Engine Repair Icon"
-                      width={32}
-                      height={32}
-                      className="w-8 h-8"
-                    />
+                    <FaCog className="w-8 h-8 text-orange-600" />
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-white uppercase mb-1 font-orbitron tracking-wider">ENGINE REPAIR & REBUILDS</h3>
@@ -231,13 +224,7 @@ export default function Home() {
                   }}
                 >
                   <div className="mr-4">
-                    <Image
-                      src="/images/icons/SERVICE ICON white.png"
-                      alt="Maintenance Icon"
-                      width={32}
-                      height={32}
-                      className="w-8 h-8"
-                    />
+                    <FaTools className="w-8 h-8 text-orange-600" />
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-white uppercase mb-1 font-orbitron tracking-wider">MAINTENANCE & SERVICING</h3>
@@ -256,13 +243,7 @@ export default function Home() {
                   }}
                 >
                   <div className="mr-4">
-                    <Image
-                      src="/images/icons/CAR_3.png"
-                      alt="Buy Sell Icon"
-                      width={32}
-                      height={32}
-                      className="w-8 h-8"
-                    />
+                    <PiHandshakeFill className="w-10 h-10 font-bold text-orange-600" />
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-white uppercase mb-1 font-orbitron tracking-wider">BUY OR SELL YOUR CAR</h3>

@@ -83,7 +83,7 @@ function LoginPage() {
         className="relative z-10 w-full max-w-md bg-gray-900/90 backdrop-blur-sm shadow-2xl overflow-hidden border border-orange-600/30"
       >
         {/* Header with Logo */}
-        <div className="bg-black/50 p-8 text-center border-b border-orange-600/20">
+        <div className="bg-orange-800/80 p-8 text-center border-b border-orange-600/20">
           <Link href="/" className="inline-block">
             <div className="mx-auto h-20 w-20 bg-orange-600 flex items-center justify-center shadow-lg">
               <span className="text-white font-bold text-2xl font-orbitron">CE</span>
@@ -94,7 +94,7 @@ function LoginPage() {
         </div>
 
         {/* Main Form */}
-        <div className="p-8">
+        <div className="p-8 bg-orange-900/50">
           {error && (
             <motion.div
               initial={{ opacity: 0, y: -10 }}
@@ -122,7 +122,7 @@ function LoginPage() {
                       message: "Invalid email address"
                     }
                   })}
-                  className={`w-full px-4 py-3 bg-white text-white font-rajdhani ${errors.email ? "border-orange-500" : "border-orange-600/30"} border focus:ring-2 focus:ring-gray-600 focus:border-orange-600/30 placeholder-gray-400`}
+                  className={`w-full px-4 py-3 bg-white text-orange-950 font-rajdhani ${errors.email ? "border-orange-500" : "border-orange-600/30"} border focus:ring-2 focus:ring-gray-600 focus:border-orange-600/30 placeholder-gray-800/60`}
                   placeholder="admin@thecaredition.com"
                 />
                 {errors.email && (
@@ -147,7 +147,7 @@ function LoginPage() {
                       message: "Password must be at least 6 characters"
                     }
                   })}
-                  className={`w-full px-4 py-3 bg-white text-white font-rajdhani ${errors.password ? "border-orange-500" : "border-orange-600/30"} border focus:ring-2 focus:ring-gray-600 focus:border-orange-600/30 placeholder-gray-400`}
+                  className={`w-full px-4 py-3 bg-white text-orange-950 font-rajdhani ${errors.password ? "border-orange-500" : "border-orange-600/30"} border focus:ring-2 focus:ring-gray-600 focus:border-orange-600/30 placeholder-gray-800/60`}
                   placeholder="••••••••"
                 />
                 {errors.password && (
@@ -165,12 +165,12 @@ function LoginPage() {
                   type="checkbox"
                   className="h-4 w-4 text-orange-600 focus:ring-orange-600 border-orange-600/30 bg-white"
                 />
-                <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-300 font-rajdhani">
+                <label htmlFor="remember-me" className="ml-2 block text-sm text-orange-200 font-rajdhani">
                   Remember me
                 </label>
               </div>
               <div className="text-sm">
-                <Link href="/forgot-password" className="font-medium text-orange-400 hover:text-orange-300 font-rajdhani">
+                <Link href="/forgot-password" className="font-medium text-orange-600 hover:text-orange-300 font-rajdhani">
                   Forgot password?
                 </Link>
               </div>
@@ -183,8 +183,8 @@ function LoginPage() {
               type="submit"
               disabled={loading}
               className={`group relative w-full flex justify-center items-center py-4 px-4 border border-transparent shadow-lg text-sm font-bold font-orbitron uppercase tracking-wider text-white overflow-hidden transition-all duration-300 ${loading
-                  ? 'bg-orange-600 cursor-not-allowed'
-                  : 'bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-600'
+                ? 'bg-orange-600 cursor-not-allowed'
+                : 'bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-600'
                 }`}
             >
               {!loading && (
@@ -207,7 +207,7 @@ function LoginPage() {
           </form>
 
           {/* Footer */}
-          <div className="mt-8 text-center text-sm text-gray-400 font-rajdhani">
+          <div className="mt-8 text-center text-sm text-orange-200 font-rajdhani">
             <p>Secure admin access for The Car Edition business management</p>
           </div>
         </div>
