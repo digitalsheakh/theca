@@ -1455,7 +1455,7 @@ export default function Home() {
             </div>
 
             {/* Service Content */}
-            <div className="bg-black backdrop-blur-sm p-4 sm:p-6 md:p-8 border-2 border-orange-600/30/50 shadow-2xl">
+            <div className="bg-black backdrop-blur-sm p-4 sm:p-6 md:p-8 border-2 border-orange-600/30 shadow-2xl">
               {/* Diagnostics & Electrical */}
               {activeServiceTab === 0 && (
                 <div className="animate-fadeIn">

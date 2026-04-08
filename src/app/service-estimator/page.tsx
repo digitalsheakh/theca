@@ -73,7 +73,7 @@ export default function ServiceEstimator() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="bg-black/60 border border-gray-600 p-8 backdrop-blur-sm"
+              className="bg-black/60 border border-orange-600/30 p-8 backdrop-blur-sm"
             >
               {submitStatus === 'success' ? (
                 <div className="bg-green-500/20 border border-green-500 p-6 text-center">

@@ -233,7 +233,7 @@ export default function ServiceSelection() {
                 YOUR VEHICLE
               </p>
             </div>
-            <div className="bg-black/40 border border-gray-600 p-6 backdrop-blur-sm">
+            <div className="bg-black/40 border border-orange-600/30 p-6 backdrop-blur-sm">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div className="flex items-center">
                   <FaCar className="text-orange-600 mr-3" />

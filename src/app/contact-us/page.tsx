@@ -169,7 +169,7 @@ export default function ContactUs() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className="bg-black/60 md:border border-gray-600  md:p-8 backdrop-blur-sm"
+                className="bg-black/60 md:border border-orange-600/30  md:p-8 backdrop-blur-sm"
               >
                 <h2 className="text-3xl font-bold mb-8 font-orbitron uppercase tracking-wider">Send Us a <span className="text-orange-600">Message</span></h2>
 
@@ -329,13 +329,13 @@ export default function ContactUs() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-black/40 border border-gray-600 overflow-hidden backdrop-blur-sm"
+                  className="bg-black/40 border border-orange-600/50 overflow-hidden backdrop-blur-sm"
                 >
                   <button
                     onClick={() => setOpenFaq(openFaq === index ? null : index)}
                     className="w-full p-6 text-left flex justify-between items-center hover:bg-[#f97316]/30 transition-colors"
                   >
-                    <h3 className="text-lg font-bold text-white font-orbitron">
+                    <h3 className="text-lg font-bold text-white/90 font-orbitron">
                       {faq.question}
                     </h3>
                     <span className={`text-orange-600 text-xl transition-transform duration-300 ${openFaq === index ? 'rotate-180' : ''}`}>
@@ -377,7 +377,7 @@ export default function ContactUs() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
-              className=" overflow-hidden h-96 w-full border border-gray-600 bg-black"
+              className=" overflow-hidden h-96 w-full border border-orange-600/30 bg-black"
             >
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2435.4380261289384!2d-0.20606312341485!3d52.34410947200145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4877dc6b9c923c75%3A0x7c6a8e0c3c1a9d0c!2sUnit%204%20St%20Margarets%20Way%2C%20Huntingdon%20PE29%206EB!5e0!3m2!1sen!2suk!4v1651234567890!5m2!1sen!2suk&style=feature:all%7Celement:geometry%7Ccolor:0x242f3e&style=feature:all%7Celement:labels.text.stroke%7Ccolor:0x242f3e&style=feature:all%7Celement:labels.text.fill%7Ccolor:0x746855&style=feature:administrative.locality%7Celement:labels.text.fill%7Ccolor:0xd59563&style=feature:poi%7Celement:labels.text.fill%7Ccolor:0xd59563&style=feature:poi.park%7Celement:geometry%7Ccolor:0x263c3f&style=feature:poi.park%7Celement:labels.text.fill%7Ccolor:0x6b9a76&style=feature:road%7Celement:geometry%7Ccolor:0x38414e&style=feature:road%7Celement:geometry.stroke%7Ccolor:0x212a37&style=feature:road%7Celement:labels.text.fill%7Ccolor:0x9ca5b3&style=feature:road.highway%7Celement:geometry%7Ccolor:0x746855&style=feature:road.highway%7Celement:geometry.stroke%7Ccolor:0x1f2835&style=feature:road.highway%7Celement:labels.text.fill%7Ccolor:0xf3d19c&style=feature:transit%7Celement:geometry%7Ccolor:0x2f3948&style=feature:transit.station%7Celement:labels.text.fill%7Ccolor:0xd59563&style=feature:water%7Celement:geometry%7Ccolor:0x17263c&style=feature:water%7Celement:labels.text.fill%7Ccolor:0x515c6d&style=feature:water%7Celement:labels.text.stroke%7Ccolor:0x17263c"
