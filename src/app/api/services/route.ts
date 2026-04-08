@@ -1,0 +1,59 @@
+﻿
+
+import { authorizationCheck } from"@/lib/authorization";
+import { collections, dbConnect } from"@/lib/dbConnect";
+import { NextRequest, NextResponse } from"next/server";
+
+export async function POST(req :NextRequest) {
+ const referer = req.headers.get('referer') ||'';
+ const refererPath = new URL(referer).pathname;
+ 
+ // Pass referer path to authorization check
+ const authResult = await authorizationCheck(refererPath);
+ 
+ if (!authResult.success) {
+ return NextResponse.json(
+ { error: authResult.error },
+ { status: authResult.status }
+ );
+ }
+ try {
+ // TODO: Re-enable database connection after deployment
+ // const servicesCollection = await dbConnect(collections.services);
+ const formInfo = await req.json();
+ // TODO: Re-enable database insert
+ // const result = await servicesCollection.insertOne({ ...formInfo, createdAt : new Date() });
+ const result = { insertedId:"temp-id", acknowledged: true };
+ return NextResponse.json(result, { status: 201 }); 
+ } catch (error) {
+ console.error(error);
+ return NextResponse.json({ error:"Failed to create admission" }, { status: 500 });
+ }
+}
+
+export async function GET(req: NextRequest) {
+ const referer = req.headers.get('referer') ||'';
+ const refererPath = new URL(referer).pathname;
+ 
+ // Pass referer path to authorization check
+ const authResult = await authorizationCheck(refererPath);
+ 
+ if (!authResult.success) {
+ return NextResponse.json(
+ { error: authResult.error },
+ { status: authResult.status }
+ );
+ }
+
+ try {
+ // TODO: Re-enable database connection after deployment
+ // const servicesCollection = await dbConnect(collections.services);
+ // TODO: Re-enable database query
+ // const result = await servicesCollection.find({}).sort({ date: 1 }).toArray();
+ const result = [{ _id:"sample-id", title:"Sample Service", content:"Database temporarily disabled" }];
+ return NextResponse.json(result);
+ } catch (error) {
+ console.error("Error fetching admissions:", error);
+ return NextResponse.json({ error:"Failed to fetch admissions" }, { status: 500 });
+ }
+}
