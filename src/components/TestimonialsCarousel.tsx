@@ -43,51 +43,59 @@ export default function TestimonialsCarousel({
         const realReviews: Review[] = [
           {
             id: '1',
-            author: 'Jonathan Carvetta',
+            author: 'Antonio Pereira',
             rating: 5,
-            text: 'Took my car in for a service, the chap I dealt with was helpful and polite! My car was serviced in double quick time, they were reasonably priced too. I will now make this garage my first choice going forward! Very highly recommend',
-            date: '2023-11-15',
+            text: 'Well worth the 3 hour drive to get these guys working on my T6. Cambelt, water pump, health check and diagnostics on another fault. Good bunch of lads. Will definitely use them again.',
+            date: '2024-01-15',
             photoUrl: '/images/testimonials/avatar1.jpg'
           },
           {
             id: '2',
-            author: 'Sineeta Wright',
+            author: 'Samson Tabonares',
             rating: 5,
-            text: 'Really helpful and as woman its hard finding a decent garage that you dont get ripped off at and feel uncomfortable but this garage makes you feel comfortable with quality work highly recommend',
-            date: '2023-10-22',
+            text: 'I recently had my gearbox oil, differential oil, and filters changed here, and I couldn\'t be happier with the service. The team was professional, friendly, and explained everything clearly before starting the job. You can tell they really know their stuff — the car feels smoother and runs better than ever. Prices were fair, and the work was done on time. I\'ll definitely be coming back for future maintenance. Highly recommend this garage to anyone looking for honest and skilled mechanics!',
+            date: '2024-01-10',
             photoUrl: '/images/testimonials/avatar2.jpg'
           },
           {
             id: '3',
-            author: 'Vanessa Ffitch',
+            author: 'Abdallah Al Teeb',
             rating: 5,
-            text: 'Very reliable service, usually garages are intimidating for women but felt at ease the workers here. Sorted my car out thankfully! Thank you ZRS motors',
-            date: '2023-09-18',
+            text: 'First time here, I was really impressed by the car education ltd. Customer service 10/10. Car was repaired quickly and i was charged a reasonable price. Will definitely come back in the future.',
+            date: '2024-01-05',
             photoUrl: '/images/testimonials/avatar3.jpg'
           },
           {
             id: '4',
-            author: 'Michael Thompson',
+            author: 'Laszlo',
             rating: 5,
-            text: 'Excellent service from start to finish. The team at The Car Edition diagnosed my engine problem quickly and provided a fair quote. Work was completed on time and my car runs like new. Highly recommended!',
-            date: '2023-08-30',
+            text: 'Great service from The Car Edition! They did the wet belt on my car and were friendly, professional, and easy to deal with. Everything was explained clearly and the job was done to a high standard. Highly recommend them!',
+            date: '2023-12-28',
             photoUrl: '/images/testimonials/avatar4.jpg'
           },
           {
             id: '5',
-            author: 'Sarah Johnson',
+            author: 'Sinead Wilmot',
             rating: 5,
-            text: 'Outstanding customer service and professional work. They explained everything clearly and kept me updated throughout the repair process. Fair pricing and quality workmanship. Will definitely return!',
-            date: '2023-08-25',
+            text: 'Had a wet belt service done on my van along with all four brake discs and pads replaced, and I\'m very impressed with the service from The Car Edition Ltd. Everything was clearly explained beforehand and the work was carried out professionally. It\'s been around three weeks since the work was completed and I\'ve had no issues at all — the van is running smoothly and the brakes feel spot on. Great workmanship, fair pricing, and excellent service. Would definitely recommend.',
+            date: '2023-12-20',
             photoUrl: '/images/testimonials/avatar5.jpg'
           },
           {
             id: '6',
-            author: 'David Wilson',
+            author: 'Kevin Allen',
             rating: 5,
-            text: 'Been using The Car Edition for years and they never disappoint. Honest, reliable, and skilled mechanics who take pride in their work. Great value for money and always go the extra mile.',
-            date: '2023-08-20',
+            text: 'Is it one of the best garages I have used in a long time very hard to find a good Garage? I\'d recommend these any day of the week you get what you pay for And these guys know their stuff you may have seen them on Facebook they don\'t sugarcoat anything They tell you the truth and they don\'t lie if you want a Garage to do 100% job on your vehicle come to these guys they are absolutely brilliant',
+            date: '2023-12-15',
             photoUrl: '/images/testimonials/avatar6.jpg'
+          },
+          {
+            id: '7',
+            author: 'Chris Church',
+            rating: 5,
+            text: 'I am an addict to the YouTube videos the lads put out. Their attention to detail and knowledge is quite remarkable. I just wish they were round the corner from me . Obviously I have not been able to use them due to my location but would not hesitate to do so if I could. You can tell that you can trust these guys just by watching them . Good luck with the racing Chris C',
+            date: '2023-12-10',
+            photoUrl: '/images/testimonials/avatar7.jpg'
           }
         ];
 
@@ -228,7 +236,13 @@ export default function TestimonialsCarousel({
                       >
                         {/* Google Logo and Stars */}
                         <div className="flex items-center justify-between mb-4">
-                          <FaGoogle className="text-gray-500 text-2xl" />
+                          <Image 
+                            src="/images/logos/Google_logo.png" 
+                            alt="Google" 
+                            width={60} 
+                            height={20} 
+                            className="object-contain"
+                          />
                           <div className="flex items-center">
                             {[...Array(5)].map((_, i) => (
                               <BsStarFill
@@ -266,7 +280,13 @@ export default function TestimonialsCarousel({
                         >
                           {/* Google Logo and Stars */}
                           <div className="flex items-center justify-between mb-4">
-                            <FaGoogle className="text-gray-500 text-2xl" />
+                            <Image 
+                              src="/images/logos/Google_logo.png" 
+                              alt="Google" 
+                              width={60} 
+                              height={20} 
+                              className="object-contain"
+                            />
                             <div className="flex items-center">
                               {[...Array(5)].map((_, i) => (
                                 <BsStarFill

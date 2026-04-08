@@ -1790,7 +1790,7 @@ export default function Home() {
 
 
       {/* Testimonials Section */}
-      <TestimonialsCarousel limit={6} autoplaySpeed={6000} />
+      <TestimonialsCarousel limit={7} autoplaySpeed={6000} />
 
 
     </main>
