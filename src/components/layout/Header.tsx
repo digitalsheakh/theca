@@ -227,23 +227,23 @@ export default function Header() {
 
                   {/* Services Dropdown */}
                   {item.hasDropdown && (
-                    <div className="absolute top-full left-0 mt-0 w-64 bg-black border border-orange-500/30 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 pointer-events-none group-hover:pointer-events-auto">
-                      <div className="py-3">
-                        {/* Trending Service with Nested Dropdown - Moved to Top */}
+                    <div className="absolute top-full left-0 mt-0 w-80 bg-black border border-orange-500/30 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-50 pointer-events-none group-hover:pointer-events-auto translate-y-2 group-hover:translate-y-0">
+                      <div className="py-2">
+                        {/* Trending Service with Nested Dropdown */}
                         <div className="relative group/trending">
-                          <div className="px-4 py-2 text-white hover:text-orange-400 hover:bg-orange-900/20 transition-colors font-rajdhani text-sm cursor-pointer flex items-center justify-between">
+                          <div className="px-4 py-3 text-white hover:text-orange-400 hover:bg-orange-900/20 transition-all duration-200 font-rajdhani text-sm cursor-pointer flex items-center justify-between group-hover/trending:bg-orange-900/20">
                             <span>Trending Service</span>
-                            <span className="text-xs">▶</span>
+                            <span className="text-xs transition-transform duration-300 group-hover/trending:translate-x-1">▶</span>
                           </div>
 
-                          {/* Nested Dropdown - appears to the right at same vertical level */}
-                          <div className="absolute left-full top-[-12px] ml-0 w-64 bg-black border border-orange-500/30 shadow-2xl opacity-0 invisible group-hover/trending:opacity-100 group-hover/trending:visible transition-all duration-300 z-[60] pointer-events-none group-hover/trending:pointer-events-auto">
-                            <div className="py-3">
+                          {/* Nested Dropdown - appears beside on hover */}
+                          <div className="absolute left-full top-0 ml-0 w-80 bg-black border border-orange-500/30 shadow-2xl opacity-0 invisible group-hover/trending:opacity-100 group-hover/trending:visible transition-all duration-300 ease-out pointer-events-none group-hover/trending:pointer-events-auto -translate-x-2 group-hover/trending:translate-x-0">
+                            <div className="py-2">
                               {trendingServicesItems.map((trendingService) => (
                                 <Link
                                   key={trendingService.href}
                                   href={trendingService.href}
-                                  className="block px-4 py-2 text-white hover:text-orange-400 hover:bg-orange-900/20 transition-colors font-rajdhani text-sm"
+                                  className="block px-4 py-2 text-white hover:text-orange-400 hover:bg-orange-900/20 transition-all duration-200 font-rajdhani text-sm border-l-2 border-transparent hover:border-orange-400 hover:pl-5"
                                 >
                                   {trendingService.text}
                                 </Link>
@@ -252,11 +252,14 @@ export default function Header() {
                           </div>
                         </div>
 
+                        {/* Services Divider */}
+                        <div className="border-t border-orange-500/20 my-1"></div>
+
                         {servicesDropdownItems.map((service) => (
                           <Link
                             key={service.href}
                             href={service.href}
-                            className="block px-4 py-2 text-white hover:text-orange-400 hover:bg-orange-900/20 transition-colors font-rajdhani text-sm"
+                            className="block px-4 py-2 text-white hover:text-orange-400 hover:bg-orange-900/20 transition-all duration-200 font-rajdhani text-sm border-l-2 border-transparent hover:border-orange-400 hover:pl-5"
                           >
                             {service.text}
                           </Link>
