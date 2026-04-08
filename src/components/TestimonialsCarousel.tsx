@@ -117,9 +117,10 @@ export default function TestimonialsCarousel({
   useEffect(() => {
     if (isPaused || reviews.length <= 1) return;
 
-    // Calculate the number of pages (each page shows 3 reviews)
-    const pageCount = Math.ceil(reviews.length / 3);
-    if (pageCount <= 1) return; // Don't auto-advance if there's only one page
+    // On mobile: 1 review per page, on desktop: 3 reviews per page
+    const reviewsPerPage = screenWidth < 768 ? 1 : 3;
+    const pageCount = Math.ceil(reviews.length / reviewsPerPage);
+    if (pageCount <= 1) return;
 
     timerRef.current = setInterval(() => {
       handleNext();
@@ -130,20 +131,22 @@ export default function TestimonialsCarousel({
         clearInterval(timerRef.current);
       }
     };
-  }, [isPaused, activeIndex, reviews.length, autoplaySpeed]);
+  }, [isPaused, activeIndex, reviews.length, autoplaySpeed, screenWidth]);
 
   const handlePrev = () => {
-    // Each page shows 3 reviews, so we need to calculate the total number of pages
-    const totalPages = Math.ceil(reviews.length / 3);
-    if (totalPages <= 1) return; // Don't navigate if there's only one page
+    // On mobile: 1 review per page, on desktop: 3 reviews per page
+    const reviewsPerPage = screenWidth < 768 ? 1 : 3;
+    const totalPages = Math.ceil(reviews.length / reviewsPerPage);
+    if (totalPages <= 1) return;
 
     setActiveIndex(prevIndex => (prevIndex - 1 + totalPages) % totalPages);
   };
 
   const handleNext = () => {
-    // Each page shows 3 reviews, so we need to calculate the total number of pages
-    const totalPages = Math.ceil(reviews.length / 3);
-    if (totalPages <= 1) return; // Don't navigate if there's only one page
+    // On mobile: 1 review per page, on desktop: 3 reviews per page
+    const reviewsPerPage = screenWidth < 768 ? 1 : 3;
+    const totalPages = Math.ceil(reviews.length / reviewsPerPage);
+    if (totalPages <= 1) return;
 
     setActiveIndex(prevIndex => (prevIndex + 1) % totalPages);
   };
@@ -187,16 +190,16 @@ export default function TestimonialsCarousel({
 
   return (
     <motion.div
-      className="bg-white py-8 sm:py-12 md:py-16"
+      className="bg-white py-6 sm:py-8 md:py-10"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
       variants={fadeInUp}
     >
-      <div className="w-full px-6">
+      <div className="w-full px-4 md:px-6">
         <div className="max-w-screen-xl mx-auto">
           <motion.div
-            className="text-center mb-8"
+            className="text-center mb-6"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
@@ -205,19 +208,19 @@ export default function TestimonialsCarousel({
             <div className="flex items-center justify-center">
               <TitleBadge title="CLIENT TESTIMONIALS" />
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-black uppercase font-orbitron tracking-wider leading-tight mb-4">
-              WHAT OUR CLIENTS
+            <h2 className="text-2xl md:text-3xl font-bold text-black uppercase font-orbitron tracking-wider leading-tight mb-3">
+              DON'T JUST TAKE OUR WORD FOR IT,
               <br />
-              <span className="text-orange-600">SAY ABOUT US</span>
+              <span className="text-orange-600">SEE WHAT OTHERS ARE SAYING</span>
             </h2>
-            <p className="text-base text-gray-600 font-rajdhani max-w-2xl mx-auto leading-relaxed">
+            <p className="text-sm text-gray-600 font-rajdhani max-w-xl mx-auto leading-relaxed">
               Read genuine reviews from our satisfied customers who trust us with their vehicles.
             </p>
           </motion.div>
 
           {loading ? (
-            <div className="flex justify-center py-16">
-              <div className="animate-spin h-16 w-16 border-t-2 border-b-2 border-[#f56e13]"></div>
+            <div className="flex justify-center py-8">
+              <div className="animate-spin h-12 w-12 border-t-2 border-b-2 border-[#f56e13]"></div>
             </div>
           ) : (
             <div className="relative" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
@@ -227,127 +230,127 @@ export default function TestimonialsCarousel({
                   className="flex transition-transform duration-500 ease-in-out"
                   style={{ transform: `translateX(-${activeIndex * 100}%)` }}
                 >
-                  {/* Display multiple cards in a row */}
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full flex-shrink-0">
-                    {reviews.slice(0, 3).map((review) => (
-                      <div
-                        key={review.id}
-                        className="bg-white border border-gray-200 p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full"
-                      >
-                        {/* Google Logo and Stars */}
-                        <div className="flex items-center justify-between mb-4">
-                          <Image 
-                            src="/images/logos/Google_logo.png" 
-                            alt="Google" 
-                            width={60} 
-                            height={20} 
-                            className="object-contain"
-                          />
-                          <div className="flex items-center">
-                            {[...Array(5)].map((_, i) => (
-                              <BsStarFill
-                                key={i}
-                                className="text-yellow-400 mr-1"
-                                size={16}
-                              />
-                            ))}
-                          </div>
-                        </div>
-
-                        <p className="text-gray-700 mb-6 flex-grow font-rajdhani leading-relaxed text-sm">
-                          "{review.text}"
-                        </p>
-
-                        <div className="flex items-center mt-auto pt-4 border-t border-gray-100">
-                          <div className="w-12 h-12 overflow-hidden mr-4 bg-orange-600 flex items-center justify-center">
-                            <span className="text-white font-bold font-orbitron text-lg">{review.author.charAt(0)}</span>
-                          </div>
-                          <div>
-                            <h3 className="font-bold text-gray-800 font-orbitron text-sm uppercase tracking-wide">{review.author}</h3>
-                            <p className="text-gray-500 text-xs font-rajdhani uppercase tracking-wider">VIA GOOGLE REVIEWS</p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  {reviews.length > 3 && (
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full flex-shrink-0">
-                      {reviews.slice(3, 6).map((review) => (
-                        <div
-                          key={review.id}
-                          className="bg-white border border-gray-200 p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full"
-                        >
+                  {screenWidth < 768 ? (
+                    // Mobile: One review per slide
+                    reviews.map((review) => (
+                      <div key={review.id} className="w-full flex-shrink-0 flex justify-center">
+                        <div className="bg-white border border-gray-200 p-4 shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col max-w-sm w-full mx-4">
                           {/* Google Logo and Stars */}
-                          <div className="flex items-center justify-between mb-4">
+                          <div className="flex items-center justify-between mb-3">
                             <Image 
                               src="/images/logos/Google_logo.png" 
                               alt="Google" 
-                              width={60} 
-                              height={20} 
+                              width={50} 
+                              height={16} 
                               className="object-contain"
                             />
                             <div className="flex items-center">
                               {[...Array(5)].map((_, i) => (
                                 <BsStarFill
                                   key={i}
-                                  className="text-yellow-400 mr-1"
-                                  size={16}
+                                  className="text-yellow-400 mr-0.5"
+                                  size={14}
                                 />
                               ))}
                             </div>
                           </div>
 
-                          <p className="text-gray-700 mb-6 flex-grow font-rajdhani leading-relaxed text-sm">
-                            "{review.text}"
+                          <p className="text-gray-700 mb-4 flex-grow font-rajdhani leading-relaxed text-sm">
+                            "{truncateText(review.text, 200)}"
                           </p>
 
-                          <div className="flex items-center mt-auto pt-4 border-t border-gray-100">
-                            <div className="w-12 h-12 overflow-hidden mr-4 bg-orange-600 flex items-center justify-center">
-                              <span className="text-white font-bold font-orbitron text-lg">{review.author.charAt(0)}</span>
+                          <div className="flex items-center mt-auto pt-3 border-t border-gray-100">
+                            <div className="w-10 h-10 overflow-hidden mr-3 bg-orange-600 flex items-center justify-center">
+                              <span className="text-white font-bold font-orbitron text-sm">{review.author.charAt(0)}</span>
                             </div>
                             <div>
-                              <h3 className="font-bold text-gray-800 font-orbitron text-sm uppercase tracking-wide">{review.author}</h3>
+                              <h3 className="font-bold text-gray-800 font-orbitron text-xs uppercase tracking-wide">{review.author}</h3>
                               <p className="text-gray-500 text-xs font-rajdhani uppercase tracking-wider">VIA GOOGLE REVIEWS</p>
                             </div>
                           </div>
                         </div>
-                      ))}
-                    </div>
+                      </div>
+                    ))
+                  ) : (
+                    // Desktop: Three reviews per slide
+                    Array.from({ length: Math.ceil(reviews.length / 3) }, (_, pageIndex) => (
+                      <div key={pageIndex} className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full flex-shrink-0">
+                        {reviews.slice(pageIndex * 3, (pageIndex + 1) * 3).map((review) => (
+                          <div
+                            key={review.id}
+                            className="bg-white border border-gray-200 p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full"
+                          >
+                            {/* Google Logo and Stars */}
+                            <div className="flex items-center justify-between mb-4">
+                              <Image 
+                                src="/images/logos/Google_logo.png" 
+                                alt="Google" 
+                                width={60} 
+                                height={20} 
+                                className="object-contain"
+                              />
+                              <div className="flex items-center">
+                                {[...Array(5)].map((_, i) => (
+                                  <BsStarFill
+                                    key={i}
+                                    className="text-yellow-400 mr-1"
+                                    size={16}
+                                  />
+                                ))}
+                              </div>
+                            </div>
+
+                            <p className="text-gray-700 mb-6 flex-grow font-rajdhani leading-relaxed text-sm">
+                              "{review.text}"
+                            </p>
+
+                            <div className="flex items-center mt-auto pt-4 border-t border-gray-100">
+                              <div className="w-12 h-12 overflow-hidden mr-4 bg-orange-600 flex items-center justify-center">
+                                <span className="text-white font-bold font-orbitron text-lg">{review.author.charAt(0)}</span>
+                              </div>
+                              <div>
+                                <h3 className="font-bold text-gray-800 font-orbitron text-sm uppercase tracking-wide">{review.author}</h3>
+                                <p className="text-gray-500 text-xs font-rajdhani uppercase tracking-wider">VIA GOOGLE REVIEWS</p>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    ))
                   )}
                 </div>
               </div>
 
               {/* Navigation Controls */}
-              <div className="flex justify-center mt-8 items-center">
+              <div className="flex justify-center mt-6 items-center">
                 <button
                   onClick={handlePrev}
-                  className="bg-orange-600 hover:bg-orange-700 text-white p-2 transition-colors duration-300 mx-3 shadow-lg"
+                  className="bg-orange-600 hover:bg-orange-700 text-white p-2 transition-colors duration-300 mx-2 shadow-md"
                   aria-label="Previous testimonials"
                 >
-                  <HiOutlineChevronLeft className="w-5 h-5" />
+                  <HiOutlineChevronLeft className="w-4 h-4" />
                 </button>
 
                 <button
                   onClick={handleNext}
-                  className="bg-orange-600 hover:bg-orange-700 text-white p-2 transition-colors duration-300 mx-3 shadow-lg"
+                  className="bg-orange-600 hover:bg-orange-700 text-white p-2 transition-colors duration-300 mx-2 shadow-md"
                   aria-label="Next testimonials"
                 >
-                  <HiOutlineChevronRight className="w-5 h-5" />
+                  <HiOutlineChevronRight className="w-4 h-4" />
                 </button>
               </div>
             </div>
           )}
 
           {/* Call to action */}
-          <div className="text-center mt-8">
+          <div className="text-center mt-6">
             <a
               href="https://g.co/kgs/pGmWczy"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg"
+              className="inline-flex items-center bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95 shadow-md text-sm"
             >
-              <FaGoogle className="mr-3 w-5 h-5" />
+              <FaGoogle className="mr-2 w-4 h-4" />
               <span>VIEW ALL GOOGLE REVIEWS</span>
             </a>
           </div>
