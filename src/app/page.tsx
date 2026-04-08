@@ -912,7 +912,7 @@ export default function Home() {
               <div className="flex items-center justify-center">
                 <TitleBadge title="AUTOMOTIVE EXCELLENCE" />
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-white uppercase font-orbitron tracking-wider leading-tight mb-6">TRUSTED BY LEADING BRANDS</h2>
+              <h2 className="text-4xl md:text-5xl font-bold text-white uppercase font-orbitron tracking-wider leading-tight mb-6">EXPERIENCED WITH LEADING BRANDS</h2>
               <p className="text-lg text-gray-300 font-rajdhani max-w-3xl mx-auto leading-relaxed">
                 We service and maintain vehicles from all major automotive manufacturers with professional expertise and genuine parts.
               </p>
