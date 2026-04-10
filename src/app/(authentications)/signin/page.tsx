@@ -195,7 +195,7 @@ function LoginPage() {
                 {loading ? (
                   <>
                     <div className="flex items-center">
-                      <div className="animate-spin h-5 w-5 border-2 border-white border-t-transparent mr-3"></div>
+                      <div className="animate-spin h-5 w-5 border-2 border-white border-t-transparent border-b-transparent mr-3"></div>
                       <span className="animate-pulse">Accessing Dashboard...</span>
                     </div>
                   </>

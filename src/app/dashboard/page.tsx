@@ -302,7 +302,7 @@ export default function DashboardPage() {
 
       {loading ? (
         <div className="flex flex-col justify-center items-center h-64">
-          <div className="animate-spin h-12 w-12 border-4 border-orange-600 border-t-transparent mb-4"></div>
+          <div className="animate-spin h-12 w-12 border-4 border-orange-600 border-t-transparent border-b-transparent mb-4"></div>
           <p className="text-gray-600 font-rajdhani">Loading business data...</p>
         </div>
       ) : (
