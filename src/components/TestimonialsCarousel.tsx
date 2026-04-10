@@ -206,12 +206,11 @@ export default function TestimonialsCarousel({
             variants={fadeInUp}
           >
             <div className="flex items-center justify-center">
-              <TitleBadge title="CLIENT TESTIMONIALS" />
+              <TitleBadge title="CUSTOMER FEEDBACK" />
             </div>
             <h2 className="text-2xl md:text-3xl font-bold text-black uppercase font-orbitron tracking-wider leading-tight mb-3">
-              DON'T JUST TAKE OUR WORD FOR IT,
-              <br />
-              <span className="text-orange-600">SEE WHAT OTHERS ARE SAYING</span>
+              DON'T JUST TAKE OUR WORD FOR IT, <br className='hidden lg:block'></br>
+              <span className="text-orange-600"> SEE WHAT OTHERS ARE SAYING</span>
             </h2>
             <p className="text-sm text-gray-600 font-rajdhani max-w-xl mx-auto leading-relaxed">
               Read genuine reviews from our satisfied customers who trust us with their vehicles.
@@ -237,11 +236,11 @@ export default function TestimonialsCarousel({
                         <div className="bg-white border border-gray-200 p-4 shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col max-w-sm w-full mx-4">
                           {/* Google Logo and Stars */}
                           <div className="flex items-center justify-between mb-3">
-                            <Image 
-                              src="/images/logos/Google_logo.png" 
-                              alt="Google" 
-                              width={50} 
-                              height={16} 
+                            <Image
+                              src="/images/logos/Google_logo.png"
+                              alt="Google"
+                              width={50}
+                              height={16}
                               className="object-contain"
                             />
                             <div className="flex items-center">
@@ -282,11 +281,11 @@ export default function TestimonialsCarousel({
                           >
                             {/* Google Logo and Stars */}
                             <div className="flex items-center justify-between mb-4">
-                              <Image 
-                                src="/images/logos/Google_logo.png" 
-                                alt="Google" 
-                                width={60} 
-                                height={20} 
+                              <Image
+                                src="/images/logos/Google_logo.png"
+                                alt="Google"
+                                width={60}
+                                height={20}
                                 className="object-contain"
                               />
                               <div className="flex items-center">

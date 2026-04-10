@@ -92,7 +92,7 @@ export default function ShopPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white pt-32">
+    <div className="min-h-screen bg-black text-white pt-20 md:pt-32">
       {/* Hero Section */}
       <section className="relative py-20 bg-black" style={{ backgroundImage: 'url(/images/logos/background-1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="absolute inset-0 bg-black/80"></div>
@@ -246,7 +246,7 @@ export default function ShopPage() {
       </section>
 
       {/* Customer Reviews Section */}
-      <section className="w-full py-16 bg-gray-900">
+      <section className="w-full py-10 md:py-16 bg-gray-900">
         <div className="w-full px-6">
           <div className="max-w-6xl mx-auto bg-gray-900 border border-orange-600/30 p-8">
             <div className="flex items-center justify-between mb-8">

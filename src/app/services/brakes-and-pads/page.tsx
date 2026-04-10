@@ -6,7 +6,7 @@ import TitleBadge from '@/components/TitleBadge';
 
 export default function BrakesAndPadsPage() {
   return (
-    <div className="min-h-screen bg-black text-white pt-32">
+    <div className="min-h-screen bg-black text-white pt-20 md:pt-32">
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden bg-black">
         <Image
@@ -33,7 +33,7 @@ export default function BrakesAndPadsPage() {
       </section>
 
       {/* Main Content Section */}
-      <section className="md:py-20 bg-black">
+      <section className="py-10 md:py-20 bg-black">
         <div className="container mx-auto px-8">
           {/* Section Header */}
           <div className="mb-16">
@@ -65,7 +65,7 @@ export default function BrakesAndPadsPage() {
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-12 font-orbitron uppercase">
               What We Offer
             </h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
               <div className="bg-black p-6 border border-orange-600/30 hover:border-orange-600 transition-colors duration-300">
                 <h4 className="text-lg font-bold text-white mb-3 font-rajdhani">Brake Pad Replacement</h4>
                 <p className="text-gray-300 font-rajdhani text-sm leading-relaxed">Professional brake pad replacement using high-quality pads for optimal stopping power</p>

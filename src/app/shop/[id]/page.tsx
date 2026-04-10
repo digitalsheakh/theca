@@ -95,7 +95,7 @@ export default function ProductDetailsPage({ params }: { params: { id: string } 
   }
 
   return (
-    <div className="min-h-screen bg-black text-white pt-32">
+    <div className="min-h-screen bg-black text-white pt-20 md:pt-32">
       {/* Breadcrumb */}
       <div className="w-full px-6 mb-8">
         <div className="max-w-6xl mx-auto">
@@ -121,7 +121,7 @@ export default function ProductDetailsPage({ params }: { params: { id: string } 
 
       <div className="w-full px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8">
             {/* Product Images */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -165,8 +165,8 @@ export default function ProductDetailsPage({ params }: { params: { id: string } 
                       key={index}
                       onClick={() => setCurrentImageIndex(index)}
                       className={`relative aspect-square overflow-hidden transition-all duration-300 ${currentImageIndex === index
-                          ? 'ring-2 ring-[#f56e13] ring-offset-2 ring-offset-black'
-                          : 'opacity-70 hover:opacity-100'
+                        ? 'ring-2 ring-[#f56e13] ring-offset-2 ring-offset-black'
+                        : 'opacity-70 hover:opacity-100'
                         }`}
                     >
                       <Image
@@ -285,7 +285,7 @@ export default function ProductDetailsPage({ params }: { params: { id: string } 
           </div>
 
           {/* Full Width Description Section */}
-          <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8">
             {/* Description */}
             <div>
               <h2 className="text-2xl font-bold mb-6 font-orbitron uppercase tracking-wider text-white">

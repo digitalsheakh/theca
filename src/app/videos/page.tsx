@@ -165,7 +165,7 @@ export default function VideosPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white pt-32">
+    <div className="min-h-screen bg-black text-white pt-20 md:pt-32">
       {/* Podcast Section */}
       <section className="w-full py-20 bg-black">
         <div className="w-full px-6">

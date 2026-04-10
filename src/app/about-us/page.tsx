@@ -11,7 +11,7 @@ export default function AboutUsPage() {
   const [isVisible, setIsVisible] = useState(false);
 
   return (
-    <div className="min-h-screen bg-black text-white pt-32">
+    <div className="min-h-screen bg-black text-white pt-20 md:pt-32">
       {/* Hero Section */}
       <section className="relative py-20 bg-black overflow-hidden" style={{ backgroundImage: 'url(/images/dropbox/28.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         {/* Background Video */}
@@ -48,7 +48,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* Welcome Section */}
-      <section className="w-full py-16 bg-black border-t border-transparent">
+      <section className="w-full py-10 md:py-16 bg-black border-t border-transparent">
         <div className="w-full px-6">
           <div className="max-w-screen-2xl mx-auto">
             <motion.div
@@ -106,7 +106,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* Mission Section */}
-      <section className="w-full py-16 bg-black border-t border-transparent">
+      <section className="w-full py-10 md:py-16 bg-black border-t border-transparent">
         <div className="w-full px-6">
           <div className="max-w-screen-2xl mx-auto">
             <motion.div
@@ -157,7 +157,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* Meet Our Team Section */}
-      <section className="w-full py-16 bg-black border-t border-transparent">
+      <section className="w-full py-10 md:py-16 bg-black border-t border-transparent">
         <div className="w-full px-6">
           <div className="max-w-screen-2xl mx-auto">
             <motion.div
@@ -286,7 +286,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* Stats Section */}
-      {/* <section className="w-full py-16 bg-black border-t border-transparent">
+      {/* <section className="w-full py-10 md:py-16 bg-black border-t border-transparent">
         <div className="w-full px-6">
           <div className="max-w-screen-2xl mx-auto">
             <motion.div
@@ -353,7 +353,7 @@ export default function AboutUsPage() {
       </section> */}
 
       {/* Visit Us Section */}
-      <section className="w-full py-16 bg-black border-t border-transparent">
+      <section className="w-full py-10 md:py-16 bg-black border-t border-transparent">
         <div className="w-full px-6">
           <div className="max-w-screen-2xl mx-auto">
             <motion.div
