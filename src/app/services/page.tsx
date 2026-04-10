@@ -105,7 +105,7 @@ export default function ServicesPage() {
   const categories = [...new Set(services.map(service => service.category))];
 
   return (
-    <div className="min-h-screen bg-black text-white pt-32">
+    <div className="min-h-screen bg-black text-white pt-20 md:pt-32">
       {/* Hero Section */}
       <section className="relative py-20 bg-black" style={{ backgroundImage: 'url(/images/logos/background-1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="absolute inset-0 bg-black/80"></div>
@@ -131,7 +131,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Grid Section */}
-      <section className="relative w-full py-16 bg-black" style={{ backgroundImage: 'url(/images/logos/background-1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <section className="relative w-full py-10 md:py-16 bg-black" style={{ backgroundImage: 'url(/images/logos/background-1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="absolute inset-0 bg-black/80"></div>
         <div className="w-full px-6 relative z-10">
           <div className="max-w-screen-2xl mx-auto">
@@ -141,7 +141,7 @@ export default function ServicesPage() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
                 {services.map((service, index) => (
                   <motion.div
                     key={service.id}
@@ -189,7 +189,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Call to Action Section */}
-      <section className="w-full py-16 bg-black">
+      <section className="w-full py-10 md:py-16 bg-black">
         <div className="w-full px-6">
           <div className="max-w-screen-2xl mx-auto">
             <motion.div

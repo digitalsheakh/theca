@@ -83,7 +83,7 @@ export default function ContactUs() {
   ];
 
   return (
-    <main className="min-h-screen bg-black text-white pt-32">
+    <main className="min-h-screen bg-black text-white pt-20 md:pt-32">
       {/* Hero section */}
       <section className="relative py-20 bg-black" style={{ backgroundImage: 'url(/images/dropbox/31.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="absolute inset-0 bg-black/80"></div>

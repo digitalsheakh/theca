@@ -6,7 +6,7 @@ import TitleBadge from '@/components/TitleBadge';
 
 export default function GearboxServicingPage() {
   return (
-    <div className="min-h-screen bg-black text-white pt-32">
+    <div className="min-h-screen bg-black text-white pt-20 md:pt-32">
       <section className="relative h-[70vh] overflow-hidden bg-black">
         <Image
           src="/images/services/serviceimage1.jpg"
@@ -61,7 +61,7 @@ export default function GearboxServicingPage() {
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-12 font-orbitron uppercase">
               What We Offer
             </h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
               <div className="bg-black p-6 border border-orange-600/30 hover:border-orange-600 transition-colors duration-300">
                 <h4 className="text-lg font-bold text-white mb-3 font-rajdhani">Transmission Fluid Change</h4>
                 <p className="text-gray-300 font-rajdhani text-sm leading-relaxed">Complete gearbox oil replacement with premium fluids</p>

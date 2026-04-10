@@ -139,7 +139,7 @@ export default function ServiceSelection() {
   // Success message after form submission
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-black text-white pt-32">
+      <div className="min-h-screen bg-black text-white pt-20 md:pt-32">
         <div className="flex items-center justify-center min-h-[60vh]">
           <div className="text-center max-w-2xl mx-auto px-6">
             <div className="mb-8">
@@ -203,9 +203,9 @@ export default function ServiceSelection() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white pt-32">
+    <div className="min-h-screen bg-black text-white pt-20 md:pt-32">
       {/* Hero Section */}
-      <section className="bg-black py-8 pt-32">
+      <section className="bg-black py-8 pt-20 md:pt-32">
         <div className="text-center px-6">
           <h1 className="text-2xl md:text-3xl font-bold mb-4 uppercase font-orbitron tracking-wider">
             TELL US ABOUT YOUR <span className="text-orange-600">SERVICE NEEDS</span>

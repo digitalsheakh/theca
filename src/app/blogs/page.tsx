@@ -175,7 +175,7 @@ export default function BlogPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white pt-32">
+    <div className="min-h-screen bg-black text-white pt-20 md:pt-32">
       {/* Hero Section */}
       <section className="relative py-4 bg-black" style={{ backgroundImage: 'url(/images/logos/background-1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="absolute inset-0 bg-black/80"></div>
@@ -194,7 +194,7 @@ export default function BlogPage() {
       </section>
 
       {/* Blog Grid Section */}
-      <section className="relative w-full py-16 bg-black" style={{ backgroundImage: 'url(/images/logos/background-1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <section className="relative w-full py-10 md:py-16 bg-black" style={{ backgroundImage: 'url(/images/logos/background-1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="absolute inset-0 bg-black/80"></div>
         <div className="w-full px-6 relative z-10">
           <div className="max-w-screen-2xl mx-auto flex flex-col items-center justify-center">

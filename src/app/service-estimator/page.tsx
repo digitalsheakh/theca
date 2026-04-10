@@ -41,7 +41,7 @@ export default function ServiceEstimator() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white pt-32">
+    <div className="min-h-screen bg-black text-white pt-20 md:pt-32">
       <div className="text-center py-8">
         <h1 className="text-2xl md:text-3xl font-bold uppercase font-orbitron tracking-wider">
           GET YOUR MECHANICAL REPAIR <span className="text-orange-600">QUOTE</span>
@@ -50,7 +50,7 @@ export default function ServiceEstimator() {
       <ServiceEstimatorComponent />
 
       {/* Contact Form Section */}
-      <section className="py-16 bg-black">
+      <section className="py-10 md:py-16 bg-black">
         <div className="w-full px-6">
           <div className="max-w-4xl mx-auto">
             <motion.div

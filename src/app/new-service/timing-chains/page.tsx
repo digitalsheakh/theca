@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function TimingChainsPage() {
   return (
-    <div className="min-h-screen bg-black text-white pt-32">
+    <div className="min-h-screen bg-black text-white pt-20 md:pt-32">
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden bg-black">
         <Image
@@ -75,7 +75,7 @@ export default function TimingChainsPage() {
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-12 font-orbitron uppercase">
               What We Offer
             </h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
               <div className="bg-black p-6 border border-orange-600/30 hover:border-orange-600 transition-colors duration-300">
                 <h4 className="text-lg font-bold text-white mb-3 font-rajdhani">Chain Inspection & Diagnosis</h4>
                 <p className="text-gray-300 font-rajdhani text-sm leading-relaxed">Complete assessment of your timing chain condition using professional diagnostic equipment</p>

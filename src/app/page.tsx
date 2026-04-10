@@ -269,13 +269,7 @@ export default function Home() {
 `}</style>
                   <div className="inline-flex items-start mx-4">
                     <div className="mr-4">
-                      <Image
-                        src="/images/icons/SERVICE ICON white.png"
-                        alt="Service Icon"
-                        width={32}
-                        height={32}
-                        className="w-8 h-8"
-                      />
+                      <FaCog className="w-8 h-8 text-orange-600" />
                     </div>
                     <div>
                       <h3 className="text-lg font-bold text-white uppercase mb-1 italic">ENGINE REPAIR & REBUILDS</h3>
@@ -288,13 +282,7 @@ export default function Home() {
                   </div>
                   <div className="inline-flex items-start mx-4">
                     <div className="mr-4">
-                      <Image
-                        src="/images/icons/SERVICE ICON white.png"
-                        alt="Maintenance Icon"
-                        width={32}
-                        height={32}
-                        className="w-8 h-8"
-                      />
+                      <FaTools className="w-8 h-8 text-orange-600" />
                     </div>
                     <div>
                       <h3 className="text-lg font-bold text-white uppercase mb-1 italic">MAINTENANCE & SERVICING</h3>
@@ -307,13 +295,7 @@ export default function Home() {
                   </div>
                   <div className="inline-flex items-start mx-4">
                     <div className="mr-4">
-                      <Image
-                        src="/images/icons/CAR_3.png"
-                        alt="Buy Sell Icon"
-                        width={32}
-                        height={32}
-                        className="w-8 h-8"
-                      />
+                      <PiHandshakeFill className="w-10 h-10 font-bold text-orange-600" />
                     </div>
                     <div>
                       <h3 className="text-lg font-bold text-white uppercase mb-1 italic">BUY OR SELL YOUR CAR</h3>
@@ -392,7 +374,7 @@ export default function Home() {
 
       {/* Services Section */}
       <motion.section
-        className="py-20 bg-black"
+        className="py-10 md:py-20 bg-black"
         style={{ backgroundImage: 'url(/images/logos/background-1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative' }}
         initial="hidden"
         whileInView="visible"
@@ -900,7 +882,7 @@ export default function Home() {
 
       {/* Trusted Brands Section */}
       <motion.section
-        className="py-20 bg-black"
+        className="py-10 md:py-20 bg-black"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
@@ -912,7 +894,7 @@ export default function Home() {
               <div className="flex items-center justify-center">
                 <TitleBadge title="AUTOMOTIVE EXCELLENCE" />
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-white uppercase font-orbitron tracking-wider leading-tight mb-6">EXPERIENCED WITH LEADING BRANDS</h2>
+              <h2 className="text-4xl md:text-5xl font-bold text-white uppercase font-orbitron tracking-wider leading-tight mb-6">TRUSTED BY LEADING BRANDS</h2>
               <p className="text-lg text-gray-300 font-rajdhani max-w-3xl mx-auto leading-relaxed">
                 We service and maintain vehicles from all major automotive manufacturers with professional expertise and genuine parts.
               </p>
@@ -1128,7 +1110,7 @@ export default function Home() {
 
       {/* Welcome to The Car Edition Section */}
       <motion.section
-        className="py-20 bg-black"
+        className="py-10 md:py-20 bg-black"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
@@ -1183,7 +1165,7 @@ export default function Home() {
 
       {/* Why Service Your Car Section */}
       <motion.section
-        className="py-20 bg-black"
+        className="py-10 md:py-20 bg-black"
         style={{ backgroundImage: 'url(/images/logos/background-1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative' }}
         initial="hidden"
         whileInView="visible"
@@ -1297,7 +1279,7 @@ export default function Home() {
 
       {/* Our Services Section */}
       <motion.section
-        className="py-24 bg-black relative overflow-hidden"
+        className="py-10 md:py-20 bg-black relative overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
@@ -1677,7 +1659,7 @@ export default function Home() {
 
       {/* Schedule Appointment Section */}
       <motion.section
-        className="py-20 bg-black"
+        className="py-10 md:py-20 bg-black"
         style={{ backgroundImage: 'url(/images/logos/background-1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative' }}
         initial="hidden"
         whileInView="visible"
@@ -1790,7 +1772,7 @@ export default function Home() {
 
 
       {/* Testimonials Section */}
-      <TestimonialsCarousel limit={7} autoplaySpeed={6000} />
+      <TestimonialsCarousel limit={6} autoplaySpeed={6000} />
 
 
     </main>

@@ -205,7 +205,7 @@ export default function FAQs() {
   };
 
   return (
-    <main className="min-h-screen bg-black text-white pt-32 pb-20">
+    <main className="min-h-screen bg-black text-white pt-20 md:pt-32 pb-20">
       <div className="w-full px-6">
         <div className="max-w-screen-xl mx-auto">
           {/* Header Section */}

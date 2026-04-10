@@ -172,7 +172,7 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
-            <Link href="/" className="flex items-center group mr-6">
+            <Link href="/" className="flex items-center group mr-6 select-none">
               <motion.div
                 className="relative flex items-center"
                 whileHover={{ scale: 1.05 }}
