@@ -1443,7 +1443,11 @@ export default function Home() {
               </div>
 
               {/* Service Content */}
-              <div className="bg-black backdrop-blur-sm p-6 md:p-8 border-2 border-orange-600/30 shadow-2xl min-h-[320px]">
+              <motion.div layout // This is the magic prop for height/width transitions
+                transition={{
+                  layout: { duration: 0.3, ease: "easeOut" }
+                }}
+                className="bg-black backdrop-blur-sm p-6 md:p-8 border-2 border-orange-600/30 shadow-2xl">
                 {/* Diagnostics & Electrical */}
                 {activeServiceTab === 0 && (
                   <motion.div
@@ -1791,7 +1795,7 @@ export default function Home() {
                     </div>
                   </motion.div>
                 )}
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
