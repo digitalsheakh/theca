@@ -423,34 +423,39 @@ export default function Home() {
                 onClick={(e) => toggleService(0, e)}
               >
                 <div className="p-4 flex flex-col">
-                  {/* Expand/collapse indicator at top */}
-                  <div className="flex items-center justify-end pb-3 border-b border-white/10 mb-3">
-                    <div className="text-orange-500">
-                      {expandedService === 0 ? (
-                        <svg className="w-3 h-3 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      ) : (
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      )}
+                  {/* Title at top */}
+                  <div className="mb-3 pb-3 border-b border-orange-600/30">
+                    <div className="flex items-start justify-between">
+                      <h3 className="text-sm font-semibold text-orange-500  font-orbitron uppercase tracking-wide">Ford Wet Belt Replacement</h3>
+                      <div className="text-orange-500 flex-shrink-0 ml-2">
+                        {expandedService === 0 ? (
+                          <svg className="w-3 h-3 transform rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        ) : (
+                          <svg className="w-3 h-3 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        )}
+                      </div>
                     </div>
-                  </div>
-
-                  <div className="mb-3">
-                    <h3 className="text-sm font-bold text-white font-orbitron uppercase tracking-wide mb-1">Ford Wet Belt Replacement</h3>
-                    <p className="text-xs text-orange-400 font-rajdhani uppercase tracking-wider">SPECIALIST SERVICE</p>
                   </div>
 
                   <div className="mb-3">
                     <span className="text-gray-300 text-xs font-rajdhani">Prevent engine failure with complete belt replacement service.</span>
                   </div>
 
-                  {/* Expandable Details */}
-                  <div className={`transition-all duration-150 ${expandedService === 0 ? 'max-h-96 opacity-100 mb-4 md:absolute md:left-0 md:right-0 md:top-full md:mt-0 md:bg-black md:border md:border-orange-500 md:z-50 md:shadow-2xl md:p-4 md:max-h-none md:mb-0' : 'max-h-0 opacity-0 overflow-hidden md:hidden md:opacity-0'
-                    }`}>
-                    <div className="space-y-3">
+                  {/* Expandable Details with slide animation */}
+                  <motion.div
+                    initial={false}
+                    animate={{
+                      height: expandedService === 0 ? 'auto' : 0,
+                      opacity: expandedService === 0 ? 1 : 0,
+                    }}
+                    transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+                    className="overflow-hidden"
+                  >
+                    <div className="pt-4 border-t border-orange-600/30 space-y-3">
                       <div className="border-b border-orange-600/30 pb-2 mb-2">
                         <div className="grid grid-cols-[1fr_auto] gap-2">
                           <span className="text-gray-300 font-rajdhani text-xs">Ford Focus & Transit 2.0L</span>
@@ -486,7 +491,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
               </div>
 
@@ -497,34 +502,39 @@ export default function Home() {
                 onClick={(e) => toggleService(1, e)}
               >
                 <div className="p-4 flex flex-col">
-                  {/* Expand/collapse indicator at top */}
-                  <div className="flex items-center justify-end pb-3 border-b border-white/10 mb-3">
-                    <div className="text-orange-500">
-                      {expandedService === 1 ? (
-                        <svg className="w-3 h-3 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      ) : (
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      )}
+                  {/* Title at top */}
+                  <div className="mb-3 pb-3 border-b border-orange-600/30">
+                    <div className="flex items-start justify-between">
+                      <h3 className="text-sm font-semibold text-orange-500  font-orbitron uppercase tracking-wide">Timing Chain Replacement</h3>
+                      <div className="text-orange-500 flex-shrink-0 ml-2">
+                        {expandedService === 1 ? (
+                          <svg className="w-3 h-3 transform rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        ) : (
+                          <svg className="w-3 h-3 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        )}
+                      </div>
                     </div>
-                  </div>
-
-                  <div className="mb-3">
-                    <h3 className="text-sm font-bold text-white font-orbitron uppercase tracking-wide mb-1">Timing Chain Replacement</h3>
-                    <p className="text-xs text-orange-400 font-rajdhani uppercase tracking-wider">CRITICAL SERVICE</p>
                   </div>
 
                   <div className="mb-3">
                     <span className="text-gray-300 text-xs font-rajdhani">Full timing chain replacement with OEM components.</span>
                   </div>
 
-                  {/* Expandable Details */}
-                  <div className={`transition-all duration-150 ${expandedService === 1 ? 'max-h-96 opacity-100 mb-4 md:absolute md:left-0 md:right-0 md:top-full md:mt-0 md:bg-black md:border md:border-orange-500 md:z-50 md:shadow-2xl md:p-4 md:max-h-none md:mb-0' : 'max-h-0 opacity-0 overflow-hidden md:hidden md:opacity-0'
-                    }`}>
-                    <div className="space-y-3">
+                  {/* Expandable Details with slide animation */}
+                  <motion.div
+                    initial={false}
+                    animate={{
+                      height: expandedService === 1 ? 'auto' : 0,
+                      opacity: expandedService === 1 ? 1 : 0,
+                    }}
+                    transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+                    className="overflow-hidden"
+                  >
+                    <div className="pt-4 border-t border-orange-600/30 space-y-3">
                       <div className="border-b border-orange-600/30 pb-2 mb-3">
                         <div className="text-orange-500 font-orbitron text-xs font-bold mb-2">Ford</div>
                         <div className="space-y-1">
@@ -592,8 +602,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                  </div>
-
+                  </motion.div>
                 </div>
               </div>
 
@@ -604,34 +613,39 @@ export default function Home() {
                 onClick={(e) => toggleService(2, e)}
               >
                 <div className="p-4 flex flex-col">
-                  {/* Expand/collapse indicator at top */}
-                  <div className="flex items-center justify-end pb-3 border-b border-white/10 mb-3">
-                    <div className="text-orange-500">
-                      {expandedService === 2 ? (
-                        <svg className="w-3 h-3 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      ) : (
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      )}
+                  {/* Title at top */}
+                  <div className="mb-3 pb-3 border-b border-orange-600/30">
+                    <div className="flex items-start justify-between">
+                      <h3 className="text-sm font-semibold text-orange-500  font-orbitron uppercase tracking-wide">Performance & ECU Tuning</h3>
+                      <div className="text-orange-500 flex-shrink-0 ml-2">
+                        {expandedService === 2 ? (
+                          <svg className="w-3 h-3 transform rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        ) : (
+                          <svg className="w-3 h-3 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        )}
+                      </div>
                     </div>
-                  </div>
-
-                  <div className="mb-3">
-                    <h3 className="text-sm font-bold text-white font-orbitron uppercase tracking-wide mb-1">Performance & ECU Tuning</h3>
-                    <p className="text-xs text-orange-400 font-rajdhani uppercase tracking-wider">PERFORMANCE UPGRADE</p>
                   </div>
 
                   <div className="mb-3">
                     <span className="text-gray-300 text-xs font-rajdhani">Precision ECU tuning for enhanced power and efficiency.</span>
                   </div>
 
-                  {/* Expandable Details */}
-                  <div className={`transition-all duration-150 ${expandedService === 2 ? 'max-h-96 opacity-100 mb-4 md:absolute md:left-0 md:right-0 md:top-full md:mt-0 md:bg-black md:border md:border-orange-500 md:z-50 md:shadow-2xl md:p-4 md:max-h-none md:mb-0' : 'max-h-0 opacity-0 overflow-hidden md:hidden md:opacity-0'
-                    }`}>
-                    <div className="space-y-3">
+                  {/* Expandable Details with slide animation */}
+                  <motion.div
+                    initial={false}
+                    animate={{
+                      height: expandedService === 2 ? 'auto' : 0,
+                      opacity: expandedService === 2 ? 1 : 0,
+                    }}
+                    transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+                    className="overflow-hidden"
+                  >
+                    <div className="pt-4 border-t border-orange-600/30 space-y-3">
                       <div className="grid grid-cols-[1fr_auto] gap-2">
                         <span className="text-gray-300 font-rajdhani text-xs">Stage 1 Remap</span>
                         <div className="text-orange-500 font-orbitron text-xs font-bold flex flex-col text-right">
@@ -668,8 +682,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                  </div>
-
+                  </motion.div>
                 </div>
               </div>
 
@@ -680,34 +693,39 @@ export default function Home() {
                 onClick={(e) => toggleService(3, e)}
               >
                 <div className="p-4 flex flex-col">
-                  {/* Expand/collapse indicator at top */}
-                  <div className="flex items-center justify-end pb-3 border-b border-white/10 mb-3">
-                    <div className="text-orange-500">
-                      {expandedService === 3 ? (
-                        <svg className="w-3 h-3 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      ) : (
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      )}
+                  {/* Title at top */}
+                  <div className="mb-3 pb-3 border-b border-orange-600/30">
+                    <div className="flex items-start justify-between">
+                      <h3 className="text-sm font-semibold text-orange-500 font-orbitron uppercase tracking-wide">Car Key & Immobiliser</h3>
+                      <div className="text-orange-500 flex-shrink-0 ml-2">
+                        {expandedService === 3 ? (
+                          <svg className="w-3 h-3 transform rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        ) : (
+                          <svg className="w-3 h-3 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        )}
+                      </div>
                     </div>
-                  </div>
-
-                  <div className="mb-3">
-                    <h3 className="text-sm font-bold text-white font-orbitron uppercase tracking-wide mb-1">Car Key & Immobiliser</h3>
-                    <p className="text-xs text-orange-400 font-rajdhani uppercase tracking-wider">SECURITY SERVICE</p>
                   </div>
 
                   <div className="mb-3">
                     <span className="text-gray-300 text-xs font-rajdhani">Mobile key programming and emergency services.</span>
                   </div>
 
-                  {/* Expandable Details */}
-                  <div className={`transition-all duration-150 ${expandedService === 3 ? 'max-h-96 opacity-100 mb-4 md:absolute md:left-0 md:right-0 md:top-full md:mt-0 md:bg-black md:border md:border-orange-500 md:z-50 md:shadow-2xl md:p-4 md:max-h-none md:mb-0' : 'max-h-0 opacity-0 overflow-hidden md:hidden md:opacity-0'
-                    }`}>
-                    <div className="space-y-3">
+                  {/* Expandable Details with slide animation */}
+                  <motion.div
+                    initial={false}
+                    animate={{
+                      height: expandedService === 3 ? 'auto' : 0,
+                      opacity: expandedService === 3 ? 1 : 0,
+                    }}
+                    transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+                    className="overflow-hidden"
+                  >
+                    <div className="pt-4 border-t border-orange-600/30 space-y-3">
                       <div className="grid grid-cols-[1fr_auto] gap-2">
                         <span className="text-gray-300 font-rajdhani text-xs">Emergency Vehicle Opening</span>
                         <div className="text-orange-500 font-orbitron text-xs font-bold flex flex-col text-right">
@@ -730,8 +748,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                  </div>
-
+                  </motion.div>
                 </div>
               </div>
 
@@ -742,34 +759,39 @@ export default function Home() {
                 onClick={(e) => toggleService(4, e)}
               >
                 <div className="p-4 flex flex-col">
-                  {/* Expand/collapse indicator at top */}
-                  <div className="flex items-center justify-end pb-3 border-b border-white/10 mb-3">
-                    <div className="text-orange-500">
-                      {expandedService === 4 ? (
-                        <svg className="w-3 h-3 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      ) : (
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      )}
+                  {/* Title at top */}
+                  <div className="mb-3 pb-3 border-b border-orange-600/30">
+                    <div className="flex items-start justify-between">
+                      <h3 className="text-sm font-semibold text-orange-500 font-orbitron uppercase tracking-wide">Full Service</h3>
+                      <div className="text-orange-500 flex-shrink-0 ml-2">
+                        {expandedService === 4 ? (
+                          <svg className="w-3 h-3 transform rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        ) : (
+                          <svg className="w-3 h-3 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        )}
+                      </div>
                     </div>
-                  </div>
-
-                  <div className="mb-3">
-                    <h3 className="text-sm font-bold text-white font-orbitron uppercase tracking-wide mb-1">Full Service</h3>
-                    <p className="text-xs text-orange-400 font-rajdhani uppercase tracking-wider">PREMIUM PACKAGE</p>
                   </div>
 
                   <div className="mb-3">
                     <span className="text-gray-300 text-xs font-rajdhani">Comprehensive vehicle inspection and maintenance package.</span>
                   </div>
 
-                  {/* Expandable Details */}
-                  <div className={`transition-all duration-150 ${expandedService === 4 ? 'max-h-96 opacity-100 mb-4 md:absolute md:left-0 md:right-0 md:top-full md:mt-0 md:bg-black md:border md:border-orange-500 md:z-50 md:shadow-2xl md:p-4 md:max-h-none md:mb-0' : 'max-h-0 opacity-0 overflow-hidden md:hidden md:opacity-0'
-                    }`}>
-                    <div className="space-y-3">
+                  {/* Expandable Details with slide animation */}
+                  <motion.div
+                    initial={false}
+                    animate={{
+                      height: expandedService === 4 ? 'auto' : 0,
+                      opacity: expandedService === 4 ? 1 : 0,
+                    }}
+                    transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+                    className="overflow-hidden"
+                  >
+                    <div className="pt-4 border-t border-orange-600/30 space-y-3">
                       <div className="grid grid-cols-[1fr_auto] gap-2">
                         <span className="text-gray-300 font-rajdhani text-xs">Oil & Filter Change</span>
                         <div className="text-orange-500 font-orbitron text-xs font-bold flex flex-col text-right">
@@ -790,8 +812,7 @@ export default function Home() {
                         <span className="text-gray-400 font-rajdhani text-xs">Included</span>
                       </div>
                     </div>
-                  </div>
-
+                  </motion.div>
                 </div>
               </div>
 
@@ -802,34 +823,39 @@ export default function Home() {
                 onClick={(e) => toggleService(5, e)}
               >
                 <div className="p-4 flex flex-col">
-                  {/* Expand/collapse indicator at top */}
-                  <div className="flex items-center justify-end pb-3 border-b border-white/10 mb-3">
-                    <div className="text-orange-500">
-                      {expandedService === 5 ? (
-                        <svg className="w-3 h-3 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      ) : (
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      )}
+                  {/* Title at top */}
+                  <div className="mb-3 pb-3 border-b border-orange-600/30">
+                    <div className="flex items-start justify-between">
+                      <h3 className="text-sm font-semibold text-orange-500 font-orbitron uppercase tracking-wide">Gearbox Servicing</h3>
+                      <div className="text-orange-500 flex-shrink-0 ml-2">
+                        {expandedService === 5 ? (
+                          <svg className="w-3 h-3 transform rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        ) : (
+                          <svg className="w-3 h-3 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        )}
+                      </div>
                     </div>
-                  </div>
-
-                  <div className="mb-3">
-                    <h3 className="text-sm font-bold text-white font-orbitron uppercase tracking-wide mb-1">Gearbox Servicing</h3>
-                    <p className="text-xs text-orange-400 font-rajdhani uppercase tracking-wider">SPECIALIST SERVICE</p>
                   </div>
 
                   <div className="mb-3">
                     <span className="text-gray-300 text-xs font-rajdhani">Professional gearbox maintenance and repair services.</span>
                   </div>
 
-                  {/* Expandable Details */}
-                  <div className={`transition-all duration-150 ${expandedService === 5 ? 'max-h-96 opacity-100 mb-4 md:absolute md:left-0 md:right-0 md:top-full md:mt-0 md:bg-black md:border md:border-orange-500 md:z-50 md:shadow-2xl md:p-4 md:max-h-none md:mb-0' : 'max-h-0 opacity-0 overflow-hidden md:hidden md:opacity-0'
-                    }`}>
-                    <div className="space-y-3">
+                  {/* Expandable Details with slide animation */}
+                  <motion.div
+                    initial={false}
+                    animate={{
+                      height: expandedService === 5 ? 'auto' : 0,
+                      opacity: expandedService === 5 ? 1 : 0,
+                    }}
+                    transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+                    className="overflow-hidden"
+                  >
+                    <div className="pt-4 border-t border-orange-600/30 space-y-3">
                       <div className="grid grid-cols-[1fr_auto] gap-2">
                         <span className="text-gray-300 font-rajdhani text-xs">Gearbox Oil Change</span>
                         <div className="text-orange-500 font-orbitron text-xs font-bold flex flex-col text-right">
@@ -850,8 +876,7 @@ export default function Home() {
                         <span className="text-gray-400 font-rajdhani text-xs">Included</span>
                       </div>
                     </div>
-                  </div>
-
+                  </motion.div>
                 </div>
               </div>
 
@@ -1322,336 +1347,451 @@ export default function Home() {
               </motion.p>
             </motion.div>
 
-            {/* Service Tabs */}
-            {/* Mobile — Selection bar */}
-            <div className="sm:hidden mb-8 w-full min-w-0">
-              <div className="relative border-2 border-orange-600 bg-gray-100 w-full min-w-0 box-border">
-                <select
-                  value={activeServiceTab}
-                  onChange={(e) => setActiveServiceTab(Number(e.target.value))}
-                  className="w-full min-w-0 h-fit block bg-transparent text-gray-900 font-bold text-xs uppercase pl-4 pr-8 py-4 appearance-none cursor-pointer focus:outline-none"
-                >
-                  {['Diagnostics & Electrical', 'Keys & Security', 'Performance & Tuning', 'Servicing & Maintenance', 'Tyres & Alignment', 'Mechanical Repairs'].map((name, index) => (
-                    <option key={index} value={index} className="bg-gray-100 hover:bg-orange-600 text-gray-900 font-rajdhani text-sm uppercase my-2">
-                      {name}
-                    </option>
-                  ))}
-                </select>
-                <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none text-orange-500">
-                  <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
+            {/* Service Tabs & Content Container */}
+            <div className="max-w-6xl mx-auto">
+              {/* Mobile — Selection bar */}
+              <div className="lg:hidden mb-6">
+                <div className="relative border-2 border-orange-600/30 bg-gray-100 w-full">
+                  <select
+                    value={activeServiceTab}
+                    onChange={(e) => setActiveServiceTab(Number(e.target.value))}
+                    className="w-full h-fit block bg-transparent text-gray-900 font-bold text-xs uppercase pl-4 pr-8 py-4 appearance-none cursor-pointer focus:outline-none"
+                  >
+                    {['Diagnostics & Electrical', 'Keys & Security', 'Performance & Tuning', 'Servicing & Maintenance', 'Tyres & Alignment', 'Mechanical Repairs'].map((name, index) => (
+                      <option key={index} value={index} className="bg-gray-100 hover:bg-orange-600 text-gray-900 font-rajdhani text-sm uppercase my-2">
+                        {name}
+                      </option>
+                    ))}
+                  </select>
+                  <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none text-orange-500">
+                    <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
                 </div>
               </div>
-              <div className="h-0.5 bg-orange-600 w-full" />
-            </div>
-            {/* Desktop — Button grid */}
-            <div className="hidden sm:flex flex-wrap justify-center gap-3 mb-12">
-              {[
-                {
-                  name: 'Diagnostics & Electrical',
-                  icon: (
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
-                    </svg>
-                  )
-                },
-                {
-                  name: 'Keys & Security',
-                  icon: (
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M18 8a6 6 0 01-7.743 5.743L10 14l-1 1-1 1H6v2H2v-4l4.257-4.257A6 6 0 1118 8zm-6-4a1 1 0 100 2 2 2 0 012 2 1 1 0 102 0 4 4 0 00-4-4z" clipRule="evenodd" />
-                    </svg>
-                  )
-                },
-                {
-                  name: 'Performance & Tuning',
-                  icon: (
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
-                    </svg>
-                  )
-                },
-                {
-                  name: 'Servicing & Maintenance',
-                  icon: (
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-                      <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
-                    </svg>
-                  )
-                },
-                {
-                  name: 'Tyres & Alignment',
-                  icon: (
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
-                    </svg>
-                  )
-                },
-                {
-                  name: 'Mechanical Repairs',
-                  icon: (
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
-                  )
-                }
-              ].map((service, index) => (
-                <button
-                  key={index}
-                  onClick={() => setActiveServiceTab(index)}
-                  className={`group relative flex flex-col items-center justify-center px-6 py-4 transition-all duration-300 border-2 flex-stretch ${activeServiceTab === index
-                    ? 'bg-orange-600 border-orange-500 text-white shadow-lg scale-105'
-                    : 'bg-black border-orange-600/30 text-white hover:bg-[#f97316]/80 hover:border-orange-600/50 hover:scale-105'
-                    }`}
-                >
-                  <div className="mb-2">
-                    {service.icon}
-                  </div>
-                  <span className="text-xs font-rajdhani font-bold uppercase tracking-wide">{service.name}</span>
-                  {activeServiceTab === index && (
-                    <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-8 h-1 bg-orange-500"></div>
-                  )}
-                </button>
-              ))}
-            </div>
-
-            {/* Service Content */}
-            <div className="bg-black backdrop-blur-sm p-4 sm:p-6 md:p-8 border-2 border-orange-600/30 shadow-2xl">
-              {/* Diagnostics & Electrical */}
-              {activeServiceTab === 0 && (
-                <div className="animate-fadeIn">
-                  <div className="flex items-start mb-8">
-                    <div className="w-14 h-14 bg-orange-600 flex items-center justify-center mr-5 flex-shrink-0">
-                      <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
+              {/* Desktop — Button grid */}
+              <div className="hidden lg:grid grid-cols-6 gap-3 mb-6">
+                {[
+                  {
+                    name: 'Diagnostics & Electrical',
+                    icon: (
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
                       </svg>
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-bold text-white font-orbitron mb-3">Diagnostics & Electrical</h3>
-                      <p className="text-gray-300 font-rajdhani text-base leading-relaxed">Advanced diagnostic equipment to identify and resolve electrical faults, sensor issues, and system malfunctions.</p>
-                    </div>
-                  </div>
-                  <div className="grid md:grid-cols-2 gap-x-12 gap-y-4">
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-300 font-rajdhani text-sm">Advanced OBD diagnostics</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-300 font-rajdhani text-sm">Electrical fault finding</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-300 font-rajdhani text-sm">Sensor diagnostics and replacement</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-300 font-rajdhani text-sm">ECU fault code reading and clearing</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-300 font-rajdhani text-sm">Wiring repairs and modifications</span>
-                    </div>
-                  </div>
-                </div>
-              )}
-              {/* Keys & Security */}
-              {activeServiceTab === 1 && (
-                <div className="animate-fadeIn">
-                  <div className="flex items-start mb-8">
-                    <div className="w-14 h-14 bg-orange-600 flex items-center justify-center mr-5 flex-shrink-0">
-                      <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    )
+                  },
+                  {
+                    name: 'Keys & Security',
+                    icon: (
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M18 8a6 6 0 01-7.743 5.743L10 14l-1 1-1 1H6v2H2v-4l4.257-4.257A6 6 0 1118 8zm-6-4a1 1 0 100 2 2 2 0 012 2 1 1 0 102 0 4 4 0 00-4-4z" clipRule="evenodd" />
                       </svg>
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-bold text-white font-orbitron mb-3">Keys & Security</h3>
-                      <p className="text-gray-300 font-rajdhani text-base leading-relaxed">Car key programming, replacement, emergency opening, and immobiliser services for all vehicle makes.</p>
-                    </div>
-                  </div>
-                  <div className="grid md:grid-cols-2 gap-x-12 gap-y-4">
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-300 font-rajdhani text-sm">Key programming and coding</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-300 font-rajdhani text-sm">Lost key replacement</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-300 font-rajdhani text-sm">Emergency vehicle opening</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-300 font-rajdhani text-sm">Immobiliser repair and bypass</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-300 font-rajdhani text-sm">Remote key fob programming</span>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Performance & Remapping */}
-              {activeServiceTab === 2 && (
-                <div className="animate-fadeIn">
-                  <div className="flex items-start mb-8">
-                    <div className="w-14 h-14 bg-orange-600 flex items-center justify-center mr-5 flex-shrink-0">
-                      <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    )
+                  },
+                  {
+                    name: 'Performance & Tuning',
+                    icon: (
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
                       </svg>
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-bold text-white font-orbitron mb-3">Performance & Remapping</h3>
-                      <p className="text-gray-300 font-rajdhani text-base leading-relaxed">ECU remapping, stage 1-3 tuning, AdBlue delete, and performance upgrades for enhanced power and efficiency.</p>
-                    </div>
-                  </div>
-                  <div className="grid md:grid-cols-2 gap-x-12 gap-y-4">
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-300 font-rajdhani text-sm">Stage 1, 2, and 3 ECU remapping</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-300 font-rajdhani text-sm">DPF and AdBlue delete</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-300 font-rajdhani text-sm">Performance upgrades</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-300 font-rajdhani text-sm">Rolling road tuning</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-300 font-rajdhani text-sm">Custom map development</span>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Servicing & Maintenance */}
-              {activeServiceTab === 3 && (
-                <div className="animate-fadeIn">
-                  <div className="flex items-start mb-8">
-                    <div className="w-14 h-14 bg-orange-600 flex items-center justify-center mr-5 flex-shrink-0">
-                      <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    )
+                  },
+                  {
+                    name: 'Servicing & Maintenance',
+                    icon: (
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
                         <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
                       </svg>
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-bold text-white font-orbitron mb-3">Servicing & Maintenance</h3>
-                      <p className="text-gray-300 font-rajdhani text-base leading-relaxed">Regular servicing, oil changes, brake repairs, and preventative maintenance to keep your vehicle running smoothly.</p>
-                    </div>
-                  </div>
-                  <div className="grid md:grid-cols-2 gap-x-12 gap-y-4">
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-300 font-rajdhani text-sm">Full and interim servicing</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-300 font-rajdhani text-sm">Oil and filter changes</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-300 font-rajdhani text-sm">Brake inspection and repair</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-300 font-rajdhani text-sm">Suspension checks</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-300 font-rajdhani text-sm">MOT preparation</span>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Tyres & Wheel Alignment */}
-              {activeServiceTab === 4 && (
-                <div className="animate-fadeIn">
-                  <div className="flex items-start mb-8">
-                    <div className="w-14 h-14 bg-orange-600 flex items-center justify-center mr-5 flex-shrink-0">
-                      <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    )
+                  },
+                  {
+                    name: 'Tyres & Alignment',
+                    icon: (
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
                       </svg>
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-bold text-white font-orbitron mb-3">Tyres & Wheel Alignment</h3>
-                      <p className="text-gray-300 font-rajdhani text-base leading-relaxed">For any vehicle up to 3.5 tonne, ensuring that tyres are set to the optimal position as per the manufacturer spec.</p>
-                    </div>
-                  </div>
-                  <div className="grid md:grid-cols-2 gap-x-12 gap-y-4">
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-300 font-rajdhani text-sm">Tyre fitting and balancing</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-300 font-rajdhani text-sm">4-wheel alignment and geometry</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-300 font-rajdhani text-sm">Puncture repairs</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-300 font-rajdhani text-sm">TPMS sensor replacement</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-300 font-rajdhani text-sm">Wheel refurbishment</span>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Mechanical Repairs */}
-              {activeServiceTab === 5 && (
-                <div className="animate-fadeIn">
-                  <div className="flex items-start mb-8">
-                    <div className="w-14 h-14 bg-orange-600 flex items-center justify-center mr-5 flex-shrink-0">
-                      <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    )
+                  },
+                  {
+                    name: 'Mechanical Repairs',
+                    icon: (
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                       </svg>
+                    )
+                  }
+                ].map((service, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setActiveServiceTab(index)}
+                    className={`group relative flex flex-col items-center justify-center px-4 py-4 transition-all duration-300 border-2 ${activeServiceTab === index
+                      ? 'bg-orange-600 border-orange-500 text-white shadow-lg'
+                      : 'bg-black border-orange-600/30 text-white hover:bg-[#f97316]/80 hover:border-orange-600/50'
+                      }`}
+                  >
+                    <div className="mb-2">
+                      {service.icon}
                     </div>
-                    <div>
-                      <h3 className="text-2xl font-bold text-white font-orbitron mb-3">Mechanical Repairs</h3>
-                      <p className="text-gray-300 font-rajdhani text-base leading-relaxed">Comprehensive mechanical repairs from timing chains to clutch replacements, all carried out to the highest standards.</p>
+                    <span className="text-xs font-rajdhani font-bold uppercase tracking-wide text-center">{service.name}</span>
+                    {activeServiceTab === index && (
+                      <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-8 h-1 bg-orange-500"></div>
+                    )}
+                  </button>
+                ))}
+              </div>
+
+              {/* Service Content */}
+              <div className="bg-black backdrop-blur-sm p-6 md:p-8 border-2 border-orange-600/30 shadow-2xl min-h-[320px]">
+                {/* Diagnostics & Electrical */}
+                {activeServiceTab === 0 && (
+                  <motion.div
+                    key="service-0"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+                  >
+                    <div className="flex items-start mb-8">
+                      <motion.div
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: 0.1 }}
+                        className="w-14 h-14 bg-orange-600 flex items-center justify-center mr-5 flex-shrink-0"
+                      >
+                        <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
+                        </svg>
+                      </motion.div>
+                      <div>
+                        <motion.h3
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: 0.15 }}
+                          className="text-2xl font-bold text-white font-orbitron mb-3"
+                        >Diagnostics & Electrical</motion.h3>
+                        <motion.p
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: 0.2 }}
+                          className="text-gray-300 font-rajdhani text-base leading-relaxed"
+                        >Advanced diagnostic equipment to identify and resolve electrical faults, sensor issues, and system malfunctions.</motion.p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="grid md:grid-cols-2 gap-x-12 gap-y-4">
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-300 font-rajdhani text-sm">Timing belt and chain replacement</span>
+                    <div className="grid md:grid-cols-2 gap-x-12 gap-y-4">
+                      {[
+                        'Advanced OBD diagnostics',
+                        'Electrical fault finding',
+                        'Sensor diagnostics and replacement',
+                        'ECU fault code reading and clearing',
+                        'Wiring repairs and modifications'
+                      ].map((feature, index) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: 0.25 + index * 0.05 }}
+                          className="flex items-center"
+                        >
+                          <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
+                          <span className="text-gray-300 font-rajdhani text-sm">{feature}</span>
+                        </motion.div>
+                      ))}
                     </div>
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-300 font-rajdhani text-sm">Clutch replacement</span>
+                  </motion.div>
+                )}
+                {/* Keys & Security */}
+                {activeServiceTab === 1 && (
+                  <motion.div
+                    key="service-1"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+                  >
+                    <div className="flex items-start mb-8">
+                      <motion.div
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: 0.1 }}
+                        className="w-14 h-14 bg-orange-600 flex items-center justify-center mr-5 flex-shrink-0"
+                      >
+                        <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M18 8a6 6 0 01-7.743 5.743L10 14l-1 1-1 1H6v2H2v-4l4.257-4.257A6 6 0 1118 8zm-6-4a1 1 0 100 2 2 2 0 012 2 1 1 0 102 0 4 4 0 00-4-4z" clipRule="evenodd" />
+                        </svg>
+                      </motion.div>
+                      <div>
+                        <motion.h3
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: 0.15 }}
+                          className="text-2xl font-bold text-white font-orbitron mb-3"
+                        >Keys & Security</motion.h3>
+                        <motion.p
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: 0.2 }}
+                          className="text-gray-300 font-rajdhani text-base leading-relaxed"
+                        >Car key programming, replacement, emergency opening, and immobiliser services for all vehicle makes.</motion.p>
+                      </div>
                     </div>
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-300 font-rajdhani text-sm">Engine repairs and rebuilds</span>
+                    <div className="grid md:grid-cols-2 gap-x-12 gap-y-4">
+                      {[
+                        'Key programming and coding',
+                        'Lost key replacement',
+                        'Emergency vehicle opening',
+                        'Immobiliser repair and bypass',
+                        'Remote key fob programming'
+                      ].map((feature, index) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: 0.25 + index * 0.05 }}
+                          className="flex items-center"
+                        >
+                          <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
+                          <span className="text-gray-300 font-rajdhani text-sm">{feature}</span>
+                        </motion.div>
+                      ))}
                     </div>
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-300 font-rajdhani text-sm">Gearbox repairs</span>
+                  </motion.div>
+                )}
+
+                {/* Performance & Remapping */}
+                {activeServiceTab === 2 && (
+                  <motion.div
+                    key="service-2"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+                  >
+                    <div className="flex items-start mb-8">
+                      <motion.div
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: 0.1 }}
+                        className="w-14 h-14 bg-orange-600 flex items-center justify-center mr-5 flex-shrink-0"
+                      >
+                        <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
+                        </svg>
+                      </motion.div>
+                      <div>
+                        <motion.h3
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: 0.15 }}
+                          className="text-2xl font-bold text-white font-orbitron mb-3"
+                        >Performance & Remapping</motion.h3>
+                        <motion.p
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: 0.2 }}
+                          className="text-gray-300 font-rajdhani text-base leading-relaxed"
+                        >ECU remapping, stage 1-3 tuning, AdBlue delete, and performance upgrades for enhanced power and efficiency.</motion.p>
+                      </div>
                     </div>
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-300 font-rajdhani text-sm">Cooling system repairs</span>
+                    <div className="grid md:grid-cols-2 gap-x-12 gap-y-4">
+                      {[
+                        'Stage 1, 2, and 3 ECU remapping',
+                        'DPF and AdBlue delete',
+                        'Performance upgrades',
+                        'Rolling road tuning',
+                        'Custom map development'
+                      ].map((feature, index) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: 0.25 + index * 0.05 }}
+                          className="flex items-center"
+                        >
+                          <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
+                          <span className="text-gray-300 font-rajdhani text-sm">{feature}</span>
+                        </motion.div>
+                      ))}
                     </div>
-                  </div>
-                </div>
-              )}
+                  </motion.div>
+                )}
+
+                {/* Servicing & Maintenance */}
+                {activeServiceTab === 3 && (
+                  <motion.div
+                    key="service-3"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+                  >
+                    <div className="flex items-start mb-8">
+                      <motion.div
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: 0.1 }}
+                        className="w-14 h-14 bg-orange-600 flex items-center justify-center mr-5 flex-shrink-0"
+                      >
+                        <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                          <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
+                        </svg>
+                      </motion.div>
+                      <div>
+                        <motion.h3
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: 0.15 }}
+                          className="text-2xl font-bold text-white font-orbitron mb-3"
+                        >Servicing & Maintenance</motion.h3>
+                        <motion.p
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: 0.2 }}
+                          className="text-gray-300 font-rajdhani text-base leading-relaxed"
+                        >Regular servicing, oil changes, brake repairs, and preventative maintenance to keep your vehicle running smoothly.</motion.p>
+                      </div>
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-x-12 gap-y-4">
+                      {[
+                        'Full and interim servicing',
+                        'Oil and filter changes',
+                        'Brake inspection and repair',
+                        'Suspension checks',
+                        'MOT preparation'
+                      ].map((feature, index) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: 0.25 + index * 0.05 }}
+                          className="flex items-center"
+                        >
+                          <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
+                          <span className="text-gray-300 font-rajdhani text-sm">{feature}</span>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* Tyres & Wheel Alignment */}
+                {activeServiceTab === 4 && (
+                  <motion.div
+                    key="service-4"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+                  >
+                    <div className="flex items-start mb-8">
+                      <motion.div
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: 0.1 }}
+                        className="w-14 h-14 bg-orange-600 flex items-center justify-center mr-5 flex-shrink-0"
+                      >
+                        <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
+                        </svg>
+                      </motion.div>
+                      <div>
+                        <motion.h3
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: 0.15 }}
+                          className="text-2xl font-bold text-white font-orbitron mb-3"
+                        >Tyres & Wheel Alignment</motion.h3>
+                        <motion.p
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: 0.2 }}
+                          className="text-gray-300 font-rajdhani text-base leading-relaxed"
+                        >For any vehicle up to 3.5 tonne, ensuring that tyres are set to the optimal position as per the manufacturer spec.</motion.p>
+                      </div>
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-x-12 gap-y-4">
+                      {[
+                        'Tyre fitting and balancing',
+                        '4-wheel alignment and geometry',
+                        'Puncture repairs',
+                        'TPMS sensor replacement',
+                        'Wheel refurbishment'
+                      ].map((feature, index) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: 0.25 + index * 0.05 }}
+                          className="flex items-center"
+                        >
+                          <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
+                          <span className="text-gray-300 font-rajdhani text-sm">{feature}</span>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* Mechanical Repairs */}
+                {activeServiceTab === 5 && (
+                  <motion.div
+                    key="service-5"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+                  >
+                    <div className="flex items-start mb-8">
+                      <motion.div
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: 0.1 }}
+                        className="w-14 h-14 bg-orange-600 flex items-center justify-center mr-5 flex-shrink-0"
+                      >
+                        <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                        </svg>
+                      </motion.div>
+                      <div>
+                        <motion.h3
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: 0.15 }}
+                          className="text-2xl font-bold text-white font-orbitron mb-3"
+                        >Mechanical Repairs</motion.h3>
+                        <motion.p
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: 0.2 }}
+                          className="text-gray-300 font-rajdhani text-base leading-relaxed"
+                        >Comprehensive mechanical repairs from timing chains to clutch replacements, all carried out to the highest standards.</motion.p>
+                      </div>
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-x-12 gap-y-4">
+                      {[
+                        'Timing belt and chain replacement',
+                        'Engine repairs and rebuilds',
+                        'Clutch replacement',
+                        'Exhaust system repairs',
+                        'Cooling system repairs'
+                      ].map((feature, index) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: 0.25 + index * 0.05 }}
+                          className="flex items-center"
+                        >
+                          <div className="w-1.5 h-1.5 bg-orange-600 mr-3 flex-shrink-0"></div>
+                          <span className="text-gray-300 font-rajdhani text-sm">{feature}</span>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -1768,13 +1908,13 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </motion.section>
+      </motion.section >
 
 
       {/* Testimonials Section */}
-      <TestimonialsCarousel limit={6} autoplaySpeed={6000} />
+      < TestimonialsCarousel limit={6} autoplaySpeed={6000} />
 
 
-    </main>
+    </main >
   );
 }
