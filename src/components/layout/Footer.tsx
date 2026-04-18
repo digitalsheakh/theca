@@ -108,17 +108,24 @@ export default function Footer() {
                   <div className="flex items-start">
                     <span className="w-2 h-2 bg-orange-600 mr-3 mt-2"></span>
                     <div>
-                      <p>Unit 14, Airfield Industrial Estate,<br></br> Warboys, Huntingdon, PE28 2SH</p>
+                      <a
+                        href="https://maps.app.goo.gl/XCk7pLMaP3LGdNSDA"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-orange-400 transition-colors"
+                      >
+                        Unit 14, Airfield Industrial Estate,<br></br> Warboys, Huntingdon, PE28 2SH
+                      </a>
                       <p></p>
                     </div>
                   </div>
                   <div className="flex items-center">
                     <span className="w-2 h-2 bg-orange-600 mr-3"></span>
-                    <p>Phone:  01480 585343</p>
+                    <a href="tel:01480585343" className="hover:text-orange-400 transition-colors">Phone: 01480 585343</a>
                   </div>
                   <div className="flex items-center">
                     <span className="w-2 h-2 bg-orange-600 mr-3"></span>
-                    <p>info@thecaredition.co.uk</p>
+                    <a href="mailto:info@thecaredition.co.uk" className="hover:text-orange-400 transition-colors">info@thecaredition.co.uk</a>
                   </div>
                 </address>
                 <div className="flex gap-2 mt-4">
