@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta name="viewport" content="width=300, initial-scale=1, maximum-scale=1, user-scalable=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>The Car Edition Pro</title>
         <meta name="description" content="The Car Edition Pro is your trusted partner for professional automotive services. We deliver quality maintenance, repairs, and diagnostics with expert care and attention to detail." />
         <meta name="keywords" content="car repair, automotive services, engine rebuilds, timing chains, turbos, brakes and pads, diagnostics, maintenance" />
@@ -31,7 +31,7 @@ export default function RootLayout({
       <NextAuthSessionProvider>
         <StoreProvider>
           <body
-            className="font-poppins antialiased min-h-screen flex flex-col"
+            className="font-poppins antialiased min-h-screen flex flex-col overflow-x-hidden"
             suppressHydrationWarning={true}
           >
             <Toaster />

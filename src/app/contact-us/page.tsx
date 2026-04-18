@@ -83,7 +83,7 @@ export default function ContactUs() {
   ];
 
   return (
-    <main className="min-h-screen bg-black text-white pt-20 md:pt-32">
+    <main className="min-h-screen bg-black text-white pt-20 md:pt-32 overflow-x-hidden">
       {/* Hero section */}
       <section className="relative py-20 bg-black" style={{ backgroundImage: 'url(/images/dropbox/31.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="absolute inset-0 bg-black/80"></div>
@@ -109,7 +109,7 @@ export default function ContactUs() {
       </section>
 
       {/* Contact Form and Info */}
-      <section className="w-full py-10 md:py-20 bg-black">
+      <section className="w-full py-10 md:py-20 bg-black overflow-x-hidden">
         <div className="w-full px-6">
           <div className="max-w-6xl mx-auto bg-black border border-orange-600/30 p-2 py-4 md:p-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -384,12 +384,13 @@ export default function ContactUs() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
-              className=" overflow-hidden h-96 w-full border border-orange-600/30 bg-black"
+              className="relative isolate overflow-hidden h-96 w-full border border-orange-600/30 bg-black"
             >
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38970.805123418526!2d-0.16950579319651332!3d52.37630703598371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4877e700168d113b%3A0x2ac070c915341390!2sThe%20Car%20Edition%20-%20Car%20Garage!5e0!3m2!1sen!2suk!4v1776329364411!5m2!1sen!2suk"
                 width="100%"
                 height="100%"
+                className="block h-full w-full"
                 style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg)' }}
                 allowFullScreen={true}
                 loading="lazy"
