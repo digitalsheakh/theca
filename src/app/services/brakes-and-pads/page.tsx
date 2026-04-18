@@ -10,7 +10,7 @@ export default function BrakesAndPadsPage() {
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden bg-black">
         <Image
-          src="/images/dropbox/18.jpg"
+          src="/images/dropbox/7.jpg"
           alt="Brakes and Pads Service"
           fill
           className="object-cover"

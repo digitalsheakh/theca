@@ -11,7 +11,7 @@ export default function ServicingPage() {
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden bg-gray-900">
         <Image
-          src="/images/dropbox/24.jpg"
+          src="/images/dropbox/12.jpg"
           alt="Car Servicing"
           fill
           className="object-cover"

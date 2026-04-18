@@ -11,7 +11,7 @@ export default function TransmissionPage() {
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden bg-gray-900">
         <Image
-          src="/images/dropbox/20.jpg"
+          src="/images/dropbox/9.jpg"
           alt="Transmission Service"
           fill
           className="object-cover"

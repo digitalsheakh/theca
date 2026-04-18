@@ -11,7 +11,7 @@ export default function CustomisationPage() {
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden bg-gray-900">
         <Image
-          src="/images/dropbox/25.jpg"
+          src="/images/dropbox/13.jpg"
           alt="Car Customisation Service"
           fill
           className="object-cover"

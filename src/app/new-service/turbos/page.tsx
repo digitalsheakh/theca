@@ -8,7 +8,7 @@ export default function TurbosPage() {
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden bg-black">
         <Image
-          src="/images/services/serviceimage3.jpg"
+          src="/images/dropbox/5.jpg"
           alt="Turbocharger Service"
           fill
           className="object-cover"

@@ -10,7 +10,7 @@ export default function ElectricalRepairPage() {
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden bg-gray-900">
         <Image
-          src="/images/dropbox/22.jpg"
+          src="/images/dropbox/10.jpg"
           alt="Electrical Repair Service"
           fill
           className="object-cover"
