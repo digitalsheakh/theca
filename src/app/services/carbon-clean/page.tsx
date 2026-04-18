@@ -11,7 +11,7 @@ export default function CarbonCleanPage() {
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden bg-gray-900">
         <Image
-          src="/images/dropbox/21.jpg"
+          src="/images/dropbox/27.png"
           alt="Carbon Clean Service"
           fill
           className="object-cover"

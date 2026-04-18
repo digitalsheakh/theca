@@ -10,7 +10,7 @@ export default function AirConditioningPage() {
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden bg-black">
         <Image
-          src="/images/dropbox/26.jpg"
+          src="/images/dropbox/14.jpg"
           alt="Air Conditioning Service"
           fill
           className="object-cover"

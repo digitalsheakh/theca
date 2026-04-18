@@ -10,7 +10,7 @@ export default function DiagnosticsPage() {
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden bg-black">
         <Image
-          src="/images/dropbox/19.jpg"
+          src="/images/dropbox/8.jpg"
           alt="Diagnostics Service"
           fill
           className="object-cover"

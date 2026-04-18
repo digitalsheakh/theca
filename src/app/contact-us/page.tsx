@@ -131,9 +131,7 @@ export default function ContactUs() {
                     <div>
                       <h3 className="text-lg font-bold text-orange-600 mb-2 font-orbitron uppercase">Address</h3>
                       <p className="text-gray-300 font-rajdhani leading-relaxed">
-                        Unit 4-5 Cinch Storage,<br />
-                        St Margarets Way,<br />
-                        Huntingdon, PE29 6EB
+                        Unit 14, Airfield Industrial Estate,<br></br> Warboys, Huntingdon, PE28 2SH
                       </p>
                     </div>
 
@@ -329,25 +327,34 @@ export default function ContactUs() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-black/40 border border-orange-600/50 overflow-hidden backdrop-blur-sm"
+                  className="bg-black/40 border border-orange-600/50 hover:border-orange-600 overflow-hidden backdrop-blur-sm transition-colors duration-300"
                 >
                   <button
                     onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                    className="w-full p-6 text-left flex justify-between items-center hover:bg-[#f97316]/30 transition-colors"
+                    className="w-full p-6 text-left flex justify-between items-center transition-colors duration-300"
                   >
-                    <h3 className="text-lg font-bold text-white/90 font-orbitron">
+                    <h3 className="text-lg font-bold text-white/90 hover:text-orange-400 font-orbitron transition-colors duration-300">
                       {faq.question}
                     </h3>
-                    <span className={`text-orange-600 text-xl transition-transform duration-300 ${openFaq === index ? 'rotate-180' : ''}`}>
+                    <span className={`text-orange-600 text-xl transition-all duration-300 ${openFaq === index ? 'rotate-180 text-orange-500' : ''}`}>
                       ▼
                     </span>
                   </button>
                   {openFaq === index && (
-                    <div className="px-6 pb-6">
-                      <p className="text-gray-300 font-rajdhani leading-relaxed">
-                        {faq.answer}
-                      </p>
-                    </div>
+                    <motion.div
+                      key="content" // Adding a unique key is a best practice for AnimatePresence
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-6">
+                        <p className="text-gray-300 font-rajdhani leading-relaxed">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    </motion.div>
                   )}
                 </motion.div>
               ))}
@@ -380,7 +387,7 @@ export default function ContactUs() {
               className=" overflow-hidden h-96 w-full border border-orange-600/30 bg-black"
             >
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2435.4380261289384!2d-0.20606312341485!3d52.34410947200145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4877dc6b9c923c75%3A0x7c6a8e0c3c1a9d0c!2sUnit%204%20St%20Margarets%20Way%2C%20Huntingdon%20PE29%206EB!5e0!3m2!1sen!2suk!4v1651234567890!5m2!1sen!2suk&style=feature:all%7Celement:geometry%7Ccolor:0x242f3e&style=feature:all%7Celement:labels.text.stroke%7Ccolor:0x242f3e&style=feature:all%7Celement:labels.text.fill%7Ccolor:0x746855&style=feature:administrative.locality%7Celement:labels.text.fill%7Ccolor:0xd59563&style=feature:poi%7Celement:labels.text.fill%7Ccolor:0xd59563&style=feature:poi.park%7Celement:geometry%7Ccolor:0x263c3f&style=feature:poi.park%7Celement:labels.text.fill%7Ccolor:0x6b9a76&style=feature:road%7Celement:geometry%7Ccolor:0x38414e&style=feature:road%7Celement:geometry.stroke%7Ccolor:0x212a37&style=feature:road%7Celement:labels.text.fill%7Ccolor:0x9ca5b3&style=feature:road.highway%7Celement:geometry%7Ccolor:0x746855&style=feature:road.highway%7Celement:geometry.stroke%7Ccolor:0x1f2835&style=feature:road.highway%7Celement:labels.text.fill%7Ccolor:0xf3d19c&style=feature:transit%7Celement:geometry%7Ccolor:0x2f3948&style=feature:transit.station%7Celement:labels.text.fill%7Ccolor:0xd59563&style=feature:water%7Celement:geometry%7Ccolor:0x17263c&style=feature:water%7Celement:labels.text.fill%7Ccolor:0x515c6d&style=feature:water%7Celement:labels.text.stroke%7Ccolor:0x17263c"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38970.805123418526!2d-0.16950579319651332!3d52.37630703598371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4877e700168d113b%3A0x2ac070c915341390!2sThe%20Car%20Edition%20-%20Car%20Garage!5e0!3m2!1sen!2suk!4v1776329364411!5m2!1sen!2suk"
                 width="100%"
                 height="100%"
                 style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg)' }}

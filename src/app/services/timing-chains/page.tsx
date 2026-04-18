@@ -10,7 +10,7 @@ export default function TimingChainsPage() {
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden bg-black">
         <Image
-          src="/images/dropbox/15.jpg"
+          src="/images/dropbox/6.jpg"
           alt="Timing Chains Service"
           fill
           className="object-cover"

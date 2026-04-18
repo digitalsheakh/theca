@@ -13,6 +13,11 @@ export default function FAQs() {
       opacity: 1,
       y: 0,
       transition: { duration: 0.4, ease: "easeOut" }
+    },
+    exit: {
+      opacity: 0,
+      y: 30,
+      transition: { duration: 0.3, ease: "easeIn" }
     }
   };
 
@@ -245,15 +250,15 @@ export default function FAQs() {
                 <motion.div
                   key={faq.id}
                   variants={fadeInUp}
-                  className="bg-black border border-orange-600/20 overflow-hidden hover:border-orange-600 transition-colors duration-300"
+                  className="bg-black/40 border border-orange-600/50  hover:border-orange-600 overflow-hidden backdrop-blur-sm transition-colors duration-300"
                 >
                   <button
                     onClick={() => toggleFAQ(faq.id)}
-                    className="w-full text-left p-6 flex justify-between items-center"
+                    className="w-full text-left p-6 flex justify-between items-center transition-colors duration-300"
                   >
-                    <h3 className="text-lg font-bold text-white font-rajdhani pr-4">{faq.question}</h3>
+                    <h3 className="text-lg font-bold text-white hover:text-orange-400 font-rajdhani pr-4 transition-colors duration-300">{faq.question}</h3>
                     <svg
-                      className={`w-6 h-6 text-orange-500 flex-shrink-0 transition-transform duration-300 ${openFAQ === faq.id ? 'rotate-180' : ''
+                      className={`w-6 h-6 text-orange-500 flex-shrink-0 transition-all duration-300 ${openFAQ === faq.id ? 'rotate-180 text-orange-400' : ''
                         }`}
                       fill="none"
                       stroke="currentColor"
@@ -263,9 +268,17 @@ export default function FAQs() {
                     </svg>
                   </button>
                   {openFAQ === faq.id && (
-                    <div className="px-6 pb-6">
-                      <p className="text-gray-300 font-rajdhani leading-relaxed">{faq.answer}</p>
-                    </div>
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-6">
+                        <p className="text-gray-300 font-rajdhani leading-relaxed">{faq.answer}</p>
+                      </div>
+                    </motion.div>
                   )}
                 </motion.div>
               ))}
@@ -288,15 +301,15 @@ export default function FAQs() {
                 <motion.div
                   key={faq.id}
                   variants={fadeInUp}
-                  className="bg-black border border-orange-600/20 overflow-hidden hover:border-orange-600 transition-colors duration-300"
+                  className="bg-black/40 border border-orange-600/50  hover:border-orange-600 overflow-hidden backdrop-blur-sm transition-colors duration-300"
                 >
                   <button
                     onClick={() => toggleFAQ(faq.id)}
-                    className="w-full text-left p-6 flex justify-between items-center"
+                    className="w-full text-left p-6 flex justify-between items-center transition-colors duration-300"
                   >
-                    <h3 className="text-lg font-bold text-white font-rajdhani pr-4">{faq.question}</h3>
+                    <h3 className="text-lg font-bold text-white hover:text-orange-400 font-rajdhani pr-4 transition-colors duration-300">{faq.question}</h3>
                     <svg
-                      className={`w-6 h-6 text-orange-500 flex-shrink-0 transition-transform duration-300 ${openFAQ === faq.id ? 'rotate-180' : ''
+                      className={`w-6 h-6 text-orange-500 flex-shrink-0 transition-all duration-300 ${openFAQ === faq.id ? 'rotate-180 text-orange-400' : ''
                         }`}
                       fill="none"
                       stroke="currentColor"
@@ -306,9 +319,17 @@ export default function FAQs() {
                     </svg>
                   </button>
                   {openFAQ === faq.id && (
-                    <div className="px-6 pb-6">
-                      <p className="text-gray-300 font-rajdhani leading-relaxed">{faq.answer}</p>
-                    </div>
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-6">
+                        <p className="text-gray-300 font-rajdhani leading-relaxed">{faq.answer}</p>
+                      </div>
+                    </motion.div>
                   )}
                 </motion.div>
               ))}
@@ -331,16 +352,15 @@ export default function FAQs() {
                 <motion.div
                   key={faq.id}
                   variants={fadeInUp}
-                  className="bg-black border border-orange-600/20 overflow-hidden hover:border-orange-600 transition-colors duration-300"
+                  className="bg-black/40 border border-orange-600/50 hover:border-orange-600 overflow-hidden backdrop-blur-sm transition-colors duration-300"
                 >
                   <button
                     onClick={() => toggleFAQ(faq.id)}
-                    className="w-full text-left p-6 flex justify-between items-center"
+                    className="w-full text-left p-6 flex justify-between items-center transition-colors duration-300"
                   >
-                    <h3 className="text-lg font-bold text-white font-rajdhani pr-4">{faq.question}</h3>
+                    <h3 className="text-lg font-bold text-white hover:text-orange-400 font-rajdhani pr-4 transition-colors duration-300">{faq.question}</h3>
                     <svg
-                      className={`w-6 h-6 text-orange-500 flex-shrink-0 transition-transform duration-300 ${openFAQ === faq.id ? 'rotate-180' : ''
-                        }`}
+                      className={`w-6 h-6 text-orange-500 flex-shrink-0 transition-all duration-300 ${openFAQ === faq.id ? 'rotate-180 text-orange-400' : ''}`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -349,9 +369,17 @@ export default function FAQs() {
                     </svg>
                   </button>
                   {openFAQ === faq.id && (
-                    <div className="px-6 pb-6">
-                      <p className="text-gray-300 font-rajdhani leading-relaxed">{faq.answer}</p>
-                    </div>
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-6">
+                        <p className="text-gray-300 font-rajdhani leading-relaxed">{faq.answer}</p>
+                      </div>
+                    </motion.div>
                   )}
                 </motion.div>
               ))}
@@ -374,16 +402,15 @@ export default function FAQs() {
                 <motion.div
                   key={faq.id}
                   variants={fadeInUp}
-                  className="bg-black border border-orange-600/20 overflow-hidden hover:border-orange-600 transition-colors duration-300"
+                  className="bg-black/40 border border-orange-600/50 hover:border-orange-600 overflow-hidden backdrop-blur-sm transition-colors duration-300"
                 >
                   <button
                     onClick={() => toggleFAQ(faq.id)}
-                    className="w-full text-left p-6 flex justify-between items-center"
+                    className="w-full text-left p-6 flex justify-between items-center transition-colors duration-300"
                   >
-                    <h3 className="text-lg font-bold text-white font-rajdhani pr-4">{faq.question}</h3>
+                    <h3 className="text-lg font-bold text-white hover:text-orange-400 font-rajdhani pr-4 transition-colors duration-300">{faq.question}</h3>
                     <svg
-                      className={`w-6 h-6 text-orange-500 flex-shrink-0 transition-transform duration-300 ${openFAQ === faq.id ? 'rotate-180' : ''
-                        }`}
+                      className={`w-6 h-6 text-orange-500 flex-shrink-0 transition-all duration-300 ${openFAQ === faq.id ? 'rotate-180 text-orange-400' : ''}`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -392,9 +419,17 @@ export default function FAQs() {
                     </svg>
                   </button>
                   {openFAQ === faq.id && (
-                    <div className="px-6 pb-6">
-                      <p className="text-gray-300 font-rajdhani leading-relaxed">{faq.answer}</p>
-                    </div>
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-6">
+                        <p className="text-gray-300 font-rajdhani leading-relaxed">{faq.answer}</p>
+                      </div>
+                    </motion.div>
                   )}
                 </motion.div>
               ))}
@@ -417,16 +452,15 @@ export default function FAQs() {
                 <motion.div
                   key={faq.id}
                   variants={fadeInUp}
-                  className="bg-black border border-orange-600/20 overflow-hidden hover:border-orange-600 transition-colors duration-300"
+                  className="bg-black/40 border border-orange-600/50 hover:border-orange-600 overflow-hidden backdrop-blur-sm transition-colors duration-300"
                 >
                   <button
                     onClick={() => toggleFAQ(faq.id)}
-                    className="w-full text-left p-6 flex justify-between items-center"
+                    className="w-full text-left p-6 flex justify-between items-center transition-colors duration-300"
                   >
-                    <h3 className="text-lg font-bold text-white font-rajdhani pr-4">{faq.question}</h3>
+                    <h3 className="text-lg font-bold text-white hover:text-orange-400 font-rajdhani pr-4 transition-colors duration-300">{faq.question}</h3>
                     <svg
-                      className={`w-6 h-6 text-orange-500 flex-shrink-0 transition-transform duration-300 ${openFAQ === faq.id ? 'rotate-180' : ''
-                        }`}
+                      className={`w-6 h-6 text-orange-500 flex-shrink-0 transition-all duration-300 ${openFAQ === faq.id ? 'rotate-180 text-orange-400' : ''}`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -435,9 +469,17 @@ export default function FAQs() {
                     </svg>
                   </button>
                   {openFAQ === faq.id && (
-                    <div className="px-6 pb-6">
-                      <p className="text-gray-300 font-rajdhani leading-relaxed">{faq.answer}</p>
-                    </div>
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-6">
+                        <p className="text-gray-300 font-rajdhani leading-relaxed">{faq.answer}</p>
+                      </div>
+                    </motion.div>
                   )}
                 </motion.div>
               ))}
@@ -467,7 +509,7 @@ export default function FAQs() {
               </Link>
               <Link
                 href="/"
-                className="inline-block border-2 border-white bg-white text-black hover:bg-[#f97316] hover:text-white hover:border-orange-500 px-8 py-4 font-bold uppercase font-orbitron tracking-wider transition-all duration-300 hover:scale-105 active:scale-95"
+                className="inline-block border-2 border-white bg-white text-black hover:bg-[#f97316] hover:text-white hover:border-orange-600 px-8 py-4 font-bold uppercase font-orbitron tracking-wider transition-all duration-300 hover:scale-105 active:scale-95"
               >
                 Back to Home
               </Link>

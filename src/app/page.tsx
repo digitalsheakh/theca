@@ -9,7 +9,7 @@ import TitleBadge from '@/components/TitleBadge';
 import { useSession } from 'next-auth/react';
 import GlobalLoading from '@/components/GlobalLoading';
 import { FaCog, FaTools } from 'react-icons/fa';
-import { PiHandshakeFill } from "react-icons/pi";
+import { PiGaugeBold, PiHandshakeFill } from "react-icons/pi";
 
 export default function Home() {
   const [isMounted, setIsMounted] = useState(false);
@@ -155,9 +155,9 @@ export default function Home() {
                 <motion.h2
                   className="text-5xl sm:text-6xl md:text-7xl font-bold mb-8 uppercase font-orbitron tracking-wider"
                   style={{ color: '#fb9929' }}
-                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.1, ease: [0.6, -0.05, 0.01, 0.99] }}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
                 >
                   The Car Edition
                 </motion.h2>
@@ -243,14 +243,16 @@ export default function Home() {
                   }}
                 >
                   <div className="mr-4">
-                    <PiHandshakeFill className="w-10 h-10 font-bold text-orange-600" />
+                    <PiGaugeBold className="w-10 h-10 font-bold text-orange-600" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-white uppercase mb-1 font-orbitron tracking-wider">BUY OR SELL YOUR CAR</h3>
+                    <h3 className="text-lg font-bold text-white uppercase mb-1 font-orbitron tracking-wider">
+                      Performance & ECU Tuning
+                    </h3>
                     <p className="text-gray-300 text-xs font-rajdhani">
-                      Looking to buy your dream car<br />
-                      or simply want to sell yours?<br />
-                      Look no further - we can do both!
+                      Unlock your engine's true potential with precision<br />
+                      remapping. Increase horsepower, optimize torque,<br />
+                      and experience a sharper, more responsive drive.
                     </p>
                   </div>
                 </motion.div>
@@ -295,14 +297,14 @@ export default function Home() {
                   </div>
                   <div className="inline-flex items-start mx-4">
                     <div className="mr-4">
-                      <PiHandshakeFill className="w-10 h-10 font-bold text-orange-600" />
+                      <PiGaugeBold className="w-10 h-10 font-bold text-orange-600" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold text-white uppercase mb-1 italic">BUY OR SELL YOUR CAR</h3>
+                      <h3 className="text-lg font-bold text-white uppercase mb-1 italic">PERFORMANCE & ECU TUNING</h3>
                       <p className="text-gray-300 text-xs italic">
-                        Looking to buy your dream car<br />
-                        or simply want to sell yours?<br />
-                        Look no further - we can do both!
+                        Unlock your engine's true potential with precision<br />
+                        remapping. Increase horsepower, optimize torque,<br />
+                        and experience a sharper, more responsive drive.
                       </p>
                     </div>
                   </div>
@@ -418,7 +420,7 @@ export default function Home() {
             <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
               {/* Service Card 1 - Ford Wet Belt Replacement */}
               <div
-                className={`relative overflow-visible shadow-2xl border transition-all duration-300 cursor-pointer flex flex-col ${expandedService === 0 ? 'border-orange-500 bg-black z-50' : 'border-orange-600/30 hover:border-orange-500 bg-[#0a0a0a] z-0'
+                className={`relative overflow-visible shadow-2xl border transition-all duration-300 cursor-pointer flex flex-col ${expandedService === 0 ? 'border-orange-500 bg-black z-50' : 'border-orange-600/30 hover:border-orange-600 bg-[#0a0a0a] z-0'
                   }`}
                 onClick={(e) => toggleService(0, e)}
               >
@@ -497,7 +499,7 @@ export default function Home() {
 
               {/* Service Card 2 - Timing Chain Replacement */}
               <div
-                className={`relative overflow-visible shadow-2xl border transition-all duration-300 cursor-pointer flex flex-col ${expandedService === 1 ? 'border-orange-500 bg-black z-50' : 'border-orange-600/30 hover:border-orange-500 bg-[#0a0a0a] z-0'
+                className={`relative overflow-visible shadow-2xl border transition-all duration-300 cursor-pointer flex flex-col ${expandedService === 1 ? 'border-orange-500 bg-black z-50' : 'border-orange-600/30 hover:border-orange-600 bg-[#0a0a0a] z-0'
                   }`}
                 onClick={(e) => toggleService(1, e)}
               >
@@ -608,7 +610,7 @@ export default function Home() {
 
               {/* Service Card 3 - Performance and ECU Tuning */}
               <div
-                className={`relative overflow-visible shadow-2xl border transition-all duration-300 cursor-pointer flex flex-col ${expandedService === 2 ? 'border-orange-500 bg-black z-50' : 'border-orange-600/30 hover:border-orange-500 bg-[#0a0a0a] z-0'
+                className={`relative overflow-visible shadow-2xl border transition-all duration-300 cursor-pointer flex flex-col ${expandedService === 2 ? 'border-orange-500 bg-black z-50' : 'border-orange-600/30 hover:border-orange-600 bg-[#0a0a0a] z-0'
                   }`}
                 onClick={(e) => toggleService(2, e)}
               >
@@ -688,7 +690,7 @@ export default function Home() {
 
               {/* Service Card 4 - Car Key & Immobiliser */}
               <div
-                className={`relative overflow-visible shadow-2xl border transition-all duration-300 cursor-pointer flex flex-col ${expandedService === 3 ? 'border-orange-500 bg-black z-50' : 'border-orange-600/30 hover:border-orange-500 bg-[#0a0a0a] z-0'
+                className={`relative overflow-visible shadow-2xl border transition-all duration-300 cursor-pointer flex flex-col ${expandedService === 3 ? 'border-orange-500 bg-black z-50' : 'border-orange-600/30 hover:border-orange-600 bg-[#0a0a0a] z-0'
                   }`}
                 onClick={(e) => toggleService(3, e)}
               >
@@ -754,7 +756,7 @@ export default function Home() {
 
               {/* Service Card 5 - Full Service */}
               <div
-                className={`relative overflow-visible shadow-2xl border transition-all duration-300 cursor-pointer flex flex-col ${expandedService === 4 ? 'border-orange-500 bg-black z-50' : 'border-orange-600/30 hover:border-orange-500 bg-[#0a0a0a] z-0'
+                className={`relative overflow-visible shadow-2xl border transition-all duration-300 cursor-pointer flex flex-col ${expandedService === 4 ? 'border-orange-500 bg-black z-50' : 'border-orange-600/30 hover:border-orange-600 bg-[#0a0a0a] z-0'
                   }`}
                 onClick={(e) => toggleService(4, e)}
               >
@@ -818,7 +820,7 @@ export default function Home() {
 
               {/* Service Card 6 - Gearbox Servicing */}
               <div
-                className={`relative overflow-visible shadow-2xl border transition-all duration-300 cursor-pointer flex flex-col ${expandedService === 5 ? 'border-orange-500 bg-black z-50' : 'border-orange-600/30 hover:border-orange-500 bg-[#0a0a0a] z-0'
+                className={`relative overflow-visible shadow-2xl border transition-all duration-300 cursor-pointer flex flex-col ${expandedService === 5 ? 'border-orange-500 bg-black z-50' : 'border-orange-600/30 hover:border-orange-600 bg-[#0a0a0a] z-0'
                   }`}
                 onClick={(e) => toggleService(5, e)}
               >
@@ -1174,10 +1176,10 @@ export default function Home() {
                   With 15 years of experience, The Car Edition is a trusted provider of high-quality used cars and comprehensive automotive services. Our qualified team of mechanics delivers professional solutions for all your vehicle needs, from routine maintenance to complex engine rebuilds and advanced diagnostics.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Link href="/services" className="inline-flex items-center bg-white text-black hover:bg-[#f97316] hover:text-white px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95">
+                  <Link href="/services" className="inline-flex items-center justify-center bg-white text-black hover:bg-[#f97316] hover:text-white px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95">
                     EXPLORE SERVICES
                   </Link>
-                  <Link href="/about-us" className="inline-flex items-center bg-orange-600 hover:bg-orange-600 text-white px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95">
+                  <Link href="/about-us" className="inline-flex items-center justify-center bg-orange-600 hover:bg-orange-600 text-white px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95">
                     LEARN MORE
                   </Link>
                 </div>
@@ -1892,19 +1894,18 @@ export default function Home() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
                 viewport={{ once: true, margin: "0px" }}
-                className="order-1 lg:order-2 w-full lg:w-1/2"
+                className="order-1 lg:order-2 w-full lg:w-1/2 overflow-hidden"
               >
-                <div className="relative w-full  mx-auto">
+                <div className="relative w-full mx-auto">
                   <div className=" shadow-2xl border border-orange-600/30 overflow-hidden bg-gray-900">
                     <iframe
                       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2435.8!2d-0.1857!3d52.3284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4877e9a1a1a1a1a1%3A0x1234567890abcdef!2sUnit%204-5%20Cinch%20Storage%2C%20St%20Margarets%20Way%2C%20Huntingdon%20PE29%206EB!5e0!3m2!1sen!2suk!4v1700000000000!5m2!1sen!2suk"
                       width="100%"
                       height="400"
-                      style={{ border: 0, minHeight: '400px', filter: 'invert(90%) hue-rotate(180deg)' }}
+                      style={{ border: 0, minHeight: '400px', filter: 'invert(90%) hue-rotate(180deg)', width: '100%' }}
                       allowFullScreen
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
-                      className="w-full"
                     ></iframe>
                   </div>
                 </div>
