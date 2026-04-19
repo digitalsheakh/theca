@@ -12,7 +12,8 @@ export const metadata: Metadata = {
   title: "The Car Edition Pro",
   description: "The Car Edition Pro is your trusted partner for professional automotive services. We deliver quality maintenance, repairs, and diagnostics with expert care and attention to detail.",
   icons: {
-    icon: "/icon.jpeg"
+    icon: "/favicon.ico",
+    apple: "/images/icon.jpeg"
   },
   authors: [
     {
