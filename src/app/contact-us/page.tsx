@@ -74,7 +74,7 @@ export default function ContactUs() {
     },
     {
       question: "How can I book an appointment?",
-      answer: "You can book an appointment by calling us at 01480 759004, emailing info@thecaredition.co.uk, or using the contact form on this page."
+      answer: "You can book an appointment by calling us at 01480 585343, emailing info@thecaredition.co.uk, or using the contact form on this page."
     },
     {
       question: "What are your opening hours?",
@@ -137,8 +137,8 @@ export default function ContactUs() {
 
                     <div>
                       <h3 className="text-lg font-bold text-orange-600 mb-2 font-orbitron uppercase">Phone</h3>
-                      <a href="tel:01480759004" className="text-gray-300 hover:text-orange-400 transition-colors font-rajdhani text-lg">
-                        01480 759004
+                      <a href="tel:01480 585343" className="text-gray-300 hover:text-orange-400 transition-colors font-rajdhani text-lg">
+                        01480 585343
                       </a>
                     </div>
 

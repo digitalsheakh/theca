@@ -167,7 +167,7 @@ export default function Home() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   transition={{ duration: 0, delay: 0, ease: "easeInOut" }}
-                  href="tel:01480759004"
+                  href="tel:01480 585343"
                   className="group relative inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 text-white font-bold font-orbitron uppercase tracking-wider overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
@@ -1879,10 +1879,10 @@ export default function Home() {
                   viewport={{ once: true }}
                   className="flex flex-col sm:flex-row gap-4"
                 >
-                  <a href="tel:01480759004" className="inline-flex items-center justify-center bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 hover:scale-105">
+                  <Link href="/service-estimator" className="inline-flex items-center justify-center bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 hover:scale-105">
                     BOOK APPOINTMENT
-                  </a>
-                  <a href="tel:01480759004" className="inline-flex items-center justify-center border-2 bg-white hover:border-[#f97316] border-white text-black hover:bg-[#f97316] hover:text-white px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95">
+                  </Link>
+                  <a href="tel:01480 585343" className="inline-flex items-center justify-center border-2 bg-white hover:border-[#f97316] border-white text-black hover:bg-[#f97316] hover:text-white px-8 py-4 font-bold font-orbitron uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95">
                     CALL US NOW
                   </a>
                 </motion.div>
