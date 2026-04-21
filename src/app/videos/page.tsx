@@ -244,16 +244,8 @@ export default function VideosPage() {
               </div>
 
               {/* Right Side - Spotify Embed */}
-              <div className="bg-black/50 p-6 flex items-center justify-center overflow-hidden border-2 border-orange-600/30 hover:border-orange-600 transition-all duration-300">
-                <a href='https://www.youtube.com/@thecareditionltd' target="_blank" rel="noopener noreferrer" className="w-full h-full">
-                  <div className="w-full h-[250px] md:h-[300px] lg:h-[350px] relative cursor-pointer ">
-                    <img
-                      src="/images/dropbox/Podcast_Page_Section_Photo.jpg"
-                      alt="Behind the Spanners Podcast"
-                      className={"absolute w-full h-full object-contain"}
-                    />
-                  </div>
-                </a>
+              <div className="bg-black/50 p-6 flex items-center justify-center overflow-hidden border-2 border-orange-600/30 hover:border-orange-600 transition-all duration-300 rounded">
+                <iframe data-testid="embed-iframe" src="https://open.spotify.com/embed/track/5BZsQlgw21vDOAjoqkNgKb?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
               </div>
             </div>
           </div>
@@ -382,7 +374,30 @@ export default function VideosPage() {
         </div>
       </section>
 
-
+      {/* Media Contact Section */}
+      <section className="w-full py-20 bg-gradient-to-b from-black to-black/50">
+        <div className="w-full px-6">
+          <div className="max-w-screen-2xl mx-auto">
+            <div className="bg-black/50 border-2 border-orange-600/30 p-8 md:p-12 text-center">
+              <h3 className="text-2xl md:text-3xl font-bold text-white font-orbitron mb-4 uppercase tracking-wider">
+                Work With <span className="text-orange-600">Us</span>
+              </h3>
+              <p className="text-gray-300 font-rajdhani text-lg mb-6">
+                Interested in collaboration, media partnerships, or sponsorship opportunities?
+              </p>
+              <p className="text-white font-rajdhani text-lg">
+                Get in touch with our media team at{' '}
+                <a
+                  href="mailto:marketing@thecaredition.co.uk"
+                  className="text-orange-600 hover:text-orange-500 font-bold transition-colors duration-300"
+                >
+                  marketing@thecaredition.co.uk
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Enhanced Video Modal */}
       {selectedVideo && (

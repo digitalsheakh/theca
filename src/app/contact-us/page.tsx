@@ -130,9 +130,13 @@ export default function ContactUs() {
                   <div className="space-y-6">
                     <div>
                       <h3 className="text-lg font-bold text-orange-600 mb-2 font-orbitron uppercase">Address</h3>
-                      <p className="text-gray-300 font-rajdhani leading-relaxed">
+                      <a
+                        href="https://maps.app.goo.gl/XCk7pLMaP3LGdNSDA"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-300 font-rajdhani leading-relaxed hover:text-orange-400 transition-colors">
                         Unit 14, Airfield Industrial Estate,<br></br> Warboys, Huntingdon, PE28 2SH
-                      </p>
+                      </a>
                     </div>
 
                     <div>
@@ -387,7 +391,7 @@ export default function ContactUs() {
               className="relative isolate overflow-hidden h-96 w-full border border-orange-600/30 bg-black"
             >
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38970.805123418526!2d-0.16950579319651332!3d52.37630703598371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4877e700168d113b%3A0x2ac070c915341390!2sThe%20Car%20Edition%20-%20Car%20Garage!5e0!3m2!1sen!2suk!4v1776329364411!5m2!1sen!2suk"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1217.4218790652133!2d-0.10003578530284757!3d52.391382633799424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4877a34f968ba239%3A0xb261a82ffd055ca3!2sThe%20Car%20Edition%20Ltd!5e0!3m2!1sen!2suk!4v1776785160011!5m2!1sen!2suk"
                 width="100%"
                 height="100%"
                 className="block h-full w-full"
