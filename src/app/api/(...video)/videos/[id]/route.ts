@@ -12,16 +12,6 @@ interface Admission extends Document {
  studentName: string;
 
 }
-
-
-
-
-
-
-// Connect collections with types
-const videosCollection = await dbConnect<Admission>(collections.videos);
-
-
 // GET — fetch admission by ID with related data
 export async function GET(req: NextRequest) {
  const referer = req.headers.get('referer') ||'';
@@ -38,6 +28,7 @@ export async function GET(req: NextRequest) {
  }
 
  try {
+ const videosCollection = await dbConnect<Admission>(collections.videos);
  const id = req.nextUrl.pathname.split("/").pop();
 
  const video = await videosCollection.findOne({ _id: new ObjectId(id) });
@@ -70,6 +61,7 @@ export async function PATCH(req: NextRequest) {
  );
  }
  try {
+ const videosCollection = await dbConnect<Admission>(collections.videos);
  const id = req.nextUrl.pathname.split("/").pop();
 
  if (!id || !ObjectId.isValid(id)) {
@@ -121,6 +113,7 @@ export async function DELETE(req: NextRequest) {
  );
  }
  try {
+ const videosCollection = await dbConnect<Admission>(collections.videos);
  const id = req.nextUrl.pathname.split("/").pop();
 
  if (!id || !ObjectId.isValid(id)) {

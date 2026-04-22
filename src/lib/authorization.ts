@@ -1,5 +1,5 @@
 ﻿import { authOptions } from"@/lib/authOptions";
-import { collections, dbConnect } from"@/lib/dbConnect";
+import { collections, dbConnect, hasMongoConfig } from"@/lib/dbConnect";
 import { ObjectId } from"mongodb";
 import { getServerSession } from"next-auth";
 
@@ -48,7 +48,7 @@ type AuthorizationResult =
 async function authorizationCheck(refererPath?: string): Promise<AuthorizationResult> {
  try {
  // Check if we're in a build environment
- if (!process.env.NEXT_PUBLIC_MONGODB_URI) {
+ if (!hasMongoConfig) {
  return { success: false, error:"Build environment - no database", status: 503 };
  }
  

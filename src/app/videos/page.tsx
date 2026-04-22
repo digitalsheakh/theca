@@ -245,7 +245,7 @@ export default function VideosPage() {
 
               {/* Right Side - Spotify Embed */}
               <div className="bg-black/50 p-6 flex items-center justify-center overflow-hidden border-2 border-orange-600/30 hover:border-orange-600 transition-all duration-300 rounded">
-                <iframe data-testid="embed-iframe" src="https://open.spotify.com/embed/track/5BZsQlgw21vDOAjoqkNgKb?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <iframe data-testid="embed-iframe" src="https://open.spotify.com/embed/track/5BZsQlgw21vDOAjoqkNgKb?utm_source=generator" width="100%" height="352" frameBorder="0" allowFullScreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
               </div>
             </div>
           </div>
