@@ -9,7 +9,7 @@ export default function GearboxServicingPage() {
     <div className="min-h-screen bg-black text-white pt-20 md:pt-32">
       <section className="relative h-[70vh] overflow-hidden bg-black">
         <Image
-          src="/images/services/serviceimage1.jpg"
+          src="/images/trending/Gearbox_service.jpeg"
           alt="Gearbox Servicing"
           fill
           className="object-cover"

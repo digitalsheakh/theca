@@ -10,7 +10,7 @@ export default function PerformanceECUTuningPage() {
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden bg-black">
         <Image
-          src="/images/services/serviceimage3.jpg"
+          src="/images/trending/ECU.jpeg"
           alt="Performance & ECU Tuning Service"
           fill
           className="object-cover"

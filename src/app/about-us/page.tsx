@@ -249,12 +249,11 @@ export default function AboutUsPage() {
               {/* Experts - 4 Cards */}
               <div className="mt-16">
                 <h3 className="text-2xl font-bold text-white mb-8 font-orbitron tracking-wider text-center">OUR <span className="text-orange-600">EXPERTS</span></h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto justify-center">
                   {[
                     { name: "OWEN", role: "WORKSHOP SUPERVISOR", image: "/images/our team/Owen - Workshop Superviser.jpeg" },
                     { name: "AKOS", role: "MECHANIC", image: "/images/our team/Akos - Mechanic.jpeg" },
-                    { name: "GYTIS", role: "MECHANIC", image: "/images/our team/Gytis - Mechanic.jpeg" },
-                    { name: "BIG DREW", role: "MECHANIC", image: "/images/our team/Big Drew.jpg" }
+                    { name: "GYTIS", role: "MECHANIC", image: "/images/our team/Gytis - Mechanic.jpeg" }
                   ].map((member, index) => (
                     <motion.div
                       key={index}

@@ -1,8 +1,10 @@
 ﻿'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import TitleBadge from '@/components/TitleBadge';
+import emailjs from '@emailjs/browser';
+import { toast } from 'react-hot-toast';
 
 export default function ContactUs() {
   const [formData, setFormData] = useState({
@@ -17,6 +19,11 @@ export default function ContactUs() {
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState('');
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  // Initialize EmailJS
+  useEffect(() => {
+    emailjs.init("rNvtcJ0rH9eWWuhiv"); // Replace with your EmailJS public key
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -34,24 +41,65 @@ export default function ContactUs() {
     }));
   };
 
+  const sendEmail = async (data: any) => {
+    try {
+      const templateParams = {
+        from_name: data.name,
+        from_email: data.email,
+        from_phone: data.phone,
+        service: data.service || "General Inquiry",
+        message: data.message,
+        submission_date: new Date().toLocaleString()
+      };
+
+      const response = await emailjs.send(
+        'service_y94y2p1', // Replace with your EmailJS service ID
+        'template_jf3qps9', // Replace with your EmailJS template ID
+        templateParams
+      );
+
+      if (response.status === 200) {
+        toast.success('Message sent successfully!');
+        return true;
+      } else {
+        toast.error('Failed to send message');
+        return false;
+      }
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      toast.error('Failed to send message. Please try again.');
+      return false;
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!formData.privacy) {
+      setSubmitError('Please accept the privacy policy');
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitError('');
 
-    // Simulate form submission
     try {
-      // In a real app, you would send this data to your backend
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      setSubmitSuccess(true);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        service: '',
-        message: '',
-        privacy: false
-      });
+      // Send email via EmailJS
+      const emailSent = await sendEmail(formData);
+
+      if (emailSent) {
+        setSubmitSuccess(true);
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          service: '',
+          message: '',
+          privacy: false
+        });
+      } else {
+        setSubmitError('Failed to send message. Please try again.');
+      }
     } catch (error) {
       setSubmitError('There was an error submitting your message. Please try again.');
     } finally {

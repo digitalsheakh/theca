@@ -10,7 +10,7 @@ export default function CarKeyImmobiliserPage() {
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden bg-black">
         <Image
-          src="/images/services/serviceimage4.jpg"
+          src="/images/trending/Key_Immobiliser.jpeg"
           alt="Car Key & Immobiliser Service"
           fill
           className="object-cover"

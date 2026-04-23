@@ -238,8 +238,21 @@ export default function VideosPage() {
               </div>
 
               {/* Right Side - Spotify Embed */}
-              <div className="bg-black/50 p-6 flex items-center justify-center overflow-hidden border-2 border-orange-600/30 hover:border-orange-600 transition-all duration-300 rounded">
-                <iframe data-testid="embed-iframe" src="https://open.spotify.com/embed/track/5BZsQlgw21vDOAjoqkNgKb?utm_source=generator" width="100%" height="352" frameBorder="0" allowFullScreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+              <div className="bg-black/50 p-6 flex items-center justify-center overflow-hidden border-2 border-orange-600/30 hover:border-orange-600 transition-all duration-300">
+                <a href='https://open.spotify.com/show/79qHgTDpAvY6H7fYF9Zl3B' target="_blank" rel="noopener noreferrer" className="w-full h-full group">
+                  <div className="w-full h-[250px] md:h-[300px] lg:h-[350px] relative cursor-pointer">
+                    <img
+                      src="/images/dropbox/Podcast_Page_Section_Photo.jpg"
+                      alt="Behind the Spanners Podcast"
+                      className="absolute w-full h-full object-contain"
+                    />
+                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                      <div className="w-16 h-16 rounded-full bg-green-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <FaPlay className="text-white text-2xl ml-1" />
+                      </div>
+                    </div>
+                  </div>
+                </a>
               </div>
             </div>
           </div>
