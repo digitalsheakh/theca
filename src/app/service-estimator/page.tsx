@@ -1,8 +1,10 @@
 ﻿'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import ServiceEstimatorComponent from '@/components/reuseableComponents/ServicesEstimator/ServiceEstimator';
+import emailjs from '@emailjs/browser';
+import { toast } from 'react-hot-toast';
 
 export default function ServiceEstimator() {
   const [formData, setFormData] = useState({
@@ -14,6 +16,11 @@ export default function ServiceEstimator() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
+  // Initialize EmailJS
+  useEffect(() => {
+    emailjs.init("rNvtcJ0rH9eWWuhiv"); // Replace with your EmailJS public key
+  }, []);
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -22,17 +29,53 @@ export default function ServiceEstimator() {
     }));
   };
 
+  const sendEmail = async (data: any) => {
+
+    try {
+      const templateParams = {
+        from_name: data.name,
+        from_email: data.email,
+        from_phone: data.phone,
+        service: "General Inquiry",
+        message: data.message,
+        submission_date: new Date().toLocaleString()
+      };
+
+      const response = await emailjs.send(
+        'service_y94y2p1', // Replace with your EmailJS service ID
+        'template_jf3qps9', // Replace with your EmailJS template ID
+        templateParams
+      );
+
+      if (response.status === 200) {
+        toast.success('Message sent successfully!');
+        return true;
+      } else {
+        toast.error('Failed to send message');
+        return false;
+      }
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      toast.error('Failed to send message. Please try again.');
+      return false;
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
     try {
-      // Simulate form submission - replace with actual API call
+      // Send email via EmailJS
+      const emailSent = await sendEmail(formData);
 
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', phone: '', message: '' });
+      if (emailSent) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', phone: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+      }
     } catch (error) {
       setSubmitStatus('error');
     } finally {

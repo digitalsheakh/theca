@@ -10,7 +10,7 @@ export default function AirConditioningPage() {
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden bg-black">
         <Image
-          src="/images/dropbox/26.jpg"
+          src="/images/dropbox/14.jpg"
           alt="Air Conditioning Service"
           fill
           className="object-cover"
@@ -219,7 +219,7 @@ export default function AirConditioningPage() {
                 Learn More
               </Link>
               <Link
-                href="tel:01480123456"
+                href="tel:01480 585343"
                 className="border-2 border-white text-white hover:bg-[#f97316] hover:text-white px-8 py-3 font-bold transition-all duration-300 hover:scale-105 active:scale-95 font-rajdhani uppercase tracking-wide"
               >
                 Call Now

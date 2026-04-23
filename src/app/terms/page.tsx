@@ -118,7 +118,7 @@ export default function TermsAndConditions() {
               <motion.div variants={fadeInUp} className="mb-8">
                 <h3 className="text-xl font-bold text-white font-orbitron mb-4">6. Post-Purchase Obligations</h3>
                 <p className="text-gray-300 font-rajdhani leading-relaxed">
-                  <strong className="text-white">Vehicle"As Is":</strong> Once the purchase concludes, the vehicle is sold"as is". Subsequent defects or damages that arise after the purchase are not the responsibility of The Car Edition Ltd. It is crucial to recognise that maintenance and repairs become the owner's responsibility.
+                  <strong className="text-white">Vehicle "As Is":</strong> Once the purchase concludes, the vehicle is sold "as is". Subsequent defects or damages that arise after the purchase are not the responsibility of The Car Edition Ltd. It is crucial to recognise that maintenance and repairs become the owner's responsibility.
                 </p>
               </motion.div>
 
@@ -135,6 +135,8 @@ export default function TermsAndConditions() {
                   <p>The standard 3 month warranty covers a comprehensive range of essential components, giving you peace of mind while driving your new vehicle. From engine and transmission components to electrical systems, our warranty aims to minimise any potential inconveniences caused by unforeseen issues.</p>
 
                   <p>Please note that the standard 3 month warranty is provided by us as part of our commitment to delivering quality vehicles and customer satisfaction. However, for even more comprehensive coverage, we also offer extended warranty options through our partnership with Warranty Wise. This additional coverage can be tailored to suit your specific needs, providing extended protection beyond the initial 3 month period.</p>
+
+                  <p>We encourage you to review the warranty documentation and terms for a clear understanding of the covered components and any conditions that may apply. Should you have any questions about the warranty or its coverage, please don't hesitate to reach out to our customer service team. Your satisfaction and confidence in your vehicle purchase experience are of utmost importance to us, and we are here to ensure that you enjoy worry-free driving.</p>
                 </div>
               </motion.div>
 
@@ -185,11 +187,19 @@ export default function TermsAndConditions() {
           >
             <div className="bg-black border border-orange-600/20 p-8">
               <motion.h2 variants={fadeInUp} className="text-3xl font-bold text-orange-500 uppercase font-orbitron tracking-wider mb-6">
-                Workshop Terms & Conditions of Business
+                The Car Edition Ltd – Workshop Terms & Conditions of Business
               </motion.h2>
 
               <motion.p variants={fadeInUp} className="text-gray-300 font-rajdhani leading-relaxed mb-8">
-                These Terms & Conditions apply to all services provided by The Car Edition Ltd ("we","us","our"). By booking work, delivering a vehicle to us, or accepting an invoice, you ("the customer","you") agree to be bound by these Terms & Conditions. Nothing in these Terms affects your statutory rights under UK consumer law.
+                These Terms & Conditions apply to all services provided by The Car Edition Ltd ("we", "us", "our").
+              </motion.p>
+
+              <motion.p variants={fadeInUp} className="text-gray-300 font-rajdhani leading-relaxed mb-8">
+                By booking work, delivering a vehicle to us, or accepting an invoice, you ("the customer", "you") agree to be bound by these Terms & Conditions.
+              </motion.p>
+
+              <motion.p variants={fadeInUp} className="text-gray-300 font-rajdhani leading-relaxed mb-8">
+                Nothing in these Terms affects your statutory rights under UK consumer law.
               </motion.p>
 
               {/* Workshop sections */}

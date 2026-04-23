@@ -24,7 +24,7 @@ export default function ServiceSelection() {
 
   // Initialize EmailJS
   useEffect(() => {
-    emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+    emailjs.init("rNvtcJ0rH9eWWuhiv"); // Replace with your EmailJS public key
   }, []);
   // Retrieve vehicle data from localStorage
   useEffect(() => {
@@ -46,7 +46,7 @@ export default function ServiceSelection() {
   const sendEmail = async (formData: any) => {
     try {
       const templateParams = {
-        to_email: 'digitalsheakh@gmail.com', // Your email address
+        to_email: 'thecaredition.uk@gmail.com', // Your email address
         from_name: formData.customerName,
         from_email: formData.email,
         from_phone: formData.phoneNumber,
@@ -62,10 +62,10 @@ export default function ServiceSelection() {
       };
 
       const response = await emailjs.send(
-        'service_rt76vlk', // Replace with your EmailJS service ID
-        'template_e4enkgs', // Replace with your EmailJS template ID
+        'service_y94y2p1', // Replace with your EmailJS service ID
+        'template_a46rpif', // Replace with your EmailJS template ID
         templateParams,
-        "_5VLmkhbpDyqVK5Qn"
+        // "_5VLmkhbpDyqVK5Qn"
       );
 
       if (response.status === 200) {

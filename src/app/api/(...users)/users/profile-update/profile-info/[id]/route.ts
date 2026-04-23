@@ -15,8 +15,6 @@ interface User extends Document {
  password?: string;
 }
 
-const usersCollection = await dbConnect<User>(collections.users);
-
 export async function PATCH(req: NextRequest) {
  const referer = req.headers.get('referer') ||'';
  const refererPath = new URL(referer).pathname;
@@ -31,6 +29,7 @@ export async function PATCH(req: NextRequest) {
  }
 
  try {
+ const usersCollection = await dbConnect<User>(collections.users);
  // Extract ID from URL
  const id = req.nextUrl.pathname.split("/").pop();
  

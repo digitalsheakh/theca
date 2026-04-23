@@ -1,4 +1,5 @@
 ﻿import { authorizationCheck } from"@/lib/authorization";
+import { getBlogById } from"@/lib/blogData";
 import { collections, dbConnect } from"@/lib/dbConnect";
 import { ObjectId } from"mongodb";
 import { NextRequest, NextResponse } from"next/server";
@@ -18,31 +19,11 @@ interface Blog {
 
 // GET — fetch blog by ID
 export async function GET(req: NextRequest) {
- const referer = req.headers.get('referer') ||'';
- const refererPath = new URL(referer).pathname;
- 
- // Pass referer path to authorization check
- const authResult = await authorizationCheck(refererPath);
- 
- if (!authResult.success) {
- return NextResponse.json(
- { error: authResult.error },
- { status: authResult.status }
- );
- }
 
  try {
- // TODO: Re-enable database connection after deployment
- // const blogsCollection = await dbConnect(collections.blogs);
  const id = req.nextUrl.pathname.split("/").pop();
- 
- if (!id || !ObjectId.isValid(id)) {
- return NextResponse.json({ error:"Invalid ID format" }, { status: 400 });
- }
 
- // TODO: Re-enable database query
- // const blog = await blogsCollection.findOne({ _id: new ObjectId(id) });
- const blog = { _id: id, title:"Sample Blog", content:"Database temporarily disabled" };
+ const blog = id ? await getBlogById(id) : null;
 
  if (!blog) {
  return NextResponse.json({ error:"Blog not found" }, { status: 404 });

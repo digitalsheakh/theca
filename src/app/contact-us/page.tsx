@@ -1,8 +1,10 @@
 ﻿'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import TitleBadge from '@/components/TitleBadge';
+import emailjs from '@emailjs/browser';
+import { toast } from 'react-hot-toast';
 
 export default function ContactUs() {
   const [formData, setFormData] = useState({
@@ -17,6 +19,11 @@ export default function ContactUs() {
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState('');
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  // Initialize EmailJS
+  useEffect(() => {
+    emailjs.init("rNvtcJ0rH9eWWuhiv"); // Replace with your EmailJS public key
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -34,24 +41,65 @@ export default function ContactUs() {
     }));
   };
 
+  const sendEmail = async (data: any) => {
+    try {
+      const templateParams = {
+        from_name: data.name,
+        from_email: data.email,
+        from_phone: data.phone,
+        service: data.service || "General Inquiry",
+        message: data.message,
+        submission_date: new Date().toLocaleString()
+      };
+
+      const response = await emailjs.send(
+        'service_y94y2p1', // Replace with your EmailJS service ID
+        'template_jf3qps9', // Replace with your EmailJS template ID
+        templateParams
+      );
+
+      if (response.status === 200) {
+        toast.success('Message sent successfully!');
+        return true;
+      } else {
+        toast.error('Failed to send message');
+        return false;
+      }
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      toast.error('Failed to send message. Please try again.');
+      return false;
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!formData.privacy) {
+      setSubmitError('Please accept the privacy policy');
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitError('');
 
-    // Simulate form submission
     try {
-      // In a real app, you would send this data to your backend
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      setSubmitSuccess(true);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        service: '',
-        message: '',
-        privacy: false
-      });
+      // Send email via EmailJS
+      const emailSent = await sendEmail(formData);
+
+      if (emailSent) {
+        setSubmitSuccess(true);
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          service: '',
+          message: '',
+          privacy: false
+        });
+      } else {
+        setSubmitError('Failed to send message. Please try again.');
+      }
     } catch (error) {
       setSubmitError('There was an error submitting your message. Please try again.');
     } finally {
@@ -74,7 +122,7 @@ export default function ContactUs() {
     },
     {
       question: "How can I book an appointment?",
-      answer: "You can book an appointment by calling us at 01480 759004, emailing info@thecaredition.co.uk, or using the contact form on this page."
+      answer: "You can book an appointment by calling us at 01480 585343, emailing info@thecaredition.co.uk, or using the contact form on this page."
     },
     {
       question: "What are your opening hours?",
@@ -83,7 +131,7 @@ export default function ContactUs() {
   ];
 
   return (
-    <main className="min-h-screen bg-black text-white pt-20 md:pt-32">
+    <main className="min-h-screen bg-black text-white pt-20 md:pt-32 overflow-x-hidden">
       {/* Hero section */}
       <section className="relative py-20 bg-black" style={{ backgroundImage: 'url(/images/dropbox/31.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="absolute inset-0 bg-black/80"></div>
@@ -109,7 +157,7 @@ export default function ContactUs() {
       </section>
 
       {/* Contact Form and Info */}
-      <section className="w-full py-10 md:py-20 bg-black">
+      <section className="w-full py-10 md:py-20 bg-black overflow-x-hidden">
         <div className="w-full px-6">
           <div className="max-w-6xl mx-auto bg-black border border-orange-600/30 p-2 py-4 md:p-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -130,17 +178,19 @@ export default function ContactUs() {
                   <div className="space-y-6">
                     <div>
                       <h3 className="text-lg font-bold text-orange-600 mb-2 font-orbitron uppercase">Address</h3>
-                      <p className="text-gray-300 font-rajdhani leading-relaxed">
-                        Unit 4-5 Cinch Storage,<br />
-                        St Margarets Way,<br />
-                        Huntingdon, PE29 6EB
-                      </p>
+                      <a
+                        href="https://maps.app.goo.gl/XCk7pLMaP3LGdNSDA"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-300 font-rajdhani leading-relaxed hover:text-orange-400 transition-colors">
+                        Unit 14, Airfield Industrial Estate,<br></br> Warboys, Huntingdon, PE28 2SH
+                      </a>
                     </div>
 
                     <div>
                       <h3 className="text-lg font-bold text-orange-600 mb-2 font-orbitron uppercase">Phone</h3>
-                      <a href="tel:01480759004" className="text-gray-300 hover:text-orange-400 transition-colors font-rajdhani text-lg">
-                        01480 759004
+                      <a href="tel:01480 585343" className="text-gray-300 hover:text-orange-400 transition-colors font-rajdhani text-lg">
+                        01480 585343
                       </a>
                     </div>
 
@@ -329,25 +379,34 @@ export default function ContactUs() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-black/40 border border-orange-600/50 overflow-hidden backdrop-blur-sm"
+                  className="bg-black/40 border border-orange-600/50 hover:border-orange-600 overflow-hidden backdrop-blur-sm transition-colors duration-300"
                 >
                   <button
                     onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                    className="w-full p-6 text-left flex justify-between items-center hover:bg-[#f97316]/30 transition-colors"
+                    className="w-full p-6 text-left flex justify-between items-center transition-colors duration-300"
                   >
-                    <h3 className="text-lg font-bold text-white/90 font-orbitron">
+                    <h3 className="text-lg font-bold text-white/90 hover:text-orange-400 font-orbitron transition-colors duration-300">
                       {faq.question}
                     </h3>
-                    <span className={`text-orange-600 text-xl transition-transform duration-300 ${openFaq === index ? 'rotate-180' : ''}`}>
+                    <span className={`text-orange-600 text-xl transition-all duration-300 ${openFaq === index ? 'rotate-180 text-orange-500' : ''}`}>
                       ▼
                     </span>
                   </button>
                   {openFaq === index && (
-                    <div className="px-6 pb-6">
-                      <p className="text-gray-300 font-rajdhani leading-relaxed">
-                        {faq.answer}
-                      </p>
-                    </div>
+                    <motion.div
+                      key="content" // Adding a unique key is a best practice for AnimatePresence
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-6">
+                        <p className="text-gray-300 font-rajdhani leading-relaxed">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    </motion.div>
                   )}
                 </motion.div>
               ))}
@@ -377,12 +436,13 @@ export default function ContactUs() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
-              className=" overflow-hidden h-96 w-full border border-orange-600/30 bg-black"
+              className="relative isolate overflow-hidden h-96 w-full border border-orange-600/30 bg-black"
             >
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2435.4380261289384!2d-0.20606312341485!3d52.34410947200145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4877dc6b9c923c75%3A0x7c6a8e0c3c1a9d0c!2sUnit%204%20St%20Margarets%20Way%2C%20Huntingdon%20PE29%206EB!5e0!3m2!1sen!2suk!4v1651234567890!5m2!1sen!2suk&style=feature:all%7Celement:geometry%7Ccolor:0x242f3e&style=feature:all%7Celement:labels.text.stroke%7Ccolor:0x242f3e&style=feature:all%7Celement:labels.text.fill%7Ccolor:0x746855&style=feature:administrative.locality%7Celement:labels.text.fill%7Ccolor:0xd59563&style=feature:poi%7Celement:labels.text.fill%7Ccolor:0xd59563&style=feature:poi.park%7Celement:geometry%7Ccolor:0x263c3f&style=feature:poi.park%7Celement:labels.text.fill%7Ccolor:0x6b9a76&style=feature:road%7Celement:geometry%7Ccolor:0x38414e&style=feature:road%7Celement:geometry.stroke%7Ccolor:0x212a37&style=feature:road%7Celement:labels.text.fill%7Ccolor:0x9ca5b3&style=feature:road.highway%7Celement:geometry%7Ccolor:0x746855&style=feature:road.highway%7Celement:geometry.stroke%7Ccolor:0x1f2835&style=feature:road.highway%7Celement:labels.text.fill%7Ccolor:0xf3d19c&style=feature:transit%7Celement:geometry%7Ccolor:0x2f3948&style=feature:transit.station%7Celement:labels.text.fill%7Ccolor:0xd59563&style=feature:water%7Celement:geometry%7Ccolor:0x17263c&style=feature:water%7Celement:labels.text.fill%7Ccolor:0x515c6d&style=feature:water%7Celement:labels.text.stroke%7Ccolor:0x17263c"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1217.4218790652133!2d-0.10003578530284757!3d52.391382633799424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4877a34f968ba239%3A0xb261a82ffd055ca3!2sThe%20Car%20Edition%20Ltd!5e0!3m2!1sen!2suk!4v1776785160011!5m2!1sen!2suk"
                 width="100%"
                 height="100%"
+                className="block h-full w-full"
                 style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg)' }}
                 allowFullScreen={true}
                 loading="lazy"

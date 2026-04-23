@@ -11,7 +11,7 @@ export default function ServicingPage() {
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden bg-gray-900">
         <Image
-          src="/images/dropbox/24.jpg"
+          src="/images/dropbox/12.jpg"
           alt="Car Servicing"
           fill
           className="object-cover"
@@ -234,7 +234,7 @@ export default function ServicingPage() {
                 Learn More
               </Link>
               <Link
-                href="tel:01480123456"
+                href="tel:01480 585343"
                 className="border-2 border-white text-white hover:bg-[#f97316] hover:text-white px-8 py-3 font-bold transition-all duration-300 hover:scale-105 active:scale-95 font-rajdhani uppercase tracking-wide"
               >
                 Call Now

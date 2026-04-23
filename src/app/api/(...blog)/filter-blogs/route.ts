@@ -3,22 +3,11 @@ import { collections, dbConnect } from"@/lib/dbConnect";
 import { authorizationCheck } from"@/lib/authorization";
 
 
-export async function GET(req: NextRequest) {
- const referer = req.headers.get('referer') ||'';
- const refererPath = new URL(referer).pathname;
- 
- // Pass referer path to authorization check
- const authResult = await authorizationCheck(refererPath);
- 
- if (!authResult.success) {
- return NextResponse.json(
- { error: authResult.error },
- { status: authResult.status }
- );
- }
+export const dynamic = 'force-dynamic';
 
+export async function GET(req: NextRequest) {
  try {
- const { searchParams } = new URL(req.url);
+ const searchParams = req.nextUrl.searchParams;
  const searchTerm = searchParams.get("search") ||"";
  const page = parseInt(searchParams.get("page") ||"1");
  const limit = parseInt(searchParams.get("limit") ||"10");
@@ -31,19 +20,12 @@ export async function GET(req: NextRequest) {
  const query: any = {};
  
  if (searchTerm) {
- // Check if text index exists
- const indexes = await blogsCollection.indexes();
- const hasTextIndex = indexes.some((index: any) => index.name ==="booking_search_text");
- 
- if (hasTextIndex) {
- query.$text = { $search: searchTerm };
- } else {
- // Fallback to regex if text index doesn't exist
+ // Fallback to regex search
  query.$or = [
  { title: { $regex: searchTerm, $options:"i" } },
- { createdAt: { $regex: searchTerm, $options:"i" } },
+ { description: { $regex: searchTerm, $options:"i" } },
+ { content: { $regex: searchTerm, $options:"i" } },
  ];
- }
  }
 
  // Get total count (optimized)

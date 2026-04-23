@@ -10,7 +10,7 @@ export default function BrakesAndPadsPage() {
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden bg-black">
         <Image
-          src="/images/dropbox/18.jpg"
+          src="/images/dropbox/7.jpg"
           alt="Brakes and Pads Service"
           fill
           className="object-cover"
@@ -219,7 +219,7 @@ export default function BrakesAndPadsPage() {
                 Book Service
               </Link>
               <Link
-                href="tel:01480123456"
+                href="tel:01480 585343"
                 className="border-2 border-white hover:border-[#f97316] text-black bg-white hover:bg-[#f97316] hover:text-white px-8 py-3 font-bold transition-all duration-300 hover:scale-105 active:scale-95 font-rajdhani uppercase tracking-wide"
               >
                 Call Now

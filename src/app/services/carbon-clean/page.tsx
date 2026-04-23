@@ -11,7 +11,7 @@ export default function CarbonCleanPage() {
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden bg-gray-900">
         <Image
-          src="/images/dropbox/21.jpg"
+          src="/images/dropbox/27.png"
           alt="Carbon Clean Service"
           fill
           className="object-cover"
@@ -226,7 +226,7 @@ export default function CarbonCleanPage() {
                 Learn More
               </Link>
               <Link
-                href="tel:01480123456"
+                href="tel:01480 585343"
                 className="border-2 border-white text-white hover:bg-[#f97316] hover:text-white px-8 py-3 font-bold transition-all duration-300 hover:scale-105 active:scale-95 font-rajdhani uppercase tracking-wide"
               >
                 Call Now

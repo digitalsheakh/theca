@@ -3,7 +3,7 @@ import Image from 'next/image'
 import React from 'react'
 import { FaCalendarAlt, FaClock } from 'react-icons/fa'
 import { Metadata } from 'next'
-import axios from 'axios'
+import { headers } from 'next/headers'
 
 // Type definitions
 export type Blog = {
@@ -42,15 +42,27 @@ const calculateReadTime = (content: string): number => {
   return Math.ceil(wordCount / wordsPerMinute);
 };
 
+const getBaseUrl = () => {
+  const requestHeaders = headers();
+  const host = requestHeaders.get('host');
+  const protocol = requestHeaders.get('x-forwarded-proto') || (process.env.NODE_ENV === 'development' ? 'http' : 'https');
+
+  if (host) {
+    return `${protocol}://${host}`;
+  }
+
+  return process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3000';
+};
+
 // Data fetching function
 async function getBlogData(id: string): Promise<Blog | null> {
   try {
+    const response = await fetch(`${getBaseUrl()}/api/blogs/${id}`, {
+      cache: 'no-store',
+    });
 
-    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3001'}/api/blogs/${id}`);
-
-    if (response.data && response.status === 200) {
-
-      return response.data;
+    if (response.ok) {
+      return await response.json();
     }
 
     console.warn('Blog not found or invalid response');
@@ -109,7 +121,7 @@ export async function generateMetadata(
           }
         ],
         siteName: siteName,
-        url: `${siteUrl}/blog/${params.id}`,
+        url: `${siteUrl}/blogs/${params.id}`,
       },
 
       // Twitter Card metadata
@@ -137,7 +149,7 @@ export async function generateMetadata(
 
       // Canonical URL
       alternates: {
-        canonical: `${siteUrl}/blog/${params.id}`,
+        canonical: `${siteUrl}/blogs/${params.id}`,
       },
 
       // Robots directive
