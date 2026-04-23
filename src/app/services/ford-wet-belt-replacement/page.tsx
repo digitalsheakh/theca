@@ -10,7 +10,7 @@ export default function FordWetBeltReplacementPage() {
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden bg-black">
         <Image
-          src="/images/services/serviceimage1.jpg"
+          src="/images/trending/Wetbelt.png"
           alt="Ford Wet Belt Replacement Service"
           fill
           className="object-cover"

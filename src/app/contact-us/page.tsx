@@ -1,8 +1,10 @@
 ﻿'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import TitleBadge from '@/components/TitleBadge';
+import emailjs from '@emailjs/browser';
+import { toast } from 'react-hot-toast';
 
 export default function ContactUs() {
   const [formData, setFormData] = useState({
@@ -17,6 +19,11 @@ export default function ContactUs() {
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState('');
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  // Initialize EmailJS
+  useEffect(() => {
+    emailjs.init("rNvtcJ0rH9eWWuhiv"); // Replace with your EmailJS public key
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -34,24 +41,65 @@ export default function ContactUs() {
     }));
   };
 
+  const sendEmail = async (data: any) => {
+    try {
+      const templateParams = {
+        from_name: data.name,
+        from_email: data.email,
+        from_phone: data.phone,
+        service: data.service || "General Inquiry",
+        message: data.message,
+        submission_date: new Date().toLocaleString()
+      };
+
+      const response = await emailjs.send(
+        'service_y94y2p1', // Replace with your EmailJS service ID
+        'template_jf3qps9', // Replace with your EmailJS template ID
+        templateParams
+      );
+
+      if (response.status === 200) {
+        toast.success('Message sent successfully!');
+        return true;
+      } else {
+        toast.error('Failed to send message');
+        return false;
+      }
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      toast.error('Failed to send message. Please try again.');
+      return false;
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!formData.privacy) {
+      setSubmitError('Please accept the privacy policy');
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitError('');
 
-    // Simulate form submission
     try {
-      // In a real app, you would send this data to your backend
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      setSubmitSuccess(true);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        service: '',
-        message: '',
-        privacy: false
-      });
+      // Send email via EmailJS
+      const emailSent = await sendEmail(formData);
+
+      if (emailSent) {
+        setSubmitSuccess(true);
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          service: '',
+          message: '',
+          privacy: false
+        });
+      } else {
+        setSubmitError('Failed to send message. Please try again.');
+      }
     } catch (error) {
       setSubmitError('There was an error submitting your message. Please try again.');
     } finally {
@@ -130,9 +178,13 @@ export default function ContactUs() {
                   <div className="space-y-6">
                     <div>
                       <h3 className="text-lg font-bold text-orange-600 mb-2 font-orbitron uppercase">Address</h3>
-                      <p className="text-gray-300 font-rajdhani leading-relaxed">
+                      <a
+                        href="https://maps.app.goo.gl/XCk7pLMaP3LGdNSDA"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-300 font-rajdhani leading-relaxed hover:text-orange-400 transition-colors">
                         Unit 14, Airfield Industrial Estate,<br></br> Warboys, Huntingdon, PE28 2SH
-                      </p>
+                      </a>
                     </div>
 
                     <div>
@@ -387,7 +439,7 @@ export default function ContactUs() {
               className="relative isolate overflow-hidden h-96 w-full border border-orange-600/30 bg-black"
             >
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38970.805123418526!2d-0.16950579319651332!3d52.37630703598371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4877e700168d113b%3A0x2ac070c915341390!2sThe%20Car%20Edition%20-%20Car%20Garage!5e0!3m2!1sen!2suk!4v1776329364411!5m2!1sen!2suk"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1217.4218790652133!2d-0.10003578530284757!3d52.391382633799424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4877a34f968ba239%3A0xb261a82ffd055ca3!2sThe%20Car%20Edition%20Ltd!5e0!3m2!1sen!2suk!4v1776785160011!5m2!1sen!2suk"
                 width="100%"
                 height="100%"
                 className="block h-full w-full"

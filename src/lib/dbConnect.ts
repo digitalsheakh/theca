@@ -1,4 +1,4 @@
-﻿import { MongoClient, ServerApiVersion, Collection, Document } from"mongodb";
+﻿import { MongoClient, ServerApiVersion, Collection, Document, MongoClientOptions } from"mongodb";
 
 const collections = {
  services:"services",
@@ -9,15 +9,24 @@ const collections = {
  shops:"shops",
 };
 
-// Global variable to store the client
-let client: MongoClient;
-let clientPromise: Promise<MongoClient>;
+const uri = process.env.MONGODB_URI || process.env.NEXT_PUBLIC_MONGODB_URI;
+const dbName = process.env.MONGODB_NAME;
 
-const uri = process.env.NEXT_PUBLIC_MONGODB_URI!;
-const dbName = process.env.MONGODB_NAME!;
+const hasMongoConfig = Boolean(uri && dbName);
 
-if (!uri) throw new Error("MongoDB URI is not defined in environment variables");
-if (!dbName) throw new Error("MongoDB name is not defined");
+const clientOptions: MongoClientOptions = {
+ serverApi: {
+ version: ServerApiVersion.v1,
+ strict: false,
+ deprecationErrors: true,
+ },
+ connectTimeoutMS: 10000,
+ serverSelectionTimeoutMS: 10000,
+ socketTimeoutMS: 20000,
+ maxPoolSize: 10,
+ tls: true,
+ appName:"the-car-edition-pro",
+};
 
 // Extend the global object to include _mongoClientPromise
 declare global {
@@ -25,21 +34,39 @@ declare global {
  var _mongoClientPromise: Promise<MongoClient> | undefined;
 }
 
-if (!global._mongoClientPromise) {
- client = new MongoClient(uri, {
- serverApi: {
- version: ServerApiVersion.v1,
- strict: true,
- deprecationErrors: true,
- },
- });
- global._mongoClientPromise = client.connect();
+function createMongoClient() {
+ if (!uri) {
+ throw new Error("MongoDB URI is not defined in environment variables");
+ }
+
+ return new MongoClient(uri, clientOptions);
 }
-clientPromise = global._mongoClientPromise;
+
+async function getMongoClient() {
+ if (!hasMongoConfig || !dbName) {
+ throw new Error("MongoDB configuration is missing");
+ }
+
+ if (!global._mongoClientPromise) {
+ const client = createMongoClient();
+ global._mongoClientPromise = client.connect().catch(async(error) => {
+ global._mongoClientPromise = undefined;
+
+ try {
+ await client.close();
+ } catch {
+ }
+
+ throw error;
+ });
+ }
+
+ return global._mongoClientPromise;
+}
 
 async function dbConnect<T extends Document = Document>(collectionName: string): Promise<Collection<T>> {
- const client = await clientPromise;
+ const client = await getMongoClient();
  return client.db(dbName).collection<T>(collectionName);
 }
 
-export { dbConnect, collections };
+export { dbConnect, collections, hasMongoConfig };

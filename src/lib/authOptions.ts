@@ -1,6 +1,7 @@
 ﻿import CredentialsProvider from"next-auth/providers/credentials";
 import type { AuthOptions } from"next-auth";
 import { dbConnect, collections } from"@/lib/dbConnect";
+import bcrypt from"bcryptjs";
 
 // Extend Session interface to include custom fields
 declare module"next-auth" {
@@ -23,7 +24,7 @@ export const authOptions: AuthOptions = {
  email: { label:"Email", type:"email", placeholder:"jsmith@gmail.com" },
  password: { label:"Password", type:"password" },
  },
- async authorize(credentials) {
+ async authorize(credentials:any) {
  if (!credentials?.email || !credentials.password) {
  throw new Error("Missing credentials");
  }
@@ -31,9 +32,15 @@ export const authOptions: AuthOptions = {
  const { email, password } = credentials;
 
  const usersCollection = await dbConnect(collections.users);
- const user = await usersCollection.findOne({ email, password });
+ const user = await usersCollection.findOne({ email });
  console.log(user)
  if (!user) {
+ throw new Error("Invalid email or password");
+ }
+
+        // Compare password with hash
+ const passwordMatch = await bcrypt.compare(password, user.password);
+ if (!passwordMatch) {
  throw new Error("Invalid email or password");
  }
  return {
@@ -57,13 +64,11 @@ export const authOptions: AuthOptions = {
  if (user) {
  token.id = (user as { id: string }).id;
  token.name = user.name;
- token.adminPhoto = (user as { adminPhoto?: string }).adminPhoto;
+ token.profilePhoto = (user as { profilePhoto?: string }).profilePhoto;
  token.email = user.email;
  if ('role' in user) {
  token.role = user.role;
  }
- token.instituteId = (user as { instituteId?: string }).instituteId;
- token.permissions = (user as { permissions?: string[] }).permissions;
  }
  return token;
  },
@@ -82,7 +87,7 @@ export const authOptions: AuthOptions = {
  session.user.id = token.id as string;
  session.user.name = token.name;
  session.user.email = token.email;
- session.user.profilePhoto = token.adminPhoto as string | null | undefined;
+ session.user.profilePhoto = token.profilePhoto as string | null | undefined;
  session.user.role = typeof token.role ==="string" ? token.role :"";
 
  return session;
