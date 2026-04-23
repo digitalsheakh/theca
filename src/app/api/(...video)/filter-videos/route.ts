@@ -31,19 +31,12 @@ export async function GET(req: NextRequest) {
  const query: any = {};
  
  if (searchTerm) {
- // Check if text index exists
- const indexes = await videosCollection.indexes();
- const hasTextIndex = indexes.some((index: any) => index.name ==="booking_search_text");
- 
- if (hasTextIndex) {
- query.$text = { $search: searchTerm };
- } else {
- // Fallback to regex if text index doesn't exist
+ // Fallback to regex search
  query.$or = [
  { title: { $regex: searchTerm, $options:"i" } },
- { createdAt: { $regex: searchTerm, $options:"i" } },
+ { description: { $regex: searchTerm, $options:"i" } },
+ { videoYoutubeLink: { $regex: searchTerm, $options:"i" } },
  ];
- }
  }
 
  // Get total count (optimized)
@@ -64,7 +57,7 @@ export async function GET(req: NextRequest) {
  pagination: {
  page,
  limit,
- total : totalPromise,
+ total : total,
  totalPages: Math.ceil(total / limit)
  }
  });

@@ -2,12 +2,15 @@
   "name": "the-car-edition-pro",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
+"scripts": {
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start",
+  "lint": "next lint",
+  "clean": "rimraf .next node_modules/.cache",
+  "dev:clean": "npm run clean && next dev",
+  "seed:videos": "node scripts/seed-videos.js"
+},
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@headlessui/react": "^2.2.4",

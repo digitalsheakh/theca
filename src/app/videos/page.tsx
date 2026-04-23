@@ -28,104 +28,98 @@ export default function VideosPage() {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
 
 
-  // Commented out API call - using dummy data for now
-  // useEffect(() => {
-  // const fetchVideos = async () => {
-  // setLoading(true);
-  // try {
-  // const response = await axios.get("/api/videos");
-  // setVideos(response.data);
-  // setError(null);
-  // } catch (err) {
-  // console.error('Error fetching videos:', err);
-  // setError('Failed to load videos. Please try again later.');
-  // } finally {
-  // setLoading(false);
-  // }
-  // };
-
-  // fetchVideos();
-  // }, []);
-
-  // Dummy video data
+  // API call to fetch videos
   useEffect(() => {
-    const dummyVideos: YouTubeVideo[] = [
-      {
-        _id: '1',
-        title: 'This Job Got EXPENSIVE Fast! Jaguar XE Came For A Timing Chain BUT It Was Way Worse - The Car Edition',
-        createdAt: new Date().toISOString(),
-        videoYoutubeLink: 'https://youtu.be/YFUxge40zro',
-        videoThumbnail: 'https://i.ytimg.com/vi/YFUxge40zro/maxresdefault.jpg',
-        videoEmbedLink: 'https://www.youtube.com/embed/YFUxge40zro',
-        description: 'Workshop stories and automotive insights'
-      },
-      {
-        _id: '2',
-        title: 'Why We REFUSED This Mercedes Timing Chain Job | The Importance of Bearings | The Car Edition',
-        createdAt: new Date().toISOString(),
-        videoYoutubeLink: 'https://youtu.be/lOoiXiWvCZw',
-        videoThumbnail: 'https://i.ytimg.com/vi/lOoiXiWvCZw/maxresdefault.jpg',
-        videoEmbedLink: 'https://www.youtube.com/embed/lOoiXiWvCZw',
-        description: 'Behind the scenes at The Car Edition'
-      },
-      {
-        _id: '3',
-        title: 'Track Car Series EP1: 4 Mechanics. 4 Cars. 1 Track Day. Who Built The Fastest? - The Car Edition',
-        createdAt: new Date().toISOString(),
-        videoYoutubeLink: 'https://youtu.be/-HFEznHHuC4',
-        videoThumbnail: 'https://i.ytimg.com/vi/-HFEznHHuC4/maxresdefault.jpg',
-        videoEmbedLink: 'https://www.youtube.com/embed/-HFEznHHuC4',
-        description: 'Diagnostic deep dive and tech talk'
-      },
-      {
-        _id: '4',
-        title: 'New-Gen 2020 Land Rover Defender Ingenium Timing Chain | New vs Old Engine | The Car Edition',
-        createdAt: new Date().toISOString(),
-        videoYoutubeLink: 'https://youtu.be/ki3Upa2CiNo',
-        videoThumbnail: 'https://i.ytimg.com/vi/ki3Upa2CiNo/maxresdefault.jpg',
-        videoEmbedLink: 'https://www.youtube.com/embed/ki3Upa2CiNo',
-        description: 'Expert tips and common car issues'
-      },
-      {
-        _id: '5',
-        title: 'Bentley Bentayga W12 Service | The Reality Behind a ‘Clear History’ | The Car Edition',
-        createdAt: new Date().toISOString(),
-        videoYoutubeLink: 'https://youtu.be/WFtX4o-zrr0',
-        videoThumbnail: 'https://i.ytimg.com/vi/WFtX4o-zrr0/maxresdefault.jpg',
-        videoEmbedLink: 'https://www.youtube.com/embed/WFtX4o-zrr0',
-        description: 'Complete engine rebuild process'
-      },
-      {
-        _id: '6',
-        title: '🚨VW Amarok WET BELT Shock🚨 1 Year Old & ONLY 62,000 Miles | Belt About to SNAP! - The Car Edition',
-        createdAt: new Date().toISOString(),
-        videoYoutubeLink: 'https://youtu.be/7sopzjNaLG0',
-        videoThumbnail: 'https://i.ytimg.com/vi/7sopzjNaLG0/maxresdefault.jpg',
-        videoEmbedLink: 'https://www.youtube.com/embed/7sopzjNaLG0',
-        description: 'Professional turbo repair techniques'
-      },
-      {
-        _id: '7',
-        title: '2018 Audi Q7 V6 TDI Engine Tear Down - You Won’t Believe What We Found Inside - The Car Edition',
-        createdAt: new Date().toISOString(),
-        videoYoutubeLink: 'https://youtu.be/GmuX2if7Kng',
-        videoThumbnail: 'https://i.ytimg.com/vi/GmuX2if7Kng/maxresdefault.jpg',
-        videoEmbedLink: 'https://www.youtube.com/embed/GmuX2if7Kng',
-        description: 'Complete carbon cleaning walkthrough'
-      },
-      {
-        _id: '8',
-        title: 'Classic BMW 850i V12 Engine Tear-Down, The Masterpiece of the 90s - The Car Edition',
-        createdAt: new Date().toISOString(),
-        videoYoutubeLink: 'https://youtu.be/4inq-Ox7Nfo',
-        videoThumbnail: 'https://i.ytimg.com/vi/4inq-Ox7Nfo/maxresdefault.jpg',
-        videoEmbedLink: 'https://www.youtube.com/embed/4inq-Ox7Nfo',
-        description: 'Professional transmission servicing'
+    const fetchVideos = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get("/api/videos");
+        setVideos(response.data.data || response.data);
+        setError(null);
+      } catch (err) {
+        console.error('Error fetching videos:', err);
+        // Fallback to dummy data if API fails
+        const dummyVideos: YouTubeVideo[] = [
+          {
+            _id: '1',
+            title: 'This Job Got EXPENSIVE Fast! Jaguar XE Came For A Timing Chain BUT It Was Way Worse - The Car Edition',
+            createdAt: new Date().toISOString(),
+            videoYoutubeLink: 'https://youtu.be/YFUxge40zro',
+            videoThumbnail: 'https://i.ytimg.com/vi/YFUxge40zro/maxresdefault.jpg',
+            videoEmbedLink: 'https://www.youtube.com/embed/YFUxge40zro',
+            description: 'Workshop stories and automotive insights'
+          },
+          {
+            _id: '2',
+            title: 'Why We REFUSED This Mercedes Timing Chain Job | The Importance of Bearings | The Car Edition',
+            createdAt: new Date().toISOString(),
+            videoYoutubeLink: 'https://youtu.be/lOoiXiWvCZw',
+            videoThumbnail: 'https://i.ytimg.com/vi/lOoiXiWvCZw/maxresdefault.jpg',
+            videoEmbedLink: 'https://www.youtube.com/embed/lOoiXiWvCZw',
+            description: 'Behind the scenes at The Car Edition'
+          },
+          {
+            _id: '3',
+            title: 'Track Car Series EP1: 4 Mechanics. 4 Cars. 1 Track Day. Who Built The Fastest? - The Car Edition',
+            createdAt: new Date().toISOString(),
+            videoYoutubeLink: 'https://youtu.be/-HFEznHHuC4',
+            videoThumbnail: 'https://i.ytimg.com/vi/-HFEznHHuC4/maxresdefault.jpg',
+            videoEmbedLink: 'https://www.youtube.com/embed/-HFEznHHuC4',
+            description: 'Diagnostic deep dive and tech talk'
+          },
+          {
+            _id: '4',
+            title: 'New-Gen 2020 Land Rover Defender Ingenium Timing Chain | New vs Old Engine | The Car Edition',
+            createdAt: new Date().toISOString(),
+            videoYoutubeLink: 'https://youtu.be/ki3Upa2CiNo',
+            videoThumbnail: 'https://i.ytimg.com/vi/ki3Upa2CiNo/maxresdefault.jpg',
+            videoEmbedLink: 'https://www.youtube.com/embed/ki3Upa2CiNo',
+            description: 'Expert tips and common car issues'
+          },
+          {
+            _id: '5',
+            title: 'Bentley Bentayga W12 Service | The Reality Behind a ‘Clear History’ | The Car Edition',
+            createdAt: new Date().toISOString(),
+            videoYoutubeLink: 'https://youtu.be/WFtX4o-zrr0',
+            videoThumbnail: 'https://i.ytimg.com/vi/WFtX4o-zrr0/maxresdefault.jpg',
+            videoEmbedLink: 'https://www.youtube.com/embed/WFtX4o-zrr0',
+            description: 'Complete engine rebuild process'
+          },
+          {
+            _id: '6',
+            title: '🚨VW Amarok WET BELT Shock🚨 1 Year Old & ONLY 62,000 Miles | Belt About to SNAP! - The Car Edition',
+            createdAt: new Date().toISOString(),
+            videoYoutubeLink: 'https://youtu.be/7sopzjNaLG0',
+            videoThumbnail: 'https://i.ytimg.com/vi/7sopzjNaLG0/maxresdefault.jpg',
+            videoEmbedLink: 'https://www.youtube.com/embed/7sopzjNaLG0',
+            description: 'Professional turbo repair techniques'
+          },
+          {
+            _id: '7',
+            title: '2018 Audi Q7 V6 TDI Engine Tear Down - You Won’t Believe What We Found Inside - The Car Edition',
+            createdAt: new Date().toISOString(),
+            videoYoutubeLink: 'https://youtu.be/GmuX2if7Kng',
+            videoThumbnail: 'https://i.ytimg.com/vi/GmuX2if7Kng/maxresdefault.jpg',
+            videoEmbedLink: 'https://www.youtube.com/embed/GmuX2if7Kng',
+            description: 'Complete carbon cleaning walkthrough'
+          },
+          {
+            _id: '8',
+            title: 'Classic BMW 850i V12 Engine Tear-Down, The Masterpiece of the 90s - The Car Edition',
+            createdAt: new Date().toISOString(),
+            videoYoutubeLink: 'https://youtu.be/4inq-Ox7Nfo',
+            videoThumbnail: 'https://i.ytimg.com/vi/4inq-Ox7Nfo/maxresdefault.jpg',
+            videoEmbedLink: 'https://www.youtube.com/embed/4inq-Ox7Nfo',
+            description: 'Professional transmission servicing'
+          }
+        ];
+        setVideos(dummyVideos);
+      } finally {
+        setLoading(false);
       }
-    ];
+    };
 
-    setVideos(dummyVideos);
-    setLoading(false);
+    fetchVideos();
   }, []);
 
   // Keyboard support for video modal
@@ -264,6 +258,14 @@ export default function VideosPage() {
                 </h2>
               </div>
             </ScrollAnimation>
+
+            {
+              videos.length === 0 && !loading && !error && (
+                <div className="text-center py-12">
+                  <p className="text-xl text-gray-300 mb-6">No videos available.</p>
+                </div>
+              )
+            }
 
             {loading ? (
               <div className="flex justify-center items-center h-64">
