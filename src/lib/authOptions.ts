@@ -26,31 +26,40 @@ export const authOptions: AuthOptions = {
  },
  async authorize(credentials:any) {
  if (!credentials?.email || !credentials.password) {
+ console.error("[AUTH] Missing credentials");
  throw new Error("Missing credentials");
  }
 
  const { email, password } = credentials;
 
+ try {
  const usersCollection = await dbConnect(collections.users);
  const user = await usersCollection.findOne({ email });
- console.log(user)
+ 
  if (!user) {
+ console.error(`[AUTH] User not found for email: ${email}`);
  throw new Error("Invalid email or password");
  }
 
         // Compare password with hash
  const passwordMatch = await bcrypt.compare(password, user.password);
  if (!passwordMatch) {
+ console.error(`[AUTH] Password mismatch for user: ${email}`);
  throw new Error("Invalid email or password");
  }
+
+ console.log(`[AUTH] User authenticated successfully: ${email}`);
  return {
  id: user._id.toString(),
  name: user.name,
  email: user.email,
  role: user.role,
  profilePhoto: user.profilePhoto,
-
  };
+ } catch (error: any) {
+ console.error("[AUTH] Authorization error:", error.message);
+ throw error;
+ }
  },
  }),
  ],

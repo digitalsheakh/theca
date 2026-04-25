@@ -27,14 +27,14 @@ const Settings = () => {
   const [loadingProfile, setLoadingProfile] = useState(false);
   const [loadingPassword, setLoadingPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState("tutorial");
+  const [activeTab, setActiveTab] = useState("profile");
   const [adminPhoto, setAdminPhoto] = useState<string | null>(null);
 
-  const tutorialData = {
-    title: "How to Use the Admin Dashboard",
-    youtubeVideo: "https://www.youtube.com/embed/MlubS7KX0YQ?si=HxpY2lbkoRria5ag",
-    description: "This tutorial will guide you through all the features of the admin dashboard. Learn how to manage users, settings, and other important functions."
-  };
+  // const tutorialData = {
+  //   title: "How to Use the Admin Dashboard",
+  //   youtubeVideo: "https://youtu.be/303Wy7egopE?si=FfilccdXA2nytfiH",
+  //   description: "This tutorial will guide you through all the features of the admin dashboard. Learn how to manage users, settings, and other important functions."
+  // };
 
   useEffect(() => {
     const fetchAdminData = async () => {
@@ -162,12 +162,12 @@ const Settings = () => {
         <div className="bg-white shadow-xl overflow-hidden">
           <div className="border-b border-gray-200">
             <nav className="flex -mb-px">
-              <button
+              {/* <button
                 onClick={() => setActiveTab("tutorial")}
                 className={`w-1/3 py-4 px-1 text-center border-b-2 font-medium text-sm font-rajdhani ${activeTab === "tutorial" ? 'border-orange-500 text-orange-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'}`}
               >
                 Tutorial
-              </button>
+              </button> */}
               <button
                 onClick={() => setActiveTab("profile")}
                 className={`w-1/3 py-4 px-1 text-center border-b-2 font-medium text-sm font-rajdhani ${activeTab === "profile" ? 'border-orange-500 text-orange-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'}`}
@@ -183,7 +183,7 @@ const Settings = () => {
             </nav>
           </div>
 
-          {activeTab === "tutorial" && (
+          {/* {activeTab === "tutorial" && (
             <div className="p-8">
               <div className="mb-8">
                 <h2 className="text-2xl font-bold text-gray-900 font-orbitron uppercase tracking-wide">{tutorialData.title}</h2>
@@ -210,7 +210,7 @@ const Settings = () => {
                 </div>
               </div>
             </div>
-          )}
+          )} */}
 
           {activeTab === "profile" && (
             <div className="p-8">

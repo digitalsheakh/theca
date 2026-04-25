@@ -6,7 +6,7 @@ import * as yup from 'yup';
 import axios from 'axios';
 import { toast, Toaster } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { useCloudinaryUpload } from '@/components/uploadFiles/uploadCloudinary';
 
@@ -57,6 +57,24 @@ export default function VideoForm() {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [metaImagePreview, setMetaImagePreview] = useState<string | null>(null);
+  const [videoCount, setVideoCount] = useState<number | null>(null);
+  const [isLoadingCount, setIsLoadingCount] = useState(true);
+
+  // Check video count on component mount
+  useEffect(() => {
+    const fetchVideoCount = async () => {
+      try {
+        const res = await axios.get('/api/videos/count');
+        setVideoCount(res.data.count || 0);
+      } catch (error) {
+        console.error('Error fetching video count:', error);
+        setVideoCount(0);
+      } finally {
+        setIsLoadingCount(false);
+      }
+    };
+    fetchVideoCount();
+  }, []);
 
   const {
     register,
@@ -125,6 +143,12 @@ export default function VideoForm() {
   });
 
   const onSubmit = async (data: FormData) => {
+    // Check if video limit reached
+    if (videoCount !== null && videoCount >= 8) {
+      toast.error('Video limit reached! Maximum 8 videos are allowed.');
+      return;
+    }
+
     setIsSubmitting(true);
     try {
       // Upload meta image if it's a file
@@ -133,6 +157,7 @@ export default function VideoForm() {
         metaImageUrl = await useCloudinaryUpload(data.metaImage);
         if (!metaImageUrl) {
           toast.error('Failed to upload meta image');
+          setIsSubmitting(false);
           return;
         }
       }
@@ -147,6 +172,8 @@ export default function VideoForm() {
         toast.success("Video uploaded successfully");
         reset();
         setMetaImagePreview(null);
+        // Update video count
+        setVideoCount((prev) => (prev !== null ? prev + 1 : 1));
         router.push('/dashboard/video-list');
       }
     } catch (error: any) {
@@ -440,6 +467,23 @@ export default function VideoForm() {
 
           {/* Form Actions */}
           <div className="flex justify-end space-x-4 pt-6 border-t border-gray-200">
+            {/* Video Count Display */}
+            <div className="flex items-center px-4 py-2 bg-blue-50 border-2 border-blue-200 text-blue-800 font-rajdhani font-medium">
+              {isLoadingCount ? (
+                <span>Loading...</span>
+              ) : (
+                <>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M2 6a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zm4 2v4h8V8H6z" />
+                  </svg>
+                  <span>Videos: {videoCount}/8</span>
+                  {videoCount !== null && videoCount >= 8 && (
+                    <span className="ml-2 text-orange-600 font-bold">LIMIT REACHED</span>
+                  )}
+                </>
+              )}
+            </div>
+
             <button
               type="button"
               onClick={handleReset}
@@ -453,8 +497,8 @@ export default function VideoForm() {
             </button>
             <button
               type="submit"
-              disabled={isSubmitting}
-              className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 shadow-sm transition-all duration-200 ease-in-out hover:shadow focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
+              disabled={isSubmitting || (videoCount !== null && videoCount >= 8)}
+              className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 shadow-sm transition-all duration-200 ease-in-out hover:shadow focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? (
                 <>
@@ -463,6 +507,13 @@ export default function VideoForm() {
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
                   Processing...
+                </>
+              ) : videoCount !== null && videoCount >= 8 ? (
+                <>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M13.477 14.89A6 6 0 015.11 2.524a6 6 0 018.367 8.366L13.477 14.89zm1.414-1.414L2.939 3.939a6 6 0 018.485 8.485l-1.414-1.414z" clipRule="evenodd" />
+                  </svg>
+                  Limit Reached
                 </>
               ) : (
                 <>

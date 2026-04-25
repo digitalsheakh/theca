@@ -210,7 +210,7 @@ export default function DashboardPage() {
         </div>
         <div className="flex flex-wrap items-center gap-2 sm:gap-4 w-full sm:w-auto">
           <DropdownMenu>
-            <DropdownMenuTrigger className="relative inline-flex items-center p-2 sm:px-3 sm:py-2 text-gray-700 hover:text-gray-900 focus:outline-none">
+            <DropdownMenuTrigger className="relative inline-flex items-center p-2 sm:px-3 sm:py-2 text-gray-700 hover:text-gray-900 focus:outline-none pointer-events-none opacity-60">
               <BellIcon className="h-5 w-5 sm:h-6 sm:w-6" />
               {unreadCount > 0 && (
                 <span className="absolute -top-1 -right-1 flex h-4 w-4 sm:h-5 sm:w-5">
@@ -234,7 +234,7 @@ export default function DashboardPage() {
                   </div>
                 ) : (
                   notifications.map((notification) => (
-                    <DropdownMenuItem key={notification.id} className="focus:bg-gray-50 cursor-pointer">
+                    <DropdownMenuItem key={notification.id} className="focus:bg-gray-50 cursor-pointer pointer-events-none opacity-60">
                       <Link href={`/dashboard/bookings/new`} className="px-4 py-3 flex flex-col w-full">
                         <div className="flex items-start justify-between gap-2">
                           <div className="flex-1">
@@ -258,7 +258,7 @@ export default function DashboardPage() {
                 <div className="px-4 py-3 border-t border-gray-100">
                   <Link
                     href="/dashboard/bookings/new"
-                    className="text-sm text-orange-500 hover:text-orange-600 font-medium flex items-center justify-center w-full"
+                    className="text-sm text-orange-500 hover:text-orange-600 font-medium flex items-center justify-center w-full pointer-events-none opacity-60"
                   >
                     View All New Requests
                     <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -272,7 +272,7 @@ export default function DashboardPage() {
 
           <button
             onClick={loadDashboardData}
-            className="group relative inline-flex items-center px-4 py-2 text-sm font-bold font-rajdhani uppercase tracking-wider text-white bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 shadow-lg transition-all duration-300 overflow-hidden"
+            className="group relative inline-flex items-center px-4 py-2 text-sm font-bold font-rajdhani uppercase tracking-wider text-white bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 shadow-lg transition-all duration-300 overflow-hidden pointer-events-none opacity-60"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
             <ArrowPathIcon className="h-4 w-4 mr-2 relative z-10" />
@@ -281,7 +281,7 @@ export default function DashboardPage() {
 
           <Link
             href="/dashboard/bookings/service-estimator"
-            className="group relative inline-flex items-center px-4 py-2 text-sm font-bold font-rajdhani uppercase tracking-wider border-2 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white transition-all duration-300 overflow-hidden hover:scale-105 active:scale-95"
+            className="group relative inline-flex items-center px-4 py-2 text-sm font-bold font-rajdhani uppercase tracking-wider border-2 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white transition-all duration-300 overflow-hidden hover:scale-105 active:scale-95 pointer-events-none opacity-60"
           >
             <div className="absolute inset-0 bg-orange-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
             <span className="relative z-10">New Booking</span>
@@ -289,7 +289,7 @@ export default function DashboardPage() {
 
           <Link
             href="/dashboard/chat-leads"
-            className="group relative inline-flex items-center px-4 py-2 text-sm font-bold font-rajdhani uppercase tracking-wider bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 shadow-lg transition-all duration-300 overflow-hidden"
+            className="group relative inline-flex items-center px-4 py-2 text-sm font-bold font-rajdhani uppercase tracking-wider bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 shadow-lg transition-all duration-300 overflow-hidden pointer-events-none opacity-60"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2 relative z-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -318,7 +318,7 @@ export default function DashboardPage() {
               <Link
                 key={index}
                 href={card.link}
-                className="group bg-white border border-gray-200 hover:border-orange-300 hover:shadow-lg transition-all duration-300 overflow-hidden"
+                className="group bg-white border border-gray-200 hover:border-orange-300 hover:shadow-lg transition-all duration-300 overflow-hidden pointer-events-none opacity-60"
               >
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-4">
@@ -352,7 +352,7 @@ export default function DashboardPage() {
               </div>
               <Link
                 href="/dashboard/bookings/new"
-                className="inline-flex items-center text-sm text-orange-600 hover:text-orange-700 font-rajdhani font-bold uppercase tracking-wider group"
+                className="inline-flex items-center text-sm text-orange-600 hover:text-orange-700 font-rajdhani font-bold uppercase tracking-wider group pointer-events-none opacity-60"
               >
                 View All Bookings
                 <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -389,7 +389,7 @@ export default function DashboardPage() {
                           <p className="text-gray-500 font-rajdhani mb-4">You haven't received any service requests yet.</p>
                           <Link
                             href="/dashboard/bookings/new"
-                            className="inline-flex items-center px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white font-rajdhani font-bold text-sm uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95"
+                            className="inline-flex items-center px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white font-rajdhani font-bold text-sm uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95 pointer-events-none opacity-60"
                           >
                             View All Requests
                           </Link>

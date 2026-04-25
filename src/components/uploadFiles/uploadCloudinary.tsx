@@ -7,7 +7,8 @@ const useCloudinaryUpload = async (file: File) => {
 
   const formData = new FormData();
   formData.append('file', file);
-  formData.append('upload_preset', 'IMC_PRESET'); // Set this in your Cloudinary settings
+  formData.append('upload_preset', 'theca_preset'); // Verify this preset exists in Cloudinary dashboard
+  formData.append('folder', 'theca-uploads');
 
   // Automatically detect file type
   let resourceType: 'raw' | 'image' | 'video' = 'raw';
@@ -20,11 +21,21 @@ const useCloudinaryUpload = async (file: File) => {
   try {
     const res = await axios.post<UploadToCloudinaryResponse>(
       `https://api.cloudinary.com/v1_1/dbmuhcgn4/${resourceType}/upload`,
-      formData
+      formData,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }
     );
     return res.data.secure_url;
-  } catch (error) {
-    console.error('Cloudinary upload error:', error);
+  } catch (error: any) {
+    console.error('Cloudinary upload error:', {
+      status: error.response?.status,
+      message: error.response?.data?.error?.message || error.message,
+      file: { name: file.name, size: file.size, type: file.type },
+      preset: 'theca_preset'
+    });
     return null;
   }
 
