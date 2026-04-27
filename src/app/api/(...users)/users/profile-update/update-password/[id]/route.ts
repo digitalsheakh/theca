@@ -2,6 +2,7 @@
 import{ dbConnect, collections } from"@/lib/dbConnect";
 import { NextRequest, NextResponse } from"next/server";
 import { authorizationCheck } from"@/lib/authorization";
+import bcrypt from"bcryptjs";
 
 interface User extends Document {
  _id: ObjectId;
@@ -48,6 +49,12 @@ export async function PATCH(req: NextRequest) {
  }, { status: 400 });
  }
 
+ if (typeof update.newPassword !== "string" || update.newPassword.length < 8) {
+ return NextResponse.json({
+ error:"New password must be at least 8 characters long"
+ }, { status: 400 });
+ }
+
  // Get user from database
  const user = await usersCollection.findOne(filter);
  if (!user) {
@@ -55,7 +62,8 @@ export async function PATCH(req: NextRequest) {
  }
 
  // Verify current password
- if (update.currentPassword !== user.password) {
+ const passwordMatches = await bcrypt.compare(update.currentPassword, user.password ||"");
+ if (!passwordMatches) {
  return NextResponse.json({ 
  error:"Current password doesn't match" 
  }, { status: 400 });
@@ -70,11 +78,15 @@ export async function PATCH(req: NextRequest) {
 
  // Update password history
  const oldPasswords = [...(user.oldPasswords || [])];
- oldPasswords.push(update.currentPassword);
+ if (user.password) {
+ oldPasswords.push(user.password);
+ }
+
+ const hashedPassword = await bcrypt.hash(update.newPassword, 10);
 
  const updateDoc = {
  $set: {
- password: update.newPassword,
+ password: hashedPassword,
  oldPasswords: oldPasswords,
  updatedAt: new Date()
  }

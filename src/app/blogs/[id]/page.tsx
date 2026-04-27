@@ -200,14 +200,14 @@ const BlogDetails = async ({ params }: BlogDetailsProps) => {
   return (
     <article className="min-h-screen bg-black text-white">
       {/* Hero Section with Background */}
-      <section className="relative pt-20 md:pt-32 pb-16 bg-black" style={{ backgroundImage: 'url(/images/logos/background-1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <section className="relative pt-32 sm:pt-36 md:pt-32 pb-16 bg-black" style={{ backgroundImage: 'url(/images/logos/background-1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="absolute inset-0 bg-black/80"></div>
 
         <div className="w-full px-6 relative z-10">
           <div className="max-w-5xl mx-auto">
             {/* Breadcrumb */}
             <nav className="mb-8">
-              <p className='text-gray-400 font-rajdhani text-sm'>
+              <p className='text-gray-400 font-rajdhani text-xs sm:text-sm leading-relaxed break-words pr-2'>
                 <a href="/" className="hover:text-orange-600 transition-colors">Home</a>
                 <span className="mx-2">/</span>
                 <a href="/blogs" className="hover:text-orange-600 transition-colors">Blog</a>

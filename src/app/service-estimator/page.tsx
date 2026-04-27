@@ -48,7 +48,7 @@ export default function ServiceEstimator() {
       );
 
       if (response.status === 200) {
-        toast.success('Message sent successfully!');
+        // toast.success('Message sent successfully!');
         return true;
       } else {
         toast.error('Failed to send message');

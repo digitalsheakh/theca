@@ -69,13 +69,17 @@ export default function ServiceSelection() {
       );
 
       if (response.status === 200) {
-        toast.success('Email notification sent successfully');
+        // toast.success('Email request sent successfully');
+        return true;
+
       } else {
-        toast.error('Failed to send email notification');
+        toast.error('Failed to send email request');
+        return false;
+
       }
     } catch (error) {
       console.error('EmailJS error:', error);
-      toast.error('Failed to send email notification');
+      toast.error('Failed to send email request');
     }
   };
 
