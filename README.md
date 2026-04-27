@@ -1,4 +1,4 @@
-# The Car Edition Pro
+# The Car Edition
 
 A premium automotive website built with Next.js and Tailwind CSS, focusing on SEO optimization and fast performance.
 

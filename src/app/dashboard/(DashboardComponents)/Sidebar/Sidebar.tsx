@@ -15,7 +15,8 @@ import {
   BookOpen,
   Settings,
   LogOut,
-  LayoutDashboard
+  LayoutDashboard,
+  Home
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { signOut, useSession } from 'next-auth/react';
@@ -40,6 +41,13 @@ export function Sidebar() {
   const [open, setOpen] = React.useState(false);
 
   const navSections = [
+    {
+      title: "Main Site",
+      icon: <Home className="h-5 w-5 text-amber-500" />,
+      items: [
+        { href: "/", icon: <Home className="h-4 w-4" />, name: "Back to Main Site" },
+      ]
+    },
     // {
     //   title: "Services Management",
     //   icon: <Users className="h-5 w-5 text-amber-500" />,

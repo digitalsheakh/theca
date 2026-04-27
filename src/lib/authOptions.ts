@@ -3,6 +3,21 @@ import type { AuthOptions } from"next-auth";
 import { dbConnect, collections } from"@/lib/dbConnect";
 import bcrypt from"bcryptjs";
 
+const MAX_PROFILE_PHOTO_LENGTH = 512;
+
+function normalizeProfilePhoto(profilePhoto?: string | null) {
+ if (typeof profilePhoto !== "string") {
+ return null;
+ }
+
+ const trimmedProfilePhoto = profilePhoto.trim();
+ if (!trimmedProfilePhoto || trimmedProfilePhoto.startsWith("data:")) {
+ return null;
+ }
+
+ return trimmedProfilePhoto.length <= MAX_PROFILE_PHOTO_LENGTH ? trimmedProfilePhoto : null;
+}
+
 // Extend Session interface to include custom fields
 declare module"next-auth" {
  interface Session {
@@ -54,7 +69,7 @@ export const authOptions: AuthOptions = {
  name: user.name,
  email: user.email,
  role: user.role,
- profilePhoto: user.profilePhoto,
+ profilePhoto: normalizeProfilePhoto(user.profilePhoto),
  };
  } catch (error: any) {
  console.error("[AUTH] Authorization error:", error.message);
@@ -73,7 +88,7 @@ export const authOptions: AuthOptions = {
  if (user) {
  token.id = (user as { id: string }).id;
  token.name = user.name;
- token.profilePhoto = (user as { profilePhoto?: string }).profilePhoto;
+ token.profilePhoto = normalizeProfilePhoto((user as { profilePhoto?: string }).profilePhoto);
  token.email = user.email;
  if ('role' in user) {
  token.role = user.role;
@@ -96,7 +111,7 @@ export const authOptions: AuthOptions = {
  session.user.id = token.id as string;
  session.user.name = token.name;
  session.user.email = token.email;
- session.user.profilePhoto = token.profilePhoto as string | null | undefined;
+ session.user.profilePhoto = normalizeProfilePhoto(token.profilePhoto as string | null | undefined);
  session.user.role = typeof token.role ==="string" ? token.role :"";
 
  return session;

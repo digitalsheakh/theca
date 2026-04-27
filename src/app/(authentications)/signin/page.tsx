@@ -19,6 +19,8 @@ export default function SignInPage() {
 function LoginPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const callbackUrlParam = searchParams.get("callbackUrl");
+  const callbackUrl = callbackUrlParam?.startsWith("/") ? callbackUrlParam : "/dashboard";
   const {
     register,
     handleSubmit,
@@ -47,12 +49,15 @@ function LoginPage() {
         email: data.email,
         password: data.password,
         redirect: false,
+        callbackUrl,
       });
       if (res?.error) {
         setError("Invalid email or password");
         setLoading(false);
       } else {
-        router.push("/dashboard");
+        const destination = res?.url?.startsWith("/") ? res.url : callbackUrl;
+        router.replace(destination);
+        router.refresh();
       }
     } catch {
       setError("An unexpected error occurred");
