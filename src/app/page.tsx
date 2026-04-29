@@ -1596,7 +1596,6 @@ export default function Home() {
                     <div className="grid md:grid-cols-2 gap-x-12 gap-y-4">
                       {[
                         'Stage 1, 2, and 3 ECU remapping',
-                        'DPF and AdBlue delete',
                         'Performance upgrades',
                         'Rolling road tuning',
                         'Custom map development'

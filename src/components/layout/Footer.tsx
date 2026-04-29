@@ -148,11 +148,11 @@ export default function Footer() {
             {/* Copyright */}
             <div className="border-t border-white/20 pt-8">
               <div className="flex flex-col md:flex-row justify-between items-center">
-                <div className="text-gray-400 font-rajdhani mb-4 md:mb-0 flex flex-col md:flex-row md:items-center">
+                <div className="text-gray-400 font-rajdhani mb-4 md:mb-0 flex flex-col md:flex-row md:items-center text-center">
                   <span>&copy; {new Date().getFullYear()} The Car Edition. All rights reserved.</span>
                 </div>
                 <div className="text-gray-400 font-rajdhani mb-4 md:mb-0 flex flex-col md:flex-row md:items-center">
-                  <span className="mt-2 md:mt-0 md:ml-4">
+                  <span className="mt-2 md:mt-0 md:ml-4 text-center">
                     Web Design &amp; Developed By: <a href="https://redrockdigital.uk/" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 underline">redrockdigital.uk</a>
                   </span>
                 </div>
