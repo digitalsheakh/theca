@@ -299,7 +299,7 @@ const BlogDetails = async ({ params }: BlogDetailsProps) => {
 
             {/* Blog Content */}
             <div
-              className="prose prose-invert prose-lg max-w-none 
+              className="rich-text-content prose prose-invert prose-lg max-w-none 
  prose-headings:text-white prose-headings:font-orbitron prose-headings:uppercase prose-headings:tracking-wider prose-headings:font-bold
  prose-h1:text-4xl prose-h2:text-3xl prose-h2:border-l-4 prose-h2:border-orange-600 prose-h2:pl-4 prose-h2:py-2
  prose-h3:text-2xl prose-h3:text-orange-600

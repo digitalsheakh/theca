@@ -1,20 +1,16 @@
 ﻿"use client"
 
 import { useForm } from 'react-hook-form';
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 
 import 'react-quill/dist/quill.snow.css';
-import { useCloudinaryUpload } from '@/components/uploadFiles/uploadCloudinary';
+import { uploadToCloudinary } from '@/components/uploadFiles/uploadCloudinary';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { Toaster } from 'react-hot-toast';
-import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
-const ReactQuill = dynamic(() => import("react-quill"), {
-  ssr: false,
-  loading: () => <div className="border p-4 h-48 bg-gray-50 animate-pulse"></div>
-});
+import { isRichTextEmpty, RichTextEditor, richTextEditorClassName, richTextFormats, richTextModules } from '@/lib/richText';
 
 // Define types
 type FormData = {
@@ -51,6 +47,12 @@ const BlogForm = () => {
   const content = watch('content');
   const metaDescription = watch('metaDescription');
   const router = useRouter();
+
+  useEffect(() => {
+    register('content', {
+      validate: (value) => !isRichTextEmpty(value) || 'Article content is required'
+    });
+  }, [register]);
 
   // Main image dropzone
   const onDrop = useCallback((acceptedFiles: File[]) => {
@@ -104,7 +106,7 @@ const BlogForm = () => {
 
       // Upload main image to Cloudinary if exists
       if (data.image) {
-        imageUrl = await useCloudinaryUpload(data.image);
+        imageUrl = await uploadToCloudinary(data.image);
         if (!imageUrl) {
           alert('Failed to upload main image');
           setIsSubmitting(false);
@@ -114,7 +116,7 @@ const BlogForm = () => {
 
       // Upload meta image to Cloudinary if exists
       if (data.metaImageUrl) {
-        metaImageUrl = await useCloudinaryUpload(data.metaImageUrl);
+        metaImageUrl = await uploadToCloudinary(data.metaImageUrl);
         if (!metaImageUrl) {
           alert('Failed to upload meta image');
           setIsSubmitting(false);
@@ -149,25 +151,6 @@ const BlogForm = () => {
       setIsSubmitting(false);
     }
   };
-
-  const modules = useMemo(() => ({
-    toolbar: [
-      [{ 'header': [1, 2, 3, false] }],
-      ['bold', 'italic', 'underline', 'strike'],
-      [{ 'color': [] }, { 'background': [] }],
-      [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-      ['link', 'image'],
-      ['clean']
-    ],
-  }), []);
-
-  const formats = [
-    'header',
-    'bold', 'italic', 'underline', 'strike',
-    'color', 'background',
-    'list', 'bullet',
-    'link', 'image'
-  ];
 
   return (
     <div className="bg-white shadow-sm border border-gray-200">
@@ -274,13 +257,13 @@ const BlogForm = () => {
                   Article Content *
                 </label>
                 <div className="border-2 border-gray-300 overflow-hidden focus-within:border-orange-500 focus-within:ring-2 focus-within:ring-orange-200 transition-all duration-200">
-                  <ReactQuill
+                  <RichTextEditor
                     theme="snow"
                     value={content}
-                    onChange={(value) => setValue('content', value, { shouldValidate: true })}
-                    modules={modules}
-                    formats={formats}
-                    className="w-full bg-white text-gray-900 font-rajdhani"
+                    onChange={(value) => setValue('content', value, { shouldDirty: true, shouldValidate: true })}
+                    modules={richTextModules}
+                    formats={richTextFormats}
+                    className={`${richTextEditorClassName} w-full bg-white text-gray-900 font-rajdhani`}
                     placeholder="Write engaging automotive content with detailed information, tips, and insights for your readers..."
                     style={{ border: 'none' }}
                   />
