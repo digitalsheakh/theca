@@ -39,6 +39,40 @@ export function Sidebar() {
   const { data: session } = useSession();
   const router = useRouter();
   const [open, setOpen] = React.useState(false);
+  const [profilePhoto, setProfilePhoto] = React.useState<string | null>(session?.user?.profilePhoto || null);
+
+  React.useEffect(() => {
+    let isCancelled = false;
+
+    const loadProfilePhoto = async () => {
+      if (!session?.user?.id) {
+        setProfilePhoto(session?.user?.profilePhoto || null);
+        return;
+      }
+
+      try {
+        const response = await fetch(`/api/users/${session.user.id}`, { cache: 'no-store' });
+        if (!response.ok) {
+          return;
+        }
+
+        const user = await response.json();
+        if (!isCancelled) {
+          setProfilePhoto(user.profilePhoto || user.adminPhoto || session.user?.profilePhoto || null);
+        }
+      } catch (error) {
+        if (!isCancelled) {
+          setProfilePhoto(session?.user?.profilePhoto || null);
+        }
+      }
+    };
+
+    loadProfilePhoto();
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [session?.user?.id, session?.user?.profilePhoto]);
 
   const navSections = [
     {
@@ -158,7 +192,7 @@ export function Sidebar() {
           <DialogTrigger asChild>
             <div className="flex items-center gap-3 cursor-pointer group p-2 hover:bg-[#f97316] transition-colors">
               <Image
-                src={session?.user?.profilePhoto || '/images/default_profile.png'}
+                src={profilePhoto || '/images/default_profile.png'}
                 width={40}
                 height={40}
                 alt='profile pic'

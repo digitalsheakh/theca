@@ -4,6 +4,7 @@ import React from 'react'
 import { FaCalendarAlt, FaClock } from 'react-icons/fa'
 import { Metadata } from 'next'
 import { headers } from 'next/headers'
+import { richTextContentClassName } from '@/lib/richText'
 
 // Type definitions
 export type Blog = {
@@ -299,19 +300,7 @@ const BlogDetails = async ({ params }: BlogDetailsProps) => {
 
             {/* Blog Content */}
             <div
-              className="rich-text-content prose prose-invert prose-lg max-w-none 
- prose-headings:text-white prose-headings:font-orbitron prose-headings:uppercase prose-headings:tracking-wider prose-headings:font-bold
- prose-h1:text-4xl prose-h2:text-3xl prose-h2:border-l-4 prose-h2:border-orange-600 prose-h2:pl-4 prose-h2:py-2
- prose-h3:text-2xl prose-h3:text-orange-600
- prose-p:text-gray-300 prose-p:leading-relaxed prose-p:font-rajdhani prose-p:text-lg
- prose-strong:text-white prose-strong:font-semibold
- prose-a:text-orange-500 prose-a:underline hover:prose-a:text-orange-400 prose-a:font-semibold prose-a:transition-colors
- prose-blockquote:border-l-4 prose-blockquote:border-orange-600 prose-blockquote:bg-gray-900/50 prose-blockquote:p-6 prose-blockquote:italic
- prose-code:text-orange-400 prose-code:bg-gray-900/50 prose-code:px-2 prose-code:py-1 prose-code:font-mono
- prose-pre:bg-gray-900/50 prose-pre:border prose-pre:border-orange-600/30 
- prose-ul:text-gray-300 prose-ul:font-rajdhani prose-ol:text-gray-300 prose-ol:font-rajdhani
- prose-li:text-gray-300 prose-li:marker:text-orange-600 prose-li:font-rajdhani
- prose-img:shadow-2xl prose-img:border-4 prose-img:border-orange-600/30"
+              className={`${richTextContentClassName} max-w-none`}
               dangerouslySetInnerHTML={{ __html: blog.content }}
             />
 
