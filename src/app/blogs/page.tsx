@@ -162,6 +162,18 @@ export default function BlogPage() {
     });
   };
 
+  // Utility functions
+  const stripHtml = (html: string): string => {
+    if (!html) return '';
+    return html.replace(/<[^>]*>/g, '').replace(/\s+/g, '').trim();
+  };
+
+  const calculateReadTime = (content: string): number => {
+    const wordsPerMinute = 200;
+    const wordCount = stripHtml(content).split(/\s+/).length;
+    return Math.ceil(wordCount / wordsPerMinute);
+  };
+
 
   if (error) {
     return (
@@ -251,7 +263,7 @@ export default function BlogPage() {
                       <span>{formatDate(blog.createdAt)}</span>
                       <span className="mx-2">•</span>
                       <FaClock className="mr-2" />
-                      <span>5 min read</span>
+                      <span>{calculateReadTime(blog.content)} min read</span>
                     </div>
 
                     <h3 className="text-lg font-bold mb-2 text-white group-hover:text-orange-400 transition-colors duration-300 font-orbitron uppercase tracking-wide line-clamp-2">
@@ -259,7 +271,7 @@ export default function BlogPage() {
                     </h3>
 
                     <div
-                      className="text-gray-300 text-sm mb-3 font-rajdhani line-clamp-2"
+                      className="rich-text-content text-gray-300 text-sm mb-3 font-rajdhani line-clamp-2"
                       dangerouslySetInnerHTML={{ __html: blog.content.substring(0, 100) + '...' }}
                     />
 

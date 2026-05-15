@@ -43,7 +43,7 @@ const fallbackBlogs: BlogRecord[] = [
     description: "Why timing chain inspection and replacement matter for long-term engine health.",
     metaTitle: "Timing Chain Replacement Guide",
     metaDescription: "Learn the warning signs of timing chain wear and when replacement becomes necessary.",
-    author: "The Car Edition Pro",
+    author: "The Car Edition",
     tags: ["timing chain", "engine", "maintenance"],
   },
   {
@@ -56,7 +56,7 @@ const fallbackBlogs: BlogRecord[] = [
     description: "Common turbo symptoms, inspection points, and repair options.",
     metaTitle: "Turbo Repair and Replacement",
     metaDescription: "Understand the early warning signs of turbocharger issues and the usual repair path.",
-    author: "The Car Edition Pro",
+    author: "The Car Edition",
     tags: ["turbo", "diagnostics", "performance"],
   },
   {
@@ -69,7 +69,7 @@ const fallbackBlogs: BlogRecord[] = [
     description: "A practical guide to the brake symptoms that should not be ignored.",
     metaTitle: "Brake Safety Inspection Guide",
     metaDescription: "Know when your brake pads and discs need inspection or replacement.",
-    author: "The Car Edition Pro",
+    author: "The Car Edition",
     tags: ["brakes", "safety", "servicing"],
   },
 ];

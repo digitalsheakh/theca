@@ -277,7 +277,7 @@ export default function ProductDetailsPage({ params }: { params: { id: string } 
               <div className="bg-black/40 border border-orange-600/30 p-8 backdrop-blur-sm">
                 <h2 className="text-2xl font-bold mb-6 font-orbitron uppercase tracking-wider">VEHICLE <span className="text-orange-600">DETAILS</span></h2>
                 <div
-                  className="prose prose-invert max-w-none prose-headings:text-orange-600 prose-a:text-orange-600 prose-strong:text-white prose-p:text-gray-300 prose-li:text-gray-300 font-rajdhani"
+                  className="rich-text-content prose prose-invert max-w-none prose-headings:text-orange-600 prose-a:text-orange-600 prose-strong:text-white prose-p:text-gray-300 prose-li:text-gray-300 font-rajdhani"
                   dangerouslySetInnerHTML={{ __html: product.content }}
                 />
               </div>

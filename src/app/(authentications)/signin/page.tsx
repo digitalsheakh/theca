@@ -1,5 +1,5 @@
 ﻿"use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
@@ -7,6 +7,8 @@ import { motion } from "framer-motion";
 
 import Link from "next/link";
 import { Suspense } from 'react';
+
+const REMEMBERED_EMAIL_KEY = "theca.remembered-email";
 
 export default function SignInPage() {
   return (
@@ -19,21 +21,43 @@ export default function SignInPage() {
 function LoginPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const callbackUrlParam = searchParams.get("callbackUrl");
+  const callbackUrl = callbackUrlParam?.startsWith("/") ? callbackUrlParam : "/dashboard";
+  const resetSuccess = searchParams.get("reset") === "success";
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors }
-  } = useForm<FormData>();
+  } = useForm<FormData>({
+    defaultValues: {
+      email: "",
+      password: "",
+      rememberMe: false,
+    },
+  });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   interface FormData {
     email: string;
     password: string;
+    rememberMe: boolean;
   }
+
+  useEffect(() => {
+    const rememberedEmail = window.localStorage.getItem(REMEMBERED_EMAIL_KEY);
+    if (!rememberedEmail) {
+      return;
+    }
+
+    setValue("email", rememberedEmail);
+    setValue("rememberMe", true);
+  }, [setValue]);
 
   const onSubmit = async (data: FormData) => {
     setLoading(true);
+    setError("");
     // setError("");
 
     // // Show"under construction" message
@@ -43,16 +67,25 @@ function LoginPage() {
     // Commented out actual login logic for now
 
     try {
+      if (data.rememberMe) {
+        window.localStorage.setItem(REMEMBERED_EMAIL_KEY, data.email.trim());
+      } else {
+        window.localStorage.removeItem(REMEMBERED_EMAIL_KEY);
+      }
+
       const res = await signIn("credentials", {
         email: data.email,
         password: data.password,
         redirect: false,
+        callbackUrl,
       });
       if (res?.error) {
         setError("Invalid email or password");
         setLoading(false);
       } else {
-        router.push("/dashboard");
+        const destination = res?.url?.startsWith("/") ? res.url : callbackUrl;
+        router.replace(destination);
+        router.refresh();
       }
     } catch {
       setError("An unexpected error occurred");
@@ -95,6 +128,16 @@ function LoginPage() {
 
         {/* Main Form */}
         <div className="p-8 bg-orange-900/50">
+          {resetSuccess && !error && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mb-6 p-4 bg-emerald-900/30 text-emerald-200 text-sm border border-emerald-500/30 font-rajdhani"
+            >
+              Password updated. Sign in with your new password.
+            </motion.div>
+          )}
+
           {error && (
             <motion.div
               initial={{ opacity: 0, y: -10 }}
@@ -115,6 +158,7 @@ function LoginPage() {
                 <input
                   id="email"
                   type="email"
+                  autoComplete="email"
                   {...register("email", {
                     required: "Email is required",
                     pattern: {
@@ -140,6 +184,7 @@ function LoginPage() {
                 <input
                   id="password"
                   type="password"
+                  autoComplete="current-password"
                   {...register("password", {
                     required: "Password is required",
                     minLength: {
@@ -157,12 +202,12 @@ function LoginPage() {
             </div>
 
             {/* Remember Me & Forgot Password */}
-            <div className="flex items-center justify-between">
+            {/* <div className="flex items-center justify-between">
               <div className="flex items-center">
                 <input
                   id="remember-me"
-                  name="remember-me"
                   type="checkbox"
+                  {...register("rememberMe")}
                   className="h-4 w-4 text-orange-600 focus:ring-orange-600 border-orange-600/30 bg-white"
                 />
                 <label htmlFor="remember-me" className="ml-2 block text-sm text-orange-200 font-rajdhani">
@@ -174,7 +219,7 @@ function LoginPage() {
                   Forgot password?
                 </Link>
               </div>
-            </div>
+            </div> */}
 
             {/* Submit Button */}
             <motion.button

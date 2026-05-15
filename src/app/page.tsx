@@ -656,13 +656,6 @@ export default function Home() {
                         </div>
                       </div>
                       <div className="grid grid-cols-[1fr_auto] gap-2">
-                        <span className="text-gray-300 font-rajdhani text-xs">AdBlue Delete</span>
-                        <div className="text-orange-500 font-orbitron text-xs font-bold flex flex-col text-right">
-                          <span>from</span>
-                          <span>£249 + VAT</span>
-                        </div>
-                      </div>
-                      <div className="grid grid-cols-[1fr_auto] gap-2">
                         <span className="text-gray-300 font-rajdhani text-xs">ECU Cloning (OBD)</span>
                         <div className="text-orange-500 font-orbitron text-xs font-bold flex flex-col text-right">
                           <span>from</span>
@@ -1603,7 +1596,6 @@ export default function Home() {
                     <div className="grid md:grid-cols-2 gap-x-12 gap-y-4">
                       {[
                         'Stage 1, 2, and 3 ECU remapping',
-                        'DPF and AdBlue delete',
                         'Performance upgrades',
                         'Rolling road tuning',
                         'Custom map development'

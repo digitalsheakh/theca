@@ -3,6 +3,7 @@
 import { ChevronDown, Menu, Settings, LogOut } from 'lucide-react'
 import { useSidebar } from '@/context/sidebar-context'
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,6 +20,40 @@ export function Header() {
   const { toggleMobileSidebar } = useSidebar()
   const { data: session } = useSession()
   const router = useRouter()
+  const [profilePhoto, setProfilePhoto] = useState<string | null>(session?.user?.profilePhoto || null)
+
+  useEffect(() => {
+    let isCancelled = false
+
+    const loadProfilePhoto = async () => {
+      if (!session?.user?.id) {
+        setProfilePhoto(session?.user?.profilePhoto || null)
+        return
+      }
+
+      try {
+        const response = await fetch(`/api/users/${session.user.id}`, { cache: 'no-store' })
+        if (!response.ok) {
+          return
+        }
+
+        const user = await response.json()
+        if (!isCancelled) {
+          setProfilePhoto(user.profilePhoto || user.adminPhoto || session.user?.profilePhoto || null)
+        }
+      } catch {
+        if (!isCancelled) {
+          setProfilePhoto(session?.user?.profilePhoto || null)
+        }
+      }
+    }
+
+    loadProfilePhoto()
+
+    return () => {
+      isCancelled = true
+    }
+  }, [session?.user?.id, session?.user?.profilePhoto])
 
   const handleLogout = async () => {
     await signOut({ redirect: false })
@@ -50,7 +85,7 @@ export function Header() {
           <DropdownMenuTrigger className="flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-amber-500/50 transition-all">
             <div className="relative h-8 w-8 flex-shrink-0">
               <Image
-                src={session?.user?.profilePhoto || '/default-avatar.png'}
+                src={profilePhoto || '/images/default_profile.png'}
                 width={32}
                 height={32}
                 alt="Profile picture"

@@ -8,7 +8,7 @@ import { toast, Toaster } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import { useState, useCallback, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { useCloudinaryUpload } from '@/components/uploadFiles/uploadCloudinary';
+import { uploadToCloudinary } from '@/components/uploadFiles/uploadCloudinary';
 
 // Enhanced form validation schema
 const formSchema = yup.object().shape({
@@ -154,7 +154,7 @@ export default function VideoForm() {
       // Upload meta image if it's a file
       let metaImageUrl = typeof data.metaImage === 'string' ? data.metaImage : null;
       if (data.metaImage instanceof File) {
-        metaImageUrl = await useCloudinaryUpload(data.metaImage);
+        metaImageUrl = await uploadToCloudinary(data.metaImage);
         if (!metaImageUrl) {
           toast.error('Failed to upload meta image');
           setIsSubmitting(false);

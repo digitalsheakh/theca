@@ -9,15 +9,15 @@ import NextAuthSessionProvider from "../providers/NextAuthSessionProvider"
 import { Toaster } from 'react-hot-toast';
 
 export const metadata: Metadata = {
-  title: "The Car Edition Pro",
-  description: "The Car Edition Pro is your trusted partner for professional automotive services. We deliver quality maintenance, repairs, and diagnostics with expert care and attention to detail.",
+  title: "The Car Edition",
+  description: "The Car Edition is your trusted partner for professional automotive services. We deliver quality maintenance, repairs, and diagnostics with expert care and attention to detail.",
   icons: {
     icon: "/favicon.ico",
     apple: "/images/icon.jpeg"
   },
   authors: [
     {
-      name: "The Car Edition Pro",
+      name: "The Car Edition",
       url: "https://thecaredition.co.uk"
     }
   ],

@@ -30,6 +30,7 @@ const ADMIN_ROUTES = [
 export const middleware = async (req: NextRequest): Promise<NextResponse> => {
  const token = await getToken({ req }) as Token;
  const path = req.nextUrl.pathname;
+ const callbackUrl = `${req.nextUrl.pathname}${req.nextUrl.search}`;
  const isAdminRoute = ADMIN_ROUTES.some(route => 
  path === route || path.startsWith(`${route}/`)
  );
@@ -38,11 +39,14 @@ export const middleware = async (req: NextRequest): Promise<NextResponse> => {
  }
 
  if (!token && isAdminRoute) {
- const callbackUrl = encodeURIComponent(path);
- return NextResponse.redirect(new URL(`/api/auth/signin?callbackUrl=${callbackUrl}`, req.url));
+ const signInUrl = new URL('/signin', req.url);
+ signInUrl.searchParams.set('callbackUrl', callbackUrl);
+ return NextResponse.redirect(signInUrl);
  }
  if (!token?.role && isAdminRoute) {
- return NextResponse.redirect(new URL('/api/auth/signin', req.url));
+ const signInUrl = new URL('/signin', req.url);
+ signInUrl.searchParams.set('callbackUrl', callbackUrl);
+ return NextResponse.redirect(signInUrl);
  }
  const isAdmin = [
 'admin' 
