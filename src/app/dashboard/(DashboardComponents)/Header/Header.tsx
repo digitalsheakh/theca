@@ -127,15 +127,15 @@ export function Header() {
 
             <DropdownMenuSeparator className="bg-white" />
 
-            <DropdownMenuItem
+            {/* <DropdownMenuItem
               onClick={() => router.push(`/dashboard/settings/${session?.user?.id}`)}
               className="px-3 py-2 text-gray-300 hover:bg-[#f97316] hover:text-amber-500 focus:bg-white focus:text-amber-500 cursor-pointer"
             >
               <Settings className="mr-2 h-4 w-4 flex-shrink-0" />
               <span className="truncate">Settings</span>
-            </DropdownMenuItem>
+            </DropdownMenuItem> */}
 
-            <DropdownMenuSeparator className="bg-white" />
+            {/* <DropdownMenuSeparator className="bg-white" /> */}
 
             <DropdownMenuItem
               onClick={handleLogout}
