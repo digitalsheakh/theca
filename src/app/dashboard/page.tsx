@@ -113,8 +113,8 @@ export default function DashboardPage() {
                         key={action.href}
                         href={action.href}
                         className={index === 0
-                          ? 'inline-flex items-center justify-center bg-orange-600 px-4 py-2 font-rajdhani text-sm font-bold uppercase tracking-wider text-white transition-colors duration-300 hover:bg-orange-700'
-                          : 'inline-flex items-center justify-center border border-orange-600 px-4 py-2 font-rajdhani text-sm font-bold uppercase tracking-wider text-orange-600 transition-colors duration-300 hover:bg-orange-50'
+                          ? 'inline-flex items-center justify-center w-full bg-orange-600 px-4 py-2 font-rajdhani text-sm font-bold uppercase tracking-wider text-white transition-colors duration-300 hover:bg-orange-700'
+                          : 'inline-flex items-center justify-center w-full border border-orange-600 px-4 py-2 font-rajdhani text-sm font-bold uppercase tracking-wider text-orange-600 transition-colors duration-300 hover:bg-orange-50'
                         }
                       >
                         {action.label}
