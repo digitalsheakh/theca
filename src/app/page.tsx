@@ -488,7 +488,7 @@ export default function Home() {
                       <div className="grid grid-cols-[1fr_auto] gap-2">
                         <span className="text-gray-300 font-rajdhani text-xs">Ford Fiesta 1.0L EcoBoost</span>
                         <div className="text-orange-500 font-orbitron text-xs font-bold flex flex-col text-right">
-                          <span>from</span>
+                          {/* <span>to</span> */}
                           <span>£1,500 + VAT</span>
                         </div>
                       </div>

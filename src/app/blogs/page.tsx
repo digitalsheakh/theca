@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaCalendarAlt, FaEye, FaArrowRight, FaClock } from 'react-icons/fa';
+import { FaCalendarAlt, FaEye, FaArrowRight, FaClock, FaCalculator } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
@@ -231,6 +231,36 @@ export default function BlogPage() {
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Static Loan Calculator card — always first */}
+              <motion.article
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0 }}
+                viewport={{ once: true }}
+                className="bg-black/40 border border-orange-600/30 overflow-hidden backdrop-blur-sm hover:border-orange-600 transition-all duration-300 group cursor-pointer"
+              >
+                <Link href="/blogs/loan-calculator" className="block h-full">
+                  <div className="relative h-48 overflow-hidden bg-[#EEF1F8] flex items-center justify-center">
+                    <FaCalculator className="text-7xl text-gray-700 group-hover:scale-110 transition-transform duration-300" />
+                  </div>
+                  <div className="p-4">
+                    <div className="flex items-center text-xs text-orange-400 mb-3 font-rajdhani">
+                      <FaCalendarAlt className="mr-2" />
+                      <span>Jun 3, 2026</span>
+                      <span className="mx-2">•</span>
+                      <FaClock className="mr-2" />
+                      <span>2 min read</span>
+                    </div>
+                    <h3 className="text-lg font-bold mb-2 text-white group-hover:text-orange-400 transition-colors duration-300 font-orbitron uppercase tracking-wide line-clamp-2">
+                      Loan Calculator
+                    </h3>
+                    <p className="text-gray-300 text-sm mb-3 font-rajdhani line-clamp-2">
+                      Use our finance calculator to calculate monthly payments over the life of your loan. Adjust price, interest rate, period, and down payment.
+                    </p>
+                  </div>
+                </Link>
+              </motion.article>
+
               {
                 blogs.length === 0 && (
                   <p className="text-gray-400 text-center col-span-full">No blogs available at the moment. Please check back later.</p>
@@ -243,7 +273,7 @@ export default function BlogPage() {
                   onClick={() => openBlogDialog(blog._id)}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
+                  transition={{ duration: 0.8, delay: (index + 1) * 0.1 }}
                   viewport={{ once: true }}
                   className="bg-black/40 border border-orange-600/30 overflow-hidden backdrop-blur-sm hover:border-orange-600 transition-all duration-300 group cursor-pointer"
                 >
