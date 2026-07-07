@@ -33,7 +33,7 @@ export default function VideosPage() {
     const fetchVideos = async () => {
       setLoading(true);
       try {
-        const response = await axios.get("/api/videos");
+        const response = await axios.get("/api/videos?videoType=general");
         setVideos(response.data.data || response.data);
         setError(null);
       } catch (err) {

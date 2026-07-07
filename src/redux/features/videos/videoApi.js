@@ -3,7 +3,7 @@ import baseApi from "../api/baseApi"
 const videoApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         getVideos: builder.query({
-            query: ({ search, page, limit }) => `/filter-videos?search=${search}&page=${page}&limit=${limit}`,
+            query: ({ search, page, limit, videoType = 'general' }) => `/filter-videos?search=${search}&page=${page}&limit=${limit}&videoType=${videoType}`,
             providesTags: ["Videos"],
         }),
         updateVideo: builder.mutation({

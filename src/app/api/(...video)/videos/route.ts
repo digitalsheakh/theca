@@ -20,7 +20,9 @@ export async function POST(req :NextRequest) {
  try {
  const videosCollection = await dbConnect(collections.videos);
  const formInfo = await req.json();
- const result = await videosCollection.insertOne({ ...formInfo, createdAt : new Date() });
+ // Ensure videoType is set, default to 'general' if not provided
+ const videoType = formInfo.videoType || "general";
+ const result = await videosCollection.insertOne({ ...formInfo, videoType, createdAt : new Date() });
  return NextResponse.json(result, { status: 201 }); 
  } catch (error) {
  console.error(error);
