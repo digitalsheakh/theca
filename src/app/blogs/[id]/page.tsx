@@ -5,6 +5,8 @@ import { FaCalendarAlt, FaClock } from 'react-icons/fa'
 import { Metadata } from 'next'
 import { headers } from 'next/headers'
 import { richTextContentClassName } from '@/lib/richText'
+import { redirect } from 'next/navigation'
+import { isValidObjectId } from '@/lib/slugHelpers'
 
 // Type definitions
 export type Blog = {
@@ -102,6 +104,9 @@ export async function generateMetadata(
     const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'My Blog';
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yourdomain.com';
 
+    // Use slug if available, otherwise use ID
+    const urlIdentifier = blog.slug || params.id;
+
     return {
       title: `${blog.metaTitle || blog.title} | ${siteName}`,
       description: blog.metaDescription || description,
@@ -122,7 +127,7 @@ export async function generateMetadata(
           }
         ],
         siteName: siteName,
-        url: `${siteUrl}/blogs/${params.id}`,
+        url: `${siteUrl}/blogs/${urlIdentifier}`,
       },
 
       // Twitter Card metadata
@@ -150,7 +155,7 @@ export async function generateMetadata(
 
       // Canonical URL
       alternates: {
-        canonical: `${siteUrl}/blogs/${params.id}`,
+        canonical: `${siteUrl}/blogs/${urlIdentifier}`,
       },
 
       // Robots directive
@@ -193,6 +198,11 @@ const BlogDetails = async ({ params }: BlogDetailsProps) => {
         </div>
       </div>
     );
+  }
+
+  // Redirect to slug URL if current URL is MongoDB ID and blog has slug
+  if (isValidObjectId(params.id) && blog.slug) {
+    redirect(`/blogs/${blog.slug}`);
   }
 
   const readTime = calculateReadTime(blog.content);

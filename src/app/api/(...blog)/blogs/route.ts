@@ -4,6 +4,7 @@ import { authorizationCheck } from"@/lib/authorization";
 import { getAllBlogs } from"@/lib/blogData";
 import { collections, dbConnect } from"@/lib/dbConnect";
 import { NextRequest, NextResponse } from"next/server";
+import { generateUniqueSlug } from"@/lib/slugHelpers";
 
 // Database connection will be established in each function
 
@@ -23,6 +24,13 @@ export async function POST(req :NextRequest) {
  try {
  const blogsCollection = await dbConnect(collections.blogs);
  const formInfo = await req.json();
+
+ // Generate slug from title if not provided
+ if (!formInfo.slug && formInfo.title) {
+ const slug = await generateUniqueSlug(formInfo.title);
+ formInfo.slug = slug;
+ }
+
  const result = await blogsCollection.insertOne({ ...formInfo, createdAt : new Date() });
  return NextResponse.json(result, { status: 201 }); 
  } catch (error) {

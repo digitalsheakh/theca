@@ -16,6 +16,7 @@ interface BlogPost {
   createdAt: string;
   content: string;
   imageUrl: string;
+  slug?: string;
 }
 
 export default function BlogPage() {
@@ -146,12 +147,14 @@ export default function BlogPage() {
     return <GlobalLoading />;
   }
 
-  const openBlogDialog = (blogId: string) => {
+  const openBlogDialog = (blogId: string, blogSlug?: string) => {
     if (!blogId) {
       return;
     }
 
-    router.push(`/blogs/${blogId}`);
+    // Use slug if available, otherwise fall back to ID
+    const urlParam = blogSlug || blogId;
+    router.push(`/blogs/${urlParam}`);
   };
 
   const formatDate = (dateString: string) => {
@@ -270,7 +273,7 @@ export default function BlogPage() {
               {blogs.map((blog: any, index: number) => (
                 <motion.article
                   key={blog._id}
-                  onClick={() => openBlogDialog(blog._id)}
+                  onClick={() => openBlogDialog(blog._id, blog.slug)}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: (index + 1) * 0.1 }}
