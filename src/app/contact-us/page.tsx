@@ -11,6 +11,7 @@ export default function ContactUs() {
     name: '',
     email: '',
     phone: '',
+    vehicleRegistration: '',
     service: '',
     message: '',
     privacy: false
@@ -47,6 +48,7 @@ export default function ContactUs() {
         from_name: data.name,
         from_email: data.email,
         from_phone: data.phone,
+        vehicle_registration: data.vehicleRegistration,
         service: data.service || "General Inquiry",
         message: data.message,
         submission_date: new Date().toLocaleString()
@@ -93,6 +95,7 @@ export default function ContactUs() {
           name: '',
           email: '',
           phone: '',
+          vehicleRegistration: '',
           service: '',
           message: '',
           privacy: false
@@ -279,7 +282,26 @@ export default function ContactUs() {
                         className="w-full px-4 py-3 bg-white border border-orange-600/30 text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-transparent"
                       />
                     </div>
+                    <div>
+                      <label
+                        htmlFor="vehicleRegistration"
+                        className="block text-sm font-medium text-white mb-1"
+                      >
+                        Vehicle Registration <span className="text-orange-600">*</span>
+                      </label>
 
+                      <input
+                        type="text"
+                        id="vehicleRegistration"
+                        name="vehicleRegistration"
+                        value={formData.vehicleRegistration}
+                        onChange={handleChange}
+                        placeholder="e.g., AB12 CDE"
+                        required
+                        autoComplete="off"
+                        className="w-full px-4 py-3 bg-white border border-orange-600/30 text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-transparent uppercase"
+                      />
+                    </div>
                     <div>
                       <label htmlFor="service" className="block text-sm font-medium text-white mb-1">Service Required <span className="text-orange-600">*</span></label>
                       <input
