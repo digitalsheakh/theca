@@ -11,6 +11,7 @@ export default function ServiceEstimator() {
     name: '',
     email: '',
     phone: '',
+    vehicleRegistration: '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -36,6 +37,7 @@ export default function ServiceEstimator() {
         from_name: data.name,
         from_email: data.email,
         from_phone: data.phone,
+        vehicle_registration: data.vehicleRegistration,
         service: "General Inquiry",
         message: data.message,
         submission_date: new Date().toLocaleString()
@@ -72,7 +74,7 @@ export default function ServiceEstimator() {
 
       if (emailSent) {
         setSubmitStatus('success');
-        setFormData({ name: '', email: '', phone: '', message: '' });
+        setFormData({ name: '', email: '', phone: '', vehicleRegistration: '', message: '' });
       } else {
         setSubmitStatus('error');
       }
@@ -143,6 +145,20 @@ export default function ServiceEstimator() {
                       value={formData.name}
                       onChange={handleInputChange}
                       placeholder="John Smith"
+                      required
+                      className="w-full px-4 py-3 bg-white border border-orange-600/30 text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-transparent"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="vehicleRegistration" className="block text-sm font-medium text-white mb-1">Vehicle Registration <span className="text-orange-600">*</span></label>
+                    <input
+                      type="text"
+                      id="vehicleRegistration"
+                      name="vehicleRegistration"
+                      value={formData.vehicleRegistration}
+                      onChange={handleInputChange}
+                      placeholder="AB12 XYZ"
                       required
                       className="w-full px-4 py-3 bg-white border border-orange-600/30 text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-transparent"
                     />
