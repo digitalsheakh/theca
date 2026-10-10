@@ -208,7 +208,7 @@ export default function ContactUs() {
                       <h3 className="text-lg font-bold text-orange-600 mb-2 font-orbitron uppercase">Hours</h3>
                       <p className="text-gray-300 font-rajdhani leading-relaxed">
                         Monday - Friday: 9:00 AM - 6:00 PM<br />
-                        Saturday: 10:00 AM - 1:00 PM<br />
+                        Saturday: CLOSED<br />
                         Sunday: CLOSED
                       </p>
                     </div>
