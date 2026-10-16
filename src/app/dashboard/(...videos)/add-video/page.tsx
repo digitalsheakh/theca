@@ -249,7 +249,7 @@ export default function VideoForm() {
             {/* Left Column - Main Video Content */}
             <div className="lg:col-span-2 space-y-6">
               {/* Video Type Selector */}
-              <div>
+              {/* <div>
                 <label htmlFor="videoType" className="block text-base font-bold text-gray-900 mb-3 font-rajdhani">
                   Video Type *
                 </label>
@@ -272,7 +272,7 @@ export default function VideoForm() {
                     {errors.videoType.message}
                   </p>
                 )}
-              </div>
+              </div> */}
 
               {/* Title Field */}
               <div>

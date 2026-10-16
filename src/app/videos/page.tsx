@@ -375,7 +375,7 @@ export default function VideosPage() {
       </section>
 
       {/* Car Review Grid */}
-      <section className="w-full pt-20 pb-0 bg-black">
+      <section className="w-full pt-20 pb-0 bg-black invisible hidden">
         <div className="w-full px-6">
           <div className="max-w-screen-2xl mx-auto">
             {/* Section Header */}
