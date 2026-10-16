@@ -25,7 +25,7 @@ export default function FullServicePage() {
             </h1>
             <div className="max-w-2xl">
               <p className="text-lg md:text-xl text-gray-200 mb-8 font-rajdhani leading-relaxed">
-                Comprehensive full vehicle service for just <span className="text-white font-bold">£150 + VAT</span>. Keep your car running at peak performance with our thorough service package.
+                Comprehensive full vehicle service from just <span className="text-white font-bold">£150 + VAT</span>. Keep your car running at peak performance with our thorough service package.
               </p>
             </div>
           </div>
