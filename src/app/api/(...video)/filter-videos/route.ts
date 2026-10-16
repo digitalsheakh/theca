@@ -22,6 +22,7 @@ export async function GET(req: NextRequest) {
  const searchTerm = searchParams.get("search") ||"";
  const page = parseInt(searchParams.get("page") ||"1");
  const limit = parseInt(searchParams.get("limit") ||"10");
+ const videoType = searchParams.get("videoType") ||"general";
 
 
  const videosCollection = await dbConnect(collections.videos);
@@ -29,14 +30,38 @@ export async function GET(req: NextRequest) {
 
  // Build query
  const query: any = {};
- 
- if (searchTerm) {
- // Fallback to regex search
+
+ // Add videoType filter with backward compatibility
+ // For 'general' type, include both explicit 'general' and documents without videoType field
+ if (videoType === 'general') {
  query.$or = [
- { title: { $regex: searchTerm, $options:"i" } },
- { description: { $regex: searchTerm, $options:"i" } },
- { videoYoutubeLink: { $regex: searchTerm, $options:"i" } },
+ { videoType: 'general' },
+ { videoType: { $exists: false } }
  ];
+ } else if (videoType === 'review') {
+ query.videoType = 'review';
+ }
+
+ if (searchTerm) {
+ // If we already have $or from videoType, we need to combine with search $or
+ if (query.$or) {
+ // For general videos with search, combine videoType condition with search conditions
+ const videoTypeConditions = query.$or;
+ const searchConditions = [
+ { title: { $regex: searchTerm, $options: "i" } },
+ { description: { $regex: searchTerm, $options: "i" } },
+ { videoYoutubeLink: { $regex: searchTerm, $options: "i" } },
+ ];
+ query.$and = videoTypeConditions.map((vt: any) => ({ $or: [vt, ...searchConditions] }));
+ delete query.$or;
+ } else {
+ // For review videos or other types
+ query.$or = [
+ { title: { $regex: searchTerm, $options: "i" } },
+ { description: { $regex: searchTerm, $options: "i" } },
+ { videoYoutubeLink: { $regex: searchTerm, $options: "i" } },
+ ];
+ }
  }
 
  // Get total count (optimized)

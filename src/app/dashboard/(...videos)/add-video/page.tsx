@@ -36,6 +36,9 @@ const formSchema = yup.object().shape({
       /\.(jpeg|jpg|gif|png|webp)$/,
       'URL must point to an image (JPEG, JPG, GIF, PNG, WEBP)'
     ),
+  videoType: yup.string()
+    .oneOf(['general', 'review'], 'Video type must be either general or review')
+    .required('Video type is required'),
   metaTitle: yup.string()
     .required('Meta title is required')
     .max(60, 'Meta title should be under 60 characters'),
@@ -51,20 +54,23 @@ const formSchema = yup.object().shape({
     })
 });
 
-type FormData = yup.Asserts<typeof formSchema>;
+type FormData = yup.Asserts<typeof formSchema> & {
+  videoType?: 'general' | 'review';
+};
 
 export default function VideoForm() {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [metaImagePreview, setMetaImagePreview] = useState<string | null>(null);
   const [videoCount, setVideoCount] = useState<number | null>(null);
+  const [videoType, setVideoType] = useState<'general' | 'review'>('general');
   const [isLoadingCount, setIsLoadingCount] = useState(true);
 
-  // Check video count on component mount
+  // Check video count on component mount and when videoType changes
   useEffect(() => {
     const fetchVideoCount = async () => {
       try {
-        const res = await axios.get('/api/videos/count');
+        const res = await axios.get(`/api/videos/count?videoType=${videoType}`);
         setVideoCount(res.data.count || 0);
       } catch (error) {
         console.error('Error fetching video count:', error);
@@ -74,7 +80,7 @@ export default function VideoForm() {
       }
     };
     fetchVideoCount();
-  }, []);
+  }, [videoType]);
 
   const {
     register,
@@ -86,7 +92,10 @@ export default function VideoForm() {
     trigger
   } = useForm<FormData>({
     resolver: yupResolver(formSchema),
-    mode: 'onChange'
+    mode: 'onChange',
+    defaultValues: {
+      videoType: 'general'
+    }
   });
 
   // Helper function to extract video ID from YouTube URL
@@ -200,6 +209,14 @@ export default function VideoForm() {
   };
 
   const metaDescription = watch('metaDescription');
+  const formVideoType = watch('videoType');
+
+  // Sync videoType state with form value
+  useEffect(() => {
+    if (formVideoType) {
+      setVideoType(formVideoType);
+    }
+  }, [formVideoType]);
 
   return (
     <div className="bg-white shadow-sm border border-gray-200">
@@ -231,6 +248,32 @@ export default function VideoForm() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Left Column - Main Video Content */}
             <div className="lg:col-span-2 space-y-6">
+              {/* Video Type Selector */}
+              <div>
+                <label htmlFor="videoType" className="block text-base font-bold text-gray-900 mb-3 font-rajdhani">
+                  Video Type *
+                </label>
+                <select
+                  id="videoType"
+                  {...register('videoType')}
+                  className="w-full px-5 py-4 bg-white border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 text-gray-900 transition-all duration-200 font-rajdhani text-base"
+                >
+                  <option value="general">General Video</option>
+                  <option value="review">Video Review</option>
+                </select>
+                <p className="text-sm text-gray-600 mt-2 font-rajdhani">
+                  Select the type of video. General videos appear in the Videos section, Video Review videos appear in the Video Review section.
+                </p>
+                {errors.videoType && (
+                  <p className="mt-3 text-sm text-orange-600 flex items-center font-rajdhani">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                    </svg>
+                    {errors.videoType.message}
+                  </p>
+                )}
+              </div>
+
               {/* Title Field */}
               <div>
                 <label htmlFor="title" className="block text-base font-bold text-gray-900 mb-3 font-rajdhani">

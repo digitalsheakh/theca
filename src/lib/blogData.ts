@@ -1,6 +1,7 @@
 import { ObjectId } from "mongodb";
 
 import { collections, dbConnect } from "@/lib/dbConnect";
+import { getBlogByIdOrSlug as getBlogByIdOrSlugFromDb } from "./slugHelpers";
 
 export interface BlogRecord {
   _id: string;
@@ -139,6 +140,32 @@ export async function getBlogById(id: string): Promise<BlogRecord | null> {
     return blog ? normalizeBlog(blog) : null;
   } catch (error) {
     console.error("Falling back to local blog detail:", error);
+    return null;
+  }
+}
+
+/**
+ * Fetch blog by either MongoDB ID or slug
+ * Supports both old ID URLs and new slug URLs
+ */
+export async function getBlogByIdOrSlug(identifier: string): Promise<BlogRecord | null> {
+  if (!identifier) {
+    return null;
+  }
+
+  // Check fallback blogs first
+  const fallbackBlog = fallbackBlogs.find((blog) =>
+    blog._id === identifier || blog.slug === identifier
+  );
+  if (fallbackBlog) {
+    return fallbackBlog;
+  }
+
+  try {
+    const blog = await getBlogByIdOrSlugFromDb(identifier);
+    return blog ? normalizeBlog(blog as MongoBlog) : null;
+  } catch (error) {
+    console.error("Error fetching blog by ID or slug:", error);
     return null;
   }
 }

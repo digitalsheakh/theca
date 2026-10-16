@@ -55,15 +55,16 @@ export default function YouTubeVideosPage() {
  const [page, setPage] = useState(1);
  const [limit, setLimit] = useState(10);
  
- const { 
- data: videos = { data: [], pagination: { total: 0, totalPages: 0 } }, 
- isLoading, 
- error, 
- refetch 
+ const {
+ data: videos = { data: [], pagination: { total: 0, totalPages: 0 } },
+ isLoading,
+ error,
+ refetch
  } = useGetVideosQuery({
  search: searchTerm,
  page,
- limit
+ limit,
+ videoType: 'general'
  }, { refetchOnMountOrArgChange: true });
 
  const [deleteVideo, { isLoading: isDeleting }] = useDeleteVideoMutation();

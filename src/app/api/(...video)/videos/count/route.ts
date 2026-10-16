@@ -17,11 +17,25 @@ export async function GET(req: NextRequest) {
   }
 
   try {
+    const { searchParams } = new URL(req.url);
+    const videoType = searchParams.get("videoType") || "general";
     const videosCollection = await dbConnect(collections.videos);
-    const count = await videosCollection.countDocuments({});
+
+    // Handle backward compatibility - include documents without videoType for 'general'
+    let query: any = {};
+    if (videoType === 'general') {
+      query.$or = [
+        { videoType: 'general' },
+        { videoType: { $exists: false } }
+      ];
+    } else if (videoType === 'review') {
+      query.videoType = 'review';
+    }
+
+    const count = await videosCollection.countDocuments(query);
     return NextResponse.json({ count }, { status: 200 });
   } catch (error) {
     console.error("Error counting videos:", error);
-    return NextResponse.json({ error:"Failed to count videos", count: 0 }, { status: 500 });
+    return NextResponse.json({ error: "Failed to count videos", count: 0 }, { status: 500 });
   }
 }

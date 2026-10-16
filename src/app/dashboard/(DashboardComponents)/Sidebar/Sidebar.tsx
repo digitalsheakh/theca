@@ -116,6 +116,14 @@ export function Sidebar() {
       ]
     },
     {
+      title: "Video Review",
+      icon: <Film className="h-5 w-5 text-amber-500" />,
+      items: [
+        { href: '/dashboard/add-video-review', icon: <Video className="h-4 w-4" />, name: 'Add Video Review' },
+        { href: '/dashboard/video-review-list', icon: <Film className="h-4 w-4" />, name: 'Video Review List' },
+      ]
+    },
+    {
       title: "Settings",
       icon: <Settings className="h-5 w-5 text-amber-500" />,
       items: [

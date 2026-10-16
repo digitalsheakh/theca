@@ -83,10 +83,11 @@ export async function PATCH(req: NextRequest) {
  videoYoutubeLink: update.videoYoutubeLink, //"maritalStatus" mapped to"marital"
  videoEmbedLink: update.videoEmbedLink, //"nationalId"
  videoThumbnail: update.videoThumbnail, //"mobile" mapped to"telPersonal"
+ videoType: update.videoType || 'general', // Ensure videoType is set
  metaTitle: update.metaTitle, //"mobile" mapped to"telPersonal"
  metaDescription: update.metaDescription, //"mobile" mapped to"telPersonal"
  metaImage: update.metaImage, //"mobile" mapped to"telPersonal"
- 
+
  }
  };
 

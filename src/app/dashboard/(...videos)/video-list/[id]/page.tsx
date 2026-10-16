@@ -28,6 +28,9 @@ const formSchema: yup.ObjectSchema<FormData> = yup.object().shape({
   videoThumbnail: yup.string()
     .url('Please enter a valid URL')
     .required('Video Thumbnail is required'),
+  videoType: yup.string()
+    .oneOf(['general', 'review'], 'Video type must be either general or review')
+    .required('Video type is required'),
   metaTitle: yup.string()
     .required('Meta title is required')
     .max(60, 'Meta title should be under 60 characters'),
@@ -49,6 +52,7 @@ type FormData = {
   videoYoutubeLink: string;
   videoEmbedLink: string;
   videoThumbnail: string;
+  videoType?: 'general' | 'review';
   metaTitle: string;
   metaDescription: string;
   metaImage: File | string;
@@ -114,6 +118,7 @@ export default function VideoForm() {
           setValue('videoYoutubeLink', videoData.videoYoutubeLink);
           setValue('videoEmbedLink', videoData.videoEmbedLink);
           setValue('videoThumbnail', videoData.videoThumbnail);
+          setValue('videoType', videoData.videoType || 'general');
           setValue('metaTitle', videoData.metaTitle || '');
           setValue('metaDescription', videoData.metaDescription || '');
           setValue('metaImage', videoData.metaImage || '');
@@ -251,6 +256,34 @@ export default function VideoForm() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Left Column - Main Video Content */}
             <div className="lg:col-span-2 space-y-6">
+              {/* Video Type Selector */}
+              <div>
+                <label htmlFor="videoType" className="block text-sm font-medium text-black mb-2">
+                  Video Type *
+                </label>
+                <select
+                  id="videoType"
+                  {...register('videoType')}
+                  disabled={isSubmitting}
+                  className={`w-full px-5 py-3 bg-white border focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-black transition-all duration-200 ${errors.videoType ? 'border-orange-500' : 'border-orange-600/30'
+                    }`}
+                >
+                  <option value="general">General Video</option>
+                  <option value="review">Video Review</option>
+                </select>
+                <p className="text-sm text-gray-600 mt-2 font-rajdhani">
+                  General videos appear in the Videos section, Video Review videos appear in the Video Review section.
+                </p>
+                {errors.videoType && (
+                  <p className="mt-2 text-sm text-orange-400 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                    </svg>
+                    {errors.videoType.message}
+                  </p>
+                )}
+              </div>
+
               {/* Title Field */}
               <div>
                 <label htmlFor="title" className="block text-sm font-medium text-black mb-2">

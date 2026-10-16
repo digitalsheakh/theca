@@ -20,7 +20,9 @@ export async function POST(req :NextRequest) {
  try {
  const videosCollection = await dbConnect(collections.videos);
  const formInfo = await req.json();
- const result = await videosCollection.insertOne({ ...formInfo, createdAt : new Date() });
+ // Ensure videoType is set, default to 'general' if not provided
+ const videoType = formInfo.videoType || "general";
+ const result = await videosCollection.insertOne({ ...formInfo, videoType, createdAt : new Date() });
  return NextResponse.json(result, { status: 201 }); 
  } catch (error) {
  console.error(error);
@@ -29,19 +31,6 @@ export async function POST(req :NextRequest) {
 }
 
 export async function GET(req: NextRequest) {
- const referer = req.headers.get('referer') ||'';
- const refererPath = new URL(referer).pathname;
- 
- // Pass referer path to authorization check
- const authResult = await authorizationCheck(refererPath);
- 
- if (!authResult.success) {
- return NextResponse.json(
- { error: authResult.error },
- { status: authResult.status }
- );
- }
-
  try {
  const videosCollection = await dbConnect(collections.videos);
  const result = await videosCollection.find({}).sort({ date: 1 }).toArray();

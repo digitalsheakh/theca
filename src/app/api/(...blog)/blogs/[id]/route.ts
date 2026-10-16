@@ -1,8 +1,9 @@
 ﻿import { authorizationCheck } from"@/lib/authorization";
-import { getBlogById } from"@/lib/blogData";
+import { getBlogByIdOrSlug } from"@/lib/blogData";
 import { collections, dbConnect } from"@/lib/dbConnect";
 import { ObjectId } from"mongodb";
 import { NextRequest, NextResponse } from"next/server";
+import { generateUniqueSlug } from"@/lib/slugHelpers";
 
 // Define interfaces for blog collections
 interface Blog {
@@ -14,16 +15,17 @@ interface Blog {
  metaDescription?: string;
  metaImageUrl?: string;
  createdAt: Date;
+ slug?: string;
 }
 
 
-// GET — fetch blog by ID
+// GET — fetch blog by ID or slug
 export async function GET(req: NextRequest) {
 
  try {
  const id = req.nextUrl.pathname.split("/").pop();
 
- const blog = id ? await getBlogById(id) : null;
+ const blog = id ? await getBlogByIdOrSlug(id) : null;
 
  if (!blog) {
  return NextResponse.json({ error:"Blog not found" }, { status: 404 });
@@ -81,6 +83,14 @@ export async function PATCH(req: NextRequest) {
  updatedAt: new Date()
  }
  };
+
+ // Generate slug from title if slug is empty and title is provided
+ if (!blog.slug && update.title) {
+ const slug = await generateUniqueSlug(update.title, id);
+ (updateDoc.$set as any).slug = slug;
+ } else if (update.slug) {
+ (updateDoc.$set as any).slug = update.slug;
+ }
 
  const result = await blogsCollection.updateOne(filter, updateDoc);
  return NextResponse.json({ message:"Blog updated successfully", ...result }, { status: 200 });
